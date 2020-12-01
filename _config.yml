@@ -1,10 +1,10 @@
-title: Dengqinghua's Blog # name of the site
-author: 邓擎铧 # name of site's author
+title: Dengqinghua.42 # name of the site
+author: dengqinghua # name of site's author
 email: dengqinghua.42@gmail.com # email of site's author
-url: https://riggraz.dev # root address of the site
+url: https://dengqinghua.net # root address of the site
 baseurl: "" # subpath of the site, e.g. "/blog"
 description: > # description of the site (multiple lines allowed)
-  Everything I thinr
+  Everything I think
 
 permalink: /:slug.html
 
@@ -26,6 +26,13 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-mermaid
+  - jekyll-toc
 
 mermaid:
   src: 'assets/js/mermaid.min.js'
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      toc: true

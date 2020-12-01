@@ -1,17 +1,26 @@
 entries:
-  - title: info
+  - title: me
     entries:
-      - title: Father, husband, programmer
-      - title: Fingerstyle Guitar Player
+      - title: father, husband and Family man
+      - title: fingerstyle guitarlist
         url: https://space.bilibili.com/425983305
-      - title: Body builder.
+      - title: bodybuilder
         url: https://www.instagram.com/dengqinghua.42
-  - title: all posts
+      - title: keep in touch
+        entries:
+          - title: email
+            url: mailto:dengqinghua.42@gmail.com
+          - title: github
+            url: https://github.com/dengqinghua
+  - title: posts
     post_list:
+      show_more: true
+      show_more_text: See archive...
+      show_more_url: example2-archive.html
+  - title: music blogs
+    post_list:
+      category: thoughts
       limit: 5
       show_more: true
-      show_more_text: More...
+      show_more_text: See archive...
       show_more_url: archive.html
-  - title: PRO TIP
-    entries:
-      - title: to edit this menu, edit _data/menu.yml file
