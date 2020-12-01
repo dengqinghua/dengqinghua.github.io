@@ -2,4 +2,8 @@
 
 source "https://rubygems.org"
 gemspec
-gem "jekyll-mermaid"
+
+group :jekyll_plugins do
+  gem "github-pages"
+  gem "jekyll-mermaid"
+end
