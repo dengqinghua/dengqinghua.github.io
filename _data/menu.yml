@@ -1,7 +1,7 @@
 entries:
   - title: me
     entries:
-      - title: father, husband and Family man
+      - title: father, husband and family man
       - title: fingerstyle guitarlist
         url: https://space.bilibili.com/425983305
       - title: bodybuilder
@@ -12,15 +12,18 @@ entries:
             url: mailto:dengqinghua.42@gmail.com
           - title: github
             url: https://github.com/dengqinghua
+          - title: profile
+            url: about.html
   - title: posts
     post_list:
       show_more: true
+      limit: 5
       show_more_text: See archive...
-      show_more_url: example2-archive.html
-  - title: music blogs
+      show_more_url: archive.html
+  - title: music
     post_list:
-      category: thoughts
+      category: music
       limit: 5
       show_more: true
       show_more_text: See archive...
-      show_more_url: archive.html
+      show_more_url: music.html

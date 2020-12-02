@@ -45,7 +45,7 @@ li { margin: 0.4rem 0; }
 *:target { background: yellow; }
 
 .w {
-  width: fit-content;
+  // width: fit-content;
   max-width: 800px;
   margin: 0 auto;
   padding: 4rem 2rem;
@@ -59,11 +59,27 @@ hr {
   &:after { content: attr(data-content) '/////' }
 }
 
-table, th, td {
-  width: 100%;
-  border: thin solid black;
-  border-collapse: collapse;
-  padding: 0.4rem;
+// table, th, td {
+//   width: -webkit-fill-available;
+//   border: thin solid black;
+//   border-collapse: collapse;
+//   padding: 0.4rem;
+// }
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    padding: 0.4rem;
+    border:2px solid;
+}
+
+th{
+    border:2px solid;
+}
+
+td{
+    border:2px solid;
 }
 
 code {
