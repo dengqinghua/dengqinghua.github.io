@@ -25,7 +25,6 @@ sass:
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
-  - jekyll-mermaid
   - jekyll-toc
 
 mermaid:

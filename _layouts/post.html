@@ -4,6 +4,10 @@ layout: default
 
 {% include back_link.html %}
 
+{% if page.mermaid %}
+  <script type="text/javascript" src="{{ '/assets/js/mermaid.min.js' | absolute_url }}"></script>
+{% endif %}
+
 <article>
   <p class="post-meta">
     <time datetime="{{ page.date }}">{{ page.date | date: site.theme_config.date_format }}</time>
