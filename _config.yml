@@ -1,7 +1,7 @@
 title: Dengqinghua.42 # name of the site
 author: dengqinghua # name of site's author
 email: dengqinghua.42@gmail.com # email of site's author
-url: https://dengqinghua.net # root address of the site
+url: https://dengqinghua.github.io # root address of the site
 baseurl: "" # subpath of the site, e.g. "/blog"
 description: > # description of the site (multiple lines allowed)
   Everything I think
