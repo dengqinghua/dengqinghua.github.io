@@ -26,11 +26,9 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-toc
+  - jekyll-mermaid
+
+mermaid:
+  src: 'assets/js/mermaid.min.js'
 
 destination: docs/
-
-defaults:
-  - scope:
-      path: ""
-    values:
-      toc: true
