@@ -27,9 +27,6 @@ plugins:
   - jekyll-seo-tag
   - jekyll-toc
 
-mermaid:
-  src: 'assets/js/mermaid.min.js'
-
 defaults:
   - scope:
       path: ""
