@@ -27,6 +27,8 @@ plugins:
   - jekyll-seo-tag
   - jekyll-toc
 
+destination: docs/
+
 defaults:
   - scope:
       path: ""
