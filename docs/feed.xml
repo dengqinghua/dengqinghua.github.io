@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2020-12-03T21:36:02+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2020-12-04T00:56:20+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
 </subtitle><author><name>dengqinghua</name></author><entry><title type="html">Markdown例子-博尔赫斯</title><link href="https://dengqinghua.github.io/example.html" rel="alternate" type="text/html" title="Markdown例子-博尔赫斯" /><published>2020-12-03T00:00:00+08:00</published><updated>2020-12-03T00:00:00+08:00</updated><id>https://dengqinghua.github.io/example</id><content type="html" xml:base="https://dengqinghua.github.io/example.html">&lt;h2 id=&quot;生平&quot;&gt;生平&lt;/h2&gt;
 &lt;hr data-content=&quot; 基本信息 &quot; /&gt;
 
@@ -105,10 +105,12 @@ sequenceDiagram
   &lt;/ol&gt;
 &lt;/div&gt;</content><author><name>dengqinghua</name></author><category term="thoughts" /><summary type="html">生平</summary></entry><entry><title type="html">潇洒走一回</title><link href="https://dengqinghua.github.io/live-more.html" rel="alternate" type="text/html" title="潇洒走一回" /><published>2020-12-01T00:00:00+08:00</published><updated>2020-12-01T00:00:00+08:00</updated><id>https://dengqinghua.github.io/live-more</id><content type="html" xml:base="https://dengqinghua.github.io/live-more.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
 
+&lt;iframe src=&quot;assets/doc/潇洒走一回2.pdf&quot; width=&quot;100%&quot; height=&quot;800&quot;&gt;&lt;/iframe&gt;
+
 &lt;ul&gt;
-  &lt;li&gt;曲谱: &lt;a href=&quot;assets/doc/潇洒走一回2.pdf&quot;&gt;PDF&lt;/a&gt;, &lt;a href=&quot;assets/doc/潇洒走一回2.gp&quot;&gt;GuitarPro&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;GP: &lt;a href=&quot;assets/doc/潇洒走一回2.gp&quot;&gt;GuitarPro&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;来源: &lt;a href=&quot;https://www.bilibili.com/video/BV1Xx411r7zf&quot;&gt;蓝色六弦音乐空间 潇洒走一回&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;我的录音&lt;/li&gt;
+  &lt;li&gt;录音&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;hr data-content=&quot; 律动 &quot; /&gt;
@@ -127,7 +129,8 @@ sequenceDiagram
 &lt;div class=&quot;mermaid&quot;&gt;
 graph LR
     subgraph SECTION C
-    Am--&amp;gt;G--&amp;gt;F--&amp;gt;G1(G)--&amp;gt;Am1(Am)
+    Am--&amp;gt;G--&amp;gt;F--&amp;gt;G1(G)--&amp;gt;Am1(Amx2)
+    --&amp;gt;G2([G])--&amp;gt;F2([F])--&amp;gt;G2-1([G,D])--&amp;gt;C2([C])--&amp;gt;E
     end
 &lt;/div&gt;
 
@@ -135,7 +138,7 @@ graph LR
 &lt;div class=&quot;mermaid&quot;&gt;
 graph LR
     subgraph SECTION D
-    Am(Am)--&amp;gt;E--&amp;gt;G--&amp;gt;D--&amp;gt;Am1(Am)
+    Am(Am)--&amp;gt;E7--&amp;gt;G--&amp;gt;D--&amp;gt;C--&amp;gt;E7-1(E7)
     end
 &lt;/div&gt;
 
