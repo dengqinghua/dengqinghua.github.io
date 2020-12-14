@@ -16,6 +16,7 @@ entries:
             url: about.html
   - title: posts
     post_list:
+      category: showed
       show_more: true
       limit: 10
       show_more_text: See archive...
