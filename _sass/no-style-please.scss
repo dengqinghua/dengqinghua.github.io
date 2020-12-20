@@ -64,29 +64,11 @@ hr {
 }
 
 table, th, td {
-  width: 100%;
+  width: -webkit-fill-available;
   border: thin solid black;
   border-collapse: collapse;
   padding: 0.4rem;
 }
-
-// table{
-//     width: 100%;
-//     border-collapse: collapse;
-//     border-spacing: 0;
-//     padding: 0.4rem;
-//     border:2px solid;
-// }
-//
-// th{
-//     border:2px solid;
-//     padding: 10px;
-// }
-//
-// td{
-//     border:2px solid;
-//     padding: 10px;
-// }
 
 code {
   color: white;
