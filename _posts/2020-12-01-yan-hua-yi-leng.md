@@ -1,6 +1,7 @@
 ---
 layout: post
 category: music
+title: 烟花易冷
 ---
 
 --------

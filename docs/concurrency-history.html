@@ -11,15 +11,15 @@
 <meta property="og:title" content="Concurrency History" />
 <meta name="author" content="dengqinghua" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Everything I think" />
-<meta property="og:description" content="Everything I think" />
+<meta name="description" content="本文为视频 From Concurrent to Parallel 的学习笔记" />
+<meta property="og:description" content="本文为视频 From Concurrent to Parallel 的学习笔记" />
 <link rel="canonical" href="https://dengqinghua.github.io/concurrency-history.html" />
 <meta property="og:url" content="https://dengqinghua.github.io/concurrency-history.html" />
 <meta property="og:site_name" content="Dengqinghua.42" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-12-15T00:00:00+08:00" />
 <script type="application/ld+json">
-{"url":"https://dengqinghua.github.io/concurrency-history.html","headline":"Concurrency History","dateModified":"2020-12-15T00:00:00+08:00","datePublished":"2020-12-15T00:00:00+08:00","description":"Everything I think","author":{"@type":"Person","name":"dengqinghua"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://dengqinghua.github.io/concurrency-history.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"url":"https://dengqinghua.github.io/concurrency-history.html","headline":"Concurrency History","dateModified":"2020-12-15T00:00:00+08:00","datePublished":"2020-12-15T00:00:00+08:00","description":"本文为视频 From Concurrent to Parallel 的学习笔记","author":{"@type":"Person","name":"dengqinghua"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://dengqinghua.github.io/concurrency-history.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <link type="application/atom+xml" rel="alternate" href="https://dengqinghua.github.io/feed.xml" title="Dengqinghua.42" />
@@ -38,8 +38,256 @@
   
   <h1>Concurrency History</h1>
 
-  <hr />
+  <p>本文为视频 <a href="https://www.youtube.com/watch?v=NsDE7E8sIdQ">From Concurrent to Parallel</a> 的学习笔记</p>
 
+<script src="assets/js/mermaid.min.js"></script>
+<div class="mermaid">
+graph TD;
+    performance--&gt;error;
+    performance--&gt;lantency;
+    performance--&gt;throughput;
+</div>
+
+<hr data-content=" 硬件性能 " />
+
+<p><a href="http://www.gotw.ca/publications/concurrency-ddj.htm">The Free Lunch Is Over: A Fundamental Turn Toward Concurrency in Software</a></p>
+
+<p><img src="assets/images/CPU_history.png" alt="" /></p>
+
+<p><strong>Software cannot keep the chip busy</strong></p>
+
+<hr data-content=" 问题模型 " />
+
+<ul>
+  <li>最大限度利用 CPU</li>
+  <li>最大限度的方式
+    <ul>
+      <li>单核
+        <ul>
+          <li>blocking/non-blocking IO, 后台IO型任务 (background task), 让出任务时钟</li>
+        </ul>
+      </li>
+      <li>多核
+        <ul>
+          <li>粗粒度(coarsed-grained) task-based concurrency, 如服务器多线程的形式, 目的是 增加吞吐量(throughput)</li>
+        </ul>
+      </li>
+      <li>超级多的核
+        <ul>
+          <li>更重视 lantency, 更多的是任务形式的, 是否能很快处理任务</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Task -&gt; Throughput -&gt; Latency
+</code></pre></div></div>
+
+<hr data-content=" 硬件驱动软件进步(解空间) " />
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Java1 threads,locks
+Java5 threads pools, blocking queue, concurrency collections
+Java7 fork join
+Java8 parallel stream
+</code></pre></div></div>
+
+<hr data-content=" 并发还是并行 " />
+
+<p>并发 资源的维护和处理, 资源更高效地，更正确地使用 hard</p>
+
+<p>并行 处理得更快 easy</p>
+
+<p>并行的目的是更快，但是实际上不一定会更快, 因为 worker 之间处理的事情会更多</p>
+
+<hr data-content=" 是否使用并行 " />
+
+<ul>
+  <li>Analyse</li>
+  <li>Implement</li>
+  <li>Measure</li>
+  <li>Repeat</li>
+</ul>
+
+<p>使用串行(sequential)直到并发是被验证有效的</p>
+
+<p>speedup 为测量指标</p>
+
+<hr data-content=" 并串行更多的 " />
+
+<ul>
+  <li>分解问题</li>
+  <li>并发处理</li>
+  <li>收集问题</li>
+</ul>
+
+<hr data-content=" dataflow dependecy? " />
+
+<p>一些问题是无法用 串行 的方式解决</p>
+
+<hr data-content=" Divide &amp; Conquer " />
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># All parallel algorithems
+R solve(Problem&lt;R&gt; problem)
+  if problem.isSmall()
+    return problem.solveSequentially()
+
+  R leftResult, rightResult;
+  CONCURRENT {
+    leftResult = R(solve(problem.left()))
+    rightResult = R(solve(problem.right()))
+  }
+
+  return problem.combine(leftResult, rightResult)
+</code></pre></div></div>
+
+<p>在这里划分 problem.left() 和 problem.right() 比较重要</p>
+
+<ul>
+  <li>No shared access, No mutable data (means no lock)</li>
+  <li>Yes task coordinate</li>
+</ul>
+
+<hr data-content=" Key Points " />
+
+<ul>
+  <li>Keep CPU busy
+    <ul>
+      <li>divide one, run one, instead of divide all, run all</li>
+    </ul>
+  </li>
+  <li>Tasks handle
+    <ul>
+      <li>串行?</li>
+      <li>多少个线程?</li>
+      <li>继续拆分为子任务?</li>
+    </ul>
+  </li>
+</ul>
+
+<p>设计: 只需要子任务，而不要关心 coordinate 的事情</p>
+
+<hr data-content=" 性能怎么样 " />
+
+<p>性能损耗在哪里</p>
+
+<ul>
+  <li>split the source？</li>
+  <li>task management</li>
+  <li>result combine
+    <ul>
+      <li>add numbers are cheap, merging sets is expensive</li>
+    </ul>
+  </li>
+  <li>locality (elephant in the room)</li>
+</ul>
+
+<p>需要有很多的数据来进行测试和计算</p>
+
+<hr data-content=" Fork Join and streams " />
+
+<p>Fork Join</p>
+
+<blockquote>
+  <p>Fork a task and wait it to complete</p>
+</blockquote>
+
+<ul>
+  <li>task management, scales from 1 to 100 threads (细粒度, CPU敏感的任务)</li>
+  <li>专属的 divide and conquer</li>
+  <li>基于 work stealing(keep CPU busy)</li>
+</ul>
+
+<p>streams</p>
+
+<ul>
+  <li>possibly parallel</li>
+  <li>not always faster</li>
+</ul>
+
+<hr data-content=" 评估是否该使用并行 " />
+
+<p>NQ model</p>
+
+<blockquote>
+
+  <p>NQ model <br />
+N = data items 的数目<br />
+Q = amount of work performed per item</p>
+</blockquote>
+
+<p>NQ &gt; 10_000 才有可能获得 speedup</p>
+
+<p><a href="https://developer.ibm.com/languages/java/articles/j-java-streams-5-brian-goetz/#thenqmodel">see also</a></p>
+
+<hr data-content=" 性能的关键 " />
+
+<p>Source Splitting</p>
+
+<ul>
+  <li>cost of source split</li>
+  <li>evenness of split</li>
+  <li>predictability of split</li>
+</ul>
+
+<blockquote>
+  <p>Array 是最好的选择！ Linked List 不是, iterator 也不是</p>
+</blockquote>
+
+<p>例子: <code class="language-plaintext highlighter-rouge">IntStream.range(0, 100).sum()</code> 和 <code class="language-plaintext highlighter-rouge">IntStream.iterate(0, i -&gt; i + 1).limit(100).sum()</code></p>
+
+<p>Locality(elephant in the room)</p>
+
+<ul>
+  <li>cache heats</li>
+  <li>use Array and int</li>
+</ul>
+
+<p>Enconter Order</p>
+
+<ul>
+  <li>source 是否跟 order 相关?</li>
+  <li>在 stream 中使用 unordered (告诉 stream 这个是无序的有助于优化)</li>
+</ul>
+
+<p>Merging</p>
+
+<ul>
+  <li>sum numbers is cheap, while group by is not</li>
+  <li>merge map,sets are expensive (并行有可能更慢)</li>
+</ul>
+
+<blockquote>
+  <p>IntStream.range(0, n) 使用并行时候会慢 4x (n = 10K)</p>
+</blockquote>
+
+<p>所以， 在并发的时候, 应该说 split 是什么样的, 数据量(N*Q)大吗? 跟顺序相关吗? 合并的数据是什么, 合并使用的结果集是什么, 可以使用 基础类型 吗?</p>
+
+<p>并发效果不好的几个原因</p>
+
+<ul>
+  <li>NQ not high</li>
+  <li>Cache-miss ratio is high</li>
+  <li>source split cost is high</li>
+  <li>combination cost is high</li>
+  <li>order-sensitive</li>
+</ul>
+
+<hr data-content=" 结论 " />
+
+<p>parallel is an optimization (not magic)</p>
+
+<p>在优化之前</p>
+
+<ul>
+  <li>真的有优化需求吗? (not for fun)</li>
+  <li>有优化后的性能测试吗？(往往很难)</li>
+  <li>性能达不到满足的条件吗?</li>
+</ul>
+
+<p>A few hundred is ok</p>
+
+<p>没有最好的标准, 但是有坏标准</p>
 
 </article>
 

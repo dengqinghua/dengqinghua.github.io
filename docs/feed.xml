@@ -1,5 +1,148 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2020-12-20T20:16:55+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
-</subtitle><author><name>dengqinghua</name></author><entry><title type="html">caged penatonic</title><link href="https://dengqinghua.github.io/boxed-penatonic.html" rel="alternate" type="text/html" title="caged penatonic" /><published>2020-12-20T00:00:00+08:00</published><updated>2020-12-20T00:00:00+08:00</updated><id>https://dengqinghua.github.io/boxed-penatonic</id><content type="html" xml:base="https://dengqinghua.github.io/boxed-penatonic.html">&lt;hr data-content=&quot; 原理 &quot; /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2020-12-28T11:22:47+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+</subtitle><author><name>dengqinghua</name></author><entry><title type="html">typescript</title><link href="https://dengqinghua.github.io/typescript-record.html" rel="alternate" type="text/html" title="typescript" /><published>2020-12-25T00:00:00+08:00</published><updated>2020-12-25T00:00:00+08:00</updated><id>https://dengqinghua.github.io/typescript-record</id><content type="html" xml:base="https://dengqinghua.github.io/typescript-record.html">&lt;hr data-content=&quot; 安装 &quot; /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;node&lt;/li&gt;
+  &lt;li&gt;yarn, brew install yarn&lt;/li&gt;
+  &lt;li&gt;typescript, yard add -g typescript&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;ts-node, yard add -g ts-node&lt;/p&gt;
+
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew install node, yarn
+yarn add -g typescript ts-node
+# 获取安装的二进制地址
+yarn bin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr data-content=&quot; ts -&amp;gt; js &quot; /&gt;
+
+&lt;p&gt;可以通过 tsc 去理解当前的 ts 的语法糖&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tsc class.ts --lib es2016,dom --pretty
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;script src=&quot;assets/js/mermaid.min.js&quot;&gt;&lt;/script&gt;
+&lt;div class=&quot;mermaid&quot;&gt;
+graph LR;
+    ts--&amp;gt;tsc--&amp;gt;js;
+&lt;/div&gt;
+
+&lt;hr data-content=&quot; 类型和语法 &quot; /&gt;
+
+&lt;script src=&quot;assets/js/mermaid.min.js&quot;&gt;&lt;/script&gt;
+&lt;div class=&quot;mermaid&quot;&gt;
+graph TD;
+    any--&amp;gt;内置类型;
+    any--&amp;gt;用户定义类型;
+&lt;/div&gt;
+
+&lt;p&gt;内置类型&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;string&lt;/li&gt;
+  &lt;li&gt;number, 包括 整数 和 浮点数&lt;/li&gt;
+  &lt;li&gt;void&lt;/li&gt;
+  &lt;li&gt;null, 值是 undefined 的对象&lt;/li&gt;
+  &lt;li&gt;undefined 初始化后的默认值&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr data-content=&quot; 变量 &quot; /&gt;
+
+&lt;p&gt;定义变量&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;var a:string = “a”&lt;/td&gt;
+      &lt;td&gt;设置为 string&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;var a = “a”&lt;/td&gt;
+      &lt;td&gt;和 上面 等价, a 的类型会被设置为 string (Inferred Typing)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;var a:string&lt;/td&gt;
+      &lt;td&gt;和 上面 等价, a 的类型会被设置为 string&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;var a&lt;/td&gt;
+      &lt;td&gt;a 的类型会被设置为 any, 值是 undefined&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;作用域&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;global&lt;/li&gt;
+  &lt;li&gt;class variable &amp;amp; class static variable&lt;/li&gt;
+  &lt;li&gt;local (method)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr data-content=&quot; 函数 &quot; /&gt;
+
+&lt;p&gt;Optional Parameters: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;function a(id:number, name: string, desc?:string) {}&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Rest Parameters: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;function a(id:number, ...restParams:string[]) {}&lt;/code&gt;&lt;/p&gt;
+
+&lt;hr data-content=&quot; tuple &quot; /&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var a = [10, &quot;d&quot;]
+var x:string|number = a[0]
+var y:string|number = a[1]
+console.log(&quot;x is &quot; + x)
+console.log(&quot;y is &quot; + y)
+var [x, y] = a
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr data-content=&quot; union &quot; /&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;let a:string|number;
+a = 12
+a = &quot;d&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;一般多个类型的时候, 会使用 typeof 来做判断&lt;/p&gt;
+
+&lt;hr data-content=&quot; interface &quot; /&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;interface IPerson {
+  name:string
+  other:number|string
+}
+
+const person:IPerson = { name: &quot;a&quot;, other: 1 }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr data-content=&quot; class &quot; /&gt;
+
+&lt;script src=&quot;assets/js/mermaid.min.js&quot;&gt;&lt;/script&gt;
+&lt;div class=&quot;mermaid&quot;&gt;
+graph TD;
+    clazz--&amp;gt;Fields;
+    clazz--&amp;gt;Constructors;
+    clazz--&amp;gt;Functions;
+&lt;/div&gt;
+
+&lt;p&gt;typescipt 不支持多继承&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;static; 静态, 类变量/方法 的关键词&lt;/li&gt;
+  &lt;li&gt;instanceof typeof;&lt;/li&gt;
+  &lt;li&gt;implement; class 可以实现某个接口&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr data-content=&quot; namespace, module &quot; /&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;namespace A {
+  export interface IPerson {}
+  export class IClazz {}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;module: external 和 internal&lt;/p&gt;</content><author><name>dengqinghua</name></author><category term="showed" /><summary type="html"></summary></entry><entry><title type="html">caged penatonic</title><link href="https://dengqinghua.github.io/boxed-penatonic.html" rel="alternate" type="text/html" title="caged penatonic" /><published>2020-12-20T00:00:00+08:00</published><updated>2020-12-20T00:00:00+08:00</updated><id>https://dengqinghua.github.io/boxed-penatonic</id><content type="html" xml:base="https://dengqinghua.github.io/boxed-penatonic.html">&lt;hr data-content=&quot; 原理 &quot; /&gt;
 
 &lt;p&gt;&lt;img src=&quot;assets/images/major-penatonic-edraw.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
@@ -17,7 +160,256 @@
   &lt;li&gt;Minor Penatonic: A Major -&amp;gt; A minor, 只需要往下移动三品. 如 A Minor 为 C Major Penatonic 的音&lt;/li&gt;
   &lt;li&gt;练习的时候可以 pick 和 手指 交替拨弦&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=yvPowvrxaWM&quot;&gt;Slow Blues Jam Backing Track (Key of A)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry><entry><title type="html">Concurrency History</title><link href="https://dengqinghua.github.io/concurrency-history.html" rel="alternate" type="text/html" title="Concurrency History" /><published>2020-12-15T00:00:00+08:00</published><updated>2020-12-15T00:00:00+08:00</updated><id>https://dengqinghua.github.io/concurrency-history</id><content type="html" xml:base="https://dengqinghua.github.io/concurrency-history.html">&lt;hr /&gt;</content><author><name>dengqinghua</name></author><category term="concurrency conf" /><summary type="html"></summary></entry><entry><title type="html">Inside of Outside</title><link href="https://dengqinghua.github.io/inside-of-outside.html" rel="alternate" type="text/html" title="Inside of Outside" /><published>2020-12-14T00:00:00+08:00</published><updated>2020-12-14T00:00:00+08:00</updated><id>https://dengqinghua.github.io/inside_of_outside</id><content type="html" xml:base="https://dengqinghua.github.io/inside-of-outside.html">&lt;hr data-content=&quot; BestMem &quot; /&gt;
+&lt;/ul&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry><entry><title type="html">Concurrency History</title><link href="https://dengqinghua.github.io/concurrency-history.html" rel="alternate" type="text/html" title="Concurrency History" /><published>2020-12-15T00:00:00+08:00</published><updated>2020-12-15T00:00:00+08:00</updated><id>https://dengqinghua.github.io/concurrency-history</id><content type="html" xml:base="https://dengqinghua.github.io/concurrency-history.html">&lt;p&gt;本文为视频 &lt;a href=&quot;https://www.youtube.com/watch?v=NsDE7E8sIdQ&quot;&gt;From Concurrent to Parallel&lt;/a&gt; 的学习笔记&lt;/p&gt;
+
+&lt;script src=&quot;assets/js/mermaid.min.js&quot;&gt;&lt;/script&gt;
+&lt;div class=&quot;mermaid&quot;&gt;
+graph TD;
+    performance--&amp;gt;error;
+    performance--&amp;gt;lantency;
+    performance--&amp;gt;throughput;
+&lt;/div&gt;
+
+&lt;hr data-content=&quot; 硬件性能 &quot; /&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.gotw.ca/publications/concurrency-ddj.htm&quot;&gt;The Free Lunch Is Over: A Fundamental Turn Toward Concurrency in Software&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/CPU_history.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Software cannot keep the chip busy&lt;/strong&gt;&lt;/p&gt;
+
+&lt;hr data-content=&quot; 问题模型 &quot; /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;最大限度利用 CPU&lt;/li&gt;
+  &lt;li&gt;最大限度的方式
+    &lt;ul&gt;
+      &lt;li&gt;单核
+        &lt;ul&gt;
+          &lt;li&gt;blocking/non-blocking IO, 后台IO型任务 (background task), 让出任务时钟&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;多核
+        &lt;ul&gt;
+          &lt;li&gt;粗粒度(coarsed-grained) task-based concurrency, 如服务器多线程的形式, 目的是 增加吞吐量(throughput)&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;超级多的核
+        &lt;ul&gt;
+          &lt;li&gt;更重视 lantency, 更多的是任务形式的, 是否能很快处理任务&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Task -&amp;gt; Throughput -&amp;gt; Latency
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr data-content=&quot; 硬件驱动软件进步(解空间) &quot; /&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Java1 threads,locks
+Java5 threads pools, blocking queue, concurrency collections
+Java7 fork join
+Java8 parallel stream
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr data-content=&quot; 并发还是并行 &quot; /&gt;
+
+&lt;p&gt;并发 资源的维护和处理, 资源更高效地，更正确地使用 hard&lt;/p&gt;
+
+&lt;p&gt;并行 处理得更快 easy&lt;/p&gt;
+
+&lt;p&gt;并行的目的是更快，但是实际上不一定会更快, 因为 worker 之间处理的事情会更多&lt;/p&gt;
+
+&lt;hr data-content=&quot; 是否使用并行 &quot; /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Analyse&lt;/li&gt;
+  &lt;li&gt;Implement&lt;/li&gt;
+  &lt;li&gt;Measure&lt;/li&gt;
+  &lt;li&gt;Repeat&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;使用串行(sequential)直到并发是被验证有效的&lt;/p&gt;
+
+&lt;p&gt;speedup 为测量指标&lt;/p&gt;
+
+&lt;hr data-content=&quot; 并串行更多的 &quot; /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;分解问题&lt;/li&gt;
+  &lt;li&gt;并发处理&lt;/li&gt;
+  &lt;li&gt;收集问题&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr data-content=&quot; dataflow dependecy? &quot; /&gt;
+
+&lt;p&gt;一些问题是无法用 串行 的方式解决&lt;/p&gt;
+
+&lt;hr data-content=&quot; Divide &amp;amp; Conquer &quot; /&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# All parallel algorithems
+R solve(Problem&amp;lt;R&amp;gt; problem)
+  if problem.isSmall()
+    return problem.solveSequentially()
+
+  R leftResult, rightResult;
+  CONCURRENT {
+    leftResult = R(solve(problem.left()))
+    rightResult = R(solve(problem.right()))
+  }
+
+  return problem.combine(leftResult, rightResult)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;在这里划分 problem.left() 和 problem.right() 比较重要&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;No shared access, No mutable data (means no lock)&lt;/li&gt;
+  &lt;li&gt;Yes task coordinate&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr data-content=&quot; Key Points &quot; /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Keep CPU busy
+    &lt;ul&gt;
+      &lt;li&gt;divide one, run one, instead of divide all, run all&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Tasks handle
+    &lt;ul&gt;
+      &lt;li&gt;串行?&lt;/li&gt;
+      &lt;li&gt;多少个线程?&lt;/li&gt;
+      &lt;li&gt;继续拆分为子任务?&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;设计: 只需要子任务，而不要关心 coordinate 的事情&lt;/p&gt;
+
+&lt;hr data-content=&quot; 性能怎么样 &quot; /&gt;
+
+&lt;p&gt;性能损耗在哪里&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;split the source？&lt;/li&gt;
+  &lt;li&gt;task management&lt;/li&gt;
+  &lt;li&gt;result combine
+    &lt;ul&gt;
+      &lt;li&gt;add numbers are cheap, merging sets is expensive&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;locality (elephant in the room)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;需要有很多的数据来进行测试和计算&lt;/p&gt;
+
+&lt;hr data-content=&quot; Fork Join and streams &quot; /&gt;
+
+&lt;p&gt;Fork Join&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Fork a task and wait it to complete&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;task management, scales from 1 to 100 threads (细粒度, CPU敏感的任务)&lt;/li&gt;
+  &lt;li&gt;专属的 divide and conquer&lt;/li&gt;
+  &lt;li&gt;基于 work stealing(keep CPU busy)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;streams&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;possibly parallel&lt;/li&gt;
+  &lt;li&gt;not always faster&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr data-content=&quot; 评估是否该使用并行 &quot; /&gt;
+
+&lt;p&gt;NQ model&lt;/p&gt;
+
+&lt;blockquote&gt;
+
+  &lt;p&gt;NQ model &lt;br /&gt;
+N = data items 的数目&lt;br /&gt;
+Q = amount of work performed per item&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;NQ &amp;gt; 10_000 才有可能获得 speedup&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://developer.ibm.com/languages/java/articles/j-java-streams-5-brian-goetz/#thenqmodel&quot;&gt;see also&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr data-content=&quot; 性能的关键 &quot; /&gt;
+
+&lt;p&gt;Source Splitting&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;cost of source split&lt;/li&gt;
+  &lt;li&gt;evenness of split&lt;/li&gt;
+  &lt;li&gt;predictability of split&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Array 是最好的选择！ Linked List 不是, iterator 也不是&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;例子: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IntStream.range(0, 100).sum()&lt;/code&gt; 和 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IntStream.iterate(0, i -&amp;gt; i + 1).limit(100).sum()&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Locality(elephant in the room)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;cache heats&lt;/li&gt;
+  &lt;li&gt;use Array and int&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Enconter Order&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;source 是否跟 order 相关?&lt;/li&gt;
+  &lt;li&gt;在 stream 中使用 unordered (告诉 stream 这个是无序的有助于优化)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Merging&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;sum numbers is cheap, while group by is not&lt;/li&gt;
+  &lt;li&gt;merge map,sets are expensive (并行有可能更慢)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;IntStream.range(0, n) 使用并行时候会慢 4x (n = 10K)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;所以， 在并发的时候, 应该说 split 是什么样的, 数据量(N*Q)大吗? 跟顺序相关吗? 合并的数据是什么, 合并使用的结果集是什么, 可以使用 基础类型 吗?&lt;/p&gt;
+
+&lt;p&gt;并发效果不好的几个原因&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;NQ not high&lt;/li&gt;
+  &lt;li&gt;Cache-miss ratio is high&lt;/li&gt;
+  &lt;li&gt;source split cost is high&lt;/li&gt;
+  &lt;li&gt;combination cost is high&lt;/li&gt;
+  &lt;li&gt;order-sensitive&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr data-content=&quot; 结论 &quot; /&gt;
+
+&lt;p&gt;parallel is an optimization (not magic)&lt;/p&gt;
+
+&lt;p&gt;在优化之前&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;真的有优化需求吗? (not for fun)&lt;/li&gt;
+  &lt;li&gt;有优化后的性能测试吗？(往往很难)&lt;/li&gt;
+  &lt;li&gt;性能达不到满足的条件吗?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A few hundred is ok&lt;/p&gt;
+
+&lt;p&gt;没有最好的标准, 但是有坏标准&lt;/p&gt;</content><author><name>dengqinghua</name></author><category term="concurrency conf" /><summary type="html">本文为视频 From Concurrent to Parallel 的学习笔记</summary></entry><entry><title type="html">Inside of Outside</title><link href="https://dengqinghua.github.io/inside-of-outside.html" rel="alternate" type="text/html" title="Inside of Outside" /><published>2020-12-14T00:00:00+08:00</published><updated>2020-12-14T00:00:00+08:00</updated><id>https://dengqinghua.github.io/inside_of_outside</id><content type="html" xml:base="https://dengqinghua.github.io/inside-of-outside.html">&lt;hr data-content=&quot; BestMem &quot; /&gt;
 
 &lt;p&gt;在网盘里面有一张图片, 放在了小明电脑最醒目的位置, 名字为 BestMem, 是她在马赛时候写的:&lt;/p&gt;
 
@@ -237,7 +629,7 @@ Nothing else matters.&lt;/p&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;个人理解该部分需要不停地去思考和运用, 其实真正地将 &lt;strong&gt;律动&lt;/strong&gt; 和 &lt;strong&gt;音阶, 音程, 和弦, 琶音&lt;/strong&gt; 结合起来, 加上
-吉他特有的&lt;strong&gt;击勾弦&lt;/strong&gt;, 可以构成非常丰富和华丽的 &lt;strong&gt;水波泛音&lt;/strong&gt;。&lt;/p&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry><entry><title type="html">哲学家用餐下的并发模式</title><link href="https://dengqinghua.github.io/7%E5%A4%A97%E5%B9%B6%E5%8F%91.html" rel="alternate" type="text/html" title="哲学家用餐下的并发模式" /><published>2020-12-06T00:00:00+08:00</published><updated>2020-12-06T00:00:00+08:00</updated><id>https://dengqinghua.github.io/7%E5%A4%A97%E5%B9%B6%E5%8F%91</id><content type="html" xml:base="https://dengqinghua.github.io/7%E5%A4%A97%E5%B9%B6%E5%8F%91.html">&lt;h2 id=&quot;哲学家用餐问题&quot;&gt;哲学家用餐问题&lt;/h2&gt;
+吉他特有的&lt;strong&gt;击勾弦&lt;/strong&gt;, 可以构成非常丰富和华丽的 &lt;strong&gt;水波泛音&lt;/strong&gt;。&lt;/p&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry><entry><title type="html">哲学家用餐下的并发模式</title><link href="https://dengqinghua.github.io/7-w-7-c.html" rel="alternate" type="text/html" title="哲学家用餐下的并发模式" /><published>2020-12-06T00:00:00+08:00</published><updated>2020-12-06T00:00:00+08:00</updated><id>https://dengqinghua.github.io/7-w-7-c</id><content type="html" xml:base="https://dengqinghua.github.io/7-w-7-c.html">&lt;h2 id=&quot;哲学家用餐问题&quot;&gt;哲学家用餐问题&lt;/h2&gt;
 &lt;hr data-content=&quot; 问题描述 &quot; /&gt;
 
 &lt;p style=&quot;width: 60%;&quot;&gt;&lt;img src=&quot;assets/images/An_illustration_of_the_dining_philosophers_problem.png&quot; alt=&quot;&quot; class=&quot;img-left&quot; /&gt;&lt;/p&gt;
@@ -265,9 +657,7 @@ Nothing else matters.&lt;/p&gt;
 &lt;p&gt;这样就要求不能有 死锁, 也不能有活锁(不能造成锁超时)&lt;/p&gt;
 
 &lt;h2 id=&quot;线程和锁&quot;&gt;线程和锁&lt;/h2&gt;
-&lt;p&gt;Java, C 等, 都支持原始的 Thread 和 Lock, 该部分理解起来会比较复杂, 更接近于硬件的设计, 也是所有的并发编程模型的基础.&lt;/p&gt;
-
-&lt;p&gt;下面是使用 &lt;a href=&quot;https://docs.oracle.com/javase/tutorial/essential/concurrency/syncmeth.html&quot;&gt;syncronized&lt;/a&gt; 来解决&lt;/p&gt;</content><author><name>dengqinghua</name></author><summary type="html">哲学家用餐问题</summary></entry><entry><title type="html">syncronized的使用</title><link href="https://dengqinghua.github.io/syncronized.html" rel="alternate" type="text/html" title="syncronized的使用" /><published>2020-12-06T00:00:00+08:00</published><updated>2020-12-06T00:00:00+08:00</updated><id>https://dengqinghua.github.io/syncronized</id><content type="html" xml:base="https://dengqinghua.github.io/syncronized.html">&lt;h2 id=&quot;syncronized&quot;&gt;syncronized&lt;/h2&gt;</content><author><name>dengqinghua</name></author><category term="concurrency" /><summary type="html">syncronized</summary></entry><entry><title type="html">Markdown例子-博尔赫斯</title><link href="https://dengqinghua.github.io/example.html" rel="alternate" type="text/html" title="Markdown例子-博尔赫斯" /><published>2020-12-03T00:00:00+08:00</published><updated>2020-12-03T00:00:00+08:00</updated><id>https://dengqinghua.github.io/example</id><content type="html" xml:base="https://dengqinghua.github.io/example.html">&lt;h2 id=&quot;生平&quot;&gt;生平&lt;/h2&gt;
+&lt;p&gt;Java, C 等, 都支持原始的 Thread 和 Lock, 该部分理解起来会比较复杂, 更接近于硬件的设计, 也是所有的并发编程模型的基础.&lt;/p&gt;</content><author><name>dengqinghua</name></author><summary type="html">哲学家用餐问题</summary></entry><entry><title type="html">syncronized的使用</title><link href="https://dengqinghua.github.io/syncronized.html" rel="alternate" type="text/html" title="syncronized的使用" /><published>2020-12-06T00:00:00+08:00</published><updated>2020-12-06T00:00:00+08:00</updated><id>https://dengqinghua.github.io/syncronized</id><content type="html" xml:base="https://dengqinghua.github.io/syncronized.html">&lt;h2 id=&quot;syncronized&quot;&gt;syncronized&lt;/h2&gt;</content><author><name>dengqinghua</name></author><category term="concurrency" /><summary type="html">syncronized</summary></entry><entry><title type="html">Markdown例子-博尔赫斯</title><link href="https://dengqinghua.github.io/example.html" rel="alternate" type="text/html" title="Markdown例子-博尔赫斯" /><published>2020-12-03T00:00:00+08:00</published><updated>2020-12-03T00:00:00+08:00</updated><id>https://dengqinghua.github.io/example</id><content type="html" xml:base="https://dengqinghua.github.io/example.html">&lt;h2 id=&quot;生平&quot;&gt;生平&lt;/h2&gt;
 &lt;hr data-content=&quot; 基本信息 &quot; /&gt;
 
 &lt;p&gt;豪尔赫·路易斯·博尔赫斯（西班牙文：Jorge Luis Borges，1899年8月24日－1986年6月14日），又译波赫士，阿根廷作家、诗人、翻译家。其作品涵盖包括短篇小说、短文、随笔小品、诗、文学评论、翻译文学在内的多个文学范畴，以隽永的文字和深刻的哲理见长。&lt;/p&gt;
@@ -373,7 +763,7 @@ sequenceDiagram
       &lt;p&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E8%B1%AA%E5%B0%94%E8%B5%AB%C2%B7%E8%B7%AF%E6%98%93%E6%96%AF%C2%B7%E5%8D%9A%E5%B0%94%E8%B5%AB%E6%96%AF&quot;&gt;豪尔赫·路易斯·博尔赫斯 维基百科&lt;/a&gt; &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
-&lt;/div&gt;</content><author><name>dengqinghua</name></author><summary type="html">生平</summary></entry><entry><title type="html">烟花易冷</title><link href="https://dengqinghua.github.io/%E7%83%9F%E8%8A%B1%E6%98%93%E5%86%B7.html" rel="alternate" type="text/html" title="烟花易冷" /><published>2020-12-01T00:00:00+08:00</published><updated>2020-12-01T00:00:00+08:00</updated><id>https://dengqinghua.github.io/%E7%83%9F%E8%8A%B1%E6%98%93%E5%86%B7</id><content type="html" xml:base="https://dengqinghua.github.io/%E7%83%9F%E8%8A%B1%E6%98%93%E5%86%B7.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
+&lt;/div&gt;</content><author><name>dengqinghua</name></author><summary type="html">生平</summary></entry><entry><title type="html">烟花易冷</title><link href="https://dengqinghua.github.io/yan-hua-yi-leng.html" rel="alternate" type="text/html" title="烟花易冷" /><published>2020-12-01T00:00:00+08:00</published><updated>2020-12-01T00:00:00+08:00</updated><id>https://dengqinghua.github.io/yan-hua-yi-leng</id><content type="html" xml:base="https://dengqinghua.github.io/yan-hua-yi-leng.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
 
 &lt;ul&gt;
   &lt;li&gt;曲谱: &lt;a href=&quot;assets/js/pdf.js/web/viewer.html?file=/assets/doc/烟花易冷.pdf&quot;&gt;PDF&lt;/a&gt; &lt;a href=&quot;assets/doc/烟花易冷.gp&quot;&gt;GuitarPro&lt;/a&gt;&lt;/li&gt;

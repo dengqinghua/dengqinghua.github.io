@@ -73,7 +73,9 @@ table, th, td {
 code {
   color: white;
   background: black;
-  border-radius: 2%;
+  border-radius: 10px;
+  padding: 0px 2px 0px 2px;
+  margin: 10px;
 }
 
 div.highlighter-rouge code {
