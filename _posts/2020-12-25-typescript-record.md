@@ -12,10 +12,12 @@ title: typescript
 - typescript, yard add -g typescript
 - ts-node, yard add -g ts-node
 
-      brew install node, yarn
-      yarn add -g typescript ts-node
-      # 获取安装的二进制地址
-      yarn bin
+```
+brew install node, yarn
+yarn add -g typescript ts-node
+# 获取安装的二进制地址
+yarn bin
+```
 
 ------------
 {: data-content=" ts -> js "}
