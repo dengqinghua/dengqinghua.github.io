@@ -1,5 +1,52 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2020-12-28T11:34:49+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
-</subtitle><author><name>dengqinghua</name></author><entry><title type="html">typescript</title><link href="https://dengqinghua.github.io/typescript-record.html" rel="alternate" type="text/html" title="typescript" /><published>2020-12-25T00:00:00+08:00</published><updated>2020-12-25T00:00:00+08:00</updated><id>https://dengqinghua.github.io/typescript-record</id><content type="html" xml:base="https://dengqinghua.github.io/typescript-record.html">&lt;hr data-content=&quot; 安装 &quot; /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-01-03T00:31:25+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+</subtitle><author><name>dengqinghua</name></author><entry><title type="html">2020的总结 &amp;amp; 2021的flag</title><link href="https://dengqinghua.github.io/2020-backward-and-forward.html" rel="alternate" type="text/html" title="2020的总结 &amp; 2021的flag" /><published>2020-12-31T00:00:00+08:00</published><updated>2020-12-31T00:00:00+08:00</updated><id>https://dengqinghua.github.io/2020-backward-and-forward</id><content type="html" xml:base="https://dengqinghua.github.io/2020-backward-and-forward.html">&lt;hr data-content=&quot; 2020 &quot; /&gt;
+
+&lt;p&gt;Work&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;技术栈迁移到了 java,  并学习了 react 和 ts&lt;/li&gt;
+  &lt;li&gt;第一次参加晋升答辩 (失败了)&lt;/li&gt;
+  &lt;li&gt;获得了两个 a&lt;/li&gt;
+  &lt;li&gt;高度参与 投放, 运营 和 销售, 学习如何从 0 到 1 做一个产品&lt;/li&gt;
+  &lt;li&gt;思考所在公司的产品价值和商业价值&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Family&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;娃儿1岁了&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Improvements&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;录制 36 首曲子&lt;/li&gt;
+  &lt;li&gt;完成 50% 的前水平&lt;/li&gt;
+  &lt;li&gt;深蹲 140KG, 硬拉 150KG, 卧推 80KG&lt;/li&gt;
+  &lt;li&gt;阅读 the music book&lt;/li&gt;
+  &lt;li&gt;开始对政治, 经济和社会感兴趣&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Bad&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;技术上没有新的进步&lt;/li&gt;
+  &lt;li&gt;有一段时间经常喝酒, 浪费了很多时间&lt;/li&gt;
+  &lt;li&gt;对社会发展的思考还不够, 没有系统的思维方式&lt;/li&gt;
+  &lt;li&gt;除了录音之外的其他产出 (如 blog) 很少&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr data-content=&quot; 2021 &quot; /&gt;
+
+&lt;p&gt;flag&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;完成 100% 的前水平&lt;/li&gt;
+  &lt;li&gt;深蹲 150KG, 硬拉 160KG, 卧推 90KG&lt;/li&gt;
+  &lt;li&gt;阅读 10+ 本书(技术5, 经济/人文3, 音乐2), 并认真地写读书笔记&lt;/li&gt;
+  &lt;li&gt;产出技术变现的模式和生产力&lt;/li&gt;
+  &lt;li&gt;录制 40+ 首曲子(30+ 翻弹 和 5+ 原创 和 5+ 改编)&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>dengqinghua</name></author><category term="memory" /><summary type="html"></summary></entry><entry><title type="html">typescript</title><link href="https://dengqinghua.github.io/typescript-record.html" rel="alternate" type="text/html" title="typescript" /><published>2020-12-25T00:00:00+08:00</published><updated>2020-12-25T00:00:00+08:00</updated><id>https://dengqinghua.github.io/typescript-record</id><content type="html" xml:base="https://dengqinghua.github.io/typescript-record.html">&lt;hr data-content=&quot; 安装 &quot; /&gt;
 
 &lt;ul&gt;
   &lt;li&gt;node&lt;/li&gt;
@@ -140,7 +187,7 @@ graph TD;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;module: external 和 internal&lt;/p&gt;</content><author><name>dengqinghua</name></author><category term="showed" /><summary type="html"></summary></entry><entry><title type="html">caged penatonic</title><link href="https://dengqinghua.github.io/boxed-penatonic.html" rel="alternate" type="text/html" title="caged penatonic" /><published>2020-12-20T00:00:00+08:00</published><updated>2020-12-20T00:00:00+08:00</updated><id>https://dengqinghua.github.io/boxed-penatonic</id><content type="html" xml:base="https://dengqinghua.github.io/boxed-penatonic.html">&lt;hr data-content=&quot; 原理 &quot; /&gt;
+&lt;p&gt;module: external 和 internal&lt;/p&gt;</content><author><name>dengqinghua</name></author><summary type="html"></summary></entry><entry><title type="html">caged penatonic</title><link href="https://dengqinghua.github.io/boxed-penatonic.html" rel="alternate" type="text/html" title="caged penatonic" /><published>2020-12-20T00:00:00+08:00</published><updated>2020-12-20T00:00:00+08:00</updated><id>https://dengqinghua.github.io/boxed-penatonic</id><content type="html" xml:base="https://dengqinghua.github.io/boxed-penatonic.html">&lt;hr data-content=&quot; 原理 &quot; /&gt;
 
 &lt;p&gt;&lt;img src=&quot;assets/images/major-penatonic-edraw.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
@@ -627,35 +674,7 @@ Nothing else matters.&lt;/p&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;个人理解该部分需要不停地去思考和运用, 其实真正地将 &lt;strong&gt;律动&lt;/strong&gt; 和 &lt;strong&gt;音阶, 音程, 和弦, 琶音&lt;/strong&gt; 结合起来, 加上
-吉他特有的&lt;strong&gt;击勾弦&lt;/strong&gt;, 可以构成非常丰富和华丽的 &lt;strong&gt;水波泛音&lt;/strong&gt;。&lt;/p&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry><entry><title type="html">哲学家用餐下的并发模式</title><link href="https://dengqinghua.github.io/7-w-7-c.html" rel="alternate" type="text/html" title="哲学家用餐下的并发模式" /><published>2020-12-06T00:00:00+08:00</published><updated>2020-12-06T00:00:00+08:00</updated><id>https://dengqinghua.github.io/7-w-7-c</id><content type="html" xml:base="https://dengqinghua.github.io/7-w-7-c.html">&lt;h2 id=&quot;哲学家用餐问题&quot;&gt;哲学家用餐问题&lt;/h2&gt;
-&lt;hr data-content=&quot; 问题描述 &quot; /&gt;
-
-&lt;p style=&quot;width: 60%;&quot;&gt;&lt;img src=&quot;assets/images/An_illustration_of_the_dining_philosophers_problem.png&quot; alt=&quot;&quot; class=&quot;img-left&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Five silent philosophers sit at a round table with bowls of spaghetti. Forks are placed between each pair of adjacent philosophers.&lt;/p&gt;
-
-&lt;p&gt;Each philosopher must alternately think and eat. However, a philosopher can only eat spaghetti when they have both left and right forks. &lt;strong&gt;Each fork can be held by only one philosopher and so a philosopher can use the fork only if it is not being used by another philosopher&lt;/strong&gt;. After an individual philosopher finishes eating, they need to put down both forks so that the forks become available to others. A philosopher can only take the fork on their right or the one on their left as they become available and they cannot start eating before getting both forks.&lt;/p&gt;
-
-&lt;p&gt;Eating is not limited by the remaining amounts of spaghetti or stomach space; an infinite supply and an infinite demand are assumed.&lt;/p&gt;
-
-&lt;p&gt;哲学家用餐问题由 Edsger Dijkstr 在 1965年 提出, 是一个非常经典的并发问题. 核心需要解决下面的问题&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;死锁(deadlock): 所有的哲学家都在等待其他人放在叉子&lt;/li&gt;
-  &lt;li&gt;活锁(livelock): 资源被耗尽。比如一个哲学家拿到一个叉子之后, 必须要等待10分钟或者更久的事件, 才拿到另外一个叉子。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;也可以理解为 Liveness(存活性) 和 Fairness(公平性) 的问题.&lt;/p&gt;
-
-&lt;p&gt;如果从一个正常的思维角度来看的话, 我理解是解决下面的一个问题&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;如何让每个哲学家在最短的等待时间内用餐
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;这样就要求不能有 死锁, 也不能有活锁(不能造成锁超时)&lt;/p&gt;
-
-&lt;h2 id=&quot;线程和锁&quot;&gt;线程和锁&lt;/h2&gt;
-&lt;p&gt;Java, C 等, 都支持原始的 Thread 和 Lock, 该部分理解起来会比较复杂, 更接近于硬件的设计, 也是所有的并发编程模型的基础.&lt;/p&gt;</content><author><name>dengqinghua</name></author><summary type="html">哲学家用餐问题</summary></entry><entry><title type="html">syncronized的使用</title><link href="https://dengqinghua.github.io/syncronized.html" rel="alternate" type="text/html" title="syncronized的使用" /><published>2020-12-06T00:00:00+08:00</published><updated>2020-12-06T00:00:00+08:00</updated><id>https://dengqinghua.github.io/syncronized</id><content type="html" xml:base="https://dengqinghua.github.io/syncronized.html">&lt;h2 id=&quot;syncronized&quot;&gt;syncronized&lt;/h2&gt;</content><author><name>dengqinghua</name></author><category term="concurrency" /><summary type="html">syncronized</summary></entry><entry><title type="html">Markdown例子-博尔赫斯</title><link href="https://dengqinghua.github.io/example.html" rel="alternate" type="text/html" title="Markdown例子-博尔赫斯" /><published>2020-12-03T00:00:00+08:00</published><updated>2020-12-03T00:00:00+08:00</updated><id>https://dengqinghua.github.io/example</id><content type="html" xml:base="https://dengqinghua.github.io/example.html">&lt;h2 id=&quot;生平&quot;&gt;生平&lt;/h2&gt;
+吉他特有的&lt;strong&gt;击勾弦&lt;/strong&gt;, 可以构成非常丰富和华丽的 &lt;strong&gt;水波泛音&lt;/strong&gt;。&lt;/p&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry><entry><title type="html">syncronized的使用</title><link href="https://dengqinghua.github.io/syncronized.html" rel="alternate" type="text/html" title="syncronized的使用" /><published>2020-12-06T00:00:00+08:00</published><updated>2020-12-06T00:00:00+08:00</updated><id>https://dengqinghua.github.io/syncronized</id><content type="html" xml:base="https://dengqinghua.github.io/syncronized.html">&lt;h2 id=&quot;syncronized&quot;&gt;syncronized&lt;/h2&gt;</content><author><name>dengqinghua</name></author><category term="concurrency" /><summary type="html">syncronized</summary></entry><entry><title type="html">Markdown例子-博尔赫斯</title><link href="https://dengqinghua.github.io/example.html" rel="alternate" type="text/html" title="Markdown例子-博尔赫斯" /><published>2020-12-03T00:00:00+08:00</published><updated>2020-12-03T00:00:00+08:00</updated><id>https://dengqinghua.github.io/example</id><content type="html" xml:base="https://dengqinghua.github.io/example.html">&lt;h2 id=&quot;生平&quot;&gt;生平&lt;/h2&gt;
 &lt;hr data-content=&quot; 基本信息 &quot; /&gt;
 
 &lt;p&gt;豪尔赫·路易斯·博尔赫斯（西班牙文：Jorge Luis Borges，1899年8月24日－1986年6月14日），又译波赫士，阿根廷作家、诗人、翻译家。其作品涵盖包括短篇小说、短文、随笔小品、诗、文学评论、翻译文学在内的多个文学范畴，以隽永的文字和深刻的哲理见长。&lt;/p&gt;

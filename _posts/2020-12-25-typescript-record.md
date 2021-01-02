@@ -1,6 +1,6 @@
 ---
 layout: post
-category: showed
+categories: showed note
 title: typescript
 ---
 
