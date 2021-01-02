@@ -1,33 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-01-03T00:31:25+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-01-03T00:35:31+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
 </subtitle><author><name>dengqinghua</name></author><entry><title type="html">2020的总结 &amp;amp; 2021的flag</title><link href="https://dengqinghua.github.io/2020-backward-and-forward.html" rel="alternate" type="text/html" title="2020的总结 &amp; 2021的flag" /><published>2020-12-31T00:00:00+08:00</published><updated>2020-12-31T00:00:00+08:00</updated><id>https://dengqinghua.github.io/2020-backward-and-forward</id><content type="html" xml:base="https://dengqinghua.github.io/2020-backward-and-forward.html">&lt;hr data-content=&quot; 2020 &quot; /&gt;
 
-&lt;p&gt;Work&lt;/p&gt;
+&lt;p&gt;work&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;技术栈迁移到了 java,  并学习了 react 和 ts&lt;/li&gt;
-  &lt;li&gt;第一次参加晋升答辩 (失败了)&lt;/li&gt;
+  &lt;li&gt;第一次参加晋升答辩&lt;/li&gt;
   &lt;li&gt;获得了两个 a&lt;/li&gt;
   &lt;li&gt;高度参与 投放, 运营 和 销售, 学习如何从 0 到 1 做一个产品&lt;/li&gt;
   &lt;li&gt;思考所在公司的产品价值和商业价值&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Family&lt;/p&gt;
+&lt;p&gt;good&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;娃儿1岁了&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Improvements&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;录制 36 首曲子&lt;/li&gt;
+  &lt;li&gt;录制 35 首曲子&lt;/li&gt;
   &lt;li&gt;完成 50% 的前水平&lt;/li&gt;
   &lt;li&gt;深蹲 140KG, 硬拉 150KG, 卧推 80KG&lt;/li&gt;
   &lt;li&gt;阅读 the music book&lt;/li&gt;
   &lt;li&gt;开始对政治, 经济和社会感兴趣&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Bad&lt;/p&gt;
+&lt;p&gt;bad&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;技术上没有新的进步&lt;/li&gt;
@@ -46,7 +40,7 @@
   &lt;li&gt;阅读 10+ 本书(技术5, 经济/人文3, 音乐2), 并认真地写读书笔记&lt;/li&gt;
   &lt;li&gt;产出技术变现的模式和生产力&lt;/li&gt;
   &lt;li&gt;录制 40+ 首曲子(30+ 翻弹 和 5+ 原创 和 5+ 改编)&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>dengqinghua</name></author><category term="memory" /><summary type="html"></summary></entry><entry><title type="html">typescript</title><link href="https://dengqinghua.github.io/typescript-record.html" rel="alternate" type="text/html" title="typescript" /><published>2020-12-25T00:00:00+08:00</published><updated>2020-12-25T00:00:00+08:00</updated><id>https://dengqinghua.github.io/typescript-record</id><content type="html" xml:base="https://dengqinghua.github.io/typescript-record.html">&lt;hr data-content=&quot; 安装 &quot; /&gt;
+&lt;/ul&gt;</content><author><name>dengqinghua</name></author><category term="memory showed" /><summary type="html"></summary></entry><entry><title type="html">typescript</title><link href="https://dengqinghua.github.io/typescript-record.html" rel="alternate" type="text/html" title="typescript" /><published>2020-12-25T00:00:00+08:00</published><updated>2020-12-25T00:00:00+08:00</updated><id>https://dengqinghua.github.io/typescript-record</id><content type="html" xml:base="https://dengqinghua.github.io/typescript-record.html">&lt;hr data-content=&quot; 安装 &quot; /&gt;
 
 &lt;ul&gt;
   &lt;li&gt;node&lt;/li&gt;
