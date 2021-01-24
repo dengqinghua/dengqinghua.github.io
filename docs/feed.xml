@@ -1,5 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-01-22T10:38:56+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
-</subtitle><author><name>dengqinghua</name></author><entry><title type="html">伍伍慧未名曲</title><link href="https://dengqinghua.github.io/55h-of-unknow-piece.html" rel="alternate" type="text/html" title="伍伍慧未名曲" /><published>2021-01-21T00:00:00+08:00</published><updated>2021-01-21T00:00:00+08:00</updated><id>https://dengqinghua.github.io/55h_of_unknow_piece</id><content type="html" xml:base="https://dengqinghua.github.io/55h-of-unknow-piece.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-01-24T18:59:33+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+</subtitle><author><name>dengqinghua</name></author><entry><title type="html">寂寞的季节</title><link href="https://dengqinghua.github.io/lonely-seasons.html" rel="alternate" type="text/html" title="寂寞的季节" /><published>2021-01-24T00:00:00+08:00</published><updated>2021-01-24T00:00:00+08:00</updated><id>https://dengqinghua.github.io/lonely-seasons</id><content type="html" xml:base="https://dengqinghua.github.io/lonely-seasons.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;曲谱: &lt;a href=&quot;assets/js/pdf.js/web/viewer.html?file=/assets/doc/寂寞的季节.pdf&quot;&gt;PDF&lt;/a&gt; &lt;a href=&quot;assets/doc/寂寞的季节.gp&quot;&gt;GuitarPro&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;来源: &lt;a href=&quot;https://www.bilibili.com/video/BV1Mx411m74N&quot;&gt;陶喆 《寂寞的季节》指弹 吉他 Solo 独奏【蓝色六弦】独家编曲&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;我的翻弹:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr data-content=&quot; 难点 &quot; /&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;注意时延和音的干净程度&lt;/li&gt;
+  &lt;li&gt;注意手指的安排和对应的延音的关系&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr data-content=&quot; 需要加强的 &quot; /&gt;
+
+&lt;hr data-content=&quot; 做的不错的 &quot; /&gt;
+
+&lt;hr data-content=&quot; 下次录音我会尝试的 &quot; /&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry><entry><title type="html">伍伍慧未名曲</title><link href="https://dengqinghua.github.io/55h-of-unknow-piece.html" rel="alternate" type="text/html" title="伍伍慧未名曲" /><published>2021-01-21T00:00:00+08:00</published><updated>2021-01-21T00:00:00+08:00</updated><id>https://dengqinghua.github.io/55h_of_unknow_piece</id><content type="html" xml:base="https://dengqinghua.github.io/55h-of-unknow-piece.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
 
 &lt;ul&gt;
   &lt;li&gt;曲谱: &lt;a href=&quot;assets/js/pdf.js/web/viewer.html?file=/assets/doc/Unknown-of-55h.pdf&quot;&gt;PDF&lt;/a&gt; &lt;a href=&quot;assets/doc/Unknown-of-55h.gp&quot;&gt;GuitarPro&lt;/a&gt;&lt;/li&gt;
@@ -819,4 +838,4 @@ Nothing else matters.&lt;/p&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;个人理解该部分需要不停地去思考和运用, 其实真正地将 &lt;strong&gt;律动&lt;/strong&gt; 和 &lt;strong&gt;音阶, 音程, 和弦, 琶音&lt;/strong&gt; 结合起来, 加上
-吉他特有的&lt;strong&gt;击勾弦&lt;/strong&gt;, 可以构成非常丰富和华丽的 &lt;strong&gt;水波泛音&lt;/strong&gt;。&lt;/p&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry><entry><title type="html">syncronized的使用</title><link href="https://dengqinghua.github.io/syncronized.html" rel="alternate" type="text/html" title="syncronized的使用" /><published>2020-12-06T00:00:00+08:00</published><updated>2020-12-06T00:00:00+08:00</updated><id>https://dengqinghua.github.io/syncronized</id><content type="html" xml:base="https://dengqinghua.github.io/syncronized.html">&lt;h2 id=&quot;syncronized&quot;&gt;syncronized&lt;/h2&gt;</content><author><name>dengqinghua</name></author><category term="concurrency" /><summary type="html">syncronized</summary></entry></feed>
+吉他特有的&lt;strong&gt;击勾弦&lt;/strong&gt;, 可以构成非常丰富和华丽的 &lt;strong&gt;水波泛音&lt;/strong&gt;。&lt;/p&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry></feed>
