@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-01-27T11:35:24+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-01-27T11:46:04+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
 </subtitle><author><name>dengqinghua</name></author><entry><title type="html">寂寞的季节</title><link href="https://dengqinghua.github.io/lonely-seasons.html" rel="alternate" type="text/html" title="寂寞的季节" /><published>2021-01-24T00:00:00+08:00</published><updated>2021-01-24T00:00:00+08:00</updated><id>https://dengqinghua.github.io/lonely-seasons</id><content type="html" xml:base="https://dengqinghua.github.io/lonely-seasons.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
 
 &lt;ul&gt;
@@ -18,15 +18,7 @@
 
 &lt;hr data-content=&quot; 做的不错的 &quot; /&gt;
 
-&lt;hr data-content=&quot; 下次录音我会尝试的 &quot; /&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry><entry><title type="html">万域达全链路系统V1.0</title><link href="https://dengqinghua.github.io/wyd-flow.html" rel="alternate" type="text/html" title="万域达全链路系统V1.0" /><published>2021-01-24T00:00:00+08:00</published><updated>2021-01-24T00:00:00+08:00</updated><id>https://dengqinghua.github.io/wyd-flow</id><content type="html" xml:base="https://dengqinghua.github.io/wyd-flow.html">&lt;hr data-content=&quot; 摘要 &quot; /&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;工作内容: 打造供应商推荐系统&lt;/li&gt;
-  &lt;li&gt;预估时间和成本: 2人, 10天, 共计成本为 &lt;strong&gt;2 x 1.5K x 10 = 30K&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;交付时间: 春节后第一周(2月22日)&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;hr data-content=&quot; 流程 &quot; /&gt;
+&lt;hr data-content=&quot; 下次录音我会尝试的 &quot; /&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry><entry><title type="html">万域达全链路系统V1.0</title><link href="https://dengqinghua.github.io/wyd-flow.html" rel="alternate" type="text/html" title="万域达全链路系统V1.0" /><published>2021-01-24T00:00:00+08:00</published><updated>2021-01-24T00:00:00+08:00</updated><id>https://dengqinghua.github.io/wyd-flow</id><content type="html" xml:base="https://dengqinghua.github.io/wyd-flow.html">&lt;hr data-content=&quot; 流程 &quot; /&gt;
 
 &lt;script src=&quot;assets/js/mermaid.min.js&quot;&gt;&lt;/script&gt;
 &lt;div class=&quot;mermaid&quot;&gt;
