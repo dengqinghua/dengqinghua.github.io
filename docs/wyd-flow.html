@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>万域达全链路系统V1.0</title>
+
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="万域达全链路系统V1.0" />
+<meta name="author" content="dengqinghua" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Everything I think" />
+<meta property="og:description" content="Everything I think" />
+<link rel="canonical" href="https://dengqinghua.github.io/wyd-flow.html" />
+<meta property="og:url" content="https://dengqinghua.github.io/wyd-flow.html" />
+<meta property="og:site_name" content="Dengqinghua.42" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-01-24T00:00:00+08:00" />
+<script type="application/ld+json">
+{"url":"https://dengqinghua.github.io/wyd-flow.html","headline":"万域达全链路系统V1.0","dateModified":"2021-01-24T00:00:00+08:00","datePublished":"2021-01-24T00:00:00+08:00","description":"Everything I think","author":{"@type":"Person","name":"dengqinghua"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://dengqinghua.github.io/wyd-flow.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link type="application/atom+xml" rel="alternate" href="https://dengqinghua.github.io/feed.xml" title="Dengqinghua.42" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/logo.png" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+</head><body a="light">
+    <main class="page-content" aria-label="Content">
+      <div class="w">
+        <a href="/">..</a>
+
+<article>
+  <p class="post-meta">
+    <time datetime="2021-01-24 00:00:00 +0800">2021-01-24</time>
+  </p>
+  
+  <h1>万域达全链路系统V1.0</h1>
+
+  <hr data-content=" 摘要 " />
+
+<ol>
+  <li>工作内容: 打造供应商推荐系统</li>
+  <li>预估时间和成本: 2人, 10天, 共计成本为 <strong>2 x 1.5K x 10 = 30K</strong></li>
+  <li>交付时间: 春节后第一周(2月22日)</li>
+</ol>
+
+<hr data-content=" 流程 " />
+
+<script src="assets/js/mermaid.min.js"></script>
+<div class="mermaid">
+graph TB
+    subgraph 回款
+    计算用户额外成本--&gt;用户回款
+    end
+    subgraph 供应商
+    起运站确认--&gt;边境,站台等确认--&gt;目的地确认--&gt;付款给供应商--&gt;供应商开始运输
+    end
+    subgraph 接收客户需求
+    客户需求输出:成本,目的地和运输物品--&gt;销售提供运输方案
+    end
+</div>
+
+<hr data-content=" 万域达全链路系统V1.0 " />
+
+<p>1.0版本的需求集中在需求环节</p>
+
+<script src="assets/js/mermaid.min.js"></script>
+<div class="mermaid">
+graph TB
+    客户需求输出:成本,目的地和运输物品--&gt;销售提供运输方案
+</div>
+
+<p>V1.0需要做的核心的一点是:</p>
+
+<blockquote>
+  <p>系统可对销售提出指导性的建议, 可以在客户提出需求后, 搜索最优的供应商链路</p>
+</blockquote>
+
+<p>基于该目的，V1.0 的系统产出包括:</p>
+
+<ol>
+  <li>
+    <p>智能化的供应商数据收集</p>
+
+    <p>a. 对供应商数据进行建模, 周期性地进行数据收集, 减少销售录入信息的情况
+ b. 客户信息和订单信息收集, 包括目的地, 额外成本信息等</p>
+  </li>
+  <li>
+    <p>供应商推荐</p>
+
+    <p>a. 根据客户的目的地信息, 推荐可选择的供应商(精确到国家)
+ b. 根据用户的历史记录等, 提示销售改用户的消费水平, 信用度信息</p>
+  </li>
+</ol>
+
+<hr data-content=" 工作量评估(2人, 每人10天) " />
+
+<ul>
+  <li>系统搭建(1天)
+    <ul>
+      <li>项目初始化, 框架搭建</li>
+      <li>环境部署和上线</li>
+    </ul>
+  </li>
+  <li>供应商管理(4天)
+    <ul>
+      <li>新增/编辑供应商信息</li>
+      <li>供应商的数据自动收集</li>
+      <li>供应商信息展示</li>
+    </ul>
+  </li>
+  <li>供应商推荐(3天)
+    <ul>
+      <li>供应商推荐页面</li>
+      <li>供应商推荐算法</li>
+      <li>算法调优和权重设计</li>
+    </ul>
+  </li>
+  <li>其他(2天)
+    <ul>
+      <li>登录, 账号管理等功能</li>
+      <li>原有系统中的数据(客户, 供应商)迁移</li>
+    </ul>
+  </li>
+</ul>
+
+<hr data-content=" 页面原型 " />
+
+<p><strong>登录页</strong></p>
+
+<p><img src="assets/images/登录页.png" alt="" /></p>
+
+<p><strong>供应商</strong></p>
+
+<p>该部分包括 <strong>后台录入, 供应商主动录入 和 自动抓取供应商信息</strong> 三部分, 下图为 <code class="language-plaintext highlighter-rouge">后台录入</code> 的示例</p>
+
+<p><img src="assets/images/供应商录入.png" alt="" /></p>
+
+<p><img src="assets/images/供应商列表.png" alt="" /></p>
+
+<p><strong>推荐系统</strong></p>
+
+<p><img src="assets/images/供应商推荐.png" alt="" /></p>
+
+</article>
+
+      </div>
+    </main>
+
+    
+  </body>
+</html>
