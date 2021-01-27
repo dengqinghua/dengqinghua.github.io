@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-01-27T11:46:04+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-01-27T16:03:00+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
 </subtitle><author><name>dengqinghua</name></author><entry><title type="html">寂寞的季节</title><link href="https://dengqinghua.github.io/lonely-seasons.html" rel="alternate" type="text/html" title="寂寞的季节" /><published>2021-01-24T00:00:00+08:00</published><updated>2021-01-24T00:00:00+08:00</updated><id>https://dengqinghua.github.io/lonely-seasons</id><content type="html" xml:base="https://dengqinghua.github.io/lonely-seasons.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
 
 &lt;ul&gt;
@@ -27,10 +27,10 @@ graph TB
     计算用户额外成本--&amp;gt;用户回款
     end
     subgraph 供应商
-    起运站确认--&amp;gt;边境,站台等确认--&amp;gt;目的地确认--&amp;gt;付款给供应商--&amp;gt;供应商开始运输
+    供应商订单确认--&amp;gt;边境,站台等订单确认--&amp;gt;供应商运输货物
     end
     subgraph 接收客户需求
-    客户需求输出:成本,目的地和运输物品--&amp;gt;销售提供运输方案
+    客户需求输出:成本,目的地和运输物品--&amp;gt;销售提供运输方案,报价
     end
 &lt;/div&gt;
 
@@ -56,18 +56,20 @@ graph TB
   &lt;li&gt;
     &lt;p&gt;智能化的供应商数据收集&lt;/p&gt;
 
-    &lt;p&gt;a. 对供应商数据进行建模, 周期性地进行数据收集, 减少销售录入信息的情况
- b. 客户信息和订单信息收集, 包括目的地, 额外成本信息等&lt;/p&gt;
+    &lt;p&gt;a. 对供应商数据进行建模, 周期性地进行数据收集, 减少销售录入信息的情况&lt;/p&gt;
+
+    &lt;p&gt;b. 客户信息和订单信息收集, 包括目的地, 额外成本信息等&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;供应商推荐&lt;/p&gt;
 
-    &lt;p&gt;a. 根据客户的目的地信息, 推荐可选择的供应商(精确到国家)
- b. 根据用户的历史记录等, 提示销售改用户的消费水平, 信用度信息&lt;/p&gt;
+    &lt;p&gt;a. 根据客户的目的地信息, 推荐可选择的供应商(精确到国家)&lt;/p&gt;
+
+    &lt;p&gt;b. 根据用户的历史记录等, 提示销售改用户的消费水平, 信用度信息&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;hr data-content=&quot; 工作量评估(2人, 每人10天) &quot; /&gt;
+&lt;hr data-content=&quot; 工作量评估:2人, 每人11天 交付时间: 2月22日 &quot; /&gt;
 
 &lt;ul&gt;
   &lt;li&gt;系统搭建(1天)
@@ -90,7 +92,7 @@ graph TB
       &lt;li&gt;算法调优和权重设计&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;其他(2天)
+  &lt;li&gt;其他(3天)
     &lt;ul&gt;
       &lt;li&gt;登录, 账号管理等功能&lt;/li&gt;
       &lt;li&gt;原有系统中的数据(客户, 供应商)迁移&lt;/li&gt;
@@ -100,19 +102,38 @@ graph TB
 
 &lt;hr data-content=&quot; 页面原型 &quot; /&gt;
 
-&lt;p&gt;&lt;strong&gt;登录页&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;供应商&quot;&gt;供应商&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;assets/images/登录页.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;该部分包括 &lt;strong&gt;自动录入, 销售录入 和 供应商录入&lt;/strong&gt; 三部分&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;供应商&lt;/strong&gt;&lt;/p&gt;
+&lt;script src=&quot;assets/js/mermaid.min.js&quot;&gt;&lt;/script&gt;
+&lt;div class=&quot;mermaid&quot;&gt;
+graph LR
+    B(供应商数据)
+    B --&amp;gt;|自动录入| D[抓取供应商提供的价格,目的地信息]
+    B --&amp;gt;|自动录入| E[定期发送邮件,提供录入信息的链接地址]
+    B --&amp;gt;|销售录入| F[后台录入]
+    B --&amp;gt;|供应商录入| G[销售发送链接给供应商,供应商进行录入]
+&lt;/div&gt;
 
-&lt;p&gt;该部分包括 &lt;strong&gt;后台录入, 供应商主动录入 和 自动抓取供应商信息&lt;/strong&gt; 三部分, 下图为 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;后台录入&lt;/code&gt; 的示例&lt;/p&gt;
+&lt;p&gt;下图为 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;后台录入&lt;/code&gt; 的示例&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;assets/images/供应商录入.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
+&lt;p&gt;无论是那种形式的录入，最终都会规整到后台页面中&lt;/p&gt;
+
 &lt;p&gt;&lt;img src=&quot;assets/images/供应商列表.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;推荐系统&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;推荐系统&quot;&gt;推荐系统&lt;/h2&gt;
+
+&lt;script src=&quot;assets/js/mermaid.min.js&quot;&gt;&lt;/script&gt;
+&lt;div class=&quot;mermaid&quot;&gt;
+graph LR
+    B(推荐维度)
+    B --&amp;gt;|目的地| D[计算目的地和供应商的关系]--&amp;gt;提供最优的供应商方案
+    B --&amp;gt;|价格| E[计算在价格范围内的价格最低的供应商]--&amp;gt;提供最优的供应商方案
+    B --&amp;gt;|客户| F[提示客户的历史信息, 并给出客户的特征画像]--&amp;gt;提供最优的供应商方案
+&lt;/div&gt;
 
 &lt;p&gt;&lt;img src=&quot;assets/images/供应商推荐.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content><author><name>dengqinghua</name></author><category term="wwork" /><summary type="html"></summary></entry><entry><title type="html">伍伍慧未名曲</title><link href="https://dengqinghua.github.io/55h-of-unknow-piece.html" rel="alternate" type="text/html" title="伍伍慧未名曲" /><published>2021-01-21T00:00:00+08:00</published><updated>2021-01-21T00:00:00+08:00</updated><id>https://dengqinghua.github.io/55h_of_unknow_piece</id><content type="html" xml:base="https://dengqinghua.github.io/55h-of-unknow-piece.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
 
