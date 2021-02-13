@@ -9,7 +9,7 @@ title: 寂寞的季节
 
 - 曲谱: [PDF](assets/js/pdf.js/web/viewer.html?file=/assets/doc/寂寞的季节.pdf) [GuitarPro](assets/doc/寂寞的季节.gp)
 - 来源: [陶喆 《寂寞的季节》指弹 吉他 Solo 独奏【蓝色六弦】独家编曲](https://www.bilibili.com/video/BV1Mx411m74N)
-- 我的翻弹: [吉他指弹 寂寞的季节](https://www.bilibili.com/video/BV1TN411o7Qu)
+- 我的翻弹: [吉他指弹 寂寞的季节](https://www.bilibili.com/video/BV1TN411o7Qu) 和 [木吉他版本](https://www.bilibili.com/video/BV1m541177gP)
 
 --------
 {: data-content=" 难点 " }
@@ -24,6 +24,7 @@ title: 寂寞的季节
 1. 高把位部分的处理(注意手腕的角度, 食指需要尽量和指板平行)
 2. 换把位一定要多练习，才能在真正录音的时候节奏保持稳定(现在还是有一些不太稳)
 3. 弦是不是该换了?(总是感觉音不准的样子)
+4. 注意不要有破音, 在破音的地方需要弄清楚破音的原因是什么
 
 --------
 {: data-content=" 做的不错的 " }
