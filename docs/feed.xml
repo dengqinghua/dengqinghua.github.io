@@ -1,38 +1,93 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-02-25T10:20:22+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
-</subtitle><author><name>dengqinghua</name></author><entry><title type="html">porch pickin’</title><link href="https://dengqinghua.github.io/finger-style-basics-2.html" rel="alternate" type="text/html" title="porch pickin'" /><published>2021-02-10T00:00:00+08:00</published><updated>2021-02-10T00:00:00+08:00</updated><id>https://dengqinghua.github.io/finger-style-basics-2</id><content type="html" xml:base="https://dengqinghua.github.io/finger-style-basics-2.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-03-08T09:21:55+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+</subtitle><author><name>dengqinghua</name></author><entry><title type="html">转位和弦</title><link href="https://dengqinghua.github.io/chord-inversion.html" rel="alternate" type="text/html" title="转位和弦" /><published>2021-03-06T00:00:00+08:00</published><updated>2021-03-06T00:00:00+08:00</updated><id>https://dengqinghua.github.io/chord-inversion</id><content type="html" xml:base="https://dengqinghua.github.io/chord-inversion.html">&lt;blockquote&gt;
+  &lt;p&gt;Navigate Better!&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;曲谱: &lt;a href=&quot;assets/js/pdf.js/web/viewer.html?file=/assets/doc/proch-picin.pdf&quot;&gt;PDF&lt;/a&gt; &lt;a href=&quot;assets/doc/proch-picin.gp&quot;&gt;GuitarPro&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;来源: &lt;a href=&quot;https://www.proguitar.com/academy/lessons/fingerstyle-basics&quot;&gt;Fingerstyle basics in Pro Guitar&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;我的翻弹: &lt;a href=&quot;https://www.bilibili.com/video/BV1qA411M73N?t=31&quot;&gt;美式指弹 porch pickin&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;对于三和弦, 注意 654 和 543 的 弦 之间的距离是一样，所以指型都是一样的, 只有包含 2,3 弦才会不一样. 所以三和弦来说, 有&lt;strong&gt;九种指型&lt;/strong&gt;. [Nine shapes]&lt;/p&gt;
 
-&lt;hr data-content=&quot; 律动 &quot; /&gt;
+&lt;hr data-content=&quot; 大三 &quot; /&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;boom-chick 的感觉&lt;/li&gt;
-  &lt;li&gt;揉弦和放松的感觉&lt;/li&gt;
-  &lt;li&gt;需要弹得比较干净&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;654&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-C-654.png&quot; alt=&quot;chord-inversion-C-654.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;543&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-C-543.png&quot; alt=&quot;chord-inversion-C-543.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;432&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-C-432.png&quot; alt=&quot;chord-inversion-C-432.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;321&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-C-321.png&quot; alt=&quot;chord-inversion-C-321.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;hr data-content=&quot; 需要加强的 &quot; /&gt;
+&lt;hr data-content=&quot; 小三 &quot; /&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;一些音量还是没有控制好，一些要用扫弦的部分, 音量过大&lt;/li&gt;
-  &lt;li&gt;击勾弦的时候还需要更加流畅一些&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;654&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm-654.png&quot; alt=&quot;chord-inversion-Cm-654.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;543&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm-543.png&quot; alt=&quot;chord-inversion-Cm-543.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;432&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm-432.png&quot; alt=&quot;chord-inversion-Cm-432.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;321&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm-321.png&quot; alt=&quot;chord-inversion-Cm-321.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;hr data-content=&quot; 做的不错的 &quot; /&gt;
+&lt;hr data-content=&quot; 大七 &quot; /&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;弹奏的时候比较放松, 各种力度, 速度 都进行了录音尝试&lt;/li&gt;
-&lt;/ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;6543&lt;/p&gt;
 
-&lt;hr data-content=&quot; 下次录音我会尝试的 &quot; /&gt;
+    &lt;p&gt;七级为 root 时候, 音色会比较奇怪, 但是可以作为一个比较好的过渡和弦&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;录音之前多听听原曲, 录音的时候跟着原曲弹奏几遍, 找找律动的感觉&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry><entry><title type="html">canned heat</title><link href="https://dengqinghua.github.io/finger-style-basics-1.html" rel="alternate" type="text/html" title="canned heat" /><published>2021-02-10T00:00:00+08:00</published><updated>2021-02-10T00:00:00+08:00</updated><id>https://dengqinghua.github.io/finger-style-basics-1</id><content type="html" xml:base="https://dengqinghua.github.io/finger-style-basics-1.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm7-6543.png&quot; alt=&quot;chord-inversion-Cm7-6543.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;5432&lt;/p&gt;
+
+    &lt;p&gt;注: 一级转位(3 为 root)时候非常好听&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm7-5432.png&quot; alt=&quot;chord-inversion-Cm7-5432.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;4321&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm7-4321.png&quot; alt=&quot;chord-inversion-Cm7-4321.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;6432&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm7-6432.png&quot; alt=&quot;chord-inversion-Cm7-6432.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;5321&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm7-5321.png&quot; alt=&quot;chord-inversion-Cm7-5321.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html">Navigate Better!</summary></entry><entry><title type="html">canned heat</title><link href="https://dengqinghua.github.io/finger-style-basics-1.html" rel="alternate" type="text/html" title="canned heat" /><published>2021-02-10T00:00:00+08:00</published><updated>2021-02-10T00:00:00+08:00</updated><id>https://dengqinghua.github.io/finger-style-basics-1</id><content type="html" xml:base="https://dengqinghua.github.io/finger-style-basics-1.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
 
 &lt;ul&gt;
   &lt;li&gt;曲谱: &lt;a href=&quot;assets/js/pdf.js/web/viewer.html?file=/assets/doc/canned-heat.pdf&quot;&gt;PDF&lt;/a&gt; &lt;a href=&quot;assets/doc/canned-heat.gp&quot;&gt;GuitarPro&lt;/a&gt;&lt;/li&gt;
@@ -71,6 +126,39 @@
 
 &lt;ol&gt;
   &lt;li&gt;反复听了很多遍原曲, 仔细听 【boom-chick 的感觉】是通过哪些部分出来的&lt;/li&gt;
+  &lt;li&gt;弹奏的时候比较放松, 各种力度, 速度 都进行了录音尝试&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr data-content=&quot; 下次录音我会尝试的 &quot; /&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;录音之前多听听原曲, 录音的时候跟着原曲弹奏几遍, 找找律动的感觉&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry><entry><title type="html">porch pickin’</title><link href="https://dengqinghua.github.io/finger-style-basics-2.html" rel="alternate" type="text/html" title="porch pickin'" /><published>2021-02-10T00:00:00+08:00</published><updated>2021-02-10T00:00:00+08:00</updated><id>https://dengqinghua.github.io/finger-style-basics-2</id><content type="html" xml:base="https://dengqinghua.github.io/finger-style-basics-2.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;曲谱: &lt;a href=&quot;assets/js/pdf.js/web/viewer.html?file=/assets/doc/proch-picin.pdf&quot;&gt;PDF&lt;/a&gt; &lt;a href=&quot;assets/doc/proch-picin.gp&quot;&gt;GuitarPro&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;来源: &lt;a href=&quot;https://www.proguitar.com/academy/lessons/fingerstyle-basics&quot;&gt;Fingerstyle basics in Pro Guitar&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;我的翻弹: &lt;a href=&quot;https://www.bilibili.com/video/BV1qA411M73N?t=31&quot;&gt;美式指弹 porch pickin&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr data-content=&quot; 律动 &quot; /&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;boom-chick 的感觉&lt;/li&gt;
+  &lt;li&gt;揉弦和放松的感觉&lt;/li&gt;
+  &lt;li&gt;需要弹得比较干净&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr data-content=&quot; 需要加强的 &quot; /&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;一些音量还是没有控制好，一些要用扫弦的部分, 音量过大&lt;/li&gt;
+  &lt;li&gt;击勾弦的时候还需要更加流畅一些&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr data-content=&quot; 做的不错的 &quot; /&gt;
+
+&lt;ol&gt;
   &lt;li&gt;弹奏的时候比较放松, 各种力度, 速度 都进行了录音尝试&lt;/li&gt;
 &lt;/ol&gt;
 
@@ -459,145 +547,4 @@ graph LR
   &lt;li&gt;阅读 10+ 本书(技术5, 经济/人文3, 音乐2), 并认真地写读书笔记&lt;/li&gt;
   &lt;li&gt;产出技术变现的模式和生产力&lt;/li&gt;
   &lt;li&gt;录制 40+ 首曲子(30+ 翻弹 和 5+ 原创 和 5+ 改编)&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>dengqinghua</name></author><category term="memory showed" /><summary type="html"></summary></entry><entry><title type="html">typescript</title><link href="https://dengqinghua.github.io/typescript-record.html" rel="alternate" type="text/html" title="typescript" /><published>2020-12-25T00:00:00+08:00</published><updated>2020-12-25T00:00:00+08:00</updated><id>https://dengqinghua.github.io/typescript-record</id><content type="html" xml:base="https://dengqinghua.github.io/typescript-record.html">&lt;hr data-content=&quot; 安装 &quot; /&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;node&lt;/li&gt;
-  &lt;li&gt;yarn, brew install yarn&lt;/li&gt;
-  &lt;li&gt;typescript, yard add -g typescript&lt;/li&gt;
-  &lt;li&gt;ts-node, yard add -g ts-node&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew install node, yarn
-yarn add -g typescript ts-node
-# 获取安装的二进制地址
-yarn bin
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;hr data-content=&quot; ts -&amp;gt; js &quot; /&gt;
-
-&lt;p&gt;可以通过 tsc 去理解当前的 ts 的语法糖&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tsc class.ts --lib es2016,dom --pretty
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;script src=&quot;assets/js/mermaid.min.js&quot;&gt;&lt;/script&gt;
-&lt;div class=&quot;mermaid&quot;&gt;
-graph LR;
-    ts--&amp;gt;tsc--&amp;gt;js;
-&lt;/div&gt;
-
-&lt;hr data-content=&quot; 类型和语法 &quot; /&gt;
-
-&lt;script src=&quot;assets/js/mermaid.min.js&quot;&gt;&lt;/script&gt;
-&lt;div class=&quot;mermaid&quot;&gt;
-graph TD;
-    any--&amp;gt;内置类型;
-    any--&amp;gt;用户定义类型;
-&lt;/div&gt;
-
-&lt;p&gt;内置类型&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;string&lt;/li&gt;
-  &lt;li&gt;number, 包括 整数 和 浮点数&lt;/li&gt;
-  &lt;li&gt;void&lt;/li&gt;
-  &lt;li&gt;null, 值是 undefined 的对象&lt;/li&gt;
-  &lt;li&gt;undefined 初始化后的默认值&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr data-content=&quot; 变量 &quot; /&gt;
-
-&lt;p&gt;定义变量&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;var a:string = “a”&lt;/td&gt;
-      &lt;td&gt;设置为 string&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;var a = “a”&lt;/td&gt;
-      &lt;td&gt;和 上面 等价, a 的类型会被设置为 string (Inferred Typing)&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;var a:string&lt;/td&gt;
-      &lt;td&gt;和 上面 等价, a 的类型会被设置为 string&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;var a&lt;/td&gt;
-      &lt;td&gt;a 的类型会被设置为 any, 值是 undefined&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;作用域&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;global&lt;/li&gt;
-  &lt;li&gt;class variable &amp;amp; class static variable&lt;/li&gt;
-  &lt;li&gt;local (method)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr data-content=&quot; 函数 &quot; /&gt;
-
-&lt;p&gt;Optional Parameters: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;function a(id:number, name: string, desc?:string) {}&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Rest Parameters: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;function a(id:number, ...restParams:string[]) {}&lt;/code&gt;&lt;/p&gt;
-
-&lt;hr data-content=&quot; tuple &quot; /&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var a = [10, &quot;d&quot;]
-var x:string|number = a[0]
-var y:string|number = a[1]
-console.log(&quot;x is &quot; + x)
-console.log(&quot;y is &quot; + y)
-var [x, y] = a
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;hr data-content=&quot; union &quot; /&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;let a:string|number;
-a = 12
-a = &quot;d&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;一般多个类型的时候, 会使用 typeof 来做判断&lt;/p&gt;
-
-&lt;hr data-content=&quot; interface &quot; /&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;interface IPerson {
-  name:string
-  other:number|string
-}
-
-const person:IPerson = { name: &quot;a&quot;, other: 1 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;hr data-content=&quot; class &quot; /&gt;
-
-&lt;script src=&quot;assets/js/mermaid.min.js&quot;&gt;&lt;/script&gt;
-&lt;div class=&quot;mermaid&quot;&gt;
-graph TD;
-    clazz--&amp;gt;Fields;
-    clazz--&amp;gt;Constructors;
-    clazz--&amp;gt;Functions;
-&lt;/div&gt;
-
-&lt;p&gt;typescipt 不支持多继承&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;static; 静态, 类变量/方法 的关键词&lt;/li&gt;
-  &lt;li&gt;instanceof typeof;&lt;/li&gt;
-  &lt;li&gt;implement; class 可以实现某个接口&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr data-content=&quot; namespace, module &quot; /&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;namespace A {
-  export interface IPerson {}
-  export class IClazz {}
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;module: external 和 internal&lt;/p&gt;</content><author><name>dengqinghua</name></author><summary type="html"></summary></entry></feed>
+&lt;/ul&gt;</content><author><name>dengqinghua</name></author><category term="memory showed" /><summary type="html"></summary></entry></feed>
