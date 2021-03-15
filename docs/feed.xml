@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-03-15T16:16:29+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-03-15T16:27:35+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
 </subtitle><author><name>dengqinghua</name></author><entry><title type="html">转位和弦</title><link href="https://dengqinghua.github.io/chord-inversion.html" rel="alternate" type="text/html" title="转位和弦" /><published>2021-03-06T00:00:00+08:00</published><updated>2021-03-06T00:00:00+08:00</updated><id>https://dengqinghua.github.io/chord-inversion</id><content type="html" xml:base="https://dengqinghua.github.io/chord-inversion.html">&lt;blockquote&gt;
   &lt;p&gt;Navigate Better!&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -236,7 +236,7 @@ graph TB
 
 &lt;ol&gt;
   &lt;li&gt;
-    &lt;p&gt;系统搭建(1天)&lt;/p&gt;
+    &lt;p&gt;系统搭建(2天)&lt;/p&gt;
 
     &lt;ul&gt;
       &lt;li&gt;项目初始化, 框架搭建&lt;/li&gt;
@@ -254,17 +254,17 @@ graph TB
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;供应商/协议管理 （3天）&lt;/p&gt;
+    &lt;p&gt;供应商/协议管理 （6天）&lt;/p&gt;
 
     &lt;ul&gt;
-      &lt;li&gt;新增供应商 (2天)
+      &lt;li&gt;新增供应商 (4天)
         &lt;ul&gt;
           &lt;li&gt;供应商的基本信息&lt;/li&gt;
           &lt;li&gt;供应商支持的服务&lt;/li&gt;
           &lt;li&gt;供应商的服务的价格，目的地 和 协议内容管理&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
-      &lt;li&gt;供应商的协议模板管理 (1天)
+      &lt;li&gt;供应商的协议模板管理 (2天)
         &lt;ul&gt;
           &lt;li&gt;协议模板上传&lt;/li&gt;
         &lt;/ul&gt;
@@ -280,22 +280,22 @@ graph TB
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;客户接单流程 （9天）&lt;/p&gt;
+    &lt;p&gt;客户接单流程 （10天）&lt;/p&gt;
 
     &lt;ul&gt;
       &lt;li&gt;创建父订单和子订单【类似于购物车内的多个商品，每一个商品都是一个子订单，整体的付款是 父订单】(2天)&lt;/li&gt;
       &lt;li&gt;根据 客户的服务需求，推荐对应的供应商 （1天）&lt;/li&gt;
       &lt;li&gt;生成客户和供应商之间的子订单，并给出协议，价格等内容【该部分部分内容支持修改和变更】（3天）&lt;/li&gt;
-      &lt;li&gt;订单状态的流转管理 （2天）&lt;/li&gt;
+      &lt;li&gt;订单状态的流转管理 （3天）&lt;/li&gt;
       &lt;li&gt;订单列表页面【支持状态（如 未完成订单），供应商，客户 等维度的筛选】（1天）&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;其他内容 (3天)&lt;/p&gt;
+    &lt;p&gt;其他内容 (4天)&lt;/p&gt;
 
     &lt;ul&gt;
       &lt;li&gt;系统用户，包括登录/登出/账号管理等 (1天)&lt;/li&gt;
-      &lt;li&gt;标签体系，支持给 客户/供应商 等 打上对应的标签，支持 自定义标签 （1天）&lt;/li&gt;
+      &lt;li&gt;标签体系，支持给 客户/供应商 等 打上对应的标签，支持 自定义标签 （2天）&lt;/li&gt;
       &lt;li&gt;文档/图片等 资源上传 （1天）&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
