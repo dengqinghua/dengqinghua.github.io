@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>万域达全链路系统V1.0</title>
+
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="万域达全链路系统V1.0" />
+<meta name="author" content="dengqinghua" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Everything I think" />
+<meta property="og:description" content="Everything I think" />
+<link rel="canonical" href="https://dengqinghua.github.io/wyd-flow-v2.html" />
+<meta property="og:url" content="https://dengqinghua.github.io/wyd-flow-v2.html" />
+<meta property="og:site_name" content="Dengqinghua.42" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-01-24T00:00:00+08:00" />
+<script type="application/ld+json">
+{"url":"https://dengqinghua.github.io/wyd-flow-v2.html","headline":"万域达全链路系统V1.0","dateModified":"2021-01-24T00:00:00+08:00","datePublished":"2021-01-24T00:00:00+08:00","author":{"@type":"Person","name":"dengqinghua"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://dengqinghua.github.io/wyd-flow-v2.html"},"description":"Everything I think","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link type="application/atom+xml" rel="alternate" href="https://dengqinghua.github.io/feed.xml" title="Dengqinghua.42" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/logo.png" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+</head><body a="light">
+    <main class="page-content" aria-label="Content">
+      <div class="w">
+        <a href="/">..</a>
+
+<article>
+  <p class="post-meta">
+    <time datetime="2021-01-24 00:00:00 +0800">2021-01-24</time>
+  </p>
+  
+  <h1>万域达全链路系统V1.0</h1>
+
+  <hr data-content=" 流程 " />
+
+<script src="assets/js/mermaid.min.js"></script>
+<div class="mermaid">
+graph TB
+    subgraph 回款
+    计算用户额外成本--&gt;用户回款
+    end
+    subgraph 供应商
+    供应商订单确认--&gt;边境,站台等订单确认--&gt;供应商运输货物
+    end
+    subgraph 接收客户需求
+    客户需求输出:成本,目的地和运输物品--&gt;销售提供运输方案,报价
+    end
+</div>
+
+<hr data-content=" 万域达全链路系统V1.0 " />
+
+<p>1.0版本的需求主要是在信息收集上面, 主要包括下面几个模块</p>
+
+<p><img src="assets/images/wyd-structure-v2.png" alt="" /></p>
+
+<h3 id="基础信息录入">基础信息录入</h3>
+
+<p>基础信息包括</p>
+
+<ul>
+  <li>Customer 客户</li>
+  <li>Service 服务</li>
+  <li>Supplier 服务商</li>
+</ul>
+
+<p>三部分构成。</p>
+
+<h3 id="接单服务">接单服务</h3>
+
+<p>对应的接口服务为 销售在接到对应的需求之后的操作。该部分会输出对应的推荐, 根据供应商的服务和服务相关的信息进行检索</p>
+
+<h3 id="订单服务">订单服务</h3>
+
+<p>形成订单之后, 将形成一个网站地 服务-订单 链路, 该部分将对各个部分的子订单进行监控</p>
+
+<hr data-content=" 排期时间 " />
+
+<ol>
+  <li>
+    <p>系统搭建(1天)</p>
+
+    <ul>
+      <li>项目初始化, 框架搭建</li>
+      <li>环境部署和上线</li>
+    </ul>
+  </li>
+  <li>
+    <p>服务项管理(3天)</p>
+
+    <ul>
+      <li>新增服务项</li>
+      <li>服务项列表</li>
+      <li>服务项管理</li>
+      <li>服务项数据清理</li>
+    </ul>
+  </li>
+  <li>
+    <p>供应商/协议管理 （3天）</p>
+
+    <ul>
+      <li>新增供应商 (2天)
+        <ul>
+          <li>供应商的基本信息</li>
+          <li>供应商支持的服务</li>
+          <li>供应商的服务的价格，目的地 和 协议内容管理</li>
+        </ul>
+      </li>
+      <li>供应商的协议模板管理 (1天)
+        <ul>
+          <li>协议模板上传</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>客户管理（2天）</p>
+
+    <ul>
+      <li>新增客户</li>
+      <li>查看客户列表</li>
+    </ul>
+  </li>
+  <li>
+    <p>客户接单流程 （9天）</p>
+
+    <ul>
+      <li>创建父订单和子订单【类似于购物车内的多个商品，每一个商品都是一个子订单，整体的付款是 父订单】(2天)</li>
+      <li>根据 客户的服务需求，推荐对应的供应商 （1天）</li>
+      <li>生成客户和供应商之间的子订单，并给出协议，价格等内容【该部分部分内容支持修改和变更】（3天）</li>
+      <li>订单状态的流转管理 （2天）</li>
+      <li>订单列表页面【支持状态（如 未完成订单），供应商，客户 等维度的筛选】（1天）</li>
+    </ul>
+  </li>
+  <li>
+    <p>其他内容 (3天)</p>
+
+    <ul>
+      <li>系统用户，包括登录/登出/账号管理等 (1天)</li>
+      <li>标签体系，支持给 客户/供应商 等 打上对应的标签，支持 自定义标签 （1天）</li>
+      <li>文档/图片等 资源上传 （1天）</li>
+    </ul>
+  </li>
+</ol>
+
+</article>
+
+      </div>
+    </main>
+
+    
+  </body>
+</html>
