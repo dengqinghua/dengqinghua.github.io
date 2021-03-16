@@ -54,22 +54,46 @@ title: 转位和弦
 
     七级为 root 时候, 音色会比较奇怪, 但是可以作为一个比较好的过渡和弦
 
-    ![chord-inversion-Cm7-6543.png](assets/images/chord-inversion-Cm7-6543.png){: height="150px"  }
+    ![chord-inversion-CM7-6543.png](assets/images/chord-inversion-CM7-6543.png){: height="150px"  }
 
 2. 5432
 
     注: 一级转位(3 为 root)时候非常好听
 
-    ![chord-inversion-Cm7-5432.png](assets/images/chord-inversion-Cm7-5432.png){: height="150px"  }
+    ![chord-inversion-CM7-5432.png](assets/images/chord-inversion-CM7-5432.png){: height="150px"  }
 
 3. 4321
 
-    ![chord-inversion-Cm7-4321.png](assets/images/chord-inversion-Cm7-4321.png){: height="150px"  }
+    ![chord-inversion-CM7-4321.png](assets/images/chord-inversion-CM7-4321.png){: height="150px"  }
 
 4. 6432
 
-    ![chord-inversion-Cm7-6432.png](assets/images/chord-inversion-Cm7-6432.png){: height="150px"  }
+    ![chord-inversion-CM7-6432.png](assets/images/chord-inversion-CM7-6432.png){: height="150px"  }
 
 5. 5321
 
-    ![chord-inversion-Cm7-5321.png](assets/images/chord-inversion-Cm7-5321.png){: height="150px"  }
+    ![chord-inversion-CM7-5321.png](assets/images/chord-inversion-CM7-5321.png){: height="150px"  }
+
+---------------
+{: data-content=" 七 " }
+
+
+1. 6543
+
+    ![chord-inversion-C7-6543.png](assets/images/chord-inversion-C7-6543.png){: height="150px"  }
+
+2. 5432
+
+    ![chord-inversion-C7-5432.png](assets/images/chord-inversion-C7-5432.png){: height="150px"  }
+
+3. 4321
+
+    ![chord-inversion-C7-4321.png](assets/images/chord-inversion-C7-4321.png){: height="150px"  }
+
+4. 6432
+
+    ![chord-inversion-C7-6432.png](assets/images/chord-inversion-C7-6432.png){: height="150px"  }
+
+5. 5321
+
+    ![chord-inversion-C7-5321.png](assets/images/chord-inversion-C7-5321.png){: height="150px"  }
