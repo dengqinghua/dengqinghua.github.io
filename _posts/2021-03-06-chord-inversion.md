@@ -75,7 +75,7 @@ title: 转位和弦
     ![chord-inversion-CM7-5321.png](assets/images/chord-inversion-Cmajor7-5321.png){: height="150px"  }
 
 ---------------
-{: data-content=" 七 " }
+{: data-content=" 属七 " }
 
 
 1. 6543
@@ -97,3 +97,27 @@ title: 转位和弦
 5. 5321
 
     ![chord-inversion-C7-5321.png](assets/images/chord-inversion-C7-5321.png){: height="150px"  }
+
+---------------
+{: data-content=" 小七 " }
+
+
+1. 6543
+
+    ![chord-inversion-Cmin-6543.png](assets/images/chord-inversion-Cmin7-6543.png){: height="150px"  }
+
+2. 5432
+
+    ![chord-inversion-Cmin7-5432.png](assets/images/chord-inversion-Cmin7-5432.png){: height="150px"  }
+
+3. 4321
+
+    ![chord-inversion-Cmin7-4321.png](assets/images/chord-inversion-Cmin7-4321.png){: height="150px"  }
+
+4. 6432
+
+    ![chord-inversion-Cmin7-6432.png](assets/images/chord-inversion-Cmin7-6432.png){: height="150px"  }
+
+5. 5321
+
+    ![chord-inversion-Cmin7-5321.png](assets/images/chord-inversion-Cmin7-5321.png){: height="150px"  }
