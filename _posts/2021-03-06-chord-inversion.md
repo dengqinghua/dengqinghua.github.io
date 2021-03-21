@@ -121,3 +121,30 @@ title: 转位和弦
 5. 5321
 
     ![chord-inversion-Cmin7-5321.png](assets/images/chord-inversion-Cmin7-5321.png){: height="150px"  }
+
+---------------
+{: data-content=" 半减七 " }
+
+
+> Cmb5 可以看做是 Ebmin6 或者是 Ab9, 将半减七和弦看做是 side note
+
+
+1. 6543
+
+    ![chord-inversion-Cm7b5-6543.png](assets/images/chord-inversion-Cm7b5-6543.png){: height="150px"  }
+
+2. 5432
+
+    ![chord-inversion-Cm7b5-5432.png](assets/images/chord-inversion-Cm7b5-5432.png){: height="150px"  }
+
+3. 4321
+
+    ![chord-inversion-Cm7b5-4321.png](assets/images/chord-inversion-Cm7b5-4321.png){: height="150px"  }
+
+4. 6432
+
+    ![chord-inversion-Cm7b5-6432.png](assets/images/chord-inversion-Cm7b5-6432.png){: height="150px"  }
+
+5. 5321
+
+    ![chord-inversion-Cm7b5-5321.png](assets/images/chord-inversion-Cm7b5-5321.png){: height="150px"  }
