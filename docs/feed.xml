@@ -1,5 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-04-12T09:18:22+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
-</subtitle><author><name>dengqinghua</name></author><entry><title type="html">转位和弦</title><link href="https://dengqinghua.github.io/chord-inversion.html" rel="alternate" type="text/html" title="转位和弦" /><published>2021-03-06T00:00:00+08:00</published><updated>2021-03-06T00:00:00+08:00</updated><id>https://dengqinghua.github.io/chord-inversion</id><content type="html" xml:base="https://dengqinghua.github.io/chord-inversion.html">&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-04-13T00:33:39+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+</subtitle><author><name>dengqinghua</name></author><entry><title type="html">跟着感觉走</title><link href="https://dengqinghua.github.io/follow-the-beat.html" rel="alternate" type="text/html" title="跟着感觉走" /><published>2021-04-13T00:00:00+08:00</published><updated>2021-04-13T00:00:00+08:00</updated><id>https://dengqinghua.github.io/follow-the-beat</id><content type="html" xml:base="https://dengqinghua.github.io/follow-the-beat.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;曲谱: &lt;a href=&quot;assets/js/pdf.js/web/viewer.html?file=/assets/doc/跟着感觉走.pdf&quot;&gt;PDF&lt;/a&gt; &lt;a href=&quot;assets/doc/跟着感觉走.gp&quot;&gt;GuitarPro&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;来源: &lt;a href=&quot;https://www.bilibili.com/video/BV1Cx411e7zX&quot;&gt;《赶着感觉走》 吉他指弹 Solo By【蓝色六弦】独家编曲&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;我的翻弹: &lt;a href=&quot;https://www.bilibili.com/video/BV1Ki4y1A7Kv&quot;&gt;吉他指弹 跟着感觉走&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr data-content=&quot; 难点 &quot; /&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;节奏稳&lt;/li&gt;
+  &lt;li&gt;轻松的 boom-check 的感觉&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr data-content=&quot; 需要加强的 &quot; /&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;节奏还是不太稳&lt;/li&gt;
+  &lt;li&gt;整体的感觉不够好, 不太放松&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr data-content=&quot; 做的不错的 &quot; /&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;延音不错，在一些音的处理上用心了&lt;/li&gt;
+  &lt;li&gt;比之前好像要稳一些。可能得益于节拍器的练习(但是还不够稳)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr data-content=&quot; 下次录音我会尝试的 &quot; /&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;如果按弦很吃力，可以尝试比较轻一点儿的拨弦方式&lt;/li&gt;
+  &lt;li&gt;尝试将弹琴这件事情转化为一个感性的事情，录音这件事情也是.&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry><entry><title type="html">转位和弦</title><link href="https://dengqinghua.github.io/chord-inversion.html" rel="alternate" type="text/html" title="转位和弦" /><published>2021-03-06T00:00:00+08:00</published><updated>2021-03-06T00:00:00+08:00</updated><id>https://dengqinghua.github.io/chord-inversion</id><content type="html" xml:base="https://dengqinghua.github.io/chord-inversion.html">&lt;blockquote&gt;
   &lt;p&gt;Navigate Better!&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -592,45 +626,4 @@ graph TB
   &lt;li&gt;看着谱子进行录音&lt;/li&gt;
   &lt;li&gt;听着节拍器多进行练习, 并在练习的时候就开始录一些片段, 尤其关注对换把位的和弦延音的维持&lt;/li&gt;
   &lt;li&gt;平常的时候要多进行慢速地练习和换把位练习&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry><entry><title type="html">2020的总结 &amp;amp; 2021的flag</title><link href="https://dengqinghua.github.io/2020-backward-and-forward.html" rel="alternate" type="text/html" title="2020的总结 &amp; 2021的flag" /><published>2020-12-31T00:00:00+08:00</published><updated>2020-12-31T00:00:00+08:00</updated><id>https://dengqinghua.github.io/2020-backward-and-forward</id><content type="html" xml:base="https://dengqinghua.github.io/2020-backward-and-forward.html">&lt;hr data-content=&quot; 2020 &quot; /&gt;
-
-&lt;p&gt;work&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;技术栈迁移到了 java,  并学习了 react 和 ts&lt;/li&gt;
-  &lt;li&gt;第一次参加晋升答辩&lt;/li&gt;
-  &lt;li&gt;获得了两个 a&lt;/li&gt;
-  &lt;li&gt;高度参与 投放, 运营 和 销售, 学习如何从 0 到 1 做一个产品&lt;/li&gt;
-  &lt;li&gt;思考所在公司的产品价值和商业价值&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;good&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;录制 35 首曲子&lt;/li&gt;
-  &lt;li&gt;完成 50% 的前水平&lt;/li&gt;
-  &lt;li&gt;深蹲 140KG, 硬拉 150KG, 卧推 80KG&lt;/li&gt;
-  &lt;li&gt;阅读 the music book&lt;/li&gt;
-  &lt;li&gt;开始对政治, 经济和社会感兴趣&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;bad&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;技术上没有新的进步&lt;/li&gt;
-  &lt;li&gt;有一段时间经常喝酒, 浪费了很多时间&lt;/li&gt;
-  &lt;li&gt;对社会发展的思考还不够, 没有系统的思维方式&lt;/li&gt;
-  &lt;li&gt;除了录音之外的其他产出 (如 blog) 很少&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr data-content=&quot; 2021 &quot; /&gt;
-
-&lt;p&gt;flag&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;完成 100% 的前水平&lt;/li&gt;
-  &lt;li&gt;深蹲 150KG, 硬拉 160KG, 卧推 90KG&lt;/li&gt;
-  &lt;li&gt;阅读 10+ 本书(技术5, 经济/人文3, 音乐2), 并认真地写读书笔记&lt;/li&gt;
-  &lt;li&gt;产出技术变现的模式和生产力&lt;/li&gt;
-  &lt;li&gt;录制 40+ 首曲子(30+ 翻弹 和 5+ 原创 和 5+ 改编)&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>dengqinghua</name></author><category term="memory showed" /><summary type="html"></summary></entry></feed>
+&lt;/ul&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry></feed>
