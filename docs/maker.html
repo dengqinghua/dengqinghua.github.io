@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>application from scratch</title>
+
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="application from scratch" />
+<meta name="author" content="dengqinghua" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Everything I think" />
+<meta property="og:description" content="Everything I think" />
+<link rel="canonical" href="https://dengqinghua.github.io/maker.html" />
+<meta property="og:url" content="https://dengqinghua.github.io/maker.html" />
+<meta property="og:site_name" content="Dengqinghua.42" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-04-15T00:00:00+08:00" />
+<script type="application/ld+json">
+{"url":"https://dengqinghua.github.io/maker.html","headline":"application from scratch","dateModified":"2021-04-15T00:00:00+08:00","datePublished":"2021-04-15T00:00:00+08:00","author":{"@type":"Person","name":"dengqinghua"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://dengqinghua.github.io/maker.html"},"description":"Everything I think","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link type="application/atom+xml" rel="alternate" href="https://dengqinghua.github.io/feed.xml" title="Dengqinghua.42" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/logo.png" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+</head><body a="light">
+    <main class="page-content" aria-label="Content">
+      <div class="w">
+        <a href="/">..</a>
+
+<article>
+  <p class="post-meta">
+    <time datetime="2021-04-15 00:00:00 +0800">2021-04-15</time>
+  </p>
+  
+  <h1>application from scratch</h1>
+
+  <hr data-content=" Add User " />
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>useradd newUser
+passwd newUser mima
+
+visudo
+newUser  ALL=(ALL) NOPASSWD:ALL
+</code></pre></div></div>
+
+<hr data-content=" gitlab " />
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>useradd newUser
+passwd newUser mima
+
+visudo
+newUser  ALL=(ALL) NOPASSWD:ALL
+</code></pre></div></div>
+
+<hr data-content=" maker " />
+
+<p>安装 gitlab reviewboard maven, 参考<a href="https://github.com/jl-borges/maker">这里</a></p>
+
+<hr data-content=" gitlab runner " />
+
+<ol>
+  <li>安装 <a href="https://docs.gitlab.com/runner/install/linux-repository.html">gitlab-runner</a></li>
+  <li>
+    <p>安装高版本 git</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> sudo yum remove git*
+ sudo yum -y install https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm
+ sudo yum install git
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>设置文件目录，作为通用的文件夹</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> mkdir -p /var/www/site
+ sudo chmod -R 777 /var/www/site
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>将 gitlab-runner 加入到 root 中 【慎重，这不安全】</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> sudo usermod -aG root gitlab-runner
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>注册, 选择 shell，并填写对应的信息</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> sudo gitlab-runner register
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr data-content=" java ci " />
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>variables:
+  BE_CONTAINER_TEMP: backend_service_container_temp
+  BE_CONTAINER_DEV: backend_service_dev
+  JAR_FOLDER: /var/www/site/java
+stages:
+  - build
+  - dev-deploy
+cache:
+  paths:
+    - .m2
+build:
+  stage: build
+  script:
+    - mkdir -p .m2
+    - docker build -t backend_service . --rm
+    # 生成临时 docker
+    - docker create -ti --name $BE_CONTAINER_TEMP backend_service bash
+    # 拷贝打包的文件到指定的目录价 XXX: 注意需要在这里有对应的权限 /var/www/site/java
+    - docker cp $BE_CONTAINER_TEMP:/build/server/target/backend-server-1.0-SNAPSHOT.jar $JAR_FOLDER/app.jar
+    # 备份缓存, 在下次使用
+    - docker cp $BE_CONTAINER_TEMP:/build/.m2/repository .m2
+    # 删除临时 docker
+    - docker rm $BE_CONTAINER_TEMP
+
+dev-deploy:
+  stage: dev-deploy
+  script:
+    - if [ "$(docker ps -aq -f status=running -f name=$BE_CONTAINER_DEV)" ];
+        then docker stop $BE_CONTAINER_DEV;
+      fi;
+    - sleep 0.5
+    - docker run --name $BE_CONTAINER_DEV -d -p 8880:8080 --rm -v $JAR_FOLDER/app.jar:/app.jar -e TZ=GMT+8 openjdk:11 java -jar /app.jar
+    - docker logs -f $BE_CONTAINER_DEV &gt;&gt; $JAR_FOLDER/$BE_CONTAINER_DEV.log 2&gt;&amp;1 &amp;
+</code></pre></div></div>
+
+<hr data-content=" node ci " />
+
+<ol>
+  <li>这里使用了只打包静态文件, 最终文件会存储在 /var/www/site/admin_dev 中</li>
+  <li>这里的打包使用的是 本地打包, 所以需要先安装 node</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -sL https://rpm.nodesource.com/setup_12.x | sudo bash -
+sudo yum install -y nodejs
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stages:
+  - dev-build
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+dev-build:
+  stage: dev-build
+  tags:
+    - adminBuild
+  script:
+    - npm install --registry=https://registry.npm.taobao.org
+    - npm run build:dev
+    - mkdir -p /var/www/site/admin_dev
+    - cp -rf $PWD/dist/** /var/www/site/admin_dev
+</code></pre></div></div>
+
+<hr data-content=" nginx config " />
+
+<p>Java</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>server {
+        listen 443 ssl;
+
+        server_name api0.exmaple.com;
+        ssl_certificate 1_api0.exmaple.com_bundle.crt;
+        ssl_certificate_key 2_api0.exmaple.com.key;
+        ssl_session_timeout 5m;
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
+        ssl_prefer_server_ciphers on;
+
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $host;
+
+        client_max_body_size 100M;
+
+        location / {
+            proxy_pass http://127.0.0.1:8888;
+        }
+}
+
+
+server {
+        listen 80;
+
+        server_name api0.exmaple.com;
+
+        client_max_body_size 100M;
+
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $host;
+
+        location / {
+            proxy_pass http://127.0.0.1:8888;
+        }
+}
+</code></pre></div></div>
+
+<p>Node</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>server {
+        listen 443 ssl;
+
+        server_name admin.exmaple.com;
+        ssl_certificate 1_admin.exmaple.com_bundle.crt;
+        ssl_certificate_key 2_admin.exmaple.com.key;
+        ssl_session_timeout 5m;
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
+        ssl_prefer_server_ciphers on;
+
+        client_max_body_size 200M;
+
+        root /var/www/site/admin_dev;
+        location / {
+                index index.html index.htm;
+                try_files $uri /index.html;
+        }
+
+        gzip on;
+        gzip_buffers 32 4K;
+        gzip_comp_level 6;
+        gzip_min_length 100;
+        gzip_types application/javascript text/css text/xml;
+        gzip_disable "MSIE [1-6]\.";
+        gzip_vary on;
+}
+
+
+server {
+        listen 80;
+
+        server_name admin.exmaple.com;
+
+        return 301 https://admin.exmaple.com$request_uri;
+}
+</code></pre></div></div>
+
+<p>注: 在 /etc/nginx/nginx.conf 中添加 <code class="language-plaintext highlighter-rouge">include /etc/nginx/sites-enabled/*;</code> 上述文件都是按照服务来分别维护处理</p>
+
+</article>
+
+      </div>
+    </main>
+
+    
+  </body>
+</html>
