@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-04-23T15:11:10+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-04-23T15:27:54+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
 </subtitle><author><name>dengqinghua</name></author><entry><title type="html">maker of application</title><link href="https://dengqinghua.github.io/scratch-maker.html" rel="alternate" type="text/html" title="maker of application" /><published>2021-04-23T00:00:00+08:00</published><updated>2021-04-23T00:00:00+08:00</updated><id>https://dengqinghua.github.io/scratch-maker</id><content type="html" xml:base="https://dengqinghua.github.io/scratch-maker.html">&lt;h3 id=&quot;运维&quot;&gt;运维&lt;/h3&gt;
 &lt;h4 id=&quot;机器配置&quot;&gt;机器配置&lt;/h4&gt;
 &lt;p&gt;4核8G&lt;/p&gt;
@@ -142,233 +142,24 @@ SMTP_AUTHENTICATION=plain
 
 &lt;hr data-content=&quot; java &quot; /&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;variables:
-  JAR_FOLDER: /var/www/site/java
-stages:
-  - build
-  - stage-deploy
-  - prod-deploy
-cache:
-  paths:
-    - .m2
-build:
-  stage: build
-  variables:
-    BE_CONTAINER_TEMP: backend_service_container_temp
-  script:
-    - mkdir -p .m2
-    - docker build -t backend_service . --rm
-    ## 生成临时 docker
-    - docker create -ti --name $BE_CONTAINER_TEMP backend_service bash
-    ## 拷贝打包的文件到指定的目录下 XXX: 注意需要在这里有对应的权限 /var/www/site/java
-    - docker cp $BE_CONTAINER_TEMP:/build/server/target/backend-server-1.0-SNAPSHOT.jar $JAR_FOLDER/app.jar
-    - docker cp $BE_CONTAINER_TEMP:/build/deploy.sh $JAR_FOLDER/deploy
-    ## 备份缓存, 在下次使用
-    - docker cp $BE_CONTAINER_TEMP:/build/.m2/repository .m2
-    ## 删除临时 docker
-    - docker rm $BE_CONTAINER_TEMP
-dev-deploy:
-  stage: stage-deploy
-  variables:
-    PROFILE_ENV: dev
-    PORTS: 8880
-    ## FIXME: 这里的机器IP 用于 spring boot admin, 理论上应该使用服务发现的方式 而不是配置 IP
-    CURRENT_MACHINE_IP: 172.21.x.7
-  script:
-    - cd $JAR_FOLDER
-    - ./deploy
-
-qa-deploy:
-  stage: stage-deploy
-  variables:
-    PROFILE_ENV: test
-    PORTS: 9990 9991
-    ## FIXME: 这里的机器IP 用于 spring boot admin, 理论上应该使用服务发现的方式 而不是配置 IP
-    CURRENT_MACHINE_IP: 172.21.x.7
-  script:
-    - cd $JAR_FOLDER
-    - ./deploy
-
-prod-deploy:
-  tags:
-    - prod
-  stage: prod-deploy
-  when: manual
-  variables:
-    BUILD_MACHINE_IP: 172.21.x.7
-    PROFILE_ENV: prod
-    PORTS: 8880 8881
-    ## FIXME: 这里的机器IP 用于 spring boot admin, 理论上应该使用服务发现的方式 而不是配置 IP
-    CURRENT_MACHINE_IP: 172.21.x.7
-  script:
-    - scp -Cr kxkq@$BUILD_MACHINE_IP:$JAR_FOLDER/app.jar $JAR_FOLDER
-    - scp -Cr kxkq@$BUILD_MACHINE_IP:$JAR_FOLDER/deploy $JAR_FOLDER
-    - cd $JAR_FOLDER
-    - ./deploy
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Dockerfile&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;FROM maven:3.6.3-jdk-11-slim
-
-WORKDIR /build
-COPY ci_settings.xml .
-COPY . /build
-RUN mvn package -q -s ci_settings.xml -Dmaven.repo.local=/build/.m2/repository
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;ci_settings.xml&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;settings xmlns=&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;
-  xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-  xsi:schemaLocation=&quot;http://maven.apache.org/SETTINGS/1.0.0
-  https://maven.apache.org/xsd/settings-1.0.0.xsd&quot;&amp;gt;
-
-  &amp;lt;servers&amp;gt;
-    &amp;lt;server&amp;gt;
-      &amp;lt;!--这是server的id（注意不是用户登陆的id），该id与distributionManagement中repository元素的id相匹配。 --&amp;gt;
-      &amp;lt;id&amp;gt;nexus&amp;lt;/id&amp;gt;
-      &amp;lt;username&amp;gt;Youname&amp;lt;/username&amp;gt;
-      &amp;lt;password&amp;gt;Youpassword&amp;lt;/password&amp;gt;
-    &amp;lt;/server&amp;gt;
-  &amp;lt;/servers&amp;gt;
-
-  &amp;lt;!--为仓库列表配置的下载镜像列表。  --&amp;gt;
-  &amp;lt;mirrors&amp;gt;
-    &amp;lt;mirror&amp;gt;
-      &amp;lt;!--该镜像的唯一标识符。id用来区分不同的mirror元素。  --&amp;gt;
-      &amp;lt;id&amp;gt;nexus&amp;lt;/id&amp;gt;
-      &amp;lt;!--此处配置所有的构建均从私有仓库中下载 *代表所有，也可以写central --&amp;gt;
-      &amp;lt;mirrorOf&amp;gt;*&amp;lt;/mirrorOf&amp;gt;
-      &amp;lt;name&amp;gt;central repository&amp;lt;/name&amp;gt;
-      &amp;lt;!--该镜像的URL。构建系统会优先考虑使用该URL，而非使用默认的服务器URL。  --&amp;gt;
-      &amp;lt;url&amp;gt;http://maven.youDomain.com/repository/maven-public/&amp;lt;/url&amp;gt;
-    &amp;lt;/mirror&amp;gt;
-  &amp;lt;/mirrors&amp;gt;
-
-  &amp;lt;profiles&amp;gt;
-    &amp;lt;profile&amp;gt;
-      &amp;lt;id&amp;gt;nexus&amp;lt;/id&amp;gt;
-      &amp;lt;!--远程仓库列表，它是Maven用来填充构建系统本地仓库所使用的一组远程项目。  --&amp;gt;
-      &amp;lt;repositories&amp;gt;
-        &amp;lt;!--发布版本仓库--&amp;gt;
-        &amp;lt;repository&amp;gt;
-          &amp;lt;id&amp;gt;nexus&amp;lt;/id&amp;gt;
-          &amp;lt;!--地址是nexus中repository（Releases/Snapshots）中对应的地址--&amp;gt;
-          &amp;lt;url&amp;gt;http://maven.youDomain.com/repository/maven-public/&amp;lt;/url&amp;gt;
-          &amp;lt;!--true或者false表示该仓库是否为下载某种类型构件（发布版，快照版）开启。 --&amp;gt;
-          &amp;lt;releases&amp;gt;
-            &amp;lt;enabled&amp;gt;true&amp;lt;/enabled&amp;gt;
-          &amp;lt;/releases&amp;gt;
-          &amp;lt;snapshots&amp;gt;
-            &amp;lt;enabled&amp;gt;true&amp;lt;/enabled&amp;gt;
-          &amp;lt;/snapshots&amp;gt;
-        &amp;lt;/repository&amp;gt;
-      &amp;lt;/repositories&amp;gt;
-
-      &amp;lt;!-- 定义所有可能用到的插件仓库 --&amp;gt;
-      &amp;lt;pluginRepositories&amp;gt;
-        &amp;lt;pluginRepository&amp;gt;
-          &amp;lt;id&amp;gt;aliyun-central&amp;lt;/id&amp;gt;
-          &amp;lt;url&amp;gt;http://maven.aliyun.com/repository/central&amp;lt;/url&amp;gt;
-        &amp;lt;/pluginRepository&amp;gt;
-      &amp;lt;/pluginRepositories&amp;gt;
-    &amp;lt;/profile&amp;gt;
-  &amp;lt;/profiles&amp;gt;
-
-  &amp;lt;!--激活配置--&amp;gt;
-  &amp;lt;activeProfiles&amp;gt;
-    &amp;lt;!--profile下的id--&amp;gt;
-    &amp;lt;activeProfile&amp;gt;nexus&amp;lt;/activeProfile&amp;gt;
-  &amp;lt;/activeProfiles&amp;gt;
-&amp;lt;/settings&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;deploy.sh&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[ -z &quot;$PORTS&quot; ] &amp;amp;&amp;amp; echo &quot;PORT not defined&quot; &amp;amp;&amp;amp; exit 1
-[ -z &quot;$CURRENT_MACHINE_IP&quot; ] &amp;amp;&amp;amp; echo &quot;CURRENT_MACHINE_IP not defined&quot;
-[ -z &quot;$PROFILE_ENV&quot; ] &amp;amp;&amp;amp; echo &quot;PROFILE_ENV not defined&quot; &amp;amp;&amp;amp; exit 1
-[ -z &quot;$JAR_FOLDER&quot; ] &amp;amp;&amp;amp; echo &quot;JAR_FOLDER not defined, set to /var/www/site/java&quot; &amp;amp;&amp;amp; JAR_FOLDER=/var/www/site/java
-
-## 根据环境不同, 输出日志目录: /var/www/site/java/dev_backend_service.log
-APP_NAME=${PROFILE_ENV}_backend_service;
-TIMEOUT=60
-JAVA_OPTION=&quot;-Xmx2g -Xms256m&quot;
-
-for PORT in $PORTS
-  do
-    CONTAINER_NAME=${APP_NAME}_${PORT};
-    if [ &quot;$(docker ps -aq -f status=running -f name=&quot;$CONTAINER_NAME&quot;)&quot; ]
-      then docker stop &quot;$CONTAINER_NAME&quot;;
-    fi
-    sleep 0.5
-    echo &quot;Begin to run SpringApp: JAVA_OPTION: $JAVA_OPTION, profile: $PROFILE_ENV, port: $PORT, machineIP: $CURRENT_MACHINE_IP&quot;
-    ## 在启动的时候，配置了 spring boot admin 的监控的相关监控
-    docker run -d \
-      -p &quot;${PORT}&quot;:8080 --rm \
-      -v &quot;$JAR_FOLDER&quot;/app.jar:/app.jar \
-      --name &quot;$CONTAINER_NAME&quot; \
-      --env TZ=GMT+8 \
-      --env SPRING_PROFILES_ACTIVE=&quot;$PROFILE_ENV&quot; \
-      --env spring.application.name=&quot;$APP_NAME&quot;\
-      --env spring.boot.admin.client.enabled=true\
-      --env spring.boot.admin.client.instance.service-base-url=&quot;http://$CURRENT_MACHINE_IP:$PORT&quot; \
-      openjdk:11 \
-      java -jar /app.jar &quot;$JAVA_OPTION&quot;
-
-    READY=DOWN
-    i=1
-    until [ &quot;$READY&quot; == &quot;UP&quot; ]
-    do
-      ## XXX: 注意，这里需要安装 jq 这个软件, 用来解析 JSON, 否则会导致报错
-      READY=$(curl --silent --fail 127.0.0.1:&quot;${PORT}&quot;/actuator/health | jq -r '.status.code')
-      sleep 1;
-      echo &quot;SpringApp is starting... at ${i}s&quot;;
-      ((i++))
-      ## 默认设置 1分钟 超时, 如果在 1分钟 还未启动成功, 则认为服务无法启动
-      if [[ &quot;$i&quot; == &quot;$TIMEOUT&quot; ]]; then
-        echo &quot;Timeout over ${TIMEOUT}s...&quot;
-        exit 1
-      fi
-    done
-    echo 'SpringApp started';
-    docker logs -f &quot;$CONTAINER_NAME&quot; &amp;gt;&amp;gt; $JAR_FOLDER/&quot;$APP_NAME&quot;.log 2&amp;gt;&amp;amp;1 &amp;amp;
-  done
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/jl-borges/maker/blob/main/java/.gitlab-ci.yml&quot;&gt;.gitlab-ci.yml&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/jl-borges/maker/blob/main/java/deploy.sh&quot;&gt;deploy.sh&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/jl-borges/maker/blob/main/java/ci_settings.xml&quot;&gt;ci_setting.yml&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/jl-borges/maker/blob/main/java/Dockerfile&quot;&gt;Dockerfile&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;hr data-content=&quot; node &quot; /&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;stages:
-  - qa-build
   - prod-build
-  - dev-build
   - prod-deploy
 variables:
-  ## 这个是打包的机器, 为 线上的 qa 环境的机器
-  BUILD_MACHINE_IP: 172.21.16.10
+  BUILD_MACHINE_IP: 172.21.x.x
 cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
     - node_modules/
-qa-build:
-  stage: qa-build
-  tags:
-    - adminBuild
-  script:
-    - npm install --registry=https://registry.npm.taobao.org
-    - npm run build:qa
-    - mkdir -p /var/www/site/admin_qa
-    - cp -rf $PWD/dist/** /var/www/site/admin_qa
-dev-build:
-  stage: dev-build
-  tags:
-    - adminBuild
-  script:
-    - npm install --registry=https://registry.npm.taobao.org
-    - npm run build:dev
-    - mkdir -p /var/www/site/admin_dev
-    - cp -rf $PWD/dist/** /var/www/site/admin_dev
 prod-build:
   stage: prod-build
   tags:
@@ -384,7 +175,7 @@ prod-deploy:
   stage: prod-deploy
   when: manual
   script:
-    - scp -Cr kxkq@$BUILD_MACHINE_IP:/var/www/site/admin_prod /var/www/site/
+    - scp -Cr youName@$BUILD_MACHINE_IP:/var/www/site/admin_prod /var/www/site/
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h4 id=&quot;其他&quot;&gt;其他&lt;/h4&gt;

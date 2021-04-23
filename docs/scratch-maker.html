@@ -203,233 +203,24 @@ SMTP_AUTHENTICATION=plain
 
 <hr data-content=" java ">
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>variables:
-  JAR_FOLDER: /var/www/site/java
-stages:
-  - build
-  - stage-deploy
-  - prod-deploy
-cache:
-  paths:
-    - .m2
-build:
-  stage: build
-  variables:
-    BE_CONTAINER_TEMP: backend_service_container_temp
-  script:
-    - mkdir -p .m2
-    - docker build -t backend_service . --rm
-    ## 生成临时 docker
-    - docker create -ti --name $BE_CONTAINER_TEMP backend_service bash
-    ## 拷贝打包的文件到指定的目录下 XXX: 注意需要在这里有对应的权限 /var/www/site/java
-    - docker cp $BE_CONTAINER_TEMP:/build/server/target/backend-server-1.0-SNAPSHOT.jar $JAR_FOLDER/app.jar
-    - docker cp $BE_CONTAINER_TEMP:/build/deploy.sh $JAR_FOLDER/deploy
-    ## 备份缓存, 在下次使用
-    - docker cp $BE_CONTAINER_TEMP:/build/.m2/repository .m2
-    ## 删除临时 docker
-    - docker rm $BE_CONTAINER_TEMP
-dev-deploy:
-  stage: stage-deploy
-  variables:
-    PROFILE_ENV: dev
-    PORTS: 8880
-    ## FIXME: 这里的机器IP 用于 spring boot admin, 理论上应该使用服务发现的方式 而不是配置 IP
-    CURRENT_MACHINE_IP: 172.21.x.7
-  script:
-    - cd $JAR_FOLDER
-    - ./deploy
-
-qa-deploy:
-  stage: stage-deploy
-  variables:
-    PROFILE_ENV: test
-    PORTS: 9990 9991
-    ## FIXME: 这里的机器IP 用于 spring boot admin, 理论上应该使用服务发现的方式 而不是配置 IP
-    CURRENT_MACHINE_IP: 172.21.x.7
-  script:
-    - cd $JAR_FOLDER
-    - ./deploy
-
-prod-deploy:
-  tags:
-    - prod
-  stage: prod-deploy
-  when: manual
-  variables:
-    BUILD_MACHINE_IP: 172.21.x.7
-    PROFILE_ENV: prod
-    PORTS: 8880 8881
-    ## FIXME: 这里的机器IP 用于 spring boot admin, 理论上应该使用服务发现的方式 而不是配置 IP
-    CURRENT_MACHINE_IP: 172.21.x.7
-  script:
-    - scp -Cr kxkq@$BUILD_MACHINE_IP:$JAR_FOLDER/app.jar $JAR_FOLDER
-    - scp -Cr kxkq@$BUILD_MACHINE_IP:$JAR_FOLDER/deploy $JAR_FOLDER
-    - cd $JAR_FOLDER
-    - ./deploy
-</code></pre></div></div>
-
-<p>Dockerfile</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FROM maven:3.6.3-jdk-11-slim
-
-WORKDIR /build
-COPY ci_settings.xml .
-COPY . /build
-RUN mvn package -q -s ci_settings.xml -Dmaven.repo.local=/build/.m2/repository
-</code></pre></div></div>
-
-<p>ci_settings.xml</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
-  https://maven.apache.org/xsd/settings-1.0.0.xsd"&gt;
-
-  &lt;servers&gt;
-    &lt;server&gt;
-      &lt;!--这是server的id（注意不是用户登陆的id），该id与distributionManagement中repository元素的id相匹配。 --&gt;
-      &lt;id&gt;nexus&lt;/id&gt;
-      &lt;username&gt;Youname&lt;/username&gt;
-      &lt;password&gt;Youpassword&lt;/password&gt;
-    &lt;/server&gt;
-  &lt;/servers&gt;
-
-  &lt;!--为仓库列表配置的下载镜像列表。  --&gt;
-  &lt;mirrors&gt;
-    &lt;mirror&gt;
-      &lt;!--该镜像的唯一标识符。id用来区分不同的mirror元素。  --&gt;
-      &lt;id&gt;nexus&lt;/id&gt;
-      &lt;!--此处配置所有的构建均从私有仓库中下载 *代表所有，也可以写central --&gt;
-      &lt;mirrorOf&gt;*&lt;/mirrorOf&gt;
-      &lt;name&gt;central repository&lt;/name&gt;
-      &lt;!--该镜像的URL。构建系统会优先考虑使用该URL，而非使用默认的服务器URL。  --&gt;
-      &lt;url&gt;http://maven.youDomain.com/repository/maven-public/&lt;/url&gt;
-    &lt;/mirror&gt;
-  &lt;/mirrors&gt;
-
-  &lt;profiles&gt;
-    &lt;profile&gt;
-      &lt;id&gt;nexus&lt;/id&gt;
-      &lt;!--远程仓库列表，它是Maven用来填充构建系统本地仓库所使用的一组远程项目。  --&gt;
-      &lt;repositories&gt;
-        &lt;!--发布版本仓库--&gt;
-        &lt;repository&gt;
-          &lt;id&gt;nexus&lt;/id&gt;
-          &lt;!--地址是nexus中repository（Releases/Snapshots）中对应的地址--&gt;
-          &lt;url&gt;http://maven.youDomain.com/repository/maven-public/&lt;/url&gt;
-          &lt;!--true或者false表示该仓库是否为下载某种类型构件（发布版，快照版）开启。 --&gt;
-          &lt;releases&gt;
-            &lt;enabled&gt;true&lt;/enabled&gt;
-          &lt;/releases&gt;
-          &lt;snapshots&gt;
-            &lt;enabled&gt;true&lt;/enabled&gt;
-          &lt;/snapshots&gt;
-        &lt;/repository&gt;
-      &lt;/repositories&gt;
-
-      &lt;!-- 定义所有可能用到的插件仓库 --&gt;
-      &lt;pluginRepositories&gt;
-        &lt;pluginRepository&gt;
-          &lt;id&gt;aliyun-central&lt;/id&gt;
-          &lt;url&gt;http://maven.aliyun.com/repository/central&lt;/url&gt;
-        &lt;/pluginRepository&gt;
-      &lt;/pluginRepositories&gt;
-    &lt;/profile&gt;
-  &lt;/profiles&gt;
-
-  &lt;!--激活配置--&gt;
-  &lt;activeProfiles&gt;
-    &lt;!--profile下的id--&gt;
-    &lt;activeProfile&gt;nexus&lt;/activeProfile&gt;
-  &lt;/activeProfiles&gt;
-&lt;/settings&gt;
-</code></pre></div></div>
-
-<p>deploy.sh</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ -z "$PORTS" ] &amp;&amp; echo "PORT not defined" &amp;&amp; exit 1
-[ -z "$CURRENT_MACHINE_IP" ] &amp;&amp; echo "CURRENT_MACHINE_IP not defined"
-[ -z "$PROFILE_ENV" ] &amp;&amp; echo "PROFILE_ENV not defined" &amp;&amp; exit 1
-[ -z "$JAR_FOLDER" ] &amp;&amp; echo "JAR_FOLDER not defined, set to /var/www/site/java" &amp;&amp; JAR_FOLDER=/var/www/site/java
-
-## 根据环境不同, 输出日志目录: /var/www/site/java/dev_backend_service.log
-APP_NAME=${PROFILE_ENV}_backend_service;
-TIMEOUT=60
-JAVA_OPTION="-Xmx2g -Xms256m"
-
-for PORT in $PORTS
-  do
-    CONTAINER_NAME=${APP_NAME}_${PORT};
-    if [ "$(docker ps -aq -f status=running -f name="$CONTAINER_NAME")" ]
-      then docker stop "$CONTAINER_NAME";
-    fi
-    sleep 0.5
-    echo "Begin to run SpringApp: JAVA_OPTION: $JAVA_OPTION, profile: $PROFILE_ENV, port: $PORT, machineIP: $CURRENT_MACHINE_IP"
-    ## 在启动的时候，配置了 spring boot admin 的监控的相关监控
-    docker run -d \
-      -p "${PORT}":8080 --rm \
-      -v "$JAR_FOLDER"/app.jar:/app.jar \
-      --name "$CONTAINER_NAME" \
-      --env TZ=GMT+8 \
-      --env SPRING_PROFILES_ACTIVE="$PROFILE_ENV" \
-      --env spring.application.name="$APP_NAME"\
-      --env spring.boot.admin.client.enabled=true\
-      --env spring.boot.admin.client.instance.service-base-url="http://$CURRENT_MACHINE_IP:$PORT" \
-      openjdk:11 \
-      java -jar /app.jar "$JAVA_OPTION"
-
-    READY=DOWN
-    i=1
-    until [ "$READY" == "UP" ]
-    do
-      ## XXX: 注意，这里需要安装 jq 这个软件, 用来解析 JSON, 否则会导致报错
-      READY=$(curl --silent --fail 127.0.0.1:"${PORT}"/actuator/health | jq -r '.status.code')
-      sleep 1;
-      echo "SpringApp is starting... at ${i}s";
-      ((i++))
-      ## 默认设置 1分钟 超时, 如果在 1分钟 还未启动成功, 则认为服务无法启动
-      if [[ "$i" == "$TIMEOUT" ]]; then
-        echo "Timeout over ${TIMEOUT}s..."
-        exit 1
-      fi
-    done
-    echo 'SpringApp started';
-    docker logs -f "$CONTAINER_NAME" &gt;&gt; $JAR_FOLDER/"$APP_NAME".log 2&gt;&amp;1 &amp;
-  done
-</code></pre></div></div>
+<ul>
+  <li><a href="https://github.com/jl-borges/maker/blob/main/java/.gitlab-ci.yml">.gitlab-ci.yml</a></li>
+  <li><a href="https://github.com/jl-borges/maker/blob/main/java/deploy.sh">deploy.sh</a></li>
+  <li><a href="https://github.com/jl-borges/maker/blob/main/java/ci_settings.xml">ci_setting.yml</a></li>
+  <li><a href="https://github.com/jl-borges/maker/blob/main/java/Dockerfile">Dockerfile</a></li>
+</ul>
 
 <hr data-content=" node ">
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stages:
-  - qa-build
   - prod-build
-  - dev-build
   - prod-deploy
 variables:
-  ## 这个是打包的机器, 为 线上的 qa 环境的机器
-  BUILD_MACHINE_IP: 172.21.16.10
+  BUILD_MACHINE_IP: 172.21.x.x
 cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
     - node_modules/
-qa-build:
-  stage: qa-build
-  tags:
-    - adminBuild
-  script:
-    - npm install --registry=https://registry.npm.taobao.org
-    - npm run build:qa
-    - mkdir -p /var/www/site/admin_qa
-    - cp -rf $PWD/dist/** /var/www/site/admin_qa
-dev-build:
-  stage: dev-build
-  tags:
-    - adminBuild
-  script:
-    - npm install --registry=https://registry.npm.taobao.org
-    - npm run build:dev
-    - mkdir -p /var/www/site/admin_dev
-    - cp -rf $PWD/dist/** /var/www/site/admin_dev
 prod-build:
   stage: prod-build
   tags:
@@ -445,7 +236,7 @@ prod-deploy:
   stage: prod-deploy
   when: manual
   script:
-    - scp -Cr kxkq@$BUILD_MACHINE_IP:/var/www/site/admin_prod /var/www/site/
+    - scp -Cr youName@$BUILD_MACHINE_IP:/var/www/site/admin_prod /var/www/site/
 </code></pre></div></div>
 
 <h4 id="其他">
