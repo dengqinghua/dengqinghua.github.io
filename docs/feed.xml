@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-04-23T15:27:54+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-04-26T09:23:36+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
 </subtitle><author><name>dengqinghua</name></author><entry><title type="html">maker of application</title><link href="https://dengqinghua.github.io/scratch-maker.html" rel="alternate" type="text/html" title="maker of application" /><published>2021-04-23T00:00:00+08:00</published><updated>2021-04-23T00:00:00+08:00</updated><id>https://dengqinghua.github.io/scratch-maker</id><content type="html" xml:base="https://dengqinghua.github.io/scratch-maker.html">&lt;h3 id=&quot;运维&quot;&gt;运维&lt;/h3&gt;
 &lt;h4 id=&quot;机器配置&quot;&gt;机器配置&lt;/h4&gt;
 &lt;p&gt;4核8G&lt;/p&gt;
@@ -211,7 +211,48 @@ prod-deploy:
 &lt;ul&gt;
   &lt;li&gt;Java, see legacy&lt;/li&gt;
   &lt;li&gt;Antd-React, see legacy&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">运维 机器配置 4核8G</summary></entry><entry><title type="html">跟着感觉走</title><link href="https://dengqinghua.github.io/follow-the-beat.html" rel="alternate" type="text/html" title="跟着感觉走" /><published>2021-04-13T00:00:00+08:00</published><updated>2021-04-13T00:00:00+08:00</updated><id>https://dengqinghua.github.io/follow-the-beat</id><content type="html" xml:base="https://dengqinghua.github.io/follow-the-beat.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
+&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">运维 机器配置 4核8G</summary></entry><entry><title type="html">机器学习</title><link href="https://dengqinghua.github.io/machine-learning-learning.html" rel="alternate" type="text/html" title="机器学习" /><published>2021-04-23T00:00:00+08:00</published><updated>2021-04-23T00:00:00+08:00</updated><id>https://dengqinghua.github.io/machine-learning-learning</id><content type="html" xml:base="https://dengqinghua.github.io/machine-learning-learning.html">&lt;h2 id=&quot;词汇&quot;&gt;词汇&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ML, machine learning&lt;/li&gt;
+  &lt;li&gt;generic algorithms, 范式算法&lt;/li&gt;
+  &lt;li&gt;supervised learning, 监督式学习, 明确知道答案, 去推导答案&lt;/li&gt;
+  &lt;li&gt;unsupervised learning, 非监督学习, 不知道答案, 生产一个答案&lt;/li&gt;
+  &lt;li&gt;LEARNING, AKA: figuring out an equation to solve a specific problem based on some example data&lt;/li&gt;
+  &lt;li&gt;weight: 权重&lt;/li&gt;
+  &lt;li&gt;stateless algorithm: 无状态的算法, 比如神经网络的计算, 每次算法之间不存在关联&lt;/li&gt;
+  &lt;li&gt;RNN: Recurrent Neural Networks, 可重复使用的神经网络&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;方法&quot;&gt;方法&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;线性关系 (linear relationship)&lt;/p&gt;
+
+    &lt;p&gt;f(x, y, z) = ax + by + cz&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;neuron 神经元&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;ol&gt;
+    &lt;li&gt;We made a simple estimation function that takes in a set of inputs and multiplies them by weights to get an output. Call this simple function a &lt;strong&gt;neuron&lt;/strong&gt;.&lt;/li&gt;
+    &lt;li&gt;By chaining lots of simple neurons together, we can model functions that are too complicated to be modeled by one single neuron.&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;状态模拟&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;script src=&quot;assets/js/mermaid.min.js&quot;&gt;&lt;/script&gt;
+&lt;div class=&quot;mermaid&quot;&gt;
+graph LR;
+    Input--&amp;gt;StatefulMode--&amp;gt;Output;
+    StatefulMode-- SaveState --&amp;gt;StatefulMode
+&lt;/div&gt;</content><author><name>dengqinghua</name></author><summary type="html">词汇</summary></entry><entry><title type="html">跟着感觉走</title><link href="https://dengqinghua.github.io/follow-the-beat.html" rel="alternate" type="text/html" title="跟着感觉走" /><published>2021-04-13T00:00:00+08:00</published><updated>2021-04-13T00:00:00+08:00</updated><id>https://dengqinghua.github.io/follow-the-beat</id><content type="html" xml:base="https://dengqinghua.github.io/follow-the-beat.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
 
 &lt;ul&gt;
   &lt;li&gt;曲谱: &lt;a href=&quot;assets/js/pdf.js/web/viewer.html?file=/assets/doc/跟着感觉走.pdf&quot;&gt;PDF&lt;/a&gt; &lt;a href=&quot;assets/doc/跟着感觉走.gp&quot;&gt;GuitarPro&lt;/a&gt;&lt;/li&gt;
@@ -721,37 +762,4 @@ graph TB
 &lt;ul&gt;
   &lt;li&gt;不要放过每一个细节, 争取做到没有呲音且流畅&lt;/li&gt;
   &lt;li&gt;最近觉得弹奏的曲子挺多的, 是不是应该尝试一下沉淀什么&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry><entry><title type="html">contry blues lick</title><link href="https://dengqinghua.github.io/contry-blues-lick.html" rel="alternate" type="text/html" title="contry blues lick" /><published>2021-01-10T00:00:00+08:00</published><updated>2021-01-10T00:00:00+08:00</updated><id>https://dengqinghua.github.io/contry-blues-lick</id><content type="html" xml:base="https://dengqinghua.github.io/contry-blues-lick.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;曲谱: &lt;a href=&quot;assets/js/pdf.js/web/viewer.html?file=/assets/doc/Blues Trick PG.pdf&quot;&gt;PDF&lt;/a&gt; &lt;a href=&quot;assets/doc/Blues Trick PG.gp&quot;&gt;GuitarPro&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;来源: &lt;a href=&quot;https://www.proguitar.com/academy/lessons/one-minute-lessons/country-blues-riff-in-a&quot;&gt;Country Blues Riff in A ProGuitar&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;我的翻弹: &lt;a href=&quot;https://www.bilibili.com/video/bv1CT4y1N7Ay&quot;&gt;blues contry lick&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr data-content=&quot; 难点 &quot; /&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;律动和闷音的感觉&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr data-content=&quot; 需要加强的 &quot; /&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;还不够放松&lt;/li&gt;
-  &lt;li&gt;动态不够好&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr data-content=&quot; 做的不错的 &quot; /&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;曲子的难度适中, 所以录音的成功率挺高的&lt;/li&gt;
-  &lt;li&gt;在练习的时候使用了节拍器, 在录音的时候没有使用节拍器, 而是凭自我感觉&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr data-content=&quot; 下次录音我会尝试的 &quot; /&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;跟着原曲一起练习, 模仿他弹琴的律动和感觉&lt;/li&gt;
-  &lt;li&gt;尝试慢速, 非常慢速地练习&lt;/li&gt;
 &lt;/ul&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry></feed>
