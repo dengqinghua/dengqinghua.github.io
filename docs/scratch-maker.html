@@ -173,6 +173,21 @@ sudo yum install -y nodejs
 }
 </code></pre></div></div>
 
+<p>Nginx的简单鉴权</p>
+
+<p><a href="https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-http-basic-authentication/">Ref</a></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo yum install httpd-tools
+sudo htpasswd -c /etc/nginx/.htpasswd user1
+cat /etc/nginx/.htpasswd
+
+Nginx 中的配置
+location /api {
+    auth_basic           "admin area";
+    auth_basic_user_file /etc/nginx/.htpasswd;
+}
+</code></pre></div></div>
+
 <h3 id="基础设施">
 <a class="anchor" href="#%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD" aria-hidden="true"><span class="octicon octicon-link"></span></a>基础设施</h3>
 <h4 id="gitlab">
@@ -259,6 +274,9 @@ prod-deploy:
   <li>
     <p><a href="https://github.com/jl-borges/baota?organization=jl-borges&amp;organization=jl-borges">宝塔</a></p>
   </li>
+  <li>
+    <p><a href="https://github.com/jl-borges/netdata">Netdata</a></p>
+  </li>
 </ul>
 
 <h3 id="中间件">
@@ -266,8 +284,49 @@ prod-deploy:
 <ul>
   <li><a href="https://github.com/jl-borges/maker/blob/main/mysql/docker-compose.yml">MySQL</a></li>
   <li><a href="https://github.com/jl-borges/maker/blob/main/redis/docker-compose.yml">Redis</a></li>
+  <li>
+    <p><a href="https://github.com/jl-borges/docker-elk">ELK</a></p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  curl -L -O https://artifacts.elastic.co/downloads/beats/journalbeat/journalbeat-7.12.1-x86_64.rpm
+  sudo rpm -vi journalbeat-7.12.1-x86_64.rpm
+</code></pre></div>    </div>
+
+    <p>修改 /etc/journalbeat/journalbeat.yml 文件</p>
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  - paths: []
+    include_matches:
+      - "CONTAINER_NAME=prod_backend_service_8880"
+  setup.ilm.enabled: false
+
+  setup.template:
+    name: 'prod-journal-log'
+    pattern: 'prod-journal-log-*'
+    enabled: true
+
+  setup.kibana:
+    host: "172.21.xx.10:5601"
+    username: "elastic"
+    password: "changeme"
+
+  output.elasticsearch:
+    hosts: ["172.21.16.10:9200"]
+
+    username: "elastic"
+    password: "changeme"
+    index: "prod-journal-log-%{+yyyy.MM.dd}"
+
+  # 日志内容
+  logging.level: info
+  logging.to_files: true
+  logging.files:
+    path: /var/www/site/journalbeat
+    name: journalbeat
+    keepfiles: 7
+    permissions: 0644
+</code></pre></div>    </div>
+  </li>
   <li>Kafak, TODO</li>
-  <li>ES, TODO</li>
 </ul>
 
 <h3 id="业务系统">

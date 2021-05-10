@@ -1,5 +1,80 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-04-26T09:23:36+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
-</subtitle><author><name>dengqinghua</name></author><entry><title type="html">maker of application</title><link href="https://dengqinghua.github.io/scratch-maker.html" rel="alternate" type="text/html" title="maker of application" /><published>2021-04-23T00:00:00+08:00</published><updated>2021-04-23T00:00:00+08:00</updated><id>https://dengqinghua.github.io/scratch-maker</id><content type="html" xml:base="https://dengqinghua.github.io/scratch-maker.html">&lt;h3 id=&quot;运维&quot;&gt;运维&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-05-10T16:24:32+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+</subtitle><author><name>dengqinghua</name></author><entry><title type="html">Rust 学习笔记</title><link href="https://dengqinghua.github.io/rust-learning.html" rel="alternate" type="text/html" title="Rust 学习笔记" /><published>2021-05-10T00:00:00+08:00</published><updated>2021-05-10T00:00:00+08:00</updated><id>https://dengqinghua.github.io/rust-learning</id><content type="html" xml:base="https://dengqinghua.github.io/rust-learning.html">&lt;h2 id=&quot;词汇&quot;&gt;词汇&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ML, machine learning&lt;/li&gt;
+  &lt;li&gt;generic algorithms, 范式算法&lt;/li&gt;
+  &lt;li&gt;supervised learning, 监督式学习, 明确知道答案, 去推导答案&lt;/li&gt;
+  &lt;li&gt;unsupervised learning, 非监督学习, 不知道答案, 生产一个答案&lt;/li&gt;
+  &lt;li&gt;LEARNING, AKA: figuring out an equation to solve a specific problem based on some example data&lt;/li&gt;
+  &lt;li&gt;weight, 权重&lt;/li&gt;
+  &lt;li&gt;stateless algorithm, 无状态的算法, 比如神经网络的计算, 每次算法之间不存在关联&lt;/li&gt;
+  &lt;li&gt;RNN: Recurrent Neural Networks, 可重复使用的神经网络&lt;/li&gt;
+  &lt;li&gt;Turing Completeness, 如果一系列操作数据的规则（如指令集、编程语言、细胞自动机）可以用来模拟任何图灵机，那么它是图灵完备的&lt;/li&gt;
+  &lt;li&gt;Turinig Machine, 图灵机, 一种将人的计算行为抽象化的数学逻辑机，其更抽象的意义为一种计算模型&lt;/li&gt;
+  &lt;li&gt;Feature selection, 特征选择, 为了构建模型而选择相关特征（即属性、指标）子集的过程(简化模型, 缩短训练时间, 降低方差)&lt;/li&gt;
+  &lt;li&gt;CNN, convolutional neural networks&lt;/li&gt;
+  &lt;li&gt;Downsampling, 缩减像素, 一般来说, 会用 max-pooling 算法来进行操作(非线性形式的降采样)&lt;/li&gt;
+  &lt;li&gt;Four Catergories: True Positive, True Negative, False Positive, False Negative&lt;/li&gt;
+  &lt;li&gt;ML Metrics: Precison and Recall(Precision: 测试中对的数目/总的测试数目, Recall: 对的数目/总的对的数目)&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">词汇</summary></entry><entry><title type="html">机器学习</title><link href="https://dengqinghua.github.io/machine-learning-learning.html" rel="alternate" type="text/html" title="机器学习" /><published>2021-04-23T00:00:00+08:00</published><updated>2021-04-23T00:00:00+08:00</updated><id>https://dengqinghua.github.io/machine-learning-learning</id><content type="html" xml:base="https://dengqinghua.github.io/machine-learning-learning.html">&lt;h2 id=&quot;词汇&quot;&gt;词汇&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ML, machine learning&lt;/li&gt;
+  &lt;li&gt;generic algorithms, 范式算法&lt;/li&gt;
+  &lt;li&gt;supervised learning, 监督式学习, 明确知道答案, 去推导答案&lt;/li&gt;
+  &lt;li&gt;unsupervised learning, 非监督学习, 不知道答案, 生产一个答案&lt;/li&gt;
+  &lt;li&gt;LEARNING, AKA: figuring out an equation to solve a specific problem based on some example data&lt;/li&gt;
+  &lt;li&gt;weight, 权重&lt;/li&gt;
+  &lt;li&gt;stateless algorithm, 无状态的算法, 比如神经网络的计算, 每次算法之间不存在关联&lt;/li&gt;
+  &lt;li&gt;RNN: Recurrent Neural Networks, 可重复使用的神经网络&lt;/li&gt;
+  &lt;li&gt;Turing Completeness, 如果一系列操作数据的规则（如指令集、编程语言、细胞自动机）可以用来模拟任何图灵机，那么它是图灵完备的&lt;/li&gt;
+  &lt;li&gt;Turinig Machine, 图灵机, 一种将人的计算行为抽象化的数学逻辑机，其更抽象的意义为一种计算模型&lt;/li&gt;
+  &lt;li&gt;Feature selection, 特征选择, 为了构建模型而选择相关特征（即属性、指标）子集的过程(简化模型, 缩短训练时间, 降低方差)&lt;/li&gt;
+  &lt;li&gt;CNN, convolutional neural networks&lt;/li&gt;
+  &lt;li&gt;Downsampling, 缩减像素, 一般来说, 会用 max-pooling 算法来进行操作(非线性形式的降采样)&lt;/li&gt;
+  &lt;li&gt;Four Catergories: True Positive, True Negative, False Positive, False Negative&lt;/li&gt;
+  &lt;li&gt;ML Metrics: Precison and Recall(Precision: 测试中对的数目/总的测试数目, Recall: 对的数目/总的对的数目)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;方法&quot;&gt;方法&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;线性关系 (linear relationship)&lt;/p&gt;
+
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; f(x, y, z) = ax + by + cz
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;neuron 神经元&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;ol&gt;
+        &lt;li&gt;We made a simple estimation function that takes in a set of inputs and multiplies them by weights to get an output. Call this simple function a &lt;strong&gt;neuron&lt;/strong&gt;.&lt;/li&gt;
+        &lt;li&gt;By chaining lots of simple neurons together, we can model functions that are too complicated to be modeled by one single neuron.&lt;/li&gt;
+      &lt;/ol&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;状态模拟&lt;/p&gt;
+
+    &lt;script src=&quot;assets/js/mermaid.min.js&quot;&gt;&lt;/script&gt;
+    &lt;div class=&quot;mermaid&quot;&gt;
+ graph LR;
+     Input--&amp;gt;StatefulMode--&amp;gt;Output;
+     StatefulMode-- SaveState --&amp;gt;StatefulMode
+ &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;CNN&lt;/p&gt;
+
+    &lt;script src=&quot;assets/js/mermaid.min.js&quot;&gt;&lt;/script&gt;
+    &lt;div class=&quot;mermaid&quot;&gt;
+ graph LR;
+     Input--&amp;gt;Convolution--&amp;gt;Max-Polling--&amp;gt;Full-Connected--&amp;gt;Output;
+ &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>dengqinghua</name></author><summary type="html">词汇</summary></entry><entry><title type="html">maker of application</title><link href="https://dengqinghua.github.io/scratch-maker.html" rel="alternate" type="text/html" title="maker of application" /><published>2021-04-23T00:00:00+08:00</published><updated>2021-04-23T00:00:00+08:00</updated><id>https://dengqinghua.github.io/scratch-maker</id><content type="html" xml:base="https://dengqinghua.github.io/scratch-maker.html">&lt;h3 id=&quot;运维&quot;&gt;运维&lt;/h3&gt;
 &lt;h4 id=&quot;机器配置&quot;&gt;机器配置&lt;/h4&gt;
 &lt;p&gt;4核8G&lt;/p&gt;
 
@@ -114,6 +189,21 @@ sudo yum install -y nodejs
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
+&lt;p&gt;Nginx的简单鉴权&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-http-basic-authentication/&quot;&gt;Ref&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo yum install httpd-tools
+sudo htpasswd -c /etc/nginx/.htpasswd user1
+cat /etc/nginx/.htpasswd
+
+Nginx 中的配置
+location /api {
+    auth_basic           &quot;admin area&quot;;
+    auth_basic_user_file /etc/nginx/.htpasswd;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;h3 id=&quot;基础设施&quot;&gt;基础设施&lt;/h3&gt;
 &lt;h4 id=&quot;gitlab&quot;&gt;gitlab&lt;/h4&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/jl-borges/docker-gitlab&quot;&gt;Ref&lt;/a&gt;&lt;/p&gt;
@@ -197,62 +287,63 @@ prod-deploy:
   &lt;li&gt;
     &lt;p&gt;&lt;a href=&quot;https://github.com/jl-borges/baota?organization=jl-borges&amp;amp;organization=jl-borges&quot;&gt;宝塔&lt;/a&gt;&lt;/p&gt;
   &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/jl-borges/netdata&quot;&gt;Netdata&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;中间件&quot;&gt;中间件&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/jl-borges/maker/blob/main/mysql/docker-compose.yml&quot;&gt;MySQL&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/jl-borges/maker/blob/main/redis/docker-compose.yml&quot;&gt;Redis&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/jl-borges/docker-elk&quot;&gt;ELK&lt;/a&gt;&lt;/p&gt;
+
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  curl -L -O https://artifacts.elastic.co/downloads/beats/journalbeat/journalbeat-7.12.1-x86_64.rpm
+  sudo rpm -vi journalbeat-7.12.1-x86_64.rpm
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;修改 /etc/journalbeat/journalbeat.yml 文件&lt;/p&gt;
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  - paths: []
+    include_matches:
+      - &quot;CONTAINER_NAME=prod_backend_service_8880&quot;
+  setup.ilm.enabled: false
+
+  setup.template:
+    name: 'prod-journal-log'
+    pattern: 'prod-journal-log-*'
+    enabled: true
+
+  setup.kibana:
+    host: &quot;172.21.xx.10:5601&quot;
+    username: &quot;elastic&quot;
+    password: &quot;changeme&quot;
+
+  output.elasticsearch:
+    hosts: [&quot;172.21.16.10:9200&quot;]
+
+    username: &quot;elastic&quot;
+    password: &quot;changeme&quot;
+    index: &quot;prod-journal-log-%{+yyyy.MM.dd}&quot;
+
+  # 日志内容
+  logging.level: info
+  logging.to_files: true
+  logging.files:
+    path: /var/www/site/journalbeat
+    name: journalbeat
+    keepfiles: 7
+    permissions: 0644
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
   &lt;li&gt;Kafak, TODO&lt;/li&gt;
-  &lt;li&gt;ES, TODO&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;业务系统&quot;&gt;业务系统&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;Java, see legacy&lt;/li&gt;
   &lt;li&gt;Antd-React, see legacy&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">运维 机器配置 4核8G</summary></entry><entry><title type="html">机器学习</title><link href="https://dengqinghua.github.io/machine-learning-learning.html" rel="alternate" type="text/html" title="机器学习" /><published>2021-04-23T00:00:00+08:00</published><updated>2021-04-23T00:00:00+08:00</updated><id>https://dengqinghua.github.io/machine-learning-learning</id><content type="html" xml:base="https://dengqinghua.github.io/machine-learning-learning.html">&lt;h2 id=&quot;词汇&quot;&gt;词汇&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;ML, machine learning&lt;/li&gt;
-  &lt;li&gt;generic algorithms, 范式算法&lt;/li&gt;
-  &lt;li&gt;supervised learning, 监督式学习, 明确知道答案, 去推导答案&lt;/li&gt;
-  &lt;li&gt;unsupervised learning, 非监督学习, 不知道答案, 生产一个答案&lt;/li&gt;
-  &lt;li&gt;LEARNING, AKA: figuring out an equation to solve a specific problem based on some example data&lt;/li&gt;
-  &lt;li&gt;weight: 权重&lt;/li&gt;
-  &lt;li&gt;stateless algorithm: 无状态的算法, 比如神经网络的计算, 每次算法之间不存在关联&lt;/li&gt;
-  &lt;li&gt;RNN: Recurrent Neural Networks, 可重复使用的神经网络&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;方法&quot;&gt;方法&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;线性关系 (linear relationship)&lt;/p&gt;
-
-    &lt;p&gt;f(x, y, z) = ax + by + cz&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;neuron 神经元&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-  &lt;ol&gt;
-    &lt;li&gt;We made a simple estimation function that takes in a set of inputs and multiplies them by weights to get an output. Call this simple function a &lt;strong&gt;neuron&lt;/strong&gt;.&lt;/li&gt;
-    &lt;li&gt;By chaining lots of simple neurons together, we can model functions that are too complicated to be modeled by one single neuron.&lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/blockquote&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;状态模拟&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;script src=&quot;assets/js/mermaid.min.js&quot;&gt;&lt;/script&gt;
-&lt;div class=&quot;mermaid&quot;&gt;
-graph LR;
-    Input--&amp;gt;StatefulMode--&amp;gt;Output;
-    StatefulMode-- SaveState --&amp;gt;StatefulMode
-&lt;/div&gt;</content><author><name>dengqinghua</name></author><summary type="html">词汇</summary></entry><entry><title type="html">跟着感觉走</title><link href="https://dengqinghua.github.io/follow-the-beat.html" rel="alternate" type="text/html" title="跟着感觉走" /><published>2021-04-13T00:00:00+08:00</published><updated>2021-04-13T00:00:00+08:00</updated><id>https://dengqinghua.github.io/follow-the-beat</id><content type="html" xml:base="https://dengqinghua.github.io/follow-the-beat.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
+&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">运维 机器配置 4核8G</summary></entry><entry><title type="html">跟着感觉走</title><link href="https://dengqinghua.github.io/follow-the-beat.html" rel="alternate" type="text/html" title="跟着感觉走" /><published>2021-04-13T00:00:00+08:00</published><updated>2021-04-13T00:00:00+08:00</updated><id>https://dengqinghua.github.io/follow-the-beat</id><content type="html" xml:base="https://dengqinghua.github.io/follow-the-beat.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
 
 &lt;ul&gt;
   &lt;li&gt;曲谱: &lt;a href=&quot;assets/js/pdf.js/web/viewer.html?file=/assets/doc/跟着感觉走.pdf&quot;&gt;PDF&lt;/a&gt; &lt;a href=&quot;assets/doc/跟着感觉走.gp&quot;&gt;GuitarPro&lt;/a&gt;&lt;/li&gt;
@@ -728,38 +819,4 @@ graph TB
 &lt;ol&gt;
   &lt;li&gt;一定还是要反复调弦, 尤其是对于使用变调夹的情况(调节到听着比较舒服为止)&lt;/li&gt;
   &lt;li&gt;反复听一下原曲的感觉, 在比较难的部分的时候, 需要先着重练习, 而不是去反复弹奏自己已经会的部分&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry><entry><title type="html">伍伍慧未名曲</title><link href="https://dengqinghua.github.io/55h-of-unknow-piece.html" rel="alternate" type="text/html" title="伍伍慧未名曲" /><published>2021-01-21T00:00:00+08:00</published><updated>2021-01-21T00:00:00+08:00</updated><id>https://dengqinghua.github.io/55h_of_unknow_piece</id><content type="html" xml:base="https://dengqinghua.github.io/55h-of-unknow-piece.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;曲谱: &lt;a href=&quot;assets/js/pdf.js/web/viewer.html?file=/assets/doc/Unknown-of-55h.pdf&quot;&gt;PDF&lt;/a&gt; &lt;a href=&quot;assets/doc/Unknown-of-55h.gp&quot;&gt;GuitarPro&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;来源: &lt;a href=&quot;https://www.instagram.com/p/CKES124lhIr/?utm_source=ig_web_copy_link&quot;&gt;Okay next let’s give this new tune a title&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;我的翻弹: &lt;a href=&quot;https://www.bilibili.com/video/bv1Mv4y1f7Sf&quot;&gt;指弹吉他 伍伍慧未名曲&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr data-content=&quot; 难点 &quot; /&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;该曲子为散拍的形式, 无法记录很完整的曲谱&lt;/li&gt;
-  &lt;li&gt;无法跟着节拍器&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr data-content=&quot; 需要加强的 &quot; /&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;弹得还是不够干净，有一些呲音&lt;/li&gt;
-  &lt;li&gt;弹奏古典琴时候的坐姿不对, 导致前面的录音没法放松&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr data-content=&quot; 做的不错的 &quot; /&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;选择曲子的难度适中, 录音的成功率挺高的&lt;/li&gt;
-  &lt;li&gt;录音的整个过程(调整坐姿之后)比较放松, 不会强求一次成功&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr data-content=&quot; 下次录音我会尝试的 &quot; /&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;不要放过每一个细节, 争取做到没有呲音且流畅&lt;/li&gt;
-  &lt;li&gt;最近觉得弹奏的曲子挺多的, 是不是应该尝试一下沉淀什么&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry></feed>
+&lt;/ol&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry></feed>

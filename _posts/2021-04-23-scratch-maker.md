@@ -132,6 +132,22 @@ server {
 }
 ```
 
+Nginx的简单鉴权
+
+[Ref](https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-http-basic-authentication/)
+
+```
+sudo yum install httpd-tools
+sudo htpasswd -c /etc/nginx/.htpasswd user1
+cat /etc/nginx/.htpasswd
+
+Nginx 中的配置
+location /api {
+    auth_basic           "admin area";
+    auth_basic_user_file /etc/nginx/.htpasswd;
+}
+```
+
 ### 基础设施
 #### gitlab
 [Ref](https://github.com/jl-borges/docker-gitlab)
@@ -213,11 +229,53 @@ prod-deploy:
 
 - [宝塔](https://github.com/jl-borges/baota?organization=jl-borges&organization=jl-borges)
 
+- [Netdata](https://github.com/jl-borges/netdata)
+
 ### 中间件
 - [MySQL](https://github.com/jl-borges/maker/blob/main/mysql/docker-compose.yml)
 - [Redis](https://github.com/jl-borges/maker/blob/main/redis/docker-compose.yml)
+- [ELK](https://github.com/jl-borges/docker-elk)
+
+    ```
+    curl -L -O https://artifacts.elastic.co/downloads/beats/journalbeat/journalbeat-7.12.1-x86_64.rpm
+    sudo rpm -vi journalbeat-7.12.1-x86_64.rpm
+    ```
+
+    修改 /etc/journalbeat/journalbeat.yml 文件
+    ```
+    - paths: []
+      include_matches:
+        - "CONTAINER_NAME=prod_backend_service_8880"
+    setup.ilm.enabled: false
+
+    setup.template:
+      name: 'prod-journal-log'
+      pattern: 'prod-journal-log-*'
+      enabled: true
+
+    setup.kibana:
+      host: "172.21.xx.10:5601"
+      username: "elastic"
+      password: "changeme"
+
+    output.elasticsearch:
+      hosts: ["172.21.16.10:9200"]
+
+      username: "elastic"
+      password: "changeme"
+      index: "prod-journal-log-%{+yyyy.MM.dd}"
+
+    # 日志内容
+    logging.level: info
+    logging.to_files: true
+    logging.files:
+      path: /var/www/site/journalbeat
+      name: journalbeat
+      keepfiles: 7
+      permissions: 0644
+    ```
+
 - Kafak, TODO
-- ES, TODO
 
 ### 业务系统
 - Java, see legacy

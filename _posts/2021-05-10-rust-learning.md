@@ -1,7 +1,7 @@
 ---
 layout: post
 categories: showed note
-title: 机器学习
+title: Rust 学习笔记
 ---
 
 ## 词汇
@@ -21,33 +21,3 @@ title: 机器学习
 - Downsampling, 缩减像素, 一般来说, 会用 max-pooling 算法来进行操作(非线性形式的降采样)
 - Four Catergories: True Positive, True Negative, False Positive, False Negative
 - ML Metrics: Precison and Recall(Precision: 测试中对的数目/总的测试数目, Recall: 对的数目/总的对的数目)
-
-
-
-## 方法
-1. 线性关系 (linear relationship)
-
-    ```
-    f(x, y, z) = ax + by + cz
-    ```
-
-2. neuron 神经元
-
-    > 1. We made a simple estimation function that takes in a set of inputs and multiplies them by weights to get an output. Call this simple function a **neuron**.
-    > 2. By chaining lots of simple neurons together, we can model functions that are too complicated to be modeled by one single neuron.
-
-
-3. 状态模拟
-
-    {% mermaid %}
-    graph LR;
-        Input-->StatefulMode-->Output;
-        StatefulMode-- SaveState -->StatefulMode
-    {% endmermaid %}
-
-4. CNN
-
-    {% mermaid %}
-    graph LR;
-        Input-->Convolution-->Max-Polling-->Full-Connected-->Output;
-    {% endmermaid %}
