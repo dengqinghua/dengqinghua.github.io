@@ -26,7 +26,9 @@
 
   <link rel="shortcut icon" type="image/x-icon" href="/logo.png" />
   <link rel="stylesheet" href="/assets/css/main.css" />
-</head><body a="light">
+  <script src="assets/js/mermaid.min.js"></script>
+</head>
+<body a="light">
     <main class="page-content" aria-label="Content">
       <div class="w">
         <a href="/">..</a>
@@ -60,7 +62,6 @@ yarn bin
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tsc class.ts --lib es2016,dom --pretty
 </code></pre></div></div>
 
-<script src="assets/js/mermaid.min.js"></script>
 <div class="mermaid">
 graph LR;
     ts--&gt;tsc--&gt;js;
@@ -68,7 +69,6 @@ graph LR;
 
 <hr data-content=" 类型和语法 " />
 
-<script src="assets/js/mermaid.min.js"></script>
 <div class="mermaid">
 graph TD;
     any--&gt;内置类型;
@@ -155,7 +155,6 @@ const person:IPerson = { name: "a", other: 1 }
 
 <hr data-content=" class " />
 
-<script src="assets/js/mermaid.min.js"></script>
 <div class="mermaid">
 graph TD;
     clazz--&gt;Fields;

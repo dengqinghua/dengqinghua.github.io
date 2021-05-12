@@ -39,15 +39,15 @@ title: 机器学习
 
 3. 状态模拟
 
-    {% mermaid %}
-    graph LR;
-        Input-->StatefulMode-->Output;
-        StatefulMode-- SaveState -->StatefulMode
-    {% endmermaid %}
+<div class="mermaid" markdown="0">
+graph LR;
+    Input-->StatefulMode-->Output;
+    StatefulMode-- SaveState -->StatefulMode
+</div>
 
 4. CNN
 
-    {% mermaid %}
-    graph LR;
-        Input-->Convolution-->Max-Polling-->Full-Connected-->Output;
-    {% endmermaid %}
+<div class="mermaid" markdown="0">
+graph LR;
+    Input-->Convolution-->Max-Polling-->Full-Connected-->Output;
+</div>

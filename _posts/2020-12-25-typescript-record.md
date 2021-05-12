@@ -26,19 +26,19 @@ yarn bin
 
     tsc class.ts --lib es2016,dom --pretty
 
-{% mermaid %}
+<div class="mermaid" markdown="0">
 graph LR;
     ts-->tsc-->js;
-{% endmermaid %}
+</div>
 
 ---------------
 {: data-content=" 类型和语法 "}
 
-{% mermaid %}
+<div class="mermaid" markdown="0">
 graph TD;
     any-->内置类型;
     any-->用户定义类型;
-{% endmermaid %}
+</div>
 
 内置类型
 
@@ -109,12 +109,12 @@ const person:IPerson = { name: "a", other: 1 }
 ---------------
 {: data-content=" class "}
 
-{% mermaid %}
+<div class="mermaid" markdown="0">
 graph TD;
     clazz-->Fields;
     clazz-->Constructors;
     clazz-->Functions;
-{% endmermaid %}
+</div>
 
 typescipt 不支持多继承
 

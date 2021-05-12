@@ -13,6 +13,10 @@ favicon: "logo.png" # name+extension of favicon (which must be put on the root f
 
 theme: no-style-please # if you are using GitHub Pages, change it to remote_theme: riggraz/no-style-please
 
+markdown: kramdown
+kramdown:
+  parse_block_html: true
+
 theme_config:
   appearance: "light" # can be "light", "dark" or "auto"
   back_home_text: ".." # customize text for homepage link in post layout
@@ -26,10 +30,6 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-toc
-  - jekyll-mermaid
-
-mermaid:
-  src: 'assets/js/mermaid.min.js'
 
 destination: docs/
 

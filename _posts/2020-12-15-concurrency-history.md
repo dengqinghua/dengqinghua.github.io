@@ -6,13 +6,12 @@ title: Concurrency History
 
 本文为视频 [From Concurrent to Parallel](https://www.youtube.com/watch?v=NsDE7E8sIdQ) 的学习笔记
 
-{% mermaid %}
+<div class="mermaid" markdown="0">
 graph TD;
     performance-->error;
     performance-->lantency;
     performance-->throughput;
-{% endmermaid %}
-
+</div>
 
 ---------------
 {: data-content=" 硬件性能 "}

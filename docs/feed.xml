@@ -1,22 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-05-10T16:24:32+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-05-12T17:36:17+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
 </subtitle><author><name>dengqinghua</name></author><entry><title type="html">Rust 学习笔记</title><link href="https://dengqinghua.github.io/rust-learning.html" rel="alternate" type="text/html" title="Rust 学习笔记" /><published>2021-05-10T00:00:00+08:00</published><updated>2021-05-10T00:00:00+08:00</updated><id>https://dengqinghua.github.io/rust-learning</id><content type="html" xml:base="https://dengqinghua.github.io/rust-learning.html">&lt;h2 id=&quot;词汇&quot;&gt;词汇&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;ML, machine learning&lt;/li&gt;
-  &lt;li&gt;generic algorithms, 范式算法&lt;/li&gt;
-  &lt;li&gt;supervised learning, 监督式学习, 明确知道答案, 去推导答案&lt;/li&gt;
-  &lt;li&gt;unsupervised learning, 非监督学习, 不知道答案, 生产一个答案&lt;/li&gt;
-  &lt;li&gt;LEARNING, AKA: figuring out an equation to solve a specific problem based on some example data&lt;/li&gt;
-  &lt;li&gt;weight, 权重&lt;/li&gt;
-  &lt;li&gt;stateless algorithm, 无状态的算法, 比如神经网络的计算, 每次算法之间不存在关联&lt;/li&gt;
-  &lt;li&gt;RNN: Recurrent Neural Networks, 可重复使用的神经网络&lt;/li&gt;
-  &lt;li&gt;Turing Completeness, 如果一系列操作数据的规则（如指令集、编程语言、细胞自动机）可以用来模拟任何图灵机，那么它是图灵完备的&lt;/li&gt;
-  &lt;li&gt;Turinig Machine, 图灵机, 一种将人的计算行为抽象化的数学逻辑机，其更抽象的意义为一种计算模型&lt;/li&gt;
-  &lt;li&gt;Feature selection, 特征选择, 为了构建模型而选择相关特征（即属性、指标）子集的过程(简化模型, 缩短训练时间, 降低方差)&lt;/li&gt;
-  &lt;li&gt;CNN, convolutional neural networks&lt;/li&gt;
-  &lt;li&gt;Downsampling, 缩减像素, 一般来说, 会用 max-pooling 算法来进行操作(非线性形式的降采样)&lt;/li&gt;
-  &lt;li&gt;Four Catergories: True Positive, True Negative, False Positive, False Negative&lt;/li&gt;
-  &lt;li&gt;ML Metrics: Precison and Recall(Precision: 测试中对的数目/总的测试数目, Recall: 对的数目/总的对的数目)&lt;/li&gt;
+  &lt;li&gt;crate, a collection of Rust source code files&lt;/li&gt;
+  &lt;li&gt;immutable varibale, immutable by default&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;shadowing, mutable varibales can be shadowed&lt;/p&gt;
+
+    &lt;details&gt;
+      &lt;summary&gt;
+eg.
+&lt;/summary&gt;
+      &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;let a = 1
+let a = 2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;      &lt;/div&gt;
+    &lt;/details&gt;
+  &lt;/li&gt;
+  &lt;li&gt;scalar types, integers, floating-point numbers, booleans and characters&lt;/li&gt;
+  &lt;li&gt;two’s complement wrapping. i8 when 256 -&amp;gt; 0&lt;/li&gt;
+  &lt;li&gt;turple and array. turple is a multi types data source with fixed length like array&lt;/li&gt;
+  &lt;li&gt;(), an empty tuple&lt;/li&gt;
+  &lt;li&gt;ownership, make memory safely guarantees&lt;/li&gt;
 &lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">词汇</summary></entry><entry><title type="html">机器学习</title><link href="https://dengqinghua.github.io/machine-learning-learning.html" rel="alternate" type="text/html" title="机器学习" /><published>2021-04-23T00:00:00+08:00</published><updated>2021-04-23T00:00:00+08:00</updated><id>https://dengqinghua.github.io/machine-learning-learning</id><content type="html" xml:base="https://dengqinghua.github.io/machine-learning-learning.html">&lt;h2 id=&quot;词汇&quot;&gt;词汇&lt;/h2&gt;
 
 &lt;ul&gt;
@@ -57,24 +61,23 @@
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;状态模拟&lt;/p&gt;
-
-    &lt;script src=&quot;assets/js/mermaid.min.js&quot;&gt;&lt;/script&gt;
-    &lt;div class=&quot;mermaid&quot;&gt;
- graph LR;
-     Input--&amp;gt;StatefulMode--&amp;gt;Output;
-     StatefulMode-- SaveState --&amp;gt;StatefulMode
- &lt;/div&gt;
   &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;CNN&lt;/p&gt;
+&lt;/ol&gt;
 
-    &lt;script src=&quot;assets/js/mermaid.min.js&quot;&gt;&lt;/script&gt;
-    &lt;div class=&quot;mermaid&quot;&gt;
- graph LR;
-     Input--&amp;gt;Convolution--&amp;gt;Max-Polling--&amp;gt;Full-Connected--&amp;gt;Output;
- &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>dengqinghua</name></author><summary type="html">词汇</summary></entry><entry><title type="html">maker of application</title><link href="https://dengqinghua.github.io/scratch-maker.html" rel="alternate" type="text/html" title="maker of application" /><published>2021-04-23T00:00:00+08:00</published><updated>2021-04-23T00:00:00+08:00</updated><id>https://dengqinghua.github.io/scratch-maker</id><content type="html" xml:base="https://dengqinghua.github.io/scratch-maker.html">&lt;h3 id=&quot;运维&quot;&gt;运维&lt;/h3&gt;
+&lt;div class=&quot;mermaid&quot;&gt;
+graph LR;
+    Input--&amp;gt;StatefulMode--&amp;gt;Output;
+    StatefulMode-- SaveState --&amp;gt;StatefulMode
+&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;CNN&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;mermaid&quot;&gt;
+graph LR;
+    Input--&amp;gt;Convolution--&amp;gt;Max-Polling--&amp;gt;Full-Connected--&amp;gt;Output;
+&lt;/div&gt;</content><author><name>dengqinghua</name></author><summary type="html">词汇</summary></entry><entry><title type="html">maker of application</title><link href="https://dengqinghua.github.io/scratch-maker.html" rel="alternate" type="text/html" title="maker of application" /><published>2021-04-23T00:00:00+08:00</published><updated>2021-04-23T00:00:00+08:00</updated><id>https://dengqinghua.github.io/scratch-maker</id><content type="html" xml:base="https://dengqinghua.github.io/scratch-maker.html">&lt;h3 id=&quot;运维&quot;&gt;运维&lt;/h3&gt;
 &lt;h4 id=&quot;机器配置&quot;&gt;机器配置&lt;/h4&gt;
 &lt;p&gt;4核8G&lt;/p&gt;
 
@@ -664,7 +667,6 @@ prod-deploy:
 
 &lt;p&gt;音阶走一个! 分别用 2分, 4分 和 8分 来弹奏 G 调音阶&lt;/p&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry><entry><title type="html">万域达全链路系统V1.0</title><link href="https://dengqinghua.github.io/wyd-flow-v2.html" rel="alternate" type="text/html" title="万域达全链路系统V1.0" /><published>2021-01-24T00:00:00+08:00</published><updated>2021-01-24T00:00:00+08:00</updated><id>https://dengqinghua.github.io/wyd-flow-v2</id><content type="html" xml:base="https://dengqinghua.github.io/wyd-flow-v2.html">&lt;hr data-content=&quot; 流程 &quot; /&gt;
 
-&lt;script src=&quot;assets/js/mermaid.min.js&quot;&gt;&lt;/script&gt;
 &lt;div class=&quot;mermaid&quot;&gt;
 graph TB
     subgraph 回款

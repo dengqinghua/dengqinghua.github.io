@@ -26,7 +26,9 @@
 
   <link rel="shortcut icon" type="image/x-icon" href="/logo.png" />
   <link rel="stylesheet" href="/assets/css/main.css" />
-</head><body a="light">
+  <script src="assets/js/mermaid.min.js"></script>
+</head>
+<body a="light">
     <main class="page-content" aria-label="Content">
       <div class="w">
         <a href="/">..</a>
@@ -41,21 +43,25 @@
   <h2 id="词汇">词汇</h2>
 
 <ul>
-  <li>ML, machine learning</li>
-  <li>generic algorithms, 范式算法</li>
-  <li>supervised learning, 监督式学习, 明确知道答案, 去推导答案</li>
-  <li>unsupervised learning, 非监督学习, 不知道答案, 生产一个答案</li>
-  <li>LEARNING, AKA: figuring out an equation to solve a specific problem based on some example data</li>
-  <li>weight, 权重</li>
-  <li>stateless algorithm, 无状态的算法, 比如神经网络的计算, 每次算法之间不存在关联</li>
-  <li>RNN: Recurrent Neural Networks, 可重复使用的神经网络</li>
-  <li>Turing Completeness, 如果一系列操作数据的规则（如指令集、编程语言、细胞自动机）可以用来模拟任何图灵机，那么它是图灵完备的</li>
-  <li>Turinig Machine, 图灵机, 一种将人的计算行为抽象化的数学逻辑机，其更抽象的意义为一种计算模型</li>
-  <li>Feature selection, 特征选择, 为了构建模型而选择相关特征（即属性、指标）子集的过程(简化模型, 缩短训练时间, 降低方差)</li>
-  <li>CNN, convolutional neural networks</li>
-  <li>Downsampling, 缩减像素, 一般来说, 会用 max-pooling 算法来进行操作(非线性形式的降采样)</li>
-  <li>Four Catergories: True Positive, True Negative, False Positive, False Negative</li>
-  <li>ML Metrics: Precison and Recall(Precision: 测试中对的数目/总的测试数目, Recall: 对的数目/总的对的数目)</li>
+  <li>crate, a collection of Rust source code files</li>
+  <li>immutable varibale, immutable by default</li>
+  <li>
+    <p>shadowing, mutable varibales can be shadowed</p>
+
+    <details>
+      <summary>
+eg.
+</summary>
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let a = 1
+let a = 2
+</code></pre></div>      </div>
+    </details>
+  </li>
+  <li>scalar types, integers, floating-point numbers, booleans and characters</li>
+  <li>two’s complement wrapping. i8 when 256 -&gt; 0</li>
+  <li>turple and array. turple is a multi types data source with fixed length like array</li>
+  <li>(), an empty tuple</li>
+  <li>ownership, make memory safely guarantees</li>
 </ul>
 
 </article>

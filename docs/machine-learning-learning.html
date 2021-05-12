@@ -26,7 +26,9 @@
 
   <link rel="shortcut icon" type="image/x-icon" href="/logo.png" />
   <link rel="stylesheet" href="/assets/css/main.css" />
-</head><body a="light">
+  <script src="assets/js/mermaid.min.js"></script>
+</head>
+<body a="light">
     <main class="page-content" aria-label="Content">
       <div class="w">
         <a href="/">..</a>
@@ -78,24 +80,23 @@
   </li>
   <li>
     <p>状态模拟</p>
-
-    <script src="assets/js/mermaid.min.js"></script>
-    <div class="mermaid">
- graph LR;
-     Input--&gt;StatefulMode--&gt;Output;
-     StatefulMode-- SaveState --&gt;StatefulMode
- </div>
-  </li>
-  <li>
-    <p>CNN</p>
-
-    <script src="assets/js/mermaid.min.js"></script>
-    <div class="mermaid">
- graph LR;
-     Input--&gt;Convolution--&gt;Max-Polling--&gt;Full-Connected--&gt;Output;
- </div>
   </li>
 </ol>
+
+<div class="mermaid">
+graph LR;
+    Input--&gt;StatefulMode--&gt;Output;
+    StatefulMode-- SaveState --&gt;StatefulMode
+</div>
+
+<ol>
+  <li>CNN</li>
+</ol>
+
+<div class="mermaid">
+graph LR;
+    Input--&gt;Convolution--&gt;Max-Polling--&gt;Full-Connected--&gt;Output;
+</div>
 
 </article>
 
