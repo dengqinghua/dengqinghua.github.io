@@ -62,6 +62,36 @@ let a = 2
   <li>turple and array. turple is a multi types data source with fixed length like array</li>
   <li>(), an empty tuple</li>
   <li>ownership, make memory safely guarantees</li>
+  <li>mutation only once, can prevent data races at compile time
+    <ul>
+      <li>
+        <p>borrow as immutable, should not used after borrowed as mutable</p>
+
+        <details>
+          <summary>
+why?
+</summary>
+          <p>data race reason:</p>
+
+          <ul>
+            <li>Two or more pointers access the same data at the same time.</li>
+            <li>At least one of the pointers is being used to write to the data.</li>
+            <li>There’s no mechanism being used to synchronize access to the data.</li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </li>
+  <li>reference rule
+    <ul>
+      <li>any given time, you can have either one mutable ref or any number of immutable refs</li>
+      <li>refs must always be valid (no dangling refs)</li>
+    </ul>
+  </li>
+  <li>all things are private by default</li>
+  <li>package -&gt; crate(executable binary) -&gt; module</li>
+  <li>deref coercion, turn &amp;s2 to &amp;s2[..]</li>
+  <li>trait, interface like</li>
 </ul>
 
 </article>
