@@ -23,7 +23,7 @@ chmod -R 777 /var/www/site
 ```
 
 #### 软件安装
-安装 git, docker, docker-compose, jq, gitlab-runner, node, nginx
+安装 git, [docker](https://docs.docker.com/engine/install/centos/), docker-compose, jq, gitlab-runner, node, nginx
 
 --------
 {: data-content=" git " }
@@ -43,6 +43,13 @@ sudo yum install git
 
 ```
 sudo usermod -aG root gitlab-runner
+sudo usermod -aG docker gitlab-runner
+```
+设置 gitlab-runner 的基本 cp, nginx 等权限
+
+```
+sudo visudo
+gitlab-runner ALL=(ALL) NOPASSWD: /usr/sbin/nginx, /usr/bin/cp
 ```
 
 --------
@@ -231,49 +238,17 @@ prod-deploy:
 
 - [Netdata](https://github.com/jl-borges/netdata)
 
+- [BI](https://github.com/jl-borges/metabase)
+
 ### 中间件
 - [MySQL](https://github.com/jl-borges/maker/blob/main/mysql/docker-compose.yml)
 - [Redis](https://github.com/jl-borges/maker/blob/main/redis/docker-compose.yml)
 - [ELK](https://github.com/jl-borges/docker-elk)
 
-    ```
-    curl -L -O https://artifacts.elastic.co/downloads/beats/journalbeat/journalbeat-7.12.1-x86_64.rpm
-    sudo rpm -vi journalbeat-7.12.1-x86_64.rpm
-    ```
-
-    修改 /etc/journalbeat/journalbeat.yml 文件
-    ```
-    - paths: []
-      include_matches:
-        - "CONTAINER_NAME=prod_backend_service_8880"
-    setup.ilm.enabled: false
-
-    setup.template:
-      name: 'prod-journal-log'
-      pattern: 'prod-journal-log-*'
-      enabled: true
-
-    setup.kibana:
-      host: "172.21.xx.10:5601"
-      username: "elastic"
-      password: "changeme"
-
-    output.elasticsearch:
-      hosts: ["172.21.16.10:9200"]
-
-      username: "elastic"
-      password: "changeme"
-      index: "prod-journal-log-%{+yyyy.MM.dd}"
-
-    # 日志内容
-    logging.level: info
-    logging.to_files: true
-    logging.files:
-      path: /var/www/site/journalbeat
-      name: journalbeat
-      keepfiles: 7
-      permissions: 0644
-    ```
+```
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.12.1-x86_64.rpm
+sudo rpm -vi filebeat-7.12.1-x86_64.rpm
+```
 
 - Kafak, TODO
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-06-28T18:02:57+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-07-02T11:11:30+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
 </subtitle><author><name>dengqinghua</name></author><entry><title type="html">fingerstyle blues level 1-3</title><link href="https://dengqinghua.github.io/finger-style-blues-l123.html" rel="alternate" type="text/html" title="fingerstyle blues level 1-3" /><published>2021-06-28T00:00:00+08:00</published><updated>2021-06-28T00:00:00+08:00</updated><id>https://dengqinghua.github.io/finger-style-blues-l123</id><content type="html" xml:base="https://dengqinghua.github.io/finger-style-blues-l123.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
 
 &lt;ul&gt;
@@ -336,7 +336,7 @@ chmod -R 777 /var/www/site
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h4 id=&quot;软件安装&quot;&gt;软件安装&lt;/h4&gt;
-&lt;p&gt;安装 git, docker, docker-compose, jq, gitlab-runner, node, nginx&lt;/p&gt;
+&lt;p&gt;安装 git, &lt;a href=&quot;https://docs.docker.com/engine/install/centos/&quot;&gt;docker&lt;/a&gt;, docker-compose, jq, gitlab-runner, node, nginx&lt;/p&gt;
 
 &lt;hr data-content=&quot; git &quot; /&gt;
 
@@ -352,6 +352,12 @@ sudo yum install git
 &lt;p&gt;需要将 runner 加入到 root 中&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo usermod -aG root gitlab-runner
+sudo usermod -aG docker gitlab-runner
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;设置 gitlab-runner 的基本 cp, nginx 等权限&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo visudo
+gitlab-runner ALL=(ALL) NOPASSWD: /usr/sbin/nginx, /usr/bin/cp
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;hr data-content=&quot; node &quot; /&gt;
@@ -535,52 +541,23 @@ prod-deploy:
   &lt;li&gt;
     &lt;p&gt;&lt;a href=&quot;https://github.com/jl-borges/netdata&quot;&gt;Netdata&lt;/a&gt;&lt;/p&gt;
   &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/jl-borges/metabase&quot;&gt;BI&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;中间件&quot;&gt;中间件&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/jl-borges/maker/blob/main/mysql/docker-compose.yml&quot;&gt;MySQL&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/jl-borges/maker/blob/main/redis/docker-compose.yml&quot;&gt;Redis&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://github.com/jl-borges/docker-elk&quot;&gt;ELK&lt;/a&gt;&lt;/p&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/jl-borges/docker-elk&quot;&gt;ELK&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  curl -L -O https://artifacts.elastic.co/downloads/beats/journalbeat/journalbeat-7.12.1-x86_64.rpm
-  sudo rpm -vi journalbeat-7.12.1-x86_64.rpm
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.12.1-x86_64.rpm
+sudo rpm -vi filebeat-7.12.1-x86_64.rpm
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-    &lt;p&gt;修改 /etc/journalbeat/journalbeat.yml 文件&lt;/p&gt;
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  - paths: []
-    include_matches:
-      - &quot;CONTAINER_NAME=prod_backend_service_8880&quot;
-  setup.ilm.enabled: false
-
-  setup.template:
-    name: 'prod-journal-log'
-    pattern: 'prod-journal-log-*'
-    enabled: true
-
-  setup.kibana:
-    host: &quot;172.21.xx.10:5601&quot;
-    username: &quot;elastic&quot;
-    password: &quot;changeme&quot;
-
-  output.elasticsearch:
-    hosts: [&quot;172.21.16.10:9200&quot;]
-
-    username: &quot;elastic&quot;
-    password: &quot;changeme&quot;
-    index: &quot;prod-journal-log-%{+yyyy.MM.dd}&quot;
-
-  # 日志内容
-  logging.level: info
-  logging.to_files: true
-  logging.files:
-    path: /var/www/site/journalbeat
-    name: journalbeat
-    keepfiles: 7
-    permissions: 0644
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
+&lt;ul&gt;
   &lt;li&gt;Kafak, TODO&lt;/li&gt;
 &lt;/ul&gt;
 
