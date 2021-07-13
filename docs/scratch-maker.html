@@ -56,6 +56,7 @@
 </li>
 <li class="toc-entry toc-h3"><a href="#中间件">中间件</a></li>
 <li class="toc-entry toc-h3"><a href="#业务系统">业务系统</a></li>
+<li class="toc-entry toc-h3"><a href="#搭建系统路线">搭建系统路线</a></li>
 </ul><h3 id="运维">
 <a class="anchor" href="#%E8%BF%90%E7%BB%B4" aria-hidden="true"><span class="octicon octicon-link"></span></a>运维</h3>
 <h4 id="机器配置">
@@ -87,6 +88,10 @@ sudo yum install git
 </code></pre></div></div>
 
 <hr data-content=" gitlab-runner ">
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -L "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh" | sudo bash
+sudo -E yum install -y gitlab-runner
+</code></pre></div></div>
 
 <p><a href="https://docs.gitlab.com/runner/install/linux-repository.html">Ref</a></p>
 
@@ -202,6 +207,8 @@ location /api {
 <a class="anchor" href="#gitlab" aria-hidden="true"><span class="octicon octicon-link"></span></a>gitlab</h4>
 <p><a href="https://github.com/jl-borges/docker-gitlab">Ref</a></p>
 
+<p>注意，需要配置服务器的 swap, 见这里 <a href="https://docs.gitlab.com/omnibus/settings/memory_constrained_envs.html">SWAP</a></p>
+
 <p>需要更改的配置</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TZ=Asia/Shanghai
@@ -312,6 +319,70 @@ sudo rpm -vi filebeat-7.12.1-x86_64.rpm
   <li>Java, see legacy</li>
   <li>Antd-React, see legacy</li>
 </ul>
+
+<h3 id="搭建系统路线">
+<a class="anchor" href="#%E6%90%AD%E5%BB%BA%E7%B3%BB%E7%BB%9F%E8%B7%AF%E7%BA%BF" aria-hidden="true"><span class="octicon octicon-link"></span></a>搭建系统路线</h3>
+<ol>
+  <li>
+    <p>域名购买, ssl 证书申请, 域名备案</p>
+  </li>
+  <li>
+    <p>邮箱配置, 办公软件等</p>
+  </li>
+  <li>购买机器和服务
+    <ul>
+      <li>dev 机器, 4核8G 50G硬盘, 2M带宽 3619.74 元/年, 377.66 元/月</li>
+      <li>qa 机器, 2核4G 50G硬盘, 2M带宽 3619.74 元/年, 377.66 元/月</li>
+      <li>prod 机器, 2核4G 50G硬盘, 2M带宽 1980.3 元, 205 元/月</li>
+      <li>ES 服务 1核2G, 189.60 元/月</li>
+      <li>MySQL 主库 552 元/月, 一年 5497.92 元</li>
+      <li>MySQL 从库 174 元/月, 一年 5497.92 元</li>
+      <li>短信服务 470.00 元/1万条</li>
+      <li>七牛服务 预计 300/月 (使用 CDN 功能, 不包括流量加速等)</li>
+    </ul>
+
+    <blockquote>
+      <p>机器和服务总费用: 按月购买: 2644 元/月</p>
+    </blockquote>
+  </li>
+  <li>基础服务搭建(1天)
+    <ul>
+      <li>gitlab, 代码仓库, 部署在 dev 机器上</li>
+      <li>maven, java 基础库</li>
+      <li>netdata, 服务器监控</li>
+      <li>metabase, bi工具</li>
+      <li>elk, 日志收集工具</li>
+      <li>sba, java 日志收集</li>
+      <li>redis 服务</li>
+    </ul>
+  </li>
+  <li>基础代码部署和初次上线(1天)
+    <ul>
+      <li>利用基础包, 生成后端的基础代码</li>
+      <li>利用 antd, 生成现成的 admin 代码</li>
+      <li>nginx 配置</li>
+      <li>gitlab-ci 配置</li>
+    </ul>
+  </li>
+  <li>核心配置(1天)
+    <ul>
+      <li>包名称</li>
+      <li>支付秘钥</li>
+      <li>短信/七牛配置</li>
+      <li>数据库/redis 配置等</li>
+    </ul>
+  </li>
+  <li>测试和数据配置(2天)
+    <ul>
+      <li>核心接口整理</li>
+      <li>配置后台数据</li>
+    </ul>
+
+    <blockquote>
+      <p>已经备案的基础下, 大概在 5 天左右的时间, 从 0 到 1 交付一个已上线的后端 API 调用 和 具有基础功能的 admin 后台</p>
+    </blockquote>
+  </li>
+</ol>
 
 </article>
 

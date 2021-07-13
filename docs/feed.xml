@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-07-02T11:11:30+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-07-13T16:59:10+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
 </subtitle><author><name>dengqinghua</name></author><entry><title type="html">fingerstyle blues level 1-3</title><link href="https://dengqinghua.github.io/finger-style-blues-l123.html" rel="alternate" type="text/html" title="fingerstyle blues level 1-3" /><published>2021-06-28T00:00:00+08:00</published><updated>2021-06-28T00:00:00+08:00</updated><id>https://dengqinghua.github.io/finger-style-blues-l123</id><content type="html" xml:base="https://dengqinghua.github.io/finger-style-blues-l123.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
 
 &lt;ul&gt;
@@ -347,6 +347,10 @@ sudo yum install git
 
 &lt;hr data-content=&quot; gitlab-runner &quot; /&gt;
 
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl -L &quot;https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh&quot; | sudo bash
+sudo -E yum install -y gitlab-runner
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;p&gt;&lt;a href=&quot;https://docs.gitlab.com/runner/install/linux-repository.html&quot;&gt;Ref&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;需要将 runner 加入到 root 中&lt;/p&gt;
@@ -459,6 +463,8 @@ location /api {
 &lt;h4 id=&quot;gitlab&quot;&gt;gitlab&lt;/h4&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/jl-borges/docker-gitlab&quot;&gt;Ref&lt;/a&gt;&lt;/p&gt;
 
+&lt;p&gt;注意，需要配置服务器的 swap, 见这里 &lt;a href=&quot;https://docs.gitlab.com/omnibus/settings/memory_constrained_envs.html&quot;&gt;SWAP&lt;/a&gt;&lt;/p&gt;
+
 &lt;p&gt;需要更改的配置&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;TZ=Asia/Shanghai
@@ -565,7 +571,70 @@ sudo rpm -vi filebeat-7.12.1-x86_64.rpm
 &lt;ul&gt;
   &lt;li&gt;Java, see legacy&lt;/li&gt;
   &lt;li&gt;Antd-React, see legacy&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">运维 机器配置 4核8G</summary></entry><entry><title type="html">跟着感觉走</title><link href="https://dengqinghua.github.io/follow-the-beat.html" rel="alternate" type="text/html" title="跟着感觉走" /><published>2021-04-13T00:00:00+08:00</published><updated>2021-04-13T00:00:00+08:00</updated><id>https://dengqinghua.github.io/follow-the-beat</id><content type="html" xml:base="https://dengqinghua.github.io/follow-the-beat.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;搭建系统路线&quot;&gt;搭建系统路线&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;域名购买, ssl 证书申请, 域名备案&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;邮箱配置, 办公软件等&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;购买机器和服务
+    &lt;ul&gt;
+      &lt;li&gt;dev 机器, 4核8G 50G硬盘, 2M带宽 3619.74 元/年, 377.66 元/月&lt;/li&gt;
+      &lt;li&gt;qa 机器, 2核4G 50G硬盘, 2M带宽 3619.74 元/年, 377.66 元/月&lt;/li&gt;
+      &lt;li&gt;prod 机器, 2核4G 50G硬盘, 2M带宽 1980.3 元, 205 元/月&lt;/li&gt;
+      &lt;li&gt;ES 服务 1核2G, 189.60 元/月&lt;/li&gt;
+      &lt;li&gt;MySQL 主库 552 元/月, 一年 5497.92 元&lt;/li&gt;
+      &lt;li&gt;MySQL 从库 174 元/月, 一年 5497.92 元&lt;/li&gt;
+      &lt;li&gt;短信服务 470.00 元/1万条&lt;/li&gt;
+      &lt;li&gt;七牛服务 预计 300/月 (使用 CDN 功能, 不包括流量加速等)&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;机器和服务总费用: 按月购买: 2644 元/月&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;基础服务搭建(1天)
+    &lt;ul&gt;
+      &lt;li&gt;gitlab, 代码仓库, 部署在 dev 机器上&lt;/li&gt;
+      &lt;li&gt;maven, java 基础库&lt;/li&gt;
+      &lt;li&gt;netdata, 服务器监控&lt;/li&gt;
+      &lt;li&gt;metabase, bi工具&lt;/li&gt;
+      &lt;li&gt;elk, 日志收集工具&lt;/li&gt;
+      &lt;li&gt;sba, java 日志收集&lt;/li&gt;
+      &lt;li&gt;redis 服务&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;基础代码部署和初次上线(1天)
+    &lt;ul&gt;
+      &lt;li&gt;利用基础包, 生成后端的基础代码&lt;/li&gt;
+      &lt;li&gt;利用 antd, 生成现成的 admin 代码&lt;/li&gt;
+      &lt;li&gt;nginx 配置&lt;/li&gt;
+      &lt;li&gt;gitlab-ci 配置&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;核心配置(1天)
+    &lt;ul&gt;
+      &lt;li&gt;包名称&lt;/li&gt;
+      &lt;li&gt;支付秘钥&lt;/li&gt;
+      &lt;li&gt;短信/七牛配置&lt;/li&gt;
+      &lt;li&gt;数据库/redis 配置等&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;测试和数据配置(2天)
+    &lt;ul&gt;
+      &lt;li&gt;核心接口整理&lt;/li&gt;
+      &lt;li&gt;配置后台数据&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;已经备案的基础下, 大概在 5 天左右的时间, 从 0 到 1 交付一个已上线的后端 API 调用 和 具有基础功能的 admin 后台&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>dengqinghua</name></author><summary type="html">运维 机器配置 4核8G</summary></entry><entry><title type="html">跟着感觉走</title><link href="https://dengqinghua.github.io/follow-the-beat.html" rel="alternate" type="text/html" title="跟着感觉走" /><published>2021-04-13T00:00:00+08:00</published><updated>2021-04-13T00:00:00+08:00</updated><id>https://dengqinghua.github.io/follow-the-beat</id><content type="html" xml:base="https://dengqinghua.github.io/follow-the-beat.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
 
 &lt;ul&gt;
   &lt;li&gt;曲谱: &lt;a href=&quot;assets/js/pdf.js/web/viewer.html?file=/assets/doc/跟着感觉走.pdf&quot;&gt;PDF&lt;/a&gt; &lt;a href=&quot;assets/doc/跟着感觉走.gp&quot;&gt;GuitarPro&lt;/a&gt;&lt;/li&gt;
