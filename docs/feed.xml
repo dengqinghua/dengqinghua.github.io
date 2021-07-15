@@ -1,5 +1,179 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-07-14T11:02:11+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
-</subtitle><author><name>dengqinghua</name></author><entry><title type="html">fingerstyle blues level 1-3</title><link href="https://dengqinghua.github.io/finger-style-blues-l123.html" rel="alternate" type="text/html" title="fingerstyle blues level 1-3" /><published>2021-06-28T00:00:00+08:00</published><updated>2021-06-28T00:00:00+08:00</updated><id>https://dengqinghua.github.io/finger-style-blues-l123</id><content type="html" xml:base="https://dengqinghua.github.io/finger-style-blues-l123.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-07-15T10:53:52+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+</subtitle><author><name>dengqinghua</name></author><entry><title type="html">晋升指南笔记-P1</title><link href="https://dengqinghua.github.io/learn-how-to-promote.html" rel="alternate" type="text/html" title="晋升指南笔记-P1" /><published>2021-07-14T00:00:00+08:00</published><updated>2021-07-14T00:00:00+08:00</updated><id>https://dengqinghua.github.io/learn-how-to-promote</id><content type="html" xml:base="https://dengqinghua.github.io/learn-how-to-promote.html">&lt;h2 id=&quot;comd-能力模型&quot;&gt;COMD 能力模型&lt;/h2&gt;
+&lt;p&gt;COMD, aka, Complexity-Oriented Multi-Dimension 多维度 + 复杂度&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;维度
+    &lt;ul&gt;
+      &lt;li&gt;业务&lt;/li&gt;
+      &lt;li&gt;技术&lt;/li&gt;
+      &lt;li&gt;管理&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;复杂度
+    &lt;ul&gt;
+      &lt;li&gt;规模, 多少人参与, 多少个系统, 多少个功能, 多少个业务&lt;/li&gt;
+      &lt;li&gt;时间, 开发时间周期, 技术预测的周期(多长时间进行技术更替), 业务规划的时间(1年/3年的业务方向和战略)&lt;/li&gt;
+      &lt;li&gt;环境, 稳定性(是否经常变化), 透明性(是否能及时获取到商业资讯) 和 可预见性(是否会发生无法预测的黑天鹅事件)&lt;/li&gt;
+      &lt;li&gt;创新, 包括 理论创新(新理论 从0到1), 思想创新(新的思路思考问题) 和 技巧创新(非常规的细节和技巧)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;简单归纳如下:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;维度/复杂度&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;规模复杂度&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;时间复杂度&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;环境复杂度&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;创新复杂度&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;技术维度&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;代码量, 系统数量&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;预测x年内的技术发展&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;稳定性低，透明度高，可预见性高&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;N/A&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;管理维度&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;涉及到团队的个数, 团队的人数&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;项目的持续时间&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;稳定性高，透明度高，可预见性高&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;N/A&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;业务维度&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;功能点的个数, 业务方数量&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;x年的业务规划&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;稳定性低，透明度低，可预见性低&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;N/A&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;所以，如果以上面的 COMD 能力模型来思考 &lt;strong&gt;企业的职级评定&lt;/strong&gt; 和 &lt;strong&gt;个人的能力评定&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;企业维度&quot;&gt;企业维度&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;员工技术能力如何?(体现在之前做过的项目经历，工作时长，属于例行工作吗? 创新性如何?)&lt;/li&gt;
+  &lt;li&gt;员工会管理吗? (管理了多少个团队, 或者管理了多少人? 主导什么样的项目?)&lt;/li&gt;
+  &lt;li&gt;员工业务能力怎么样?(最复杂的业务是什么? 是否参与过业务规划? 对未来业务的定位和判断是什么)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;个人维度&quot;&gt;个人维度&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;我的技术能力如何体现? (如何参与复杂的系统, 预测技术发展 和 进行技术创新)&lt;/li&gt;
+  &lt;li&gt;我如何参与管理? (管理规模, 自我定位 和 时间分配)&lt;/li&gt;
+  &lt;li&gt;我如何参与业务? (关键业务落地, x年业务规划如何制定? 如何进行业务创新)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+
+  &lt;ol&gt;
+    &lt;li&gt;我的技术能力如何体现?
+      &lt;ul&gt;
+        &lt;li&gt;从 0 到 1 的能力, 快速搭建一套完整的前后端系统, 包括 基础设施&lt;/li&gt;
+        &lt;li&gt;在公司首席架构师带领下, 参与并主导了公司最复杂的系统: 角标系统的重构和落地(耗时1个月, 涉及三个部分的改造, 进行了技巧创新)&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;我如何参与管理?
+      &lt;ul&gt;
+        &lt;li&gt;管理过 13个人的团队, 在管理期间主导了招商的商家从 入驻 到 上架 商品的全流程的技术设计&lt;/li&gt;
+        &lt;li&gt;数据中台服务, 涉及到 三个团队, 耗时两个月左右, 负责数据中心的整体建模, 方案设计和最终落地&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;我如何参与业务?
+      &lt;ul&gt;
+        &lt;li&gt;从 0 到 1 开启 西瓜AI 业务线, 推动力 西瓜AI 课 从 投放, 拉新, 课程涉及 和 课程续费 的完整落地&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+
+  &lt;p&gt;从上面的内容来看, 还是有很大的进步空间&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;p6p9&quot;&gt;P6~P9&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;职级&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;要求&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;技术-管理-业务比重&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;P6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;完成业务功能&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10-0-0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;P7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;管理1个团队中3~10人&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7-2-1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;P8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;管理一条业务线, 包括多个团队&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;N/A&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;P9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;管理一条事业部, 包括多个业务线&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;N/A&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;什么样的人事品质更容易晋升&quot;&gt;什么样的人/事/品质更容易晋升&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;主动做事
+    &lt;ul&gt;
+      &lt;li&gt;关注业务目标和业务数据&lt;/li&gt;
+      &lt;li&gt;关注自己负责的系统的各种指标和数据(机房部署/QPS/SLI/SLO/LATENCY)&lt;/li&gt;
+      &lt;li&gt;关注对外的时间承诺&lt;/li&gt;
+      &lt;li&gt;关注主管的成长路径&lt;/li&gt;
+      &lt;li&gt;主动找主管沟通&lt;/li&gt;
+      &lt;li&gt;主动和业务沟通&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;这一块很多事情是偏沟通的, 主动找你的主管沟通, 主动了解所负责的业务的数据&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;成长原则
+    &lt;ul&gt;
+      &lt;li&gt;跳出舒适圈&lt;/li&gt;
+      &lt;li&gt;定期复盘&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;复盘: 做的好的/不好的/不好的原因/改进的点/踩过的坑&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;价值原则
+    &lt;ul&gt;
+      &lt;li&gt;个人能力/影响力价值(主要在面试的时候展示)&lt;/li&gt;
+      &lt;li&gt;业务价值(晋升时候展示)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;需要分配好自身的时间, 不要在 &lt;strong&gt;看起来很重要但是对工作看来没有长远价值的事情&lt;/strong&gt; 上花太多时间, 比如学习 编译原理, 算法导论, 每天刷 leecode 等等&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;绩效关注结果, 晋升关注能力的提升&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;晋升的通用步骤&quot;&gt;晋升的通用步骤&lt;/h2&gt;
+
+&lt;div class=&quot;mermaid&quot;&gt;
+graph TB;
+    id1[当前级别获得好绩效]--&amp;gt;id2[按下一级别的要求提升自身能力]--&amp;gt;id3[争取下一级别的事情]--&amp;gt;id4[拿到下一个级别的工作结果]--&amp;gt;id5[参加职级晋升]--&amp;gt;id1;
+&lt;/div&gt;</content><author><name>dengqinghua</name></author><summary type="html">COMD 能力模型 COMD, aka, Complexity-Oriented Multi-Dimension 多维度 + 复杂度</summary></entry><entry><title type="html">fingerstyle blues level 1-3</title><link href="https://dengqinghua.github.io/finger-style-blues-l123.html" rel="alternate" type="text/html" title="fingerstyle blues level 1-3" /><published>2021-06-28T00:00:00+08:00</published><updated>2021-06-28T00:00:00+08:00</updated><id>https://dengqinghua.github.io/finger-style-blues-l123</id><content type="html" xml:base="https://dengqinghua.github.io/finger-style-blues-l123.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
 
 &lt;ul&gt;
   &lt;li&gt;曲谱: &lt;a href=&quot;https://pan.baidu.com/disk/pdfview?path=%2F42%2F%E9%9F%B3%E4%B9%90%2F%E6%95%99%E6%9D%90%2FProGuitar%2FfingerstyleBlues%2Fproguitar-fingerstyle-blues.pdf&quot;&gt;PDF&lt;/a&gt;&lt;/li&gt;
@@ -929,28 +1103,4 @@ sudo rpm -vi filebeat-7.12.1-x86_64.rpm
 
 &lt;ol&gt;
   &lt;li&gt;录音之前多听听原曲, 录音的时候跟着原曲弹奏几遍, 找找律动的感觉&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry><entry><title type="html">boom-chick 风格笔记</title><link href="https://dengqinghua.github.io/finger-style-basics.html" rel="alternate" type="text/html" title="boom-chick 风格笔记" /><published>2021-01-31T00:00:00+08:00</published><updated>2021-01-31T00:00:00+08:00</updated><id>https://dengqinghua.github.io/finger-style-basics</id><content type="html" xml:base="https://dengqinghua.github.io/finger-style-basics.html">&lt;hr data-content=&quot; Part1 &quot; /&gt;
-
-&lt;p&gt;该部分主要是需要训练 &lt;strong&gt;右手大拇指 和 右手其他指头 的独立性&lt;/strong&gt; (AKA: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Thumb Independent&lt;/code&gt;)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;assets/images/thumb-independent.png&quot; alt=&quot;images/thumb-independent.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;注意大拇指需要放松, 有一种跳跃的感觉为佳&lt;/p&gt;
-
-&lt;h3 id=&quot;练习1&quot;&gt;练习1&lt;/h3&gt;
-
-&lt;p&gt;分别在 1,2,3,4 拍去弹奏&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;assets/images/thumb-chick-example-1.png&quot; alt=&quot;assets/images/thumb-chick-example-1.png&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;练习2&quot;&gt;练习2&lt;/h3&gt;
-
-&lt;p&gt;分别在 1and,2and,3and,4and 去弹奏&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;assets/images/thumb-chick-example-2.png&quot; alt=&quot;assets/images/thumb-chick-example-2.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;该部分的练习比较难的是怎么4弦的闷音的同时, 让3弦奏响&lt;/p&gt;
-
-&lt;h3 id=&quot;练习3&quot;&gt;练习3&lt;/h3&gt;
-
-&lt;p&gt;音阶走一个! 分别用 2分, 4分 和 8分 来弹奏 G 调音阶&lt;/p&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry></feed>
+&lt;/ol&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry></feed>
