@@ -39,6 +39,10 @@ COMD, aka, Complexity-Oriented Multi-Dimension 多维度 + 复杂度
 - 我如何参与管理? (管理规模, 自我定位 和 时间分配)
 - 我如何参与业务? (关键业务落地, x年业务规划如何制定? 如何进行业务创新)
 
+<details>
+<summary  markdown="0">
+Me?
+</summary>
 >
 1. 我的技术能力如何体现?
     - 从 0 到 1 的能力, 快速搭建一套完整的前后端系统, 包括 基础设施
@@ -52,6 +56,7 @@ COMD, aka, Complexity-Oriented Multi-Dimension 多维度 + 复杂度
     - 从 0 到 1 开启 西瓜AI 业务线, 推动力 西瓜AI 课 从 投放, 拉新, 课程涉及 和 课程续费 的完整落地
 >
 从上面的内容来看, 还是有很大的进步空间
+</details>
 
 ## P6~P9
 

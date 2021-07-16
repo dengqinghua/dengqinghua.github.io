@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-07-15T10:53:52+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-07-16T09:57:09+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
 </subtitle><author><name>dengqinghua</name></author><entry><title type="html">晋升指南笔记-P1</title><link href="https://dengqinghua.github.io/learn-how-to-promote.html" rel="alternate" type="text/html" title="晋升指南笔记-P1" /><published>2021-07-14T00:00:00+08:00</published><updated>2021-07-14T00:00:00+08:00</updated><id>https://dengqinghua.github.io/learn-how-to-promote</id><content type="html" xml:base="https://dengqinghua.github.io/learn-how-to-promote.html">&lt;h2 id=&quot;comd-能力模型&quot;&gt;COMD 能力模型&lt;/h2&gt;
 &lt;p&gt;COMD, aka, Complexity-Oriented Multi-Dimension 多维度 + 复杂度&lt;/p&gt;
 
@@ -73,30 +73,35 @@
   &lt;li&gt;我如何参与业务? (关键业务落地, x年业务规划如何制定? 如何进行业务创新)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;blockquote&gt;
+&lt;details&gt;
+  &lt;summary&gt;
+Me?
+&lt;/summary&gt;
+  &lt;blockquote&gt;
 
-  &lt;ol&gt;
-    &lt;li&gt;我的技术能力如何体现?
-      &lt;ul&gt;
-        &lt;li&gt;从 0 到 1 的能力, 快速搭建一套完整的前后端系统, 包括 基础设施&lt;/li&gt;
-        &lt;li&gt;在公司首席架构师带领下, 参与并主导了公司最复杂的系统: 角标系统的重构和落地(耗时1个月, 涉及三个部分的改造, 进行了技巧创新)&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/li&gt;
-    &lt;li&gt;我如何参与管理?
-      &lt;ul&gt;
-        &lt;li&gt;管理过 13个人的团队, 在管理期间主导了招商的商家从 入驻 到 上架 商品的全流程的技术设计&lt;/li&gt;
-        &lt;li&gt;数据中台服务, 涉及到 三个团队, 耗时两个月左右, 负责数据中心的整体建模, 方案设计和最终落地&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/li&gt;
-    &lt;li&gt;我如何参与业务?
-      &lt;ul&gt;
-        &lt;li&gt;从 0 到 1 开启 西瓜AI 业务线, 推动力 西瓜AI 课 从 投放, 拉新, 课程涉及 和 课程续费 的完整落地&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
+    &lt;ol&gt;
+      &lt;li&gt;我的技术能力如何体现?
+        &lt;ul&gt;
+          &lt;li&gt;从 0 到 1 的能力, 快速搭建一套完整的前后端系统, 包括 基础设施&lt;/li&gt;
+          &lt;li&gt;在公司首席架构师带领下, 参与并主导了公司最复杂的系统: 角标系统的重构和落地(耗时1个月, 涉及三个部分的改造, 进行了技巧创新)&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;我如何参与管理?
+        &lt;ul&gt;
+          &lt;li&gt;管理过 13个人的团队, 在管理期间主导了招商的商家从 入驻 到 上架 商品的全流程的技术设计&lt;/li&gt;
+          &lt;li&gt;数据中台服务, 涉及到 三个团队, 耗时两个月左右, 负责数据中心的整体建模, 方案设计和最终落地&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;我如何参与业务?
+        &lt;ul&gt;
+          &lt;li&gt;从 0 到 1 开启 西瓜AI 业务线, 推动力 西瓜AI 课 从 投放, 拉新, 课程涉及 和 课程续费 的完整落地&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
 
-  &lt;p&gt;从上面的内容来看, 还是有很大的进步空间&lt;/p&gt;
-&lt;/blockquote&gt;
+    &lt;p&gt;从上面的内容来看, 还是有很大的进步空间&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/details&gt;
 
 &lt;h2 id=&quot;p6p9&quot;&gt;P6~P9&lt;/h2&gt;
 
