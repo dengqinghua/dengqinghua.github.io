@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-07-16T09:57:09+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
-</subtitle><author><name>dengqinghua</name></author><entry><title type="html">晋升指南笔记-P1</title><link href="https://dengqinghua.github.io/learn-how-to-promote.html" rel="alternate" type="text/html" title="晋升指南笔记-P1" /><published>2021-07-14T00:00:00+08:00</published><updated>2021-07-14T00:00:00+08:00</updated><id>https://dengqinghua.github.io/learn-how-to-promote</id><content type="html" xml:base="https://dengqinghua.github.io/learn-how-to-promote.html">&lt;h2 id=&quot;comd-能力模型&quot;&gt;COMD 能力模型&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-07-19T14:20:37+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+</subtitle><author><name>dengqinghua</name></author><entry><title type="html">晋升指南笔记</title><link href="https://dengqinghua.github.io/learn-how-to-promote.html" rel="alternate" type="text/html" title="晋升指南笔记" /><published>2021-07-14T00:00:00+08:00</published><updated>2021-07-14T00:00:00+08:00</updated><id>https://dengqinghua.github.io/learn-how-to-promote</id><content type="html" xml:base="https://dengqinghua.github.io/learn-how-to-promote.html">&lt;h2 id=&quot;comd-能力模型&quot;&gt;COMD 能力模型&lt;/h2&gt;
 &lt;p&gt;COMD, aka, Complexity-Oriented Multi-Dimension 多维度 + 复杂度&lt;/p&gt;
 
 &lt;ol&gt;
@@ -173,12 +173,82 @@ Me?
   &lt;p&gt;绩效关注结果, 晋升关注能力的提升&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&quot;晋升的通用步骤&quot;&gt;晋升的通用步骤&lt;/h2&gt;
+&lt;h2 id=&quot;通用步骤&quot;&gt;通用步骤&lt;/h2&gt;
 
 &lt;div class=&quot;mermaid&quot;&gt;
 graph TB;
     id1[当前级别获得好绩效]--&amp;gt;id2[按下一级别的要求提升自身能力]--&amp;gt;id3[争取下一级别的事情]--&amp;gt;id4[拿到下一个级别的工作结果]--&amp;gt;id5[参加职级晋升]--&amp;gt;id1;
-&lt;/div&gt;</content><author><name>dengqinghua</name></author><summary type="html">COMD 能力模型 COMD, aka, Complexity-Oriented Multi-Dimension 多维度 + 复杂度</summary></entry><entry><title type="html">fingerstyle blues level 1-3</title><link href="https://dengqinghua.github.io/finger-style-blues-l123.html" rel="alternate" type="text/html" title="fingerstyle blues level 1-3" /><published>2021-06-28T00:00:00+08:00</published><updated>2021-06-28T00:00:00+08:00</updated><id>https://dengqinghua.github.io/finger-style-blues-l123</id><content type="html" xml:base="https://dengqinghua.github.io/finger-style-blues-l123.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;ppt&quot;&gt;PPT&lt;/h2&gt;
+&lt;h3 id=&quot;基本认知&quot;&gt;基本认知&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;晋升需要有战功, 有绩效, 但是更重要的是突出 &lt;strong&gt;能力的提升&lt;/strong&gt;, 即 能力已经到底 晋升的级别&lt;/li&gt;
+  &lt;li&gt;内容需要丰富, 但是需要有重点, 不能过于累赘让别人抓不住重点&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;框架&quot;&gt;框架&lt;/h3&gt;
+&lt;div class=&quot;mermaid&quot;&gt;
+graph LR;
+    ppt([框架])--&amp;gt;introduction[自我介绍];
+    ppt--&amp;gt;main[自述材料];
+    ppt--&amp;gt;other[辅助内容];
+    introduction--&amp;gt;mainPart1[基本信息, 包括团队, 业务, 职级 和 晋升的级别];
+    introduction--&amp;gt;mainPart2[当前职责, 包括 业务, 团队规模, 核心岗位等情况];
+    introduction--&amp;gt;mainPart3[工作经历, 需要突出亮点内容];
+    main--&amp;gt;main1[3到5个论据, 展示出能力提升到申请的职级的级别];
+    other--&amp;gt;other1[自我总结];
+    other--&amp;gt;other2[发展规划];
+&lt;/div&gt;
+
+&lt;h3 id=&quot;自述材料&quot;&gt;自述材料&lt;/h3&gt;
+
+&lt;p&gt;利用 &lt;a href=&quot;https://zhuanlan.zhihu.com/p/46584109&quot;&gt;金字塔原理&lt;/a&gt; 来描述做了什么。&lt;/p&gt;
+
+&lt;p&gt;技巧&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;将 PPT 当做 &lt;strong&gt;提词器&lt;/strong&gt; 而不是演讲稿&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;内容和 &lt;strong&gt;目标职级&lt;/strong&gt; 能力要求强相关&lt;/p&gt;
+
+    &lt;details&gt;
+      &lt;summary&gt;
+  Me?
+  &lt;/summary&gt;
+      &lt;blockquote&gt;
+
+        &lt;p&gt;这个是非常大的教训，上次述职答辩时，过多地时间花在介绍业务的问题
+  和当前的现状上，而不是放在 &lt;strong&gt;我已经达到了XXX级别的要求&lt;/strong&gt; 这一点上面。
+  最后获得的反馈是：&lt;/p&gt;
+        &lt;ol&gt;
+          &lt;li&gt;仿佛走错了片场，以为是产品的述职&lt;/li&gt;
+          &lt;li&gt;你现在做的事情体现的能力，是你当前的职级的能力，你很棒，但是并未达到 XXX级别 的要求&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/blockquote&gt;
+    &lt;/details&gt;
+  &lt;/li&gt;
+  &lt;li&gt;STAR(situation, task, action, result) 来描述论剧
+    &lt;ul&gt;
+      &lt;li&gt;Task 和 Action 一定要注意原创性(也就是哪些是你做的, 项目的成功是否代表你本身非常厉害, 你在里面做了什么很重要)&lt;/li&gt;
+      &lt;li&gt;注意业务质量的输出, 成果是什么(用绝对值, 用具体的金额)&lt;/li&gt;
+      &lt;li&gt;Result 一定要写的很具体&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;时间控制
+    &lt;ul&gt;
+      &lt;li&gt;提前预演(自己单独讲一遍, 拉上组内评审一遍)&lt;/li&gt;
+      &lt;li&gt;用图来简化自己描述背景的时间&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;学习方法&quot;&gt;学习方法&lt;/h2&gt;
+&lt;h3 id=&quot;海绵学习法-10000小时理论&quot;&gt;海绵学习法-10000小时理论&lt;/h3&gt;
+&lt;p&gt;每天一小时(早上半小时, 上班前半小时, 睡前半小时), 周末两小时&lt;/p&gt;
+
+&lt;p&gt;关键是要 &lt;strong&gt;可以坚持下来的方式&lt;/strong&gt;, 其实就跟减肥健身差不多, 需要坚持, 以 5年, 10年的维度来看&lt;/p&gt;</content><author><name>dengqinghua</name></author><summary type="html">COMD 能力模型 COMD, aka, Complexity-Oriented Multi-Dimension 多维度 + 复杂度</summary></entry><entry><title type="html">fingerstyle blues level 1-3</title><link href="https://dengqinghua.github.io/finger-style-blues-l123.html" rel="alternate" type="text/html" title="fingerstyle blues level 1-3" /><published>2021-06-28T00:00:00+08:00</published><updated>2021-06-28T00:00:00+08:00</updated><id>https://dengqinghua.github.io/finger-style-blues-l123</id><content type="html" xml:base="https://dengqinghua.github.io/finger-style-blues-l123.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
 
 &lt;ul&gt;
   &lt;li&gt;曲谱: &lt;a href=&quot;https://pan.baidu.com/disk/pdfview?path=%2F42%2F%E9%9F%B3%E4%B9%90%2F%E6%95%99%E6%9D%90%2FProGuitar%2FfingerstyleBlues%2Fproguitar-fingerstyle-blues.pdf&quot;&gt;PDF&lt;/a&gt;&lt;/li&gt;
@@ -859,7 +929,7 @@ sudo rpm -vi filebeat-7.12.1-x86_64.rpm
   &lt;li&gt;
     &lt;p&gt;654&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-C-654.png&quot; alt=&quot;chord-inversion-C-654.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-C-654.png&quot; alt=&quot;chord-inversion-C-654.png&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;543&lt;/p&gt;

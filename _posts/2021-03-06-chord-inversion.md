@@ -13,7 +13,7 @@ title: 转位和弦
 
 1. 654
 
-    ![chord-inversion-C-654.png](assets/images/chord-inversion-C-654.png){: height="150px"  }
+    ![chord-inversion-C-654.png](assets/images/chord-inversion-C-654.png)
 
 2. 543
 

@@ -42,7 +42,7 @@ p { margin: 1rem 0; }
 
 li { margin: 0.4rem 0; }
 
-*:target { background: yellow; }
+// *:target { background: yellow; }
 
 .w {
   // width: fit-content;
@@ -114,4 +114,9 @@ img {
 
 div.mermaid {
   text-align: center;
+}
+
+a {
+  color: #37a;
+  text-decoration: none
 }
