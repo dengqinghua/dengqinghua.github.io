@@ -17,34 +17,34 @@ title: 转位和弦
 
 2. 543
 
-    ![chord-inversion-C-543.png](assets/images/chord-inversion-C-543.png){: height="150px"  }
+    ![chord-inversion-C-543.png](assets/images/chord-inversion-C-543.png)
 
 3. 432
 
-    ![chord-inversion-C-432.png](assets/images/chord-inversion-C-432.png){: height="150px"  }
+    ![chord-inversion-C-432.png](assets/images/chord-inversion-C-432.png)
 
 4. 321
 
-    ![chord-inversion-C-321.png](assets/images/chord-inversion-C-321.png){: height="150px"  }
+    ![chord-inversion-C-321.png](assets/images/chord-inversion-C-321.png)
 
 --------
 {: data-content=" 小三 " }
 
 1. 654
 
-    ![chord-inversion-Cm-654.png](assets/images/chord-inversion-Cm-654.png){: height="150px"  }
+    ![chord-inversion-Cm-654.png](assets/images/chord-inversion-Cm-654.png)
 
 2. 543
 
-    ![chord-inversion-Cm-543.png](assets/images/chord-inversion-Cm-543.png){: height="150px"  }
+    ![chord-inversion-Cm-543.png](assets/images/chord-inversion-Cm-543.png)
 
 3. 432
 
-    ![chord-inversion-Cm-432.png](assets/images/chord-inversion-Cm-432.png){: height="150px"  }
+    ![chord-inversion-Cm-432.png](assets/images/chord-inversion-Cm-432.png)
 
 4. 321
 
-    ![chord-inversion-Cm-321.png](assets/images/chord-inversion-Cm-321.png){: height="150px"  }
+    ![chord-inversion-Cm-321.png](assets/images/chord-inversion-Cm-321.png)
 
 --------
 {: data-content=" 大七 " }
@@ -54,25 +54,25 @@ title: 转位和弦
 
     七级为 root 时候, 音色会比较奇怪, 但是可以作为一个比较好的过渡和弦
 
-    ![chord-inversion-CM7-6543.png](assets/images/chord-inversion-Cmajor7-6543.png){: height="150px"  }
+    ![chord-inversion-CM7-6543.png](assets/images/chord-inversion-Cmajor7-6543.png)
 
 2. 5432
 
     注: 一级转位(3 为 root)时候非常好听
 
-    ![chord-inversion-CM7-5432.png](assets/images/chord-inversion-Cmajor7-5432.png){: height="150px"  }
+    ![chord-inversion-CM7-5432.png](assets/images/chord-inversion-Cmajor7-5432.png)
 
 3. 4321
 
-    ![chord-inversion-CM7-4321.png](assets/images/chord-inversion-Cmajor7-4321.png){: height="150px"  }
+    ![chord-inversion-CM7-4321.png](assets/images/chord-inversion-Cmajor7-4321.png)
 
 4. 6432
 
-    ![chord-inversion-CM7-6432.png](assets/images/chord-inversion-Cmajor7-6432.png){: height="150px"  }
+    ![chord-inversion-CM7-6432.png](assets/images/chord-inversion-Cmajor7-6432.png)
 
 5. 5321
 
-    ![chord-inversion-CM7-5321.png](assets/images/chord-inversion-Cmajor7-5321.png){: height="150px"  }
+    ![chord-inversion-CM7-5321.png](assets/images/chord-inversion-Cmajor7-5321.png)
 
 ---------------
 {: data-content=" 属七 " }
@@ -80,23 +80,23 @@ title: 转位和弦
 
 1. 6543
 
-    ![chord-inversion-C7-6543.png](assets/images/chord-inversion-C7-6543.png){: height="150px"  }
+    ![chord-inversion-C7-6543.png](assets/images/chord-inversion-C7-6543.png)
 
 2. 5432
 
-    ![chord-inversion-C7-5432.png](assets/images/chord-inversion-C7-5432.png){: height="150px"  }
+    ![chord-inversion-C7-5432.png](assets/images/chord-inversion-C7-5432.png)
 
 3. 4321
 
-    ![chord-inversion-C7-4321.png](assets/images/chord-inversion-C7-4321.png){: height="150px"  }
+    ![chord-inversion-C7-4321.png](assets/images/chord-inversion-C7-4321.png)
 
 4. 6432
 
-    ![chord-inversion-C7-6432.png](assets/images/chord-inversion-C7-6432.png){: height="150px"  }
+    ![chord-inversion-C7-6432.png](assets/images/chord-inversion-C7-6432.png)
 
 5. 5321
 
-    ![chord-inversion-C7-5321.png](assets/images/chord-inversion-C7-5321.png){: height="150px"  }
+    ![chord-inversion-C7-5321.png](assets/images/chord-inversion-C7-5321.png)
 
 ---------------
 {: data-content=" 小七 " }
@@ -104,23 +104,23 @@ title: 转位和弦
 
 1. 6543
 
-    ![chord-inversion-Cmin-6543.png](assets/images/chord-inversion-Cmin7-6543.png){: height="150px"  }
+    ![chord-inversion-Cmin-6543.png](assets/images/chord-inversion-Cmin7-6543.png)
 
 2. 5432
 
-    ![chord-inversion-Cmin7-5432.png](assets/images/chord-inversion-Cmin7-5432.png){: height="150px"  }
+    ![chord-inversion-Cmin7-5432.png](assets/images/chord-inversion-Cmin7-5432.png)
 
 3. 4321
 
-    ![chord-inversion-Cmin7-4321.png](assets/images/chord-inversion-Cmin7-4321.png){: height="150px"  }
+    ![chord-inversion-Cmin7-4321.png](assets/images/chord-inversion-Cmin7-4321.png)
 
 4. 6432
 
-    ![chord-inversion-Cmin7-6432.png](assets/images/chord-inversion-Cmin7-6432.png){: height="150px"  }
+    ![chord-inversion-Cmin7-6432.png](assets/images/chord-inversion-Cmin7-6432.png)
 
 5. 5321
 
-    ![chord-inversion-Cmin7-5321.png](assets/images/chord-inversion-Cmin7-5321.png){: height="150px"  }
+    ![chord-inversion-Cmin7-5321.png](assets/images/chord-inversion-Cmin7-5321.png)
 
 ---------------
 {: data-content=" 半减七 " }
@@ -131,20 +131,20 @@ title: 转位和弦
 
 1. 6543
 
-    ![chord-inversion-Cm7b5-6543.png](assets/images/chord-inversion-Cm7b5-6543.png){: height="150px"  }
+    ![chord-inversion-Cm7b5-6543.png](assets/images/chord-inversion-Cm7b5-6543.png)
 
 2. 5432
 
-    ![chord-inversion-Cm7b5-5432.png](assets/images/chord-inversion-Cm7b5-5432.png){: height="150px"  }
+    ![chord-inversion-Cm7b5-5432.png](assets/images/chord-inversion-Cm7b5-5432.png)
 
 3. 4321
 
-    ![chord-inversion-Cm7b5-4321.png](assets/images/chord-inversion-Cm7b5-4321.png){: height="150px"  }
+    ![chord-inversion-Cm7b5-4321.png](assets/images/chord-inversion-Cm7b5-4321.png)
 
 4. 6432
 
-    ![chord-inversion-Cm7b5-6432.png](assets/images/chord-inversion-Cm7b5-6432.png){: height="150px"  }
+    ![chord-inversion-Cm7b5-6432.png](assets/images/chord-inversion-Cm7b5-6432.png)
 
 5. 5321
 
-    ![chord-inversion-Cm7b5-5321.png](assets/images/chord-inversion-Cm7b5-5321.png){: height="150px"  }
+    ![chord-inversion-Cm7b5-5321.png](assets/images/chord-inversion-Cm7b5-5321.png)

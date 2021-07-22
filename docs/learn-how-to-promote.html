@@ -26,7 +26,11 @@
 
   <link rel="shortcut icon" type="image/x-icon" href="/logo.png" />
   <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/zoom.css" />
   <script src="assets/js/mermaid.min.js"></script>
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/zoom.min.js"></script>
+  <script src="assets/js/zoom_init.js"></script>
 </head>
 <body a="light">
     <main class="page-content" aria-label="Content">
@@ -60,8 +64,18 @@
 <li class="toc-entry toc-h2"><a href="#学习方法">学习方法</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#海绵学习法-10000小时理论">海绵学习法-10000小时理论</a></li>
+<li class="toc-entry toc-h3"><a href="#规划落地输出">规划/落地/输出</a></li>
+<li class="toc-entry toc-h3"><a href="#链式比较环式学习法">链式/比较/环式学习法</a></li>
+<li class="toc-entry toc-h3"><a href="#play--tech">Play &amp; Tech</a></li>
 </ul>
 </li>
+<li class="toc-entry toc-h2"><a href="#规划-执行-复盘">规划-执行-复盘</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#规划">规划</a></li>
+<li class="toc-entry toc-h3"><a href="#执行">执行</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#5w">5W</a></li>
 </ul><h2 id="comd-能力模型">
 <a class="anchor" href="#comd-%E8%83%BD%E5%8A%9B%E6%A8%A1%E5%9E%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>COMD 能力模型</h2>
 <p>COMD, aka, Complexity-Oriented Multi-Dimension 多维度 + 复杂度</p>
@@ -324,6 +338,239 @@ graph LR;
 <p>每天一小时(早上半小时, 上班前半小时, 睡前半小时), 周末两小时</p>
 
 <p>关键是要 <strong>可以坚持下来的方式</strong>, 其实就跟减肥健身差不多, 需要坚持, 以 5年, 10年的维度来看</p>
+
+<h3 id="规划落地输出">
+<a class="anchor" href="#%E8%A7%84%E5%88%92%E8%90%BD%E5%9C%B0%E8%BE%93%E5%87%BA" aria-hidden="true"><span class="octicon octicon-link"></span></a>规划/落地/输出</h3>
+<p>学习规划, 这里是更多指的是指阅读的规划</p>
+
+<div class="mermaid">
+graph LR;
+    split[拆分];
+    split1[能力拆分];
+    time1[时间拆分];
+    action[行为拆分];
+    split--&gt;split1 &amp; time1 &amp; action;
+    split1--&gt;split2[技能/原理];
+    split1--&gt;split21[业务];
+    split1--&gt;split22[管理];
+    split2--&gt;split3[Paper];
+    split2--&gt;split5[专业书籍];
+    split2--&gt;split4[实战技巧如 文档等];
+    time1--&gt;time2[2到3年的大目标];
+    time1--&gt;time3[小目标控制在半年内];
+    action--&gt;action1[通读书籍];
+    action--&gt;action2[挑选和自己工作相关的重点阅读];
+    action--&gt;action3[遇到问题后再回顾];
+    action--&gt;action4[实战];
+</div>
+
+<p>输出</p>
+
+<ul>
+  <li>名词和概念输出</li>
+  <li>文档/思考输出</li>
+  <li>分享</li>
+  <li>业务/实战</li>
+</ul>
+
+<details>
+  <summary>
+Me?
+</summary>
+  <blockquote>
+
+    <ol>
+      <li>之前会为自己设计 <a href="https://blog.dengqinghua.net/ruby_knowledge_tree.html">知识树</a>，尝试去整理当前需要的知识技能</li>
+      <li>会尝试去根据自己的短处去阅读一些书</li>
+      <li>自己的习惯是快速地读完一本书，拖得越久越无法落地</li>
+      <li>总结和整理比较少，主要是因为懒，还有就是因为不感兴趣，比如 TCP 三次握手/X次挥手</li>
+      <li>和学习技术相比起来，反而觉得自己在练琴上面更有目标感一些，制定的计划比较容易落地，有规划 输出 和 复盘</li>
+      <li>更多的深度思考，从深度(同主题)，宽度(同领域不同主题) 和 广度(不同领域) 去思考相同的问题</li>
+    </ol>
+  </blockquote>
+</details>
+
+<h3 id="链式比较环式学习法">
+<a class="anchor" href="#%E9%93%BE%E5%BC%8F%E6%AF%94%E8%BE%83%E7%8E%AF%E5%BC%8F%E5%AD%A6%E4%B9%A0%E6%B3%95" aria-hidden="true"><span class="octicon octicon-link"></span></a>链式/比较/环式学习法</h3>
+<ol>
+  <li>
+    <p>链式</p>
+
+    <p>解决<strong>深度</strong>问题, 问题往往是环环相扣的, 往往你看到的只是表象, 深层原因是更复杂的底层逻辑</p>
+
+    <ul>
+      <li>领域维度(自顶向下)
+        <div class="mermaid">
+graph LR;
+    framework["语言框架"];
+    lang[编程语言];
+    sys[操作系统];
+    network[计算机网络];
+    tool[工具和配置];
+    core[操作系统内核];
+    framework--&gt;lang--&gt;sys--&gt;network--&gt;tool--&gt;core;
+</div>
+      </li>
+      <li>细节维度(由表及里)
+        <div class="mermaid">
+graph LR;
+    interface[API接口];
+    theroy["设计原理(通用原理)"];
+    landing[设计方案];
+    sourceCode[源码实现];
+    interface--&gt;theroy--&gt;landing--&gt;sourceCode;
+</div>
+
+        <details>
+          <summary>
+Me?
+</summary>
+          <blockquote>
+
+            <ol>
+              <li>个人喜欢的还是 <strong>细节维度</strong>。 比如我想看看 guava 缓存 的实现，我会
+                <ul>
+                  <li>先去看有哪些接口</li>
+                  <li>再去思考缓存的通用设计原理是什么，有哪些算法</li>
+                  <li>再去看 guava 选择的设计方案 是什么</li>
+                  <li>最后再去看缓存的核心源码实现</li>
+                </ul>
+              </li>
+              <li>领域维度的层次太高了，好处是不会太纠结细节，缺点是没有那么有感觉，不太会总结或者说总结了之后也还是想知道细节</li>
+              <li>不过之后在学习一个技术知识的时候，需要思考:
+                <ul>
+                  <li>自己是哪一种方式?</li>
+                  <li>学习到哪一个层级了?</li>
+                  <li>预期学到哪个层级?</li>
+                  <li>如何将不同层级的不同知识点串起来，并应用到其他的场景中?</li>
+                </ul>
+              </li>
+            </ol>
+          </blockquote>
+        </details>
+      </li>
+    </ul>
+
+    <p>链式学习, 越上层越偏应用, 底层偏原理。个人喜欢应用为主, 抓住主要的理论点即可</p>
+  </li>
+  <li>
+    <p>比较</p>
+
+    <p>简单来说, 在学习的时候带着这样的问题: 解决问题XXX, 为什么用 A方案, 而不用 B方案 这个问题。通过横向对比来学习不同解决方案的背后原理和适用范围</p>
+
+    <ul>
+      <li>总结一个技术主题的 <strong>关键技术点</strong> 比如 redis 的 高可用, 高性能, 数据结构 和 功能 分别是什么</li>
+      <li>对比同类型产品/技术的 关键技术点 的差异</li>
+      <li>根据差异点, 总结不同技术下 的 背景原理 和 适用场景</li>
+    </ul>
+  </li>
+  <li>
+    <p>环式</p>
+
+    <p>对于业务而言, 多画一下业务闭环流程图, 思考技术在各个环节的位置和所处的作用. 环式能让你更聚焦全局而不是个体</p>
+  </li>
+</ol>
+
+<details>
+  <summary>
+Me?
+</summary>
+  <blockquote>
+
+    <p>其实这块在晋升时候也有一些思考, 很多时候出现了 <strong>“没什么可讲”, “没什么可回答”, “没什么可思考”</strong> 的问题。
+也就是说, 自己太过于关注自己的简单的研发工作了, 没有从点到面, 从面到框架的方式, 来思考自己的技术, 产品 和
+业务。在不同深度，宽度 和 广度 思考问题。</p>
+  </blockquote>
+</details>
+
+<h3 id="play--tech">
+<a class="anchor" href="#play--tech" aria-hidden="true"><span class="octicon octicon-link"></span></a>Play &amp; Tech</h3>
+<blockquote>
+  <p>What I hear, I forget. What I see, I remember. What I do, I understand.</p>
+</blockquote>
+
+<p>各种学习方式的留存效果</p>
+
+<p><img src="assets/images/learning-retention.webp" alt="leaning-retention" width="85%"></p>
+
+<details>
+  <summary>
+Me?
+</summary>
+  <blockquote>
+
+    <p>很真实啊，自己看 PPT 或者听一个讲座，远没有自己实践和分享来得多。将你知道的讲一遍给别人听，准备被提问的问题，这样的进步才会更显著一些。</p>
+  </blockquote>
+</details>
+
+<p>这里的 Play 对应着 实践, Tech 对应着 教授他人.</p>
+
+<ul>
+  <li>Play
+    <ul>
+      <li>试玩。手动搭建服务，弄清楚所有配置项的作用，以及为什么提供这样的功能</li>
+      <li>核心功能测试。</li>
+      <li>异常测试。包括边界测试和性能测试，测试在不同的场景(比如1C2G 下的机器? 10000QPS 并发?)下的服务反馈</li>
+    </ul>
+  </li>
+  <li>Tech
+    <ul>
+      <li>写作。写作最重要的是框架性，思考你传达的内容，先写框架，再写细节</li>
+      <li>培训。多准备一些问题，从深度，宽度和广度去提问和培训</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="规划-执行-复盘">
+<a class="anchor" href="#%E8%A7%84%E5%88%92-%E6%89%A7%E8%A1%8C-%E5%A4%8D%E7%9B%98" aria-hidden="true"><span class="octicon octicon-link"></span></a>规划-执行-复盘</h2>
+<h3 id="规划">
+<a class="anchor" href="#%E8%A7%84%E5%88%92" aria-hidden="true"><span class="octicon octicon-link"></span></a>规划</h3>
+<blockquote>
+  <p>使用 OKR 而不是 API 进行规划, 使用 3C 来进行方案选择，问题思考 和 提问</p>
+</blockquote>
+
+<ol>
+  <li>OKR, 价值的体现, 更注重(长期)结果和目标, 比如里程碑(系统从0到1, 解决技术债务等等)</li>
+  <li>
+<del>API</del> 指标的体现, 更注重当前(短期)的任务是否达成, 对于一些创造性或者人性相关的工作内容时候, 往往容易跑偏</li>
+  <li>OKR 和 API 的关系: API 可以作为 KR 的形式</li>
+  <li>3C方案设计, (业务/技术/管理)方案设计三个(3C, 3 choices)，也可以用在提问环节</li>
+</ol>
+
+<h3 id="执行">
+<a class="anchor" href="#%E6%89%A7%E8%A1%8C" aria-hidden="true"><span class="octicon octicon-link"></span></a>执行</h3>
+<blockquote>
+  <p>使用 PDCA 来落地执行</p>
+</blockquote>
+
+<ol>
+  <li>
+    <p>Plan, 执行计划(短周期)</p>
+
+    <p>这里和 OKR 的区别是，OKR 是用来做长期规划的。 注意优先级，复杂的事情需要拆成小任务来处理，资源上有问题时，用上级的能力协调资源。</p>
+  </li>
+  <li>
+    <p>Do</p>
+
+    <p>做好信息同步，主要包括 <strong>进度，里程碑, 风险 和 问题</strong>，风险要提前告知，delay 多少天，就提前多少天告知。问题要提前暴露出来，及时同步解决的方案和解决的时间</p>
+  </li>
+  <li>
+    <p>Check</p>
+
+    <p>及时 check 进度, 使用 5W 来分析根因</p>
+  </li>
+  <li>
+    <p>Act</p>
+
+    <p>基于 Check 的结果，制定下一步的行动。这里需要总结和汇报结果，主要是看结果是否符合预期，是否有经验教训，挑选 3个 以内的内容进行落地即可</p>
+  </li>
+</ol>
+
+<h2 id="5w">
+<a class="anchor" href="#5w" aria-hidden="true"><span class="octicon octicon-link"></span></a>5W</h2>
+<p>5W 可以用在 业务/技术/方案选择/管理 上，在进行链式学习的时候，也可以进行自我提问</p>
+
+<p>注意: 需要聚焦在问题本身，不要变成杠精似地撕逼</p>
 
 </article>
 

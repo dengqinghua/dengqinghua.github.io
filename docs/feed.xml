@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-07-19T14:20:37+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-07-22T17:37:00+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
 </subtitle><author><name>dengqinghua</name></author><entry><title type="html">晋升指南笔记</title><link href="https://dengqinghua.github.io/learn-how-to-promote.html" rel="alternate" type="text/html" title="晋升指南笔记" /><published>2021-07-14T00:00:00+08:00</published><updated>2021-07-14T00:00:00+08:00</updated><id>https://dengqinghua.github.io/learn-how-to-promote</id><content type="html" xml:base="https://dengqinghua.github.io/learn-how-to-promote.html">&lt;h2 id=&quot;comd-能力模型&quot;&gt;COMD 能力模型&lt;/h2&gt;
 &lt;p&gt;COMD, aka, Complexity-Oriented Multi-Dimension 多维度 + 复杂度&lt;/p&gt;
 
@@ -248,7 +248,232 @@ graph LR;
 &lt;h3 id=&quot;海绵学习法-10000小时理论&quot;&gt;海绵学习法-10000小时理论&lt;/h3&gt;
 &lt;p&gt;每天一小时(早上半小时, 上班前半小时, 睡前半小时), 周末两小时&lt;/p&gt;
 
-&lt;p&gt;关键是要 &lt;strong&gt;可以坚持下来的方式&lt;/strong&gt;, 其实就跟减肥健身差不多, 需要坚持, 以 5年, 10年的维度来看&lt;/p&gt;</content><author><name>dengqinghua</name></author><summary type="html">COMD 能力模型 COMD, aka, Complexity-Oriented Multi-Dimension 多维度 + 复杂度</summary></entry><entry><title type="html">fingerstyle blues level 1-3</title><link href="https://dengqinghua.github.io/finger-style-blues-l123.html" rel="alternate" type="text/html" title="fingerstyle blues level 1-3" /><published>2021-06-28T00:00:00+08:00</published><updated>2021-06-28T00:00:00+08:00</updated><id>https://dengqinghua.github.io/finger-style-blues-l123</id><content type="html" xml:base="https://dengqinghua.github.io/finger-style-blues-l123.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
+&lt;p&gt;关键是要 &lt;strong&gt;可以坚持下来的方式&lt;/strong&gt;, 其实就跟减肥健身差不多, 需要坚持, 以 5年, 10年的维度来看&lt;/p&gt;
+
+&lt;h3 id=&quot;规划落地输出&quot;&gt;规划/落地/输出&lt;/h3&gt;
+&lt;p&gt;学习规划, 这里是更多指的是指阅读的规划&lt;/p&gt;
+
+&lt;div class=&quot;mermaid&quot;&gt;
+graph LR;
+    split[拆分];
+    split1[能力拆分];
+    time1[时间拆分];
+    action[行为拆分];
+    split--&amp;gt;split1 &amp;amp; time1 &amp;amp; action;
+    split1--&amp;gt;split2[技能/原理];
+    split1--&amp;gt;split21[业务];
+    split1--&amp;gt;split22[管理];
+    split2--&amp;gt;split3[Paper];
+    split2--&amp;gt;split5[专业书籍];
+    split2--&amp;gt;split4[实战技巧如 文档等];
+    time1--&amp;gt;time2[2到3年的大目标];
+    time1--&amp;gt;time3[小目标控制在半年内];
+    action--&amp;gt;action1[通读书籍];
+    action--&amp;gt;action2[挑选和自己工作相关的重点阅读];
+    action--&amp;gt;action3[遇到问题后再回顾];
+    action--&amp;gt;action4[实战];
+&lt;/div&gt;
+
+&lt;p&gt;输出&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;名词和概念输出&lt;/li&gt;
+  &lt;li&gt;文档/思考输出&lt;/li&gt;
+  &lt;li&gt;分享&lt;/li&gt;
+  &lt;li&gt;业务/实战&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;details&gt;
+  &lt;summary&gt;
+Me?
+&lt;/summary&gt;
+  &lt;blockquote&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;之前会为自己设计 &lt;a href=&quot;https://blog.dengqinghua.net/ruby_knowledge_tree.html&quot;&gt;知识树&lt;/a&gt;，尝试去整理当前需要的知识技能&lt;/li&gt;
+      &lt;li&gt;会尝试去根据自己的短处去阅读一些书&lt;/li&gt;
+      &lt;li&gt;自己的习惯是快速地读完一本书，拖得越久越无法落地&lt;/li&gt;
+      &lt;li&gt;总结和整理比较少，主要是因为懒，还有就是因为不感兴趣，比如 TCP 三次握手/X次挥手&lt;/li&gt;
+      &lt;li&gt;和学习技术相比起来，反而觉得自己在练琴上面更有目标感一些，制定的计划比较容易落地，有规划 输出 和 复盘&lt;/li&gt;
+      &lt;li&gt;更多的深度思考，从深度(同主题)，宽度(同领域不同主题) 和 广度(不同领域) 去思考相同的问题&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/blockquote&gt;
+&lt;/details&gt;
+
+&lt;h3 id=&quot;链式比较环式学习法&quot;&gt;链式/比较/环式学习法&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;链式&lt;/p&gt;
+
+    &lt;p&gt;解决&lt;strong&gt;深度&lt;/strong&gt;问题, 问题往往是环环相扣的, 往往你看到的只是表象, 深层原因是更复杂的底层逻辑&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;领域维度(自顶向下)
+        &lt;div class=&quot;mermaid&quot;&gt;
+graph LR;
+    framework[&quot;语言框架&quot;];
+    lang[编程语言];
+    sys[操作系统];
+    network[计算机网络];
+    tool[工具和配置];
+    core[操作系统内核];
+    framework--&amp;gt;lang--&amp;gt;sys--&amp;gt;network--&amp;gt;tool--&amp;gt;core;
+&lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li&gt;细节维度(由表及里)
+        &lt;div class=&quot;mermaid&quot;&gt;
+graph LR;
+    interface[API接口];
+    theroy[&quot;设计原理(通用原理)&quot;];
+    landing[设计方案];
+    sourceCode[源码实现];
+    interface--&amp;gt;theroy--&amp;gt;landing--&amp;gt;sourceCode;
+&lt;/div&gt;
+
+        &lt;details&gt;
+          &lt;summary&gt;
+Me?
+&lt;/summary&gt;
+          &lt;blockquote&gt;
+
+            &lt;ol&gt;
+              &lt;li&gt;个人喜欢的还是 &lt;strong&gt;细节维度&lt;/strong&gt;。 比如我想看看 guava 缓存 的实现，我会
+                &lt;ul&gt;
+                  &lt;li&gt;先去看有哪些接口&lt;/li&gt;
+                  &lt;li&gt;再去思考缓存的通用设计原理是什么，有哪些算法&lt;/li&gt;
+                  &lt;li&gt;再去看 guava 选择的设计方案 是什么&lt;/li&gt;
+                  &lt;li&gt;最后再去看缓存的核心源码实现&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/li&gt;
+              &lt;li&gt;领域维度的层次太高了，好处是不会太纠结细节，缺点是没有那么有感觉，不太会总结或者说总结了之后也还是想知道细节&lt;/li&gt;
+              &lt;li&gt;不过之后在学习一个技术知识的时候，需要思考:
+                &lt;ul&gt;
+                  &lt;li&gt;自己是哪一种方式?&lt;/li&gt;
+                  &lt;li&gt;学习到哪一个层级了?&lt;/li&gt;
+                  &lt;li&gt;预期学到哪个层级?&lt;/li&gt;
+                  &lt;li&gt;如何将不同层级的不同知识点串起来，并应用到其他的场景中?&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/li&gt;
+            &lt;/ol&gt;
+          &lt;/blockquote&gt;
+        &lt;/details&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;链式学习, 越上层越偏应用, 底层偏原理。个人喜欢应用为主, 抓住主要的理论点即可&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;比较&lt;/p&gt;
+
+    &lt;p&gt;简单来说, 在学习的时候带着这样的问题: 解决问题XXX, 为什么用 A方案, 而不用 B方案 这个问题。通过横向对比来学习不同解决方案的背后原理和适用范围&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;总结一个技术主题的 &lt;strong&gt;关键技术点&lt;/strong&gt; 比如 redis 的 高可用, 高性能, 数据结构 和 功能 分别是什么&lt;/li&gt;
+      &lt;li&gt;对比同类型产品/技术的 关键技术点 的差异&lt;/li&gt;
+      &lt;li&gt;根据差异点, 总结不同技术下 的 背景原理 和 适用场景&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;环式&lt;/p&gt;
+
+    &lt;p&gt;对于业务而言, 多画一下业务闭环流程图, 思考技术在各个环节的位置和所处的作用. 环式能让你更聚焦全局而不是个体&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;details&gt;
+  &lt;summary&gt;
+Me?
+&lt;/summary&gt;
+  &lt;blockquote&gt;
+
+    &lt;p&gt;其实这块在晋升时候也有一些思考, 很多时候出现了 &lt;strong&gt;“没什么可讲”, “没什么可回答”, “没什么可思考”&lt;/strong&gt; 的问题。
+也就是说, 自己太过于关注自己的简单的研发工作了, 没有从点到面, 从面到框架的方式, 来思考自己的技术, 产品 和
+业务。在不同深度，宽度 和 广度 思考问题。&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/details&gt;
+
+&lt;h3 id=&quot;play--tech&quot;&gt;Play &amp;amp; Tech&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;What I hear, I forget. What I see, I remember. What I do, I understand.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;各种学习方式的留存效果&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/learning-retention.webp&quot; alt=&quot;leaning-retention&quot; width=&quot;85%&quot; /&gt;&lt;/p&gt;
+
+&lt;details&gt;
+  &lt;summary&gt;
+Me?
+&lt;/summary&gt;
+  &lt;blockquote&gt;
+
+    &lt;p&gt;很真实啊，自己看 PPT 或者听一个讲座，远没有自己实践和分享来得多。将你知道的讲一遍给别人听，准备被提问的问题，这样的进步才会更显著一些。&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/details&gt;
+
+&lt;p&gt;这里的 Play 对应着 实践, Tech 对应着 教授他人.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Play
+    &lt;ul&gt;
+      &lt;li&gt;试玩。手动搭建服务，弄清楚所有配置项的作用，以及为什么提供这样的功能&lt;/li&gt;
+      &lt;li&gt;核心功能测试。&lt;/li&gt;
+      &lt;li&gt;异常测试。包括边界测试和性能测试，测试在不同的场景(比如1C2G 下的机器? 10000QPS 并发?)下的服务反馈&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Tech
+    &lt;ul&gt;
+      &lt;li&gt;写作。写作最重要的是框架性，思考你传达的内容，先写框架，再写细节&lt;/li&gt;
+      &lt;li&gt;培训。多准备一些问题，从深度，宽度和广度去提问和培训&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;规划-执行-复盘&quot;&gt;规划-执行-复盘&lt;/h2&gt;
+&lt;h3 id=&quot;规划&quot;&gt;规划&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;使用 OKR 而不是 API 进行规划, 使用 3C 来进行方案选择，问题思考 和 提问&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;OKR, 价值的体现, 更注重(长期)结果和目标, 比如里程碑(系统从0到1, 解决技术债务等等)&lt;/li&gt;
+  &lt;li&gt;&lt;del&gt;API&lt;/del&gt; 指标的体现, 更注重当前(短期)的任务是否达成, 对于一些创造性或者人性相关的工作内容时候, 往往容易跑偏&lt;/li&gt;
+  &lt;li&gt;OKR 和 API 的关系: API 可以作为 KR 的形式&lt;/li&gt;
+  &lt;li&gt;3C方案设计, (业务/技术/管理)方案设计三个(3C, 3 choices)，也可以用在提问环节&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;执行&quot;&gt;执行&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;使用 PDCA 来落地执行&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Plan, 执行计划(短周期)&lt;/p&gt;
+
+    &lt;p&gt;这里和 OKR 的区别是，OKR 是用来做长期规划的。 注意优先级，复杂的事情需要拆成小任务来处理，资源上有问题时，用上级的能力协调资源。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Do&lt;/p&gt;
+
+    &lt;p&gt;做好信息同步，主要包括 &lt;strong&gt;进度，里程碑, 风险 和 问题&lt;/strong&gt;，风险要提前告知，delay 多少天，就提前多少天告知。问题要提前暴露出来，及时同步解决的方案和解决的时间&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Check&lt;/p&gt;
+
+    &lt;p&gt;及时 check 进度, 使用 5W 来分析根因&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Act&lt;/p&gt;
+
+    &lt;p&gt;基于 Check 的结果，制定下一步的行动。这里需要总结和汇报结果，主要是看结果是否符合预期，是否有经验教训，挑选 3个 以内的内容进行落地即可&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;5w&quot;&gt;5W&lt;/h2&gt;
+&lt;p&gt;5W 可以用在 业务/技术/方案选择/管理 上，在进行链式学习的时候，也可以进行自我提问&lt;/p&gt;
+
+&lt;p&gt;注意: 需要聚焦在问题本身，不要变成杠精似地撕逼&lt;/p&gt;</content><author><name>dengqinghua</name></author><summary type="html">COMD 能力模型 COMD, aka, Complexity-Oriented Multi-Dimension 多维度 + 复杂度</summary></entry><entry><title type="html">fingerstyle blues level 1-3</title><link href="https://dengqinghua.github.io/finger-style-blues-l123.html" rel="alternate" type="text/html" title="fingerstyle blues level 1-3" /><published>2021-06-28T00:00:00+08:00</published><updated>2021-06-28T00:00:00+08:00</updated><id>https://dengqinghua.github.io/finger-style-blues-l123</id><content type="html" xml:base="https://dengqinghua.github.io/finger-style-blues-l123.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
 
 &lt;ul&gt;
   &lt;li&gt;曲谱: &lt;a href=&quot;https://pan.baidu.com/disk/pdfview?path=%2F42%2F%E9%9F%B3%E4%B9%90%2F%E6%95%99%E6%9D%90%2FProGuitar%2FfingerstyleBlues%2Fproguitar-fingerstyle-blues.pdf&quot;&gt;PDF&lt;/a&gt;&lt;/li&gt;
@@ -934,17 +1159,17 @@ sudo rpm -vi filebeat-7.12.1-x86_64.rpm
   &lt;li&gt;
     &lt;p&gt;543&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-C-543.png&quot; alt=&quot;chord-inversion-C-543.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-C-543.png&quot; alt=&quot;chord-inversion-C-543.png&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;432&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-C-432.png&quot; alt=&quot;chord-inversion-C-432.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-C-432.png&quot; alt=&quot;chord-inversion-C-432.png&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;321&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-C-321.png&quot; alt=&quot;chord-inversion-C-321.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-C-321.png&quot; alt=&quot;chord-inversion-C-321.png&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
 
@@ -954,22 +1179,22 @@ sudo rpm -vi filebeat-7.12.1-x86_64.rpm
   &lt;li&gt;
     &lt;p&gt;654&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm-654.png&quot; alt=&quot;chord-inversion-Cm-654.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm-654.png&quot; alt=&quot;chord-inversion-Cm-654.png&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;543&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm-543.png&quot; alt=&quot;chord-inversion-Cm-543.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm-543.png&quot; alt=&quot;chord-inversion-Cm-543.png&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;432&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm-432.png&quot; alt=&quot;chord-inversion-Cm-432.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm-432.png&quot; alt=&quot;chord-inversion-Cm-432.png&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;321&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm-321.png&quot; alt=&quot;chord-inversion-Cm-321.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm-321.png&quot; alt=&quot;chord-inversion-Cm-321.png&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
 
@@ -981,29 +1206,29 @@ sudo rpm -vi filebeat-7.12.1-x86_64.rpm
 
     &lt;p&gt;七级为 root 时候, 音色会比较奇怪, 但是可以作为一个比较好的过渡和弦&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cmajor7-6543.png&quot; alt=&quot;chord-inversion-CM7-6543.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cmajor7-6543.png&quot; alt=&quot;chord-inversion-CM7-6543.png&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;5432&lt;/p&gt;
 
     &lt;p&gt;注: 一级转位(3 为 root)时候非常好听&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cmajor7-5432.png&quot; alt=&quot;chord-inversion-CM7-5432.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cmajor7-5432.png&quot; alt=&quot;chord-inversion-CM7-5432.png&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;4321&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cmajor7-4321.png&quot; alt=&quot;chord-inversion-CM7-4321.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cmajor7-4321.png&quot; alt=&quot;chord-inversion-CM7-4321.png&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;6432&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cmajor7-6432.png&quot; alt=&quot;chord-inversion-CM7-6432.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cmajor7-6432.png&quot; alt=&quot;chord-inversion-CM7-6432.png&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;5321&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cmajor7-5321.png&quot; alt=&quot;chord-inversion-CM7-5321.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cmajor7-5321.png&quot; alt=&quot;chord-inversion-CM7-5321.png&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
 
@@ -1013,27 +1238,27 @@ sudo rpm -vi filebeat-7.12.1-x86_64.rpm
   &lt;li&gt;
     &lt;p&gt;6543&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-C7-6543.png&quot; alt=&quot;chord-inversion-C7-6543.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-C7-6543.png&quot; alt=&quot;chord-inversion-C7-6543.png&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;5432&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-C7-5432.png&quot; alt=&quot;chord-inversion-C7-5432.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-C7-5432.png&quot; alt=&quot;chord-inversion-C7-5432.png&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;4321&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-C7-4321.png&quot; alt=&quot;chord-inversion-C7-4321.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-C7-4321.png&quot; alt=&quot;chord-inversion-C7-4321.png&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;6432&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-C7-6432.png&quot; alt=&quot;chord-inversion-C7-6432.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-C7-6432.png&quot; alt=&quot;chord-inversion-C7-6432.png&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;5321&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-C7-5321.png&quot; alt=&quot;chord-inversion-C7-5321.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-C7-5321.png&quot; alt=&quot;chord-inversion-C7-5321.png&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
 
@@ -1043,27 +1268,27 @@ sudo rpm -vi filebeat-7.12.1-x86_64.rpm
   &lt;li&gt;
     &lt;p&gt;6543&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cmin7-6543.png&quot; alt=&quot;chord-inversion-Cmin-6543.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cmin7-6543.png&quot; alt=&quot;chord-inversion-Cmin-6543.png&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;5432&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cmin7-5432.png&quot; alt=&quot;chord-inversion-Cmin7-5432.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cmin7-5432.png&quot; alt=&quot;chord-inversion-Cmin7-5432.png&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;4321&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cmin7-4321.png&quot; alt=&quot;chord-inversion-Cmin7-4321.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cmin7-4321.png&quot; alt=&quot;chord-inversion-Cmin7-4321.png&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;6432&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cmin7-6432.png&quot; alt=&quot;chord-inversion-Cmin7-6432.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cmin7-6432.png&quot; alt=&quot;chord-inversion-Cmin7-6432.png&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;5321&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cmin7-5321.png&quot; alt=&quot;chord-inversion-Cmin7-5321.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cmin7-5321.png&quot; alt=&quot;chord-inversion-Cmin7-5321.png&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
 
@@ -1077,27 +1302,27 @@ sudo rpm -vi filebeat-7.12.1-x86_64.rpm
   &lt;li&gt;
     &lt;p&gt;6543&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm7b5-6543.png&quot; alt=&quot;chord-inversion-Cm7b5-6543.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm7b5-6543.png&quot; alt=&quot;chord-inversion-Cm7b5-6543.png&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;5432&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm7b5-5432.png&quot; alt=&quot;chord-inversion-Cm7b5-5432.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm7b5-5432.png&quot; alt=&quot;chord-inversion-Cm7b5-5432.png&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;4321&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm7b5-4321.png&quot; alt=&quot;chord-inversion-Cm7b5-4321.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm7b5-4321.png&quot; alt=&quot;chord-inversion-Cm7b5-4321.png&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;6432&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm7b5-6432.png&quot; alt=&quot;chord-inversion-Cm7b5-6432.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm7b5-6432.png&quot; alt=&quot;chord-inversion-Cm7b5-6432.png&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;5321&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm7b5-5321.png&quot; alt=&quot;chord-inversion-Cm7b5-5321.png&quot; height=&quot;150px&quot; /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm7b5-5321.png&quot; alt=&quot;chord-inversion-Cm7b5-5321.png&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ol&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html">Navigate Better!</summary></entry><entry><title type="html">porch pickin’</title><link href="https://dengqinghua.github.io/finger-style-basics-2.html" rel="alternate" type="text/html" title="porch pickin'" /><published>2021-02-10T00:00:00+08:00</published><updated>2021-02-10T00:00:00+08:00</updated><id>https://dengqinghua.github.io/finger-style-basics-2</id><content type="html" xml:base="https://dengqinghua.github.io/finger-style-basics-2.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
 
