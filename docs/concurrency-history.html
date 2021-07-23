@@ -19,7 +19,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-12-15T00:00:00+08:00" />
 <script type="application/ld+json">
-{"url":"https://dengqinghua.github.io/concurrency-history.html","headline":"Concurrency History","dateModified":"2020-12-15T00:00:00+08:00","datePublished":"2020-12-15T00:00:00+08:00","author":{"@type":"Person","name":"dengqinghua"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://dengqinghua.github.io/concurrency-history.html"},"description":"本文为视频 From Concurrent to Parallel 的学习笔记","@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"headline":"Concurrency History","dateModified":"2020-12-15T00:00:00+08:00","datePublished":"2020-12-15T00:00:00+08:00","url":"https://dengqinghua.github.io/concurrency-history.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://dengqinghua.github.io/concurrency-history.html"},"author":{"@type":"Person","name":"dengqinghua"},"description":"本文为视频 From Concurrent to Parallel 的学习笔记","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <link type="application/atom+xml" rel="alternate" href="https://dengqinghua.github.io/feed.xml" title="Dengqinghua.42" />
@@ -44,7 +44,7 @@
   
   <h1>Concurrency History</h1>
 
-  <p>本文为视频 <a href="https://www.youtube.com/watch?v=NsDE7E8sIdQ">From Concurrent to Parallel</a> 的学习笔记</p>
+  <p>本文为视频 <a href="https://www.youtube.com/watch?v=NsDE7E8sIdQ" target="_blank" rel="noopener noreferrer">From Concurrent to Parallel</a> 的学习笔记</p>
 
 <div class="mermaid">
 graph TD;
@@ -53,15 +53,15 @@ graph TD;
     performance--&gt;throughput;
 </div>
 
-<hr data-content=" 硬件性能 " />
+<hr data-content=" 硬件性能 ">
 
-<p><a href="http://www.gotw.ca/publications/concurrency-ddj.htm">The Free Lunch Is Over: A Fundamental Turn Toward Concurrency in Software</a></p>
+<p><a href="http://www.gotw.ca/publications/concurrency-ddj.htm" target="_blank" rel="noopener noreferrer">The Free Lunch Is Over: A Fundamental Turn Toward Concurrency in Software</a></p>
 
-<p><img src="assets/images/CPU_history.png" alt="" /></p>
+<p><img src="assets/images/CPU_history.png" alt=""></p>
 
 <p><strong>Software cannot keep the chip busy</strong></p>
 
-<hr data-content=" 问题模型 " />
+<hr data-content=" 问题模型 ">
 
 <ul>
   <li>最大限度利用 CPU</li>
@@ -89,7 +89,7 @@ graph TD;
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Task -&gt; Throughput -&gt; Latency
 </code></pre></div></div>
 
-<hr data-content=" 硬件驱动软件进步(解空间) " />
+<hr data-content=" 硬件驱动软件进步(解空间) ">
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Java1 threads,locks
 Java5 threads pools, blocking queue, concurrency collections
@@ -97,7 +97,7 @@ Java7 fork join
 Java8 parallel stream
 </code></pre></div></div>
 
-<hr data-content=" 并发还是并行 " />
+<hr data-content=" 并发还是并行 ">
 
 <p>并发 资源的维护和处理, 资源更高效地，更正确地使用 hard</p>
 
@@ -105,7 +105,7 @@ Java8 parallel stream
 
 <p>并行的目的是更快，但是实际上不一定会更快, 因为 worker 之间处理的事情会更多</p>
 
-<hr data-content=" 是否使用并行 " />
+<hr data-content=" 是否使用并行 ">
 
 <ul>
   <li>Analyse</li>
@@ -118,7 +118,7 @@ Java8 parallel stream
 
 <p>speedup 为测量指标</p>
 
-<hr data-content=" 并串行更多的 " />
+<hr data-content=" 并串行更多的 ">
 
 <ul>
   <li>分解问题</li>
@@ -126,11 +126,11 @@ Java8 parallel stream
   <li>收集问题</li>
 </ul>
 
-<hr data-content=" dataflow dependecy? " />
+<hr data-content=" dataflow dependecy? ">
 
 <p>一些问题是无法用 串行 的方式解决</p>
 
-<hr data-content=" Divide &amp; Conquer " />
+<hr data-content=" Divide &amp; Conquer ">
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># All parallel algorithems
 R solve(Problem&lt;R&gt; problem)
@@ -153,7 +153,7 @@ R solve(Problem&lt;R&gt; problem)
   <li>Yes task coordinate</li>
 </ul>
 
-<hr data-content=" Key Points " />
+<hr data-content=" Key Points ">
 
 <ul>
   <li>Keep CPU busy
@@ -172,7 +172,7 @@ R solve(Problem&lt;R&gt; problem)
 
 <p>设计: 只需要子任务，而不要关心 coordinate 的事情</p>
 
-<hr data-content=" 性能怎么样 " />
+<hr data-content=" 性能怎么样 ">
 
 <p>性能损耗在哪里</p>
 
@@ -189,7 +189,7 @@ R solve(Problem&lt;R&gt; problem)
 
 <p>需要有很多的数据来进行测试和计算</p>
 
-<hr data-content=" Fork Join and streams " />
+<hr data-content=" Fork Join and streams ">
 
 <p>Fork Join</p>
 
@@ -210,22 +210,22 @@ R solve(Problem&lt;R&gt; problem)
   <li>not always faster</li>
 </ul>
 
-<hr data-content=" 评估是否该使用并行 " />
+<hr data-content=" 评估是否该使用并行 ">
 
 <p>NQ model</p>
 
 <blockquote>
 
-  <p>NQ model <br />
-N = data items 的数目<br />
+  <p>NQ model <br>
+N = data items 的数目<br>
 Q = amount of work performed per item</p>
 </blockquote>
 
 <p>NQ &gt; 10_000 才有可能获得 speedup</p>
 
-<p><a href="https://developer.ibm.com/languages/java/articles/j-java-streams-5-brian-goetz/#thenqmodel">see also</a></p>
+<p><a href="https://developer.ibm.com/languages/java/articles/j-java-streams-5-brian-goetz/#thenqmodel" target="_blank" rel="noopener noreferrer">see also</a></p>
 
-<hr data-content=" 性能的关键 " />
+<hr data-content=" 性能的关键 ">
 
 <p>Source Splitting</p>
 
@@ -278,7 +278,7 @@ Q = amount of work performed per item</p>
   <li>order-sensitive</li>
 </ul>
 
-<hr data-content=" 结论 " />
+<hr data-content=" 结论 ">
 
 <p>parallel is an optimization (not magic)</p>
 

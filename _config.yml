@@ -30,6 +30,7 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-toc
+  - jekyll-target-blank
 
 destination: docs/
 

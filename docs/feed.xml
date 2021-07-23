@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-07-22T17:37:00+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-07-23T16:10:45+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
 </subtitle><author><name>dengqinghua</name></author><entry><title type="html">晋升指南笔记</title><link href="https://dengqinghua.github.io/learn-how-to-promote.html" rel="alternate" type="text/html" title="晋升指南笔记" /><published>2021-07-14T00:00:00+08:00</published><updated>2021-07-14T00:00:00+08:00</updated><id>https://dengqinghua.github.io/learn-how-to-promote</id><content type="html" xml:base="https://dengqinghua.github.io/learn-how-to-promote.html">&lt;h2 id=&quot;comd-能力模型&quot;&gt;COMD 能力模型&lt;/h2&gt;
 &lt;p&gt;COMD, aka, Complexity-Oriented Multi-Dimension 多维度 + 复杂度&lt;/p&gt;
 
@@ -439,7 +439,7 @@ Me?
   &lt;li&gt;OKR, 价值的体现, 更注重(长期)结果和目标, 比如里程碑(系统从0到1, 解决技术债务等等)&lt;/li&gt;
   &lt;li&gt;&lt;del&gt;API&lt;/del&gt; 指标的体现, 更注重当前(短期)的任务是否达成, 对于一些创造性或者人性相关的工作内容时候, 往往容易跑偏&lt;/li&gt;
   &lt;li&gt;OKR 和 API 的关系: API 可以作为 KR 的形式&lt;/li&gt;
-  &lt;li&gt;3C方案设计, (业务/技术/管理)方案设计三个(3C, 3 choices)，也可以用在提问环节&lt;/li&gt;
+  &lt;li&gt;3C方案设计, (业务/技术/管理)方案设计三个(3C, 3 choices)，也可以用在提问环节。&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h3 id=&quot;执行&quot;&gt;执行&lt;/h3&gt;
@@ -470,10 +470,94 @@ Me?
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&quot;5w&quot;&gt;5W&lt;/h2&gt;
-&lt;p&gt;5W 可以用在 业务/技术/方案选择/管理 上，在进行链式学习的时候，也可以进行自我提问&lt;/p&gt;
+&lt;h3 id=&quot;复盘&quot;&gt;复盘&lt;/h3&gt;
+&lt;h4 id=&quot;5w分析法&quot;&gt;5W分析法&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;https://baike.baidu.com/item/5why%E5%88%86%E6%9E%90%E6%B3%95/575907&quot;&gt;5W&lt;/a&gt; 可以用在 业务/技术/方案选择/管理 上，在进行链式学习的时候，也可以进行自我提问&lt;/p&gt;
 
-&lt;p&gt;注意: 需要聚焦在问题本身，不要变成杠精似地撕逼&lt;/p&gt;</content><author><name>dengqinghua</name></author><summary type="html">COMD 能力模型 COMD, aka, Complexity-Oriented Multi-Dimension 多维度 + 复杂度</summary></entry><entry><title type="html">fingerstyle blues level 1-3</title><link href="https://dengqinghua.github.io/finger-style-blues-l123.html" rel="alternate" type="text/html" title="fingerstyle blues level 1-3" /><published>2021-06-28T00:00:00+08:00</published><updated>2021-06-28T00:00:00+08:00</updated><id>https://dengqinghua.github.io/finger-style-blues-l123</id><content type="html" xml:base="https://dengqinghua.github.io/finger-style-blues-l123.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
+&lt;p&gt;注意: 需要聚焦在问题本身，不要变成杠精似地撕逼&lt;/p&gt;
+
+&lt;h4 id=&quot;4d总结法&quot;&gt;4D总结法&lt;/h4&gt;
+&lt;p&gt;4D, 4 dimensions&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;结果(价值)维度&lt;/p&gt;
+
+    &lt;p&gt;价值是什么: 业务指标(销售额, 营业额)，技术指标(故障率, SLI/SLO) 和 管理指标(团队的开发效率)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;数据维度&lt;/p&gt;
+
+    &lt;p&gt;提升了开发效率，应该改为具体的 开发周期从 X 周减少到 Y 周, 人数从 X 人 减少到 X 人&lt;/p&gt;
+
+    &lt;p&gt;&lt;strong&gt;注意: 这里的数据需要在不同的上下文有不同的意义, 比如当前用户数只要1000，提升 1000% 是很容易的, 但是 如果是当前的微信用户，用户数再提升 10% 都很难&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;技术维度&lt;/p&gt;
+
+    &lt;p&gt;按照 链式/比较 学习法进行学习, 并用此总结经验和教训&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;成长维度&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;技术提升&lt;/li&gt;
+      &lt;li&gt;业务理解
+        &lt;ul&gt;
+          &lt;li&gt;使用场景&lt;/li&gt;
+          &lt;li&gt;目标用户&lt;/li&gt;
+          &lt;li&gt;效果等等&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;管理技巧(项目组织, 沟通方式 和 做事技巧)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;金字塔汇报&quot;&gt;金字塔汇报&lt;/h4&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;4D 总结法能让你客观地对自己和整个项目做完整的剖析和认知，但是会更多偏于细节，金字塔更多地是高维度地汇报，抓重点和关键点进行汇报&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;金字塔原理: 1中心, 3论点, 7论据 (1, 3, 7可以认为是 &lt;a href=&quot;https://www.sohu.com/a/166147743_774979&quot;&gt;magic number&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;论点, 输出 和 结果，要先阐述；论据，过程 和 内容 要后阐述(甚至不阐述)&lt;/p&gt;
+
+&lt;p&gt;内容结构&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;结论
+    &lt;ul&gt;
+      &lt;li&gt;简明概要&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;具体分析
+    &lt;ul&gt;
+      &lt;li&gt;细节数据&lt;/li&gt;
+      &lt;li&gt;为什么是这样的数据&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;关键事项
+    &lt;ul&gt;
+      &lt;li&gt;业务架构图/技术架构图&lt;/li&gt;
+      &lt;li&gt;阶梯图&lt;/li&gt;
+      &lt;li&gt;时间线&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;四线复盘&quot;&gt;四线复盘&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;时间线&lt;/li&gt;
+  &lt;li&gt;问题链(5w分析法)&lt;/li&gt;
+  &lt;li&gt;责任链
+    &lt;ul&gt;
+      &lt;li&gt;违反规范私自操作&lt;/li&gt;
+      &lt;li&gt;问题源头&lt;/li&gt;
+      &lt;li&gt;问题放大&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;改进线(可以落地的改进方案很重要)&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">COMD 能力模型 COMD, aka, Complexity-Oriented Multi-Dimension 多维度 + 复杂度</summary></entry><entry><title type="html">fingerstyle blues level 1-3</title><link href="https://dengqinghua.github.io/finger-style-blues-l123.html" rel="alternate" type="text/html" title="fingerstyle blues level 1-3" /><published>2021-06-28T00:00:00+08:00</published><updated>2021-06-28T00:00:00+08:00</updated><id>https://dengqinghua.github.io/finger-style-blues-l123</id><content type="html" xml:base="https://dengqinghua.github.io/finger-style-blues-l123.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
 
 &lt;ul&gt;
   &lt;li&gt;曲谱: &lt;a href=&quot;https://pan.baidu.com/disk/pdfview?path=%2F42%2F%E9%9F%B3%E4%B9%90%2F%E6%95%99%E6%9D%90%2FProGuitar%2FfingerstyleBlues%2Fproguitar-fingerstyle-blues.pdf&quot;&gt;PDF&lt;/a&gt;&lt;/li&gt;
