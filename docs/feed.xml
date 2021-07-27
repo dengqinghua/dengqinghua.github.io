@@ -1,5 +1,484 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-07-26T16:25:12+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
-</subtitle><author><name>dengqinghua</name></author><entry><title type="html">晋升指南笔记</title><link href="https://dengqinghua.github.io/learn-how-to-promote.html" rel="alternate" type="text/html" title="晋升指南笔记" /><published>2021-07-14T00:00:00+08:00</published><updated>2021-07-14T00:00:00+08:00</updated><id>https://dengqinghua.github.io/learn-how-to-promote</id><content type="html" xml:base="https://dengqinghua.github.io/learn-how-to-promote.html">&lt;h2 id=&quot;comd-能力模型&quot;&gt;COMD 能力模型&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-07-27T15:17:41+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+</subtitle><author><name>dengqinghua</name></author><entry><title type="html">ease backend from 0 to 1</title><link href="https://dengqinghua.github.io/3-month-sharing.html" rel="alternate" type="text/html" title="ease backend from 0 to 1" /><published>2021-07-26T00:00:00+08:00</published><updated>2021-07-26T00:00:00+08:00</updated><id>https://dengqinghua.github.io/3-month-sharing</id><content type="html" xml:base="https://dengqinghua.github.io/3-month-sharing.html">&lt;h2 id=&quot;架构&quot;&gt;架构&lt;/h2&gt;
+
+&lt;div class=&quot;mermaid&quot;&gt;
+graph TB;
+    arch([Ease 后端架构]);
+    op([Devops]);
+    op1(gitlab CI/CD)
+    op11(自动部署)
+    op12(快速扩容)
+    op13(权限控制)
+    op2(指标数据)
+    op3(报警)
+    op31(业务数据)
+    op32(错误率)
+    op33(服务器指标)
+    op21(系统/业务数据)
+    op22(SLO/SLI)
+    op23(SBA)
+    op24(压测)
+    biz([业务]);
+    biz1(Java);
+    biz11(BFF &lt;br /&gt;App);
+    biz12(BFF &lt;br /&gt;Admin);
+    biz2(React+Antd);
+    biz-m1(microservice&lt;br /&gt; 内容)
+    biz-m3(microservice&lt;br /&gt; 支付)
+    biz-m4(microservice&lt;br /&gt; 用户)
+    biz-other(...)
+    biz22(CRM);
+    biz23(H5);
+    sys([中间件]);
+    sys0(Nginx);
+    sys00(HTTPS);
+    sys01(反向代理);
+    sys02(负载均衡);
+    sys03(HTTP Auth);
+    sys1(ELK);
+    sys11(日志收集);
+    sys12(报表输出);
+    sys2(BI);
+    sys3(MySQL);
+    sys4(Redis);
+    sys5(队列);
+    arch--&amp;gt;op &amp;amp; biz &amp;amp; sys;
+    op--&amp;gt;op1 &amp;amp; op2 &amp;amp; op3;
+    op1--&amp;gt;op11 &amp;amp; op12 &amp;amp; op13;
+    op2--&amp;gt;op21 &amp;amp; op22 &amp;amp; op23 &amp;amp; op24;
+    op3--&amp;gt;op31 &amp;amp; op32 &amp;amp; op33;
+    biz--&amp;gt;biz1 &amp;amp; biz2;
+    biz1--&amp;gt;biz11 &amp;amp; biz12;
+    biz2--&amp;gt;biz22 &amp;amp; biz23;
+    sys--&amp;gt;sys0 &amp;amp; sys1 &amp;amp; sys2 &amp;amp; sys3 &amp;amp; sys4 &amp;amp; sys5;
+    sys1--&amp;gt;sys11 &amp;amp; sys12;
+    sys0--&amp;gt;sys00 &amp;amp; sys01 &amp;amp; sys02 &amp;amp; sys03;
+    biz11 --&amp;gt; biz-m3 &amp;amp; biz-m4
+    biz11 &amp;amp; biz12 --&amp;gt; biz-m1 &amp;amp; biz-other
+
+    style op fill:#f9f,stroke:#333,stroke-width:4px
+    style biz fill:#f9f,stroke:#333,stroke-width:4px
+    style sys fill:#f9f,stroke:#333,stroke-width:4px
+
+    style op1 fill:#f96f,stroke:#333,stroke-width:4px
+    style op2 fill:#f96f,stroke:#333,stroke-width:4px
+    style biz1 fill:#f96f,stroke:#333,stroke-width:4px
+    style biz2 fill:#f96f,stroke:#333,stroke-width:4px
+    style sys0 fill:#f96f,stroke:#333,stroke-width:4px
+    style sys1 fill:#f96f,stroke:#333,stroke-width:4px
+    style sys2 fill:#f96f,stroke:#333,stroke-width:4px
+    style sys3 fill:#f96f,stroke:#333,stroke-width:4px
+    style sys4 fill:#f96f,stroke:#333,stroke-width:4px
+
+    style op3 fill:#f96f,stroke-dasharray: 5 5
+    style sys5 fill:#f96f,stroke-dasharray: 5 5
+&lt;/div&gt;
+
+&lt;h3 id=&quot;devops&quot;&gt;Devops&lt;/h3&gt;
+&lt;div class=&quot;mermaid&quot;&gt;
+graph TB;
+    op([Devops]);
+    op1(gitlab CI/CD)
+    op11(自动部署)
+    op12(快速扩容)
+    op13(权限控制)
+    op2(指标数据)
+    op20(日志数据 &lt;br /&gt; ELK)
+    op21(SLO/SLI &lt;br /&gt; Kibana看板)
+    op22(系统数据 &lt;br /&gt; Netdata)
+    op23(业务数据 &lt;br /&gt; BI看板)
+    op24(SBA &lt;br /&gt; Spring Metrics)
+    op25(服务质量 &lt;br /&gt; TPS)
+    op3(报警)
+    op31(业务数据)
+    op32(错误率)
+    op33(服务器指标)
+    op--&amp;gt;op1 &amp;amp; op2 &amp;amp; op3;
+    op1--&amp;gt;op11 &amp;amp; op12 &amp;amp; op13;
+    op2--&amp;gt;op20 &amp;amp; op21 &amp;amp; op22 &amp;amp; op23 &amp;amp; op24 &amp;amp; op25;
+    op3--&amp;gt;op31 &amp;amp; op32 &amp;amp; op33;
+    click op11 &quot;https://gitlab.easeprime.com/ease/backend_service/-/blob/dev/.gitlab-ci.yml#L17&quot; _blank
+    click op12 &quot;https://gitlab.easeprime.com/ease/nginx-prod-conf/-/blob/master/sites-enabled-erb/java&quot; _blank
+    click op13 &quot;https://gitlab.easeprime.com/ease/backend_service/-/settings/ci_cd&quot; _blank
+    click op1 &quot;https://docs.gitlab.com/ee/ci/introduction/img/gitlab_workflow_example_11_9.png&quot; _blank
+    click op20 &quot;https://es-ras1ax3s.kibana.tencentelasticsearch.com:5601/app/discover#/?_g=(filters:!(),query:(language:kuery,query:''),refreshInterval:(pause:!f,value:900000),time:(from:now-24h,to:now))&amp;amp;_a=(columns:!(message,container.name),filters:!(),index:'16ad3800-cf56-11eb-83c7-d711353ac049',interval:auto,query:(language:kuery,query:''),sort:!())&quot; _blank
+    click op21 &quot;http://bi.easeprime.com/question/9?type=STORY&amp;amp;percent=0.99&amp;amp;day=30&amp;amp;playCount=10&amp;amp;dayCreatedAt=30&quot; _blank
+    click op22 &quot;http://metrics.easeprime.com&quot; _blank
+    click op23 &quot;http://bi.easeprime.com/question/9?type=STORY&amp;amp;percent=0.99&amp;amp;day=30&amp;amp;playCount=10&amp;amp;dayCreatedAt=30&quot; _blank
+    click op24 &quot;http://sba.easeprime.com&quot; _blank
+    style op3 fill:#f96f,stroke-dasharray: 5 5
+&lt;/div&gt;
+
+&lt;h4 id=&quot;gitlab&quot;&gt;Gitlab&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;时间线&lt;/p&gt;
+
+    &lt;div class=&quot;mermaid&quot;&gt;
+ graph LR;
+     zero([搭建 gitlab &lt;br /&gt; 4C8G]);
+     onlyDev([单分支部署 &lt;br /&gt; dev]);
+     multiDev([多分支部署 &lt;br /&gt; dev, relase_xxx]);
+     multiMachine([多机器部署 &lt;br /&gt; main, backup1, backup2]);
+     rollback([回滚 &lt;br /&gt; app-commitId.jar]);
+     zero--&amp;gt;onlyDev--&amp;gt;multiDev--&amp;gt;multiMachine--&amp;gt;rollback
+ &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;遇到的一些坑&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;需要在每一台机器中安装 &lt;a href=&quot;https://docs.gitlab.com/runner/&quot;&gt;gitlab-runner&lt;/a&gt;，runner 需要执行 build/deploy 步骤需要很高的权限
+        &lt;details&gt;
+          &lt;summary&gt;
+eg
+&lt;/summary&gt;
+          &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gitlab-runner ALL=(ALL) NOPASSWD: /usr/sbin/nginx, /usr/bin/cp
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;          &lt;/div&gt;
+        &lt;/details&gt;
+      &lt;/li&gt;
+      &lt;li&gt;gitlab 需要和每一个 runner 进行心跳连接, 存储对应的信息, 再加上很多文件操作, 非常&lt;a href=&quot;https://docs.gitlab.com/omnibus/settings/memory_constrained_envs.html&quot;&gt;耗费内存&lt;/a&gt;, 需要设置服务器 SWAP
+        &lt;details&gt;
+          &lt;summary&gt;
+swap
+&lt;/summary&gt;
+          &lt;blockquote&gt;
+            &lt;p&gt;Swap is &lt;strong&gt;a dedicated space on disk that is used when physical RAM is full&lt;/strong&gt;.&lt;/p&gt;
+          &lt;/blockquote&gt;
+        &lt;/details&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;gitlab 和 gitee 对比&lt;/p&gt;
+
+        &lt;table&gt;
+          &lt;thead&gt;
+            &lt;tr&gt;
+              &lt;th style=&quot;text-align: center&quot;&gt;维度&lt;/th&gt;
+              &lt;th style=&quot;text-align: center&quot;&gt;gitee&lt;/th&gt;
+              &lt;th style=&quot;text-align: center&quot;&gt;gitlab&lt;/th&gt;
+            &lt;/tr&gt;
+          &lt;/thead&gt;
+          &lt;tbody&gt;
+            &lt;tr&gt;
+              &lt;td style=&quot;text-align: center&quot;&gt;运维成本&lt;/td&gt;
+              &lt;td style=&quot;text-align: center&quot;&gt;低&lt;/td&gt;
+              &lt;td style=&quot;text-align: center&quot;&gt;&lt;a href=&quot;https://github.com/sameersbn/docker-gitlab/blob/master/docker-compose.yml&quot;&gt;较高&lt;/a&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+              &lt;td style=&quot;text-align: center&quot;&gt;CI/CD能力&lt;/td&gt;
+              &lt;td style=&quot;text-align: center&quot;&gt;低，本身的 Gitee Go 在&lt;a href=&quot;https://gitee.com/help/articles/4293#article-header0&quot;&gt;内测&lt;/a&gt;中, 官方建议使用 Jenkins 等第三方工具&lt;/td&gt;
+              &lt;td style=&quot;text-align: center&quot;&gt;高, gitlab-runner 已具备完整生产能力&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+              &lt;td style=&quot;text-align: center&quot;&gt;稳定性&lt;/td&gt;
+              &lt;td style=&quot;text-align: center&quot;&gt;高&lt;/td&gt;
+              &lt;td style=&quot;text-align: center&quot;&gt;低&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+              &lt;td style=&quot;text-align: center&quot;&gt;安全性&lt;/td&gt;
+              &lt;td style=&quot;text-align: center&quot;&gt;较高&lt;/td&gt;
+              &lt;td style=&quot;text-align: center&quot;&gt;高&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+              &lt;td style=&quot;text-align: center&quot;&gt;是否收费&lt;/td&gt;
+              &lt;td style=&quot;text-align: center&quot;&gt;基本功能免费, CI/CD 有对应的免费时长&lt;/td&gt;
+              &lt;td style=&quot;text-align: center&quot;&gt;免费&lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;业务&quot;&gt;业务&lt;/h3&gt;
+&lt;div class=&quot;mermaid&quot;&gt;
+graph TB;
+    biz([业务]);
+    biz1(Java);
+    biz11(BFF &lt;br /&gt;App);
+    biz12(BFF &lt;br /&gt;Admin);
+    biz2(React+Antd);
+    biz-m1(microservice&lt;br /&gt; 内容&lt;br /&gt;单曲 合集 Q&amp;amp;E 老师等)
+    biz-m3(microservice&lt;br /&gt; 支付&lt;br /&gt; 微信 支付宝 华为支付 苹果支付)
+    biz-m4(microservice&lt;br /&gt; 用户&lt;br /&gt;登录/注册 反馈 VIP信息)
+    biz-m5(microservice&lt;br /&gt; 运营活动&lt;br /&gt; 广告 Banner 优惠活动)
+    biz-m6(microservice&lt;br /&gt; 用户日志&lt;br /&gt;音频播放日志)
+    biz-m7(microservice&lt;br /&gt; RBAC&lt;br /&gt;权限 角色)
+    biz22(CRM);
+    biz23(H5);
+    biz--&amp;gt;biz1 &amp;amp; biz2;
+    biz1--&amp;gt;biz11 &amp;amp; biz12;
+    biz2--&amp;gt;biz22 &amp;amp; biz23;
+    biz11 --&amp;gt; biz-m3 &amp;amp; biz-m4 &amp;amp; biz-m6
+    biz11 &amp;amp; biz12 --&amp;gt; biz-m1 &amp;amp; biz-m5 &amp;amp; biz-m7
+&lt;/div&gt;
+
+&lt;h4 id=&quot;bff&quot;&gt;BFF&lt;/h4&gt;
+&lt;p&gt;BFF, Backend for Frontend&lt;/p&gt;
+
+&lt;p&gt;BFF 层为流量入口, 主要处理 鉴权，参数校验，拼装 microservice 接口中需要的参数，并聚合各个 microservice 的返回结果, 一般来说，我们的缓存也会放在 BFF 层&lt;/p&gt;
+
+&lt;div class=&quot;mermaid&quot;&gt;
+graph TB;
+    biz1(首页为你接口 &lt;br /&gt;/tag/media/group/v2/forYou);
+    check(校验参数 获取用户id);
+    biz11(内容&lt;br /&gt;单曲 合集 Q&amp;amp;E 老师等);
+    biz12(用户&lt;br /&gt; VIP信息);
+    biz13(运营活动&lt;br /&gt; 广告 Banner 优惠活动);
+    biz14(用户日志&lt;br /&gt;音频播放日志);
+    final(聚合数据)
+    biz1--&amp;gt;check--&amp;gt;biz11 &amp;amp; biz12 &amp;amp; biz13 &amp;amp; biz14--&amp;gt;final;
+
+    style biz11 fill:#f96f,stroke-dasharray: 5 5
+    style biz13 fill:#f96f,stroke-dasharray: 5 5
+&lt;/div&gt;
+
+&lt;h3 id=&quot;中间件&quot;&gt;中间件&lt;/h3&gt;
+&lt;div class=&quot;mermaid&quot;&gt;
+graph TB;
+    sys([中间件]);
+    sys0(Nginx);
+    sys00(HTTPS);
+    sys01(反向代理);
+    sys02(负载均衡);
+    sys03(HTTP Auth);
+    sys1(ELK);
+    sys11(日志收集);
+    sys12(报表输出);
+    sys2(BI/大数据);
+    sys3(MySQL);
+    sys4(Redis);
+    sys5(队列);
+    sys--&amp;gt;sys0 &amp;amp; sys1 &amp;amp; sys2 &amp;amp; sys3 &amp;amp; sys4 &amp;amp; sys5;
+    sys0--&amp;gt;sys00 &amp;amp; sys01 &amp;amp; sys02 &amp;amp; sys03;
+    sys1--&amp;gt;sys11 &amp;amp; sys12;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;nginx&quot;&gt;Nginx&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;时间线&lt;/p&gt;
+
+    &lt;div class=&quot;mermaid&quot;&gt;
+ graph LR;
+     doInMachine([服务器进行配置]);
+     restart([手动进行重启服务]);
+     hard([扩容困难且容易配置错误]);
+     gitLab([配置文件用git进行管理]);
+     erb([配置文件模板化 &lt;br /&gt; 支持环境变量]);
+     ci([gitlab-ci核心数据配置 &lt;br /&gt; 进行配置检查 和 服务重启]);
+     doInMachine--&amp;gt;restart--&amp;gt;hard--&amp;gt;gitLab--&amp;gt;erb--&amp;gt;ci
+ &lt;/div&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://gitlab.easeprime.com/ease/nginx-stage-conf&quot;&gt;nginx-dev&amp;amp;qa-conf&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://gitlab.easeprime.com/ease/nginx-prod-conf&quot;&gt;nginx-prod-conf&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;details&gt;
+      &lt;summary&gt;
+ Nginx CI 过程
+ &lt;/summary&gt;
+      &lt;ol&gt;
+        &lt;li&gt;编写 ERB 文件, 如 java-dev-erb 文件
+          &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; upstream java_dev_server {
+    server &amp;lt;%= ENV[&quot;JAVA_DEV_HOST&quot;] %&amp;gt;:8880;
+    server &amp;lt;%= ENV[&quot;JAVA_DEV_HOST&quot;] %&amp;gt;:8881;
+ }
+ server {
+         listen 80;
+
+         server_name dev-api.easeprime.com;
+         location / {
+             proxy_pass http://java_dev_server;
+         }
+ }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li&gt;在 gitlab-ci 中配置环境变量
+          &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; variables:
+   DEV_HOST: 172.21.0.7 
+   JAVA_DEV_HOST: $DEV_HOST
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li&gt;生成最终的配置文件
+          &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; erb java-dev-erb java-dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li&gt;拷贝文件, 并检查配置, 无问题后重启 nginx
+          &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; nginx -t
+ nginx -s reload
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ol&gt;
+    &lt;/details&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;遇到的一些坑&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;nginx 的配置文件&lt;a href=&quot;https://serverfault.com/questions/577370/how-can-i-use-environment-variables-in-nginx-conf&quot;&gt;不支持环境变量&lt;/a&gt;，只能通过 shell 脚本如 envsubstr 或者第三方工具来进行配置，这里用的是 ruby 的 &lt;a href=&quot;https://docs.ruby-lang.org/en/2.3.0/ERB.html&quot;&gt;erb&lt;/a&gt; 生成的 nginx 配置文件&lt;/li&gt;
+      &lt;li&gt;nginx 的配置语法比较 tricky, 学习成本比较高&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;details&gt;
+      &lt;summary&gt;
+ eg.
+ &lt;/summary&gt;
+      &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  location ~* /swagger-ui/.+\.html$ {
+    proxy_pass http://java_dev_server;
+
+  auth_basic &quot;Private Property&quot;;
+  auth_basic_user_file /etc/nginx/.htpasswd;
+  }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;      &lt;/div&gt;
+    &lt;/details&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;elk&quot;&gt;ELK&lt;/h4&gt;
+&lt;details&gt;
+  &lt;summary&gt;
+what is ELK?
+&lt;/summary&gt;
+
+  &lt;blockquote&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.elastic.co/static-res/images/elk/elk-stack-elkb-diagram.svg&quot;&gt;E，elasticsearch; L，logstash; K，kibana&lt;/a&gt;&lt;/p&gt;
+
+    &lt;p&gt;beats 收集日志, logstash 处理日志, elasticsearch 存储日志, kibana 查询数据。例子如下&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;filebeat收集服务日志:
+        &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  { &quot;message&quot;: &quot;2021-07-27 10:52:42.066  INFO 1 --- ..., url = /api/advertisement/detail, caller = {}, params = [{&quot;code&quot;:&quot;relax&quot;}], result = {&quot;code&quot;:&quot;200&quot;,&quot;status&quot;:200}, time cost = 3 ms&quot; }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li&gt;logstash处理, 将 message 中的 url 和 耗时提取出来
+        &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  {
+     &quot;message&quot;: &quot;原来的message字段&quot;,
+     &quot;url&quot;: &quot;/api/advertisement/detail&quot;,
+     &quot;timeCost&quot;: 3
+  }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li&gt;ES存储数据，并更新结构数据, 自动添加 url 和 timecost 字段&lt;/li&gt;
+      &lt;li&gt;Kibana 统一提供查询, 可以通过 url 和 timecost 字段进行&lt;a href=&quot;https://es-ras1ax3s.kibana.tencentelasticsearch.com:5601/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&amp;amp;_a=(columns:!(message,container.name,reqUri,reqTime),filters:!(),index:'16ad3800-cf56-11eb-83c7-d711353ac049',interval:auto,query:(language:kuery,query:''),sort:!())&quot;&gt;查询和聚合处理&lt;/a&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/blockquote&gt;
+&lt;/details&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;时间线&lt;/p&gt;
+
+    &lt;div class=&quot;mermaid&quot;&gt;
+ graph LR;
+     mainMade([自建 ELK]);
+     buy([购买 ES 集群 和 Kibana]);
+     logstash([自建 Logstash]);
+     handle([利用 Logstash 处理数据]);
+     upload([上传处理后的数据至 ES]);
+     kanban([搭建 SLO/SLI 看板]);
+     mainMade--&amp;gt;buy--&amp;gt;logstash--&amp;gt;handle--&amp;gt;upload--&amp;gt;kanban
+ &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;遇到的一些坑&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;elasticsearch 本身会使用堆外内存, 即使设置了最大内存限制 Xmx 也没有用, 很容易导致 OOM&lt;/li&gt;
+      &lt;li&gt;logstash 本身的 &lt;a href=&quot;https://logz.io/blog/logstash-grok/&quot;&gt;gork 功能&lt;/a&gt;很强大, 但是很难&lt;a href=&quot;https://es-ras1ax3s.kibana.tencentelasticsearch.com:5601/app/dev_tools#/grokdebugger&quot;&gt;调试&lt;/a&gt;, 而且在 ES 的字段类型重建 &lt;a href=&quot;https://discuss.elastic.co/t/how-to-update-a-field-type-of-existing-index-in-elasticsearch/53892&quot;&gt;tricky&lt;/a&gt;
+        &lt;details&gt;
+          &lt;summary&gt;
+eg
+&lt;/summary&gt;
+          &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;input { beats { port =&amp;gt; 5044 } tcp { port =&amp;gt; 5000 } }
+
+filter {
+  grok {
+    match =&amp;gt; { &quot;message&quot; =&amp;gt; ['%{TIMESTAMP_ISO8601:reqTime}  %{GREEDYDATA} %{URIPATH:reqUri}, %{GREEDYDATA}time cost = %{NUMBER:reqCostMs} ms'] }
+  }
+  mutate {
+    convert =&amp;gt; { &quot;reqCostMs&quot; =&amp;gt; &quot;integer&quot; }
+  }
+  date {
+    match =&amp;gt; [ &quot;reqTime&quot;, &quot;ISO8601&quot;, &quot;YYYY-MM-dd HH:mm:ss&quot;, &quot;YYYY-MM-dd HH:mm:ss.ZZZ&quot; ]
+      target =&amp;gt; &quot;reqTime&quot;
+      locale =&amp;gt; &quot;en&quot;
+  }
+}
+output {
+  elasticsearch {
+    hosts =&amp;gt; &quot;172.21.16.2:9200&quot;
+      ecs_compatibility =&amp;gt; disabled
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;          &lt;/div&gt;
+        &lt;/details&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;what-the-next&quot;&gt;What the next…&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;生产优先
+    &lt;ul&gt;
+      &lt;li&gt;推荐&lt;/li&gt;
+      &lt;li&gt;分享&lt;/li&gt;
+      &lt;li&gt;营销活动&lt;/li&gt;
+      &lt;li&gt;大数据分析&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;服务化&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;只有在业务量起来之后，推荐，大数据，微服务这些才会有意义&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;mermaid&quot;&gt;
+graph TB;
+    op([Devops]);
+    op1(gitlab CI/CD)
+    op10(K8S)
+    op11(自动部署)
+    op12(快速扩容)
+    op13(权限控制)
+    op14(日志输出)
+    op15(监控报警)
+    op2(指标数据)
+    op21(SLO/SLI &lt;br /&gt; Kibana看板)
+    op22(系统数据 &lt;br /&gt; Netdata)
+    op23(业务数据 &lt;br /&gt; BI看板)
+    op3(报警)
+    op31(业务数据)
+    op32(错误率)
+    op33(服务器指标)
+    op--&amp;gt;op1 &amp;amp; op2 &amp;amp; op3;
+    op1--&amp;gt;op10--&amp;gt;op11 &amp;amp; op12 &amp;amp; op13 &amp;amp; op14 &amp;amp; op15;
+    op2--&amp;gt;op21 &amp;amp; op22 &amp;amp; op23;
+    op3--&amp;gt;op31 &amp;amp; op32 &amp;amp; op33;
+    click op11 &quot;https://gitlab.easeprime.com/ease/backend_service/-/blob/dev/.gitlab-ci.yml#L17&quot; _blank
+    click op12 &quot;https://gitlab.easeprime.com/ease/nginx-prod-conf/-/blob/master/sites-enabled-erb/java&quot; _blank
+    click op13 &quot;https://gitlab.easeprime.com/ease/backend_service/-/settings/ci_cd&quot; _blank
+    click op1 &quot;https://docs.gitlab.com/ee/ci/introduction/img/gitlab_workflow_example_11_9.png&quot; _blank
+    click op20 &quot;https://es-ras1ax3s.kibana.tencentelasticsearch.com:5601/app/discover#/?_g=(filters:!(),query:(language:kuery,query:''),refreshInterval:(pause:!f,value:900000),time:(from:now-24h,to:now))&amp;amp;_a=(columns:!(message,container.name),filters:!(),index:'16ad3800-cf56-11eb-83c7-d711353ac049',interval:auto,query:(language:kuery,query:''),sort:!())&quot; _blank
+    click op21 &quot;http://bi.easeprime.com/question/9?type=STORY&amp;amp;percent=0.99&amp;amp;day=30&amp;amp;playCount=10&amp;amp;dayCreatedAt=30&quot; _blank
+    click op22 &quot;http://metrics.easeprime.com&quot; _blank
+    click op23 &quot;http://bi.easeprime.com/question/9?type=STORY&amp;amp;percent=0.99&amp;amp;day=30&amp;amp;playCount=10&amp;amp;dayCreatedAt=30&quot; _blank
+    click op24 &quot;http://sba.easeprime.com&quot; _blank
+
+    style op10 fill:#f96f,stroke-dasharray: 5 5
+    style op11 fill:#f96f,stroke-dasharray: 5 5
+    style op12 fill:#f96f,stroke-dasharray: 5 5
+    style op13 fill:#f96f,stroke-dasharray: 5 5
+    style op14 fill:#f96f,stroke-dasharray: 5 5
+    style op15 fill:#f96f,stroke-dasharray: 5 5
+    style op3 fill:#f96f,stroke-dasharray: 5 5
+&lt;/div&gt;</content><author><name>dengqinghua</name></author><summary type="html">架构</summary></entry><entry><title type="html">晋升指南笔记</title><link href="https://dengqinghua.github.io/learn-how-to-promote.html" rel="alternate" type="text/html" title="晋升指南笔记" /><published>2021-07-14T00:00:00+08:00</published><updated>2021-07-14T00:00:00+08:00</updated><id>https://dengqinghua.github.io/learn-how-to-promote</id><content type="html" xml:base="https://dengqinghua.github.io/learn-how-to-promote.html">&lt;h2 id=&quot;comd-能力模型&quot;&gt;COMD 能力模型&lt;/h2&gt;
 &lt;p&gt;COMD, aka, Complexity-Oriented Multi-Dimension 多维度 + 复杂度&lt;/p&gt;
 
 &lt;ol&gt;
@@ -1434,52 +1913,6 @@ sudo rpm -vi filebeat-7.12.1-x86_64.rpm
 &lt;hr data-content=&quot; 做的不错的 &quot; /&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;弹奏的时候比较放松, 各种力度, 速度 都进行了录音尝试&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;hr data-content=&quot; 下次录音我会尝试的 &quot; /&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;录音之前多听听原曲, 录音的时候跟着原曲弹奏几遍, 找找律动的感觉&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry><entry><title type="html">canned heat</title><link href="https://dengqinghua.github.io/finger-style-basics-1.html" rel="alternate" type="text/html" title="canned heat" /><published>2021-02-10T00:00:00+08:00</published><updated>2021-02-10T00:00:00+08:00</updated><id>https://dengqinghua.github.io/finger-style-basics-1</id><content type="html" xml:base="https://dengqinghua.github.io/finger-style-basics-1.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;曲谱: &lt;a href=&quot;assets/js/pdf.js/web/viewer.html?file=/assets/doc/canned-heat.pdf&quot;&gt;PDF&lt;/a&gt; &lt;a href=&quot;assets/doc/canned-heat.gp&quot;&gt;GuitarPro&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;来源: &lt;a href=&quot;https://youtu.be/uIXwPE_Fd8o&quot;&gt;Fingerstyle basics in Pro Guitar&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;我的翻弹: &lt;a href=&quot;https://www.bilibili.com/video/bv1EV411i7rr&quot;&gt;美式指弹 canned heat v2&lt;/a&gt; 和 &lt;a href=&quot;https://www.bilibili.com/video/bv1zt4y1B7ne&quot;&gt;美式指弹 canned heat&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr data-content=&quot; 律动 &quot; /&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;boom-chick 的感觉&lt;/li&gt;
-  &lt;li&gt;击勾弦的时候同时弹奏根音&lt;/li&gt;
-  &lt;li&gt;各个声部的音响的和谐程度&lt;/li&gt;
-  &lt;li&gt;shuffle 的节奏型&lt;/li&gt;
-  &lt;li&gt;弹奏的时候需要右手放松&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;hr data-content=&quot; 难点 &quot; /&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;虽然是 boom-chick 风格, 但是也一定要突出重音, 比如第一个根音不是完全闷起来的, 而是先弹出来, 再进行闷&lt;/li&gt;
-  &lt;li&gt;需要考虑音量的情况, 由于 boom-chick 是由拨片弹出来的, 一般来说音量会比较大, 所以 旋律部分 也一定要音量大一些, 才好听一些&lt;/li&gt;
-  &lt;li&gt;需要有一些 shuffle 的节奏, 不能完全地弹奏 8分 音符, 显得会比较死板&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;hr data-content=&quot; 需要加强的 &quot; /&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;右手的音量的控制不够好&lt;/li&gt;
-  &lt;li&gt;制音需要加强, 一些地方要特别注意制音, 才会有生动的感觉&lt;/li&gt;
-  &lt;li&gt;节奏的稳定性, 还需要多爬爬格子练习&lt;/li&gt;
-  &lt;li&gt;击勾弦的时候还需要更加流畅一些&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;hr data-content=&quot; 做的不错的 &quot; /&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;反复听了很多遍原曲, 仔细听 【boom-chick 的感觉】是通过哪些部分出来的&lt;/li&gt;
   &lt;li&gt;弹奏的时候比较放松, 各种力度, 速度 都进行了录音尝试&lt;/li&gt;
 &lt;/ol&gt;
 

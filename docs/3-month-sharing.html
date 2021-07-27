@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>ease backend from 0 to 1</title>
+
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="ease backend from 0 to 1" />
+<meta name="author" content="dengqinghua" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="架构" />
+<meta property="og:description" content="架构" />
+<link rel="canonical" href="https://dengqinghua.github.io/3-month-sharing.html" />
+<meta property="og:url" content="https://dengqinghua.github.io/3-month-sharing.html" />
+<meta property="og:site_name" content="Dengqinghua.42" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-07-26T00:00:00+08:00" />
+<script type="application/ld+json">
+{"headline":"ease backend from 0 to 1","dateModified":"2021-07-26T00:00:00+08:00","datePublished":"2021-07-26T00:00:00+08:00","url":"https://dengqinghua.github.io/3-month-sharing.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://dengqinghua.github.io/3-month-sharing.html"},"author":{"@type":"Person","name":"dengqinghua"},"description":"架构","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link type="application/atom+xml" rel="alternate" href="https://dengqinghua.github.io/feed.xml" title="Dengqinghua.42" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/logo.png" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/zoom.css" />
+  <script src="assets/js/mermaid.min.js"></script>
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/zoom.min.js"></script>
+  <script src="assets/js/zoom_init.js"></script>
+</head>
+<body a="light">
+    <main class="page-content" aria-label="Content">
+      <div class="w">
+        <a href="/">..</a>
+
+<article>
+  <p class="post-meta">
+    <time datetime="2021-07-26 00:00:00 +0800">2021-07-26</time>
+  </p>
+  
+  <h1>ease backend from 0 to 1</h1>
+
+  <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2">
+<a href="#%E6%9E%B6%E6%9E%84">架构</a>
+<ul>
+<li class="toc-entry toc-h3">
+<a href="#devops">Devops</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#gitlab">Gitlab</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3">
+<a href="#%E4%B8%9A%E5%8A%A1">业务</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#bff">BFF</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3">
+<a href="#%E4%B8%AD%E9%97%B4%E4%BB%B6">中间件</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#nginx">Nginx</a></li>
+<li class="toc-entry toc-h4"><a href="#elk">ELK</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#what-the-next">What the next…</a></li>
+</ul>
+<h2 id="架构">
+<a class="anchor" href="#%E6%9E%B6%E6%9E%84" aria-hidden="true"><span class="octicon octicon-link"></span></a>架构</h2>
+
+<div class="mermaid">
+graph TB;
+    arch([Ease 后端架构]);
+    op([Devops]);
+    op1(gitlab CI/CD)
+    op11(自动部署)
+    op12(快速扩容)
+    op13(权限控制)
+    op2(指标数据)
+    op3(报警)
+    op31(业务数据)
+    op32(错误率)
+    op33(服务器指标)
+    op21(系统/业务数据)
+    op22(SLO/SLI)
+    op23(SBA)
+    op24(压测)
+    biz([业务]);
+    biz1(Java);
+    biz11(BFF <br>App);
+    biz12(BFF <br>Admin);
+    biz2(React+Antd);
+    biz-m1(microservice<br> 内容)
+    biz-m3(microservice<br> 支付)
+    biz-m4(microservice<br> 用户)
+    biz-other(...)
+    biz22(CRM);
+    biz23(H5);
+    sys([中间件]);
+    sys0(Nginx);
+    sys00(HTTPS);
+    sys01(反向代理);
+    sys02(负载均衡);
+    sys03(HTTP Auth);
+    sys1(ELK);
+    sys11(日志收集);
+    sys12(报表输出);
+    sys2(BI);
+    sys3(MySQL);
+    sys4(Redis);
+    sys5(队列);
+    arch--&gt;op &amp; biz &amp; sys;
+    op--&gt;op1 &amp; op2 &amp; op3;
+    op1--&gt;op11 &amp; op12 &amp; op13;
+    op2--&gt;op21 &amp; op22 &amp; op23 &amp; op24;
+    op3--&gt;op31 &amp; op32 &amp; op33;
+    biz--&gt;biz1 &amp; biz2;
+    biz1--&gt;biz11 &amp; biz12;
+    biz2--&gt;biz22 &amp; biz23;
+    sys--&gt;sys0 &amp; sys1 &amp; sys2 &amp; sys3 &amp; sys4 &amp; sys5;
+    sys1--&gt;sys11 &amp; sys12;
+    sys0--&gt;sys00 &amp; sys01 &amp; sys02 &amp; sys03;
+    biz11 --&gt; biz-m3 &amp; biz-m4
+    biz11 &amp; biz12 --&gt; biz-m1 &amp; biz-other
+
+    style op fill:#f9f,stroke:#333,stroke-width:4px
+    style biz fill:#f9f,stroke:#333,stroke-width:4px
+    style sys fill:#f9f,stroke:#333,stroke-width:4px
+
+    style op1 fill:#f96f,stroke:#333,stroke-width:4px
+    style op2 fill:#f96f,stroke:#333,stroke-width:4px
+    style biz1 fill:#f96f,stroke:#333,stroke-width:4px
+    style biz2 fill:#f96f,stroke:#333,stroke-width:4px
+    style sys0 fill:#f96f,stroke:#333,stroke-width:4px
+    style sys1 fill:#f96f,stroke:#333,stroke-width:4px
+    style sys2 fill:#f96f,stroke:#333,stroke-width:4px
+    style sys3 fill:#f96f,stroke:#333,stroke-width:4px
+    style sys4 fill:#f96f,stroke:#333,stroke-width:4px
+
+    style op3 fill:#f96f,stroke-dasharray: 5 5
+    style sys5 fill:#f96f,stroke-dasharray: 5 5
+</div>
+
+<h3 id="devops">
+<a class="anchor" href="#devops" aria-hidden="true"><span class="octicon octicon-link"></span></a>Devops</h3>
+<div class="mermaid">
+graph TB;
+    op([Devops]);
+    op1(gitlab CI/CD)
+    op11(自动部署)
+    op12(快速扩容)
+    op13(权限控制)
+    op2(指标数据)
+    op20(日志数据 <br> ELK)
+    op21(SLO/SLI <br> Kibana看板)
+    op22(系统数据 <br> Netdata)
+    op23(业务数据 <br> BI看板)
+    op24(SBA <br> Spring Metrics)
+    op25(服务质量 <br> TPS)
+    op3(报警)
+    op31(业务数据)
+    op32(错误率)
+    op33(服务器指标)
+    op--&gt;op1 &amp; op2 &amp; op3;
+    op1--&gt;op11 &amp; op12 &amp; op13;
+    op2--&gt;op20 &amp; op21 &amp; op22 &amp; op23 &amp; op24 &amp; op25;
+    op3--&gt;op31 &amp; op32 &amp; op33;
+    click op11 "https://gitlab.easeprime.com/ease/backend_service/-/blob/dev/.gitlab-ci.yml#L17" _blank
+    click op12 "https://gitlab.easeprime.com/ease/nginx-prod-conf/-/blob/master/sites-enabled-erb/java" _blank
+    click op13 "https://gitlab.easeprime.com/ease/backend_service/-/settings/ci_cd" _blank
+    click op1 "https://docs.gitlab.com/ee/ci/introduction/img/gitlab_workflow_example_11_9.png" _blank
+    click op20 "https://es-ras1ax3s.kibana.tencentelasticsearch.com:5601/app/discover#/?_g=(filters:!(),query:(language:kuery,query:''),refreshInterval:(pause:!f,value:900000),time:(from:now-24h,to:now))&amp;_a=(columns:!(message,container.name),filters:!(),index:'16ad3800-cf56-11eb-83c7-d711353ac049',interval:auto,query:(language:kuery,query:''),sort:!())" _blank
+    click op21 "http://bi.easeprime.com/question/9?type=STORY&amp;percent=0.99&amp;day=30&amp;playCount=10&amp;dayCreatedAt=30" _blank
+    click op22 "http://metrics.easeprime.com" _blank
+    click op23 "http://bi.easeprime.com/question/9?type=STORY&amp;percent=0.99&amp;day=30&amp;playCount=10&amp;dayCreatedAt=30" _blank
+    click op24 "http://sba.easeprime.com" _blank
+    style op3 fill:#f96f,stroke-dasharray: 5 5
+</div>
+
+<h4 id="gitlab">
+<a class="anchor" href="#gitlab" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gitlab</h4>
+<ol>
+  <li>
+    <p>时间线</p>
+
+    <div class="mermaid">
+ graph LR;
+     zero([搭建 gitlab <br> 4C8G]);
+     onlyDev([单分支部署 <br> dev]);
+     multiDev([多分支部署 <br> dev, relase_xxx]);
+     multiMachine([多机器部署 <br> main, backup1, backup2]);
+     rollback([回滚 <br> app-commitId.jar]);
+     zero--&gt;onlyDev--&gt;multiDev--&gt;multiMachine--&gt;rollback
+ </div>
+  </li>
+  <li>
+    <p>遇到的一些坑</p>
+
+    <ul>
+      <li>需要在每一台机器中安装 <a href="https://docs.gitlab.com/runner/" target="_blank" rel="noopener noreferrer">gitlab-runner</a>，runner 需要执行 build/deploy 步骤需要很高的权限
+        <details>
+          <summary>
+eg
+</summary>
+          <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>gitlab-runner ALL=(ALL) NOPASSWD: /usr/sbin/nginx, /usr/bin/cp
+</code></pre></div>          </div>
+        </details>
+      </li>
+      <li>gitlab 需要和每一个 runner 进行心跳连接, 存储对应的信息, 再加上很多文件操作, 非常<a href="https://docs.gitlab.com/omnibus/settings/memory_constrained_envs.html" target="_blank" rel="noopener noreferrer">耗费内存</a>, 需要设置服务器 SWAP
+        <details>
+          <summary>
+swap
+</summary>
+          <blockquote>
+            <p>Swap is <strong>a dedicated space on disk that is used when physical RAM is full</strong>.</p>
+          </blockquote>
+        </details>
+      </li>
+      <li>
+        <p>gitlab 和 gitee 对比</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th style="text-align: center">维度</th>
+              <th style="text-align: center">gitee</th>
+              <th style="text-align: center">gitlab</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: center">运维成本</td>
+              <td style="text-align: center">低</td>
+              <td style="text-align: center"><a href="https://github.com/sameersbn/docker-gitlab/blob/master/docker-compose.yml" target="_blank" rel="noopener noreferrer">较高</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: center">CI/CD能力</td>
+              <td style="text-align: center">低，本身的 Gitee Go 在<a href="https://gitee.com/help/articles/4293#article-header0" target="_blank" rel="noopener noreferrer">内测</a>中, 官方建议使用 Jenkins 等第三方工具</td>
+              <td style="text-align: center">高, gitlab-runner 已具备完整生产能力</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">稳定性</td>
+              <td style="text-align: center">高</td>
+              <td style="text-align: center">低</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">安全性</td>
+              <td style="text-align: center">较高</td>
+              <td style="text-align: center">高</td>
+            </tr>
+            <tr>
+              <td style="text-align: center">是否收费</td>
+              <td style="text-align: center">基本功能免费, CI/CD 有对应的免费时长</td>
+              <td style="text-align: center">免费</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="业务">
+<a class="anchor" href="#%E4%B8%9A%E5%8A%A1" aria-hidden="true"><span class="octicon octicon-link"></span></a>业务</h3>
+<div class="mermaid">
+graph TB;
+    biz([业务]);
+    biz1(Java);
+    biz11(BFF <br>App);
+    biz12(BFF <br>Admin);
+    biz2(React+Antd);
+    biz-m1(microservice<br> 内容<br>单曲 合集 Q&amp;E 老师等)
+    biz-m3(microservice<br> 支付<br> 微信 支付宝 华为支付 苹果支付)
+    biz-m4(microservice<br> 用户<br>登录/注册 反馈 VIP信息)
+    biz-m5(microservice<br> 运营活动<br> 广告 Banner 优惠活动)
+    biz-m6(microservice<br> 用户日志<br>音频播放日志)
+    biz-m7(microservice<br> RBAC<br>权限 角色)
+    biz22(CRM);
+    biz23(H5);
+    biz--&gt;biz1 &amp; biz2;
+    biz1--&gt;biz11 &amp; biz12;
+    biz2--&gt;biz22 &amp; biz23;
+    biz11 --&gt; biz-m3 &amp; biz-m4 &amp; biz-m6
+    biz11 &amp; biz12 --&gt; biz-m1 &amp; biz-m5 &amp; biz-m7
+</div>
+
+<h4 id="bff">
+<a class="anchor" href="#bff" aria-hidden="true"><span class="octicon octicon-link"></span></a>BFF</h4>
+<p>BFF, Backend for Frontend</p>
+
+<p>BFF 层为流量入口, 主要处理 鉴权，参数校验，拼装 microservice 接口中需要的参数，并聚合各个 microservice 的返回结果, 一般来说，我们的缓存也会放在 BFF 层</p>
+
+<div class="mermaid">
+graph TB;
+    biz1(首页为你接口 <br>/tag/media/group/v2/forYou);
+    check(校验参数 获取用户id);
+    biz11(内容<br>单曲 合集 Q&amp;E 老师等);
+    biz12(用户<br> VIP信息);
+    biz13(运营活动<br> 广告 Banner 优惠活动);
+    biz14(用户日志<br>音频播放日志);
+    final(聚合数据)
+    biz1--&gt;check--&gt;biz11 &amp; biz12 &amp; biz13 &amp; biz14--&gt;final;
+
+    style biz11 fill:#f96f,stroke-dasharray: 5 5
+    style biz13 fill:#f96f,stroke-dasharray: 5 5
+</div>
+
+<h3 id="中间件">
+<a class="anchor" href="#%E4%B8%AD%E9%97%B4%E4%BB%B6" aria-hidden="true"><span class="octicon octicon-link"></span></a>中间件</h3>
+<div class="mermaid">
+graph TB;
+    sys([中间件]);
+    sys0(Nginx);
+    sys00(HTTPS);
+    sys01(反向代理);
+    sys02(负载均衡);
+    sys03(HTTP Auth);
+    sys1(ELK);
+    sys11(日志收集);
+    sys12(报表输出);
+    sys2(BI/大数据);
+    sys3(MySQL);
+    sys4(Redis);
+    sys5(队列);
+    sys--&gt;sys0 &amp; sys1 &amp; sys2 &amp; sys3 &amp; sys4 &amp; sys5;
+    sys0--&gt;sys00 &amp; sys01 &amp; sys02 &amp; sys03;
+    sys1--&gt;sys11 &amp; sys12;
+</div>
+
+<h4 id="nginx">
+<a class="anchor" href="#nginx" aria-hidden="true"><span class="octicon octicon-link"></span></a>Nginx</h4>
+<ol>
+  <li>
+    <p>时间线</p>
+
+    <div class="mermaid">
+ graph LR;
+     doInMachine([服务器进行配置]);
+     restart([手动进行重启服务]);
+     hard([扩容困难且容易配置错误]);
+     gitLab([配置文件用git进行管理]);
+     erb([配置文件模板化 <br> 支持环境变量]);
+     ci([gitlab-ci核心数据配置 <br> 进行配置检查 和 服务重启]);
+     doInMachine--&gt;restart--&gt;hard--&gt;gitLab--&gt;erb--&gt;ci
+ </div>
+
+    <ul>
+      <li><a href="https://gitlab.easeprime.com/ease/nginx-stage-conf" target="_blank" rel="noopener noreferrer">nginx-dev&amp;qa-conf</a></li>
+      <li><a href="https://gitlab.easeprime.com/ease/nginx-prod-conf" target="_blank" rel="noopener noreferrer">nginx-prod-conf</a></li>
+    </ul>
+
+    <details>
+      <summary>
+ Nginx CI 过程
+ </summary>
+      <ol>
+        <li>编写 ERB 文件, 如 java-dev-erb 文件
+          <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> upstream java_dev_server {
+    server &lt;%= ENV["JAVA_DEV_HOST"] %&gt;:8880;
+    server &lt;%= ENV["JAVA_DEV_HOST"] %&gt;:8881;
+ }
+ server {
+         listen 80;
+
+         server_name dev-api.easeprime.com;
+         location / {
+             proxy_pass http://java_dev_server;
+         }
+ }
+</code></pre></div>          </div>
+        </li>
+        <li>在 gitlab-ci 中配置环境变量
+          <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> variables:
+   DEV_HOST: 172.21.0.7 
+   JAVA_DEV_HOST: $DEV_HOST
+</code></pre></div>          </div>
+        </li>
+        <li>生成最终的配置文件
+          <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> erb java-dev-erb java-dev
+</code></pre></div>          </div>
+        </li>
+        <li>拷贝文件, 并检查配置, 无问题后重启 nginx
+          <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> nginx -t
+ nginx -s reload
+</code></pre></div>          </div>
+        </li>
+      </ol>
+    </details>
+  </li>
+  <li>
+    <p>遇到的一些坑</p>
+
+    <ul>
+      <li>nginx 的配置文件<a href="https://serverfault.com/questions/577370/how-can-i-use-environment-variables-in-nginx-conf" target="_blank" rel="noopener noreferrer">不支持环境变量</a>，只能通过 shell 脚本如 envsubstr 或者第三方工具来进行配置，这里用的是 ruby 的 <a href="https://docs.ruby-lang.org/en/2.3.0/ERB.html" target="_blank" rel="noopener noreferrer">erb</a> 生成的 nginx 配置文件</li>
+      <li>nginx 的配置语法比较 tricky, 学习成本比较高</li>
+    </ul>
+
+    <details>
+      <summary>
+ eg.
+ </summary>
+      <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  location ~* /swagger-ui/.+\.html$ {
+    proxy_pass http://java_dev_server;
+
+  auth_basic "Private Property";
+  auth_basic_user_file /etc/nginx/.htpasswd;
+  }
+</code></pre></div>      </div>
+    </details>
+  </li>
+</ol>
+
+<h4 id="elk">
+<a class="anchor" href="#elk" aria-hidden="true"><span class="octicon octicon-link"></span></a>ELK</h4>
+<details>
+  <summary>
+what is ELK?
+</summary>
+
+  <blockquote>
+    <p><a href="https://www.elastic.co/static-res/images/elk/elk-stack-elkb-diagram.svg" target="_blank" rel="noopener noreferrer">E，elasticsearch; L，logstash; K，kibana</a></p>
+
+    <p>beats 收集日志, logstash 处理日志, elasticsearch 存储日志, kibana 查询数据。例子如下</p>
+
+    <ol>
+      <li>filebeat收集服务日志:
+        <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  { "message": "2021-07-27 10:52:42.066  INFO 1 --- ..., url = /api/advertisement/detail, caller = {}, params = [{"code":"relax"}], result = {"code":"200","status":200}, time cost = 3 ms" }
+</code></pre></div>        </div>
+      </li>
+      <li>logstash处理, 将 message 中的 url 和 耗时提取出来
+        <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  {
+     "message": "原来的message字段",
+     "url": "/api/advertisement/detail",
+     "timeCost": 3
+  }
+</code></pre></div>        </div>
+      </li>
+      <li>ES存储数据，并更新结构数据, 自动添加 url 和 timecost 字段</li>
+      <li>Kibana 统一提供查询, 可以通过 url 和 timecost 字段进行<a href="https://es-ras1ax3s.kibana.tencentelasticsearch.com:5601/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&amp;_a=(columns:!(message,container.name,reqUri,reqTime),filters:!(),index:'16ad3800-cf56-11eb-83c7-d711353ac049',interval:auto,query:(language:kuery,query:''),sort:!())" target="_blank" rel="noopener noreferrer">查询和聚合处理</a>
+</li>
+    </ol>
+  </blockquote>
+</details>
+
+<ol>
+  <li>
+    <p>时间线</p>
+
+    <div class="mermaid">
+ graph LR;
+     mainMade([自建 ELK]);
+     buy([购买 ES 集群 和 Kibana]);
+     logstash([自建 Logstash]);
+     handle([利用 Logstash 处理数据]);
+     upload([上传处理后的数据至 ES]);
+     kanban([搭建 SLO/SLI 看板]);
+     mainMade--&gt;buy--&gt;logstash--&gt;handle--&gt;upload--&gt;kanban
+ </div>
+  </li>
+  <li>
+    <p>遇到的一些坑</p>
+
+    <ul>
+      <li>elasticsearch 本身会使用堆外内存, 即使设置了最大内存限制 Xmx 也没有用, 很容易导致 OOM</li>
+      <li>logstash 本身的 <a href="https://logz.io/blog/logstash-grok/" target="_blank" rel="noopener noreferrer">gork 功能</a>很强大, 但是很难<a href="https://es-ras1ax3s.kibana.tencentelasticsearch.com:5601/app/dev_tools#/grokdebugger" target="_blank" rel="noopener noreferrer">调试</a>, 而且在 ES 的字段类型重建 <a href="https://discuss.elastic.co/t/how-to-update-a-field-type-of-existing-index-in-elasticsearch/53892" target="_blank" rel="noopener noreferrer">tricky</a>
+        <details>
+          <summary>
+eg
+</summary>
+          <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>input { beats { port =&gt; 5044 } tcp { port =&gt; 5000 } }
+
+filter {
+  grok {
+    match =&gt; { "message" =&gt; ['%{TIMESTAMP_ISO8601:reqTime}  %{GREEDYDATA} %{URIPATH:reqUri}, %{GREEDYDATA}time cost = %{NUMBER:reqCostMs} ms'] }
+  }
+  mutate {
+    convert =&gt; { "reqCostMs" =&gt; "integer" }
+  }
+  date {
+    match =&gt; [ "reqTime", "ISO8601", "YYYY-MM-dd HH:mm:ss", "YYYY-MM-dd HH:mm:ss.ZZZ" ]
+      target =&gt; "reqTime"
+      locale =&gt; "en"
+  }
+}
+output {
+  elasticsearch {
+    hosts =&gt; "172.21.16.2:9200"
+      ecs_compatibility =&gt; disabled
+  }
+}
+</code></pre></div>          </div>
+        </details>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="what-the-next">
+<a class="anchor" href="#what-the-next" aria-hidden="true"><span class="octicon octicon-link"></span></a>What the next…</h2>
+<ul>
+  <li>生产优先
+    <ul>
+      <li>推荐</li>
+      <li>分享</li>
+      <li>营销活动</li>
+      <li>大数据分析</li>
+    </ul>
+  </li>
+  <li>
+    <p>服务化</p>
+
+    <blockquote>
+      <p>只有在业务量起来之后，推荐，大数据，微服务这些才会有意义</p>
+    </blockquote>
+  </li>
+</ul>
+
+<div class="mermaid">
+graph TB;
+    op([Devops]);
+    op1(gitlab CI/CD)
+    op10(K8S)
+    op11(自动部署)
+    op12(快速扩容)
+    op13(权限控制)
+    op14(日志输出)
+    op15(监控报警)
+    op2(指标数据)
+    op21(SLO/SLI <br> Kibana看板)
+    op22(系统数据 <br> Netdata)
+    op23(业务数据 <br> BI看板)
+    op3(报警)
+    op31(业务数据)
+    op32(错误率)
+    op33(服务器指标)
+    op--&gt;op1 &amp; op2 &amp; op3;
+    op1--&gt;op10--&gt;op11 &amp; op12 &amp; op13 &amp; op14 &amp; op15;
+    op2--&gt;op21 &amp; op22 &amp; op23;
+    op3--&gt;op31 &amp; op32 &amp; op33;
+    click op11 "https://gitlab.easeprime.com/ease/backend_service/-/blob/dev/.gitlab-ci.yml#L17" _blank
+    click op12 "https://gitlab.easeprime.com/ease/nginx-prod-conf/-/blob/master/sites-enabled-erb/java" _blank
+    click op13 "https://gitlab.easeprime.com/ease/backend_service/-/settings/ci_cd" _blank
+    click op1 "https://docs.gitlab.com/ee/ci/introduction/img/gitlab_workflow_example_11_9.png" _blank
+    click op20 "https://es-ras1ax3s.kibana.tencentelasticsearch.com:5601/app/discover#/?_g=(filters:!(),query:(language:kuery,query:''),refreshInterval:(pause:!f,value:900000),time:(from:now-24h,to:now))&amp;_a=(columns:!(message,container.name),filters:!(),index:'16ad3800-cf56-11eb-83c7-d711353ac049',interval:auto,query:(language:kuery,query:''),sort:!())" _blank
+    click op21 "http://bi.easeprime.com/question/9?type=STORY&amp;percent=0.99&amp;day=30&amp;playCount=10&amp;dayCreatedAt=30" _blank
+    click op22 "http://metrics.easeprime.com" _blank
+    click op23 "http://bi.easeprime.com/question/9?type=STORY&amp;percent=0.99&amp;day=30&amp;playCount=10&amp;dayCreatedAt=30" _blank
+    click op24 "http://sba.easeprime.com" _blank
+
+    style op10 fill:#f96f,stroke-dasharray: 5 5
+    style op11 fill:#f96f,stroke-dasharray: 5 5
+    style op12 fill:#f96f,stroke-dasharray: 5 5
+    style op13 fill:#f96f,stroke-dasharray: 5 5
+    style op14 fill:#f96f,stroke-dasharray: 5 5
+    style op15 fill:#f96f,stroke-dasharray: 5 5
+    style op3 fill:#f96f,stroke-dasharray: 5 5
+</div>
+
+</article>
+
+      </div>
+    </main>
+
+    
+  </body>
+</html>

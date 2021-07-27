@@ -1,0 +1,316 @@
+<h3 id="运维">运维</h3>
+<h4 id="机器配置">机器配置</h4>
+<p>4核8G</p>
+
+<h4 id="用户配置">用户配置</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo su -
+useradd YouName
+passwd YouName
+visudo
+YouName ALL=(ALL) NOPASSWD:ALL
+
+# 设置通用的目录
+mkdir -p /var/www/site
+chmod -R 777 /var/www/site
+</code></pre></div></div>
+
+<h4 id="软件安装">软件安装</h4>
+<p>安装 git, <a href="https://docs.docker.com/engine/install/centos/">docker</a>, docker-compose, jq, gitlab-runner, node, nginx</p>
+
+<hr data-content=" git " />
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo yum remove git*
+sudo yum -y install https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm
+sudo yum install git
+</code></pre></div></div>
+
+<hr data-content=" gitlab-runner " />
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -L "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh" | sudo bash
+sudo -E yum install -y gitlab-runner
+</code></pre></div></div>
+
+<p><a href="https://docs.gitlab.com/runner/install/linux-repository.html">Ref</a></p>
+
+<p>需要将 runner 加入到 root 中</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo usermod -aG root gitlab-runner
+sudo usermod -aG docker gitlab-runner
+</code></pre></div></div>
+<p>设置 gitlab-runner 的基本 cp, nginx 等权限</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo visudo
+gitlab-runner ALL=(ALL) NOPASSWD: /usr/sbin/nginx, /usr/bin/cp
+</code></pre></div></div>
+
+<hr data-content=" node " />
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -sL https://rpm.nodesource.com/setup_12.x | sudo bash -lu
+sudo yum install -y nodejs
+</code></pre></div></div>
+
+<hr data-content=" nginx " />
+
+<p>静态文件</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>server {
+    listen 80;
+
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header Host $host;
+
+    server_name admin.exmaple.com;
+
+    client_max_body_size 200M;
+
+    root /var/www/site/admin_dev;
+    location / {
+      index index.html index.htm;
+      try_files $uri /index.html;
+    }
+
+    gzip on;
+    gzip_buffers 32 4K;
+    gzip_comp_level 6;
+    gzip_min_length 100;
+    gzip_types application/javascript text/css text/xml;
+    gzip_disable "MSIE [1-6]\.";
+    gzip_vary on;
+}
+</code></pre></div></div>
+
+<p>SSL</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>server {
+    listen 443 ssl;
+
+    server_name api0.exmaple.com;
+    ## 这个文件需要放在 /etc/nginx 的目录下
+    ssl_certificate 1_api0.exmaple.com_bundle.crt;
+    ssl_certificate_key 2_api0.exmaple.com.key;
+    ssl_session_timeout 5m;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
+    ssl_prefer_server_ciphers on;
+
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header Host $host;
+
+    client_max_body_size 100M;
+
+    location / {
+      proxy_pass http://127.0.0.1:8888;
+    }
+}
+</code></pre></div></div>
+
+<p>负载均衡</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>upstream java_prod_server {
+  server 127.0.0.1:8880;
+  server 127.0.0.1:8881;
+}
+</code></pre></div></div>
+
+<p>重定向</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>server {
+  listen 80;
+
+  server_name admin.exmaple.com;
+
+  return 301 https://admin.exmaple.com$request_uri;
+}
+</code></pre></div></div>
+
+<p>Nginx的简单鉴权</p>
+
+<p><a href="https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-http-basic-authentication/">Ref</a></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo yum install httpd-tools
+sudo htpasswd -c /etc/nginx/.htpasswd user1
+cat /etc/nginx/.htpasswd
+
+Nginx 中的配置
+location /api {
+    auth_basic           "admin area";
+    auth_basic_user_file /etc/nginx/.htpasswd;
+}
+</code></pre></div></div>
+
+<h3 id="基础设施">基础设施</h3>
+<h4 id="gitlab">gitlab</h4>
+<p><a href="https://github.com/jl-borges/docker-gitlab">Ref</a></p>
+
+<p>注意，需要配置服务器的 swap, 见这里 <a href="https://docs.gitlab.com/omnibus/settings/memory_constrained_envs.html">SWAP</a></p>
+
+<p>需要更改的配置</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TZ=Asia/Shanghai
+GITLAB_TIMEZONE=Asia/Shanghai
+GITLAB_HOST=gitlab.youDomain.com
+
+GITLAB_ROOT_PASSWORD=password!1234
+GITLAB_ROOT_EMAIL=youEmail
+
+SMTP_ENABLED=true
+SMTP_DOMAIN=youDomain.com
+SMTP_HOST=smtp.ym.163.com
+SMTP_PORT=25
+SMTP_USER=noreply@youDomain.com
+SMTP_PASS=youDomainPsw
+SMTP_STARTTLS=true
+SMTP_TLS=false
+SMTP_AUTHENTICATION=plain
+</code></pre></div></div>
+
+<p>下面是 CI 的配置例子</p>
+
+<hr data-content=" java " />
+
+<ul>
+  <li><a href="https://github.com/jl-borges/maker/blob/main/java/.gitlab-ci.yml">.gitlab-ci.yml</a></li>
+  <li><a href="https://github.com/jl-borges/maker/blob/main/java/deploy.sh">deploy.sh</a></li>
+  <li><a href="https://github.com/jl-borges/maker/blob/main/java/ci_settings.xml">ci_setting.yml</a></li>
+  <li><a href="https://github.com/jl-borges/maker/blob/main/java/Dockerfile">Dockerfile</a></li>
+</ul>
+
+<hr data-content=" node " />
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stages:
+  - prod-build
+  - prod-deploy
+variables:
+  BUILD_MACHINE_IP: 172.21.x.x
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+prod-build:
+  stage: prod-build
+  tags:
+    - adminBuild
+  script:
+    - npm install --registry=https://registry.npm.taobao.org
+    - npm run build:prod
+    - mkdir -p /var/www/site/admin_prod
+    - cp -rf $PWD/dist/** /var/www/site/admin_prod
+prod-deploy:
+  tags:
+    - prod
+  stage: prod-deploy
+  when: manual
+  script:
+    - scp -Cr youName@$BUILD_MACHINE_IP:/var/www/site/admin_prod /var/www/site/
+</code></pre></div></div>
+
+<h4 id="其他">其他</h4>
+
+<ul>
+  <li>
+    <p><a href="https://github.com/jl-borges/maker/blob/main/maven/docker-compose.yml">Maven</a></p>
+
+    <p>注: 密码需要到 /nexus-data/admin.password 里面去查看</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/jl-borges/docker-reviewboard">Reviewboard</a></p>
+
+    <p>注: 这里不能调用 docker-compose down, 该部分会删除记录… 重启的话, 执行 docker-compose restart</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/jl-borges/spring-boot-admin">Spring boot admin</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/jl-borges/baota?organization=jl-borges&amp;organization=jl-borges">宝塔</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/jl-borges/netdata">Netdata</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/jl-borges/metabase">BI</a></p>
+  </li>
+</ul>
+
+<h3 id="中间件">中间件</h3>
+<ul>
+  <li><a href="https://github.com/jl-borges/maker/blob/main/mysql/docker-compose.yml">MySQL</a></li>
+  <li><a href="https://github.com/jl-borges/maker/blob/main/redis/docker-compose.yml">Redis</a></li>
+  <li><a href="https://github.com/jl-borges/docker-elk">ELK</a></li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.12.1-x86_64.rpm
+sudo rpm -vi filebeat-7.12.1-x86_64.rpm
+</code></pre></div></div>
+
+<ul>
+  <li>Kafak, TODO</li>
+</ul>
+
+<h3 id="业务系统">业务系统</h3>
+<ul>
+  <li>Java, see legacy</li>
+  <li>Antd-React, see legacy</li>
+</ul>
+
+<h3 id="搭建系统路线">搭建系统路线</h3>
+<ol>
+  <li>
+    <p>域名购买, ssl 证书申请, 域名备案</p>
+  </li>
+  <li>
+    <p>邮箱配置, 办公软件等</p>
+  </li>
+  <li>购买机器和服务
+    <ul>
+      <li>dev 机器, 4核8G 50G硬盘, 2M带宽 3619.74 元/年, 377.66 元/月</li>
+      <li>qa 机器, 2核4G 50G硬盘, 2M带宽 3619.74 元/年, 377.66 元/月</li>
+      <li>prod 机器, 2核4G 50G硬盘, 2M带宽 1980.3 元, 205 元/月</li>
+      <li>ES 服务 1核2G, 189.60 元/月</li>
+      <li>MySQL 主库 552 元/月, 一年 5497.92 元</li>
+      <li>MySQL 从库 174 元/月, 一年 5497.92 元</li>
+      <li>短信服务 470.00 元/1万条</li>
+      <li>七牛服务 预计 300/月 (使用 CDN 功能, 不包括流量加速等)</li>
+    </ul>
+
+    <blockquote>
+      <p>机器和服务总费用: 按月购买: 2644 元/月</p>
+    </blockquote>
+  </li>
+  <li>基础服务搭建(1天)
+    <ul>
+      <li>gitlab, 代码仓库, 部署在 dev 机器上</li>
+      <li>maven, java 基础库</li>
+      <li>netdata, 服务器监控</li>
+      <li>metabase, bi工具</li>
+      <li>elk, 日志收集工具</li>
+      <li>sba, java 日志收集</li>
+      <li>redis 服务</li>
+    </ul>
+  </li>
+  <li>基础代码部署和初次上线(1天)
+    <ul>
+      <li>利用基础包, 生成后端的基础代码</li>
+      <li>利用 antd, 生成现成的 admin 代码</li>
+      <li>nginx 配置</li>
+      <li>gitlab-ci 配置</li>
+    </ul>
+  </li>
+  <li>核心配置(1天)
+    <ul>
+      <li>包名称</li>
+      <li>支付秘钥</li>
+      <li>短信/七牛配置</li>
+      <li>数据库/redis 配置等</li>
+    </ul>
+  </li>
+  <li>测试和数据配置(2天)
+    <ul>
+      <li>核心接口整理</li>
+      <li>配置后台数据</li>
+    </ul>
+
+    <blockquote>
+      <p>已经备案的基础下, 大概在 5 天左右的时间, 从 0 到 1 交付一个已上线的后端 API 调用 和 具有基础功能的 admin 后台</p>
+    </blockquote>
+  </li>
+</ol>
