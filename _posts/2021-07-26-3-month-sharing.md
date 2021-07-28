@@ -4,6 +4,19 @@ toc: true
 title: ease backend from 0 to 1
 ---
 
+该部分为后端团队(2人) 从0到1 搭建的一套架构体系。
+
+由于公司和团队的整体规模不大，从业务的发展和业务的复杂度来说 ，
+应选择**快速部署，成本(机器/运维和部署)低，依赖少，稳定性高**的架构。
+
+这里的架构主要由三部分构成
+
+- Devops；基于 gitlab CI/CD 轻量级Devops, 可实现完整的快速部署，扩容的操作
+- 业务；前后端分离，后端使用 BFF + Microservice 的架构，前端使用 React 技术栈
+- 中间件；选择比较稳定的中间件，如 MySQL，Redis 和 ES 等。
+
+从成本问题上考虑，大多数的中间件都是购买的，会根据现有的业务情况选择不同类型的中间件
+
 ## 架构
 
 <div class="mermaid" markdown="0">
@@ -121,9 +134,9 @@ graph TB;
     graph LR;
         zero([搭建 gitlab <br /> 4C8G]);
         onlyDev([单分支部署 <br /> dev]);
-        multiDev([多分支部署 <br /> dev, relase_xxx]);
+        multiDev([多分支部署 单机器部署<br /> dev, relase_xxx]);
         multiMachine([多机器部署 <br /> main, backup1, backup2]);
-        rollback([回滚 <br /> app-commitId.jar]);
+        rollback([支持快速回滚 <br /> app-release1.jar <br /> app-release2.jar <br /> ...]);
         zero-->onlyDev-->multiDev-->multiMachine-->rollback
     </div>
 

@@ -1,5 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-07-27T15:17:41+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
-</subtitle><author><name>dengqinghua</name></author><entry><title type="html">ease backend from 0 to 1</title><link href="https://dengqinghua.github.io/3-month-sharing.html" rel="alternate" type="text/html" title="ease backend from 0 to 1" /><published>2021-07-26T00:00:00+08:00</published><updated>2021-07-26T00:00:00+08:00</updated><id>https://dengqinghua.github.io/3-month-sharing</id><content type="html" xml:base="https://dengqinghua.github.io/3-month-sharing.html">&lt;h2 id=&quot;架构&quot;&gt;架构&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-07-28T10:30:22+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+</subtitle><author><name>dengqinghua</name></author><entry><title type="html">ease backend from 0 to 1</title><link href="https://dengqinghua.github.io/3-month-sharing.html" rel="alternate" type="text/html" title="ease backend from 0 to 1" /><published>2021-07-26T00:00:00+08:00</published><updated>2021-07-26T00:00:00+08:00</updated><id>https://dengqinghua.github.io/3-month-sharing</id><content type="html" xml:base="https://dengqinghua.github.io/3-month-sharing.html">&lt;p&gt;该部分为后端团队(2人) 从0到1 搭建的一套架构体系。&lt;/p&gt;
+
+&lt;p&gt;由于公司和团队的整体规模不大，从业务的发展和业务的复杂度来说 ，
+应选择&lt;strong&gt;快速部署，成本(机器/运维和部署)低，依赖少，稳定性高&lt;/strong&gt;的架构。&lt;/p&gt;
+
+&lt;p&gt;这里的架构主要由三部分构成&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Devops；基于 gitlab CI/CD 轻量级Devops, 可实现完整的快速部署，扩容的操作&lt;/li&gt;
+  &lt;li&gt;业务；前后端分离，后端使用 BFF + Microservice 的架构，前端使用 React 技术栈&lt;/li&gt;
+  &lt;li&gt;中间件；选择比较稳定的中间件，如 MySQL，Redis 和 ES 等。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;从成本问题上考虑，大多数的中间件都是购买的，会根据现有的业务情况选择不同类型的中间件&lt;/p&gt;
+
+&lt;h2 id=&quot;架构&quot;&gt;架构&lt;/h2&gt;
 
 &lt;div class=&quot;mermaid&quot;&gt;
 graph TB;
@@ -118,9 +133,9 @@ graph TB;
  graph LR;
      zero([搭建 gitlab &lt;br /&gt; 4C8G]);
      onlyDev([单分支部署 &lt;br /&gt; dev]);
-     multiDev([多分支部署 &lt;br /&gt; dev, relase_xxx]);
+     multiDev([多分支部署 单机器部署&lt;br /&gt; dev, relase_xxx]);
      multiMachine([多机器部署 &lt;br /&gt; main, backup1, backup2]);
-     rollback([回滚 &lt;br /&gt; app-commitId.jar]);
+     rollback([支持快速回滚 &lt;br /&gt; app-release1.jar &lt;br /&gt; app-release2.jar &lt;br /&gt; ...]);
      zero--&amp;gt;onlyDev--&amp;gt;multiDev--&amp;gt;multiMachine--&amp;gt;rollback
  &lt;/div&gt;
   &lt;/li&gt;
@@ -478,7 +493,7 @@ graph TB;
     style op14 fill:#f96f,stroke-dasharray: 5 5
     style op15 fill:#f96f,stroke-dasharray: 5 5
     style op3 fill:#f96f,stroke-dasharray: 5 5
-&lt;/div&gt;</content><author><name>dengqinghua</name></author><summary type="html">架构</summary></entry><entry><title type="html">晋升指南笔记</title><link href="https://dengqinghua.github.io/learn-how-to-promote.html" rel="alternate" type="text/html" title="晋升指南笔记" /><published>2021-07-14T00:00:00+08:00</published><updated>2021-07-14T00:00:00+08:00</updated><id>https://dengqinghua.github.io/learn-how-to-promote</id><content type="html" xml:base="https://dengqinghua.github.io/learn-how-to-promote.html">&lt;h2 id=&quot;comd-能力模型&quot;&gt;COMD 能力模型&lt;/h2&gt;
+&lt;/div&gt;</content><author><name>dengqinghua</name></author><summary type="html">该部分为后端团队(2人) 从0到1 搭建的一套架构体系。</summary></entry><entry><title type="html">晋升指南笔记</title><link href="https://dengqinghua.github.io/learn-how-to-promote.html" rel="alternate" type="text/html" title="晋升指南笔记" /><published>2021-07-14T00:00:00+08:00</published><updated>2021-07-14T00:00:00+08:00</updated><id>https://dengqinghua.github.io/learn-how-to-promote</id><content type="html" xml:base="https://dengqinghua.github.io/learn-how-to-promote.html">&lt;h2 id=&quot;comd-能力模型&quot;&gt;COMD 能力模型&lt;/h2&gt;
 &lt;p&gt;COMD, aka, Complexity-Oriented Multi-Dimension 多维度 + 复杂度&lt;/p&gt;
 
 &lt;ol&gt;

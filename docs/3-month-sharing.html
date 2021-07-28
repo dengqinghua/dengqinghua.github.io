@@ -11,15 +11,15 @@
 <meta property="og:title" content="ease backend from 0 to 1" />
 <meta name="author" content="dengqinghua" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="架构" />
-<meta property="og:description" content="架构" />
+<meta name="description" content="该部分为后端团队(2人) 从0到1 搭建的一套架构体系。" />
+<meta property="og:description" content="该部分为后端团队(2人) 从0到1 搭建的一套架构体系。" />
 <link rel="canonical" href="https://dengqinghua.github.io/3-month-sharing.html" />
 <meta property="og:url" content="https://dengqinghua.github.io/3-month-sharing.html" />
 <meta property="og:site_name" content="Dengqinghua.42" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-07-26T00:00:00+08:00" />
 <script type="application/ld+json">
-{"headline":"ease backend from 0 to 1","dateModified":"2021-07-26T00:00:00+08:00","datePublished":"2021-07-26T00:00:00+08:00","url":"https://dengqinghua.github.io/3-month-sharing.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://dengqinghua.github.io/3-month-sharing.html"},"author":{"@type":"Person","name":"dengqinghua"},"description":"架构","@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"headline":"ease backend from 0 to 1","dateModified":"2021-07-26T00:00:00+08:00","datePublished":"2021-07-26T00:00:00+08:00","url":"https://dengqinghua.github.io/3-month-sharing.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://dengqinghua.github.io/3-month-sharing.html"},"author":{"@type":"Person","name":"dengqinghua"},"description":"该部分为后端团队(2人) 从0到1 搭建的一套架构体系。","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <link type="application/atom+xml" rel="alternate" href="https://dengqinghua.github.io/feed.xml" title="Dengqinghua.42" />
@@ -71,6 +71,21 @@
 </li>
 <li class="toc-entry toc-h2"><a href="#what-the-next">What the next…</a></li>
 </ul>
+<p>该部分为后端团队(2人) 从0到1 搭建的一套架构体系。</p>
+
+<p>由于公司和团队的整体规模不大，从业务的发展和业务的复杂度来说 ，
+应选择<strong>快速部署，成本(机器/运维和部署)低，依赖少，稳定性高</strong>的架构。</p>
+
+<p>这里的架构主要由三部分构成</p>
+
+<ul>
+  <li>Devops；基于 gitlab CI/CD 轻量级Devops, 可实现完整的快速部署，扩容的操作</li>
+  <li>业务；前后端分离，后端使用 BFF + Microservice 的架构，前端使用 React 技术栈</li>
+  <li>中间件；选择比较稳定的中间件，如 MySQL，Redis 和 ES 等。</li>
+</ul>
+
+<p>从成本问题上考虑，大多数的中间件都是购买的，会根据现有的业务情况选择不同类型的中间件</p>
+
 <h2 id="架构">
 <a class="anchor" href="#%E6%9E%B6%E6%9E%84" aria-hidden="true"><span class="octicon octicon-link"></span></a>架构</h2>
 
@@ -193,9 +208,9 @@ graph TB;
  graph LR;
      zero([搭建 gitlab <br> 4C8G]);
      onlyDev([单分支部署 <br> dev]);
-     multiDev([多分支部署 <br> dev, relase_xxx]);
+     multiDev([多分支部署 单机器部署<br> dev, relase_xxx]);
      multiMachine([多机器部署 <br> main, backup1, backup2]);
-     rollback([回滚 <br> app-commitId.jar]);
+     rollback([支持快速回滚 <br> app-release1.jar <br> app-release2.jar <br> ...]);
      zero--&gt;onlyDev--&gt;multiDev--&gt;multiMachine--&gt;rollback
  </div>
   </li>
