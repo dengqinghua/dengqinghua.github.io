@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-07-28T20:34:29+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-07-28T20:40:47+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
 </subtitle><author><name>dengqinghua</name></author><entry><title type="html">Apple Pay</title><link href="https://dengqinghua.github.io/apple-pay.html" rel="alternate" type="text/html" title="Apple Pay" /><published>2021-07-28T00:00:00+08:00</published><updated>2021-07-28T00:00:00+08:00</updated><id>https://dengqinghua.github.io/apple-pay</id><content type="html" xml:base="https://dengqinghua.github.io/apple-pay.html">&lt;div class=&quot;mermaid&quot;&gt;
 sequenceDiagram
     autonumber
@@ -7,8 +7,6 @@ sequenceDiagram
     participant as as Apple Service
     sdk-&amp;gt;&amp;gt;b: 获取商品列表
     b--&amp;gt;&amp;gt;sdk: 从后台获取商品id和对应展示的图片文案信息
-    sdk-&amp;gt;&amp;gt;b: 根据商品id生成预订单
-    b--&amp;gt;&amp;gt;sdk: 返回订单id
     sdk-&amp;gt;&amp;gt;b: 根据商品id生成预订单
     b--&amp;gt;&amp;gt;sdk: 返回 订单sid
     sdk-&amp;gt;&amp;gt;as: 发起真实的支付
@@ -52,7 +50,7 @@ graph LR;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;http://ifumei.cc/2019/12/24/iospay/&quot;&gt;springboot接入苹果内购&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">sequenceDiagram autonumber participant sdk as iOS SDK participant b as Backend participant as as Apple Service sdk-&amp;gt;&amp;gt;b: 获取商品列表 b--&amp;gt;&amp;gt;sdk: 从后台获取商品id和对应展示的图片文案信息 sdk-&amp;gt;&amp;gt;b: 根据商品id生成预订单 b--&amp;gt;&amp;gt;sdk: 返回订单id sdk-&amp;gt;&amp;gt;b: 根据商品id生成预订单 b--&amp;gt;&amp;gt;sdk: 返回 订单sid sdk-&amp;gt;&amp;gt;as: 发起真实的支付 as--&amp;gt;&amp;gt;sdk: 用户支付, 苹果返回票据信息(receipt-data) sdk-&amp;gt;&amp;gt;b: 提交票据信息和 订单sid 到服务端 Note right of sdk: 这一步容易丢单, 如何解决? b-&amp;gt;&amp;gt;as: 验证票据信息 as--&amp;gt;&amp;gt;b: 验证成功/失败 b--&amp;gt;&amp;gt;sdk: 修改订单状态, 并通知SDK支付成功或失败</summary></entry><entry><title type="html">ease backend from 0 to 1</title><link href="https://dengqinghua.github.io/3-month-sharing.html" rel="alternate" type="text/html" title="ease backend from 0 to 1" /><published>2021-07-26T00:00:00+08:00</published><updated>2021-07-26T00:00:00+08:00</updated><id>https://dengqinghua.github.io/3-month-sharing</id><content type="html" xml:base="https://dengqinghua.github.io/3-month-sharing.html">&lt;p&gt;该部分为后端团队(2人) 从0到1 搭建的一套架构体系。&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">sequenceDiagram autonumber participant sdk as iOS SDK participant b as Backend participant as as Apple Service sdk-&amp;gt;&amp;gt;b: 获取商品列表 b--&amp;gt;&amp;gt;sdk: 从后台获取商品id和对应展示的图片文案信息 sdk-&amp;gt;&amp;gt;b: 根据商品id生成预订单 b--&amp;gt;&amp;gt;sdk: 返回 订单sid sdk-&amp;gt;&amp;gt;as: 发起真实的支付 as--&amp;gt;&amp;gt;sdk: 用户支付, 苹果返回票据信息(receipt-data) sdk-&amp;gt;&amp;gt;b: 提交票据信息和 订单sid 到服务端 Note right of sdk: 这一步容易丢单, 如何解决? b-&amp;gt;&amp;gt;as: 验证票据信息 as--&amp;gt;&amp;gt;b: 验证成功/失败 b--&amp;gt;&amp;gt;sdk: 修改订单状态, 并通知SDK支付成功或失败</summary></entry><entry><title type="html">ease backend from 0 to 1</title><link href="https://dengqinghua.github.io/3-month-sharing.html" rel="alternate" type="text/html" title="ease backend from 0 to 1" /><published>2021-07-26T00:00:00+08:00</published><updated>2021-07-26T00:00:00+08:00</updated><id>https://dengqinghua.github.io/3-month-sharing</id><content type="html" xml:base="https://dengqinghua.github.io/3-month-sharing.html">&lt;p&gt;该部分为后端团队(2人) 从0到1 搭建的一套架构体系。&lt;/p&gt;
 
 &lt;p&gt;由于公司和团队的整体规模不大，从业务的发展和业务的复杂度来说 ，
 应选择&lt;strong&gt;快速部署，成本(机器/运维和部署)低，依赖少，稳定性高&lt;/strong&gt;的架构。&lt;/p&gt;
