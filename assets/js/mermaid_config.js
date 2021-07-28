@@ -1,0 +1,1 @@
+mermaid.initialize({ theme: 'neutral', themeCSS: ".node rect { fill: white; stroke: black; }; .cluster rect {fill: #f2f7f6; stroke: blank; stroke: black; stroke-width: 0px;}", logLevel: 1, flowchart: { curve: 'linear', useMaxWidth: true } });
