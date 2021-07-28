@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Apple Pay</title>
+
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="Apple Pay" />
+<meta name="author" content="dengqinghua" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="sequenceDiagram autonumber participant sdk as iOS SDK participant b as Backend participant as as Apple Service sdk-&gt;&gt;b: 获取商品列表 b–&gt;&gt;sdk: 从后台获取商品id和对应展示的图片文案信息 sdk-&gt;&gt;b: 根据商品id生成预订单 b–&gt;&gt;sdk: 返回订单id sdk-&gt;&gt;b: 根据商品id生成预订单 b–&gt;&gt;sdk: 返回 订单sid sdk-&gt;&gt;as: 发起真实的支付 as–&gt;&gt;sdk: 用户支付, 苹果返回票据信息(receipt-data) sdk-&gt;&gt;b: 提交票据信息和 订单sid 到服务端 Note right of sdk: 这一步容易丢单, 如何解决? b-&gt;&gt;as: 验证票据信息 as–&gt;&gt;b: 验证成功/失败 b–&gt;&gt;sdk: 修改订单状态, 并通知SDK支付成功或失败" />
+<meta property="og:description" content="sequenceDiagram autonumber participant sdk as iOS SDK participant b as Backend participant as as Apple Service sdk-&gt;&gt;b: 获取商品列表 b–&gt;&gt;sdk: 从后台获取商品id和对应展示的图片文案信息 sdk-&gt;&gt;b: 根据商品id生成预订单 b–&gt;&gt;sdk: 返回订单id sdk-&gt;&gt;b: 根据商品id生成预订单 b–&gt;&gt;sdk: 返回 订单sid sdk-&gt;&gt;as: 发起真实的支付 as–&gt;&gt;sdk: 用户支付, 苹果返回票据信息(receipt-data) sdk-&gt;&gt;b: 提交票据信息和 订单sid 到服务端 Note right of sdk: 这一步容易丢单, 如何解决? b-&gt;&gt;as: 验证票据信息 as–&gt;&gt;b: 验证成功/失败 b–&gt;&gt;sdk: 修改订单状态, 并通知SDK支付成功或失败" />
+<link rel="canonical" href="https://dengqinghua.github.io/apple-pay.html" />
+<meta property="og:url" content="https://dengqinghua.github.io/apple-pay.html" />
+<meta property="og:site_name" content="Dengqinghua.42" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-07-28T00:00:00+08:00" />
+<script type="application/ld+json">
+{"headline":"Apple Pay","dateModified":"2021-07-28T00:00:00+08:00","datePublished":"2021-07-28T00:00:00+08:00","url":"https://dengqinghua.github.io/apple-pay.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://dengqinghua.github.io/apple-pay.html"},"author":{"@type":"Person","name":"dengqinghua"},"description":"sequenceDiagram autonumber participant sdk as iOS SDK participant b as Backend participant as as Apple Service sdk-&gt;&gt;b: 获取商品列表 b–&gt;&gt;sdk: 从后台获取商品id和对应展示的图片文案信息 sdk-&gt;&gt;b: 根据商品id生成预订单 b–&gt;&gt;sdk: 返回订单id sdk-&gt;&gt;b: 根据商品id生成预订单 b–&gt;&gt;sdk: 返回 订单sid sdk-&gt;&gt;as: 发起真实的支付 as–&gt;&gt;sdk: 用户支付, 苹果返回票据信息(receipt-data) sdk-&gt;&gt;b: 提交票据信息和 订单sid 到服务端 Note right of sdk: 这一步容易丢单, 如何解决? b-&gt;&gt;as: 验证票据信息 as–&gt;&gt;b: 验证成功/失败 b–&gt;&gt;sdk: 修改订单状态, 并通知SDK支付成功或失败","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link type="application/atom+xml" rel="alternate" href="https://dengqinghua.github.io/feed.xml" title="Dengqinghua.42" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/logo.png" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/zoom.css" />
+  <script src="assets/js/mermaid.min.js"></script>
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/zoom.min.js"></script>
+  <script src="assets/js/zoom_init.js"></script>
+  <script src="assets/js/mermaid_config.js"></script>
+</head>
+<body a="light">
+    <main class="page-content" aria-label="Content">
+      <div class="w">
+        <a href="/">..</a>
+
+<article>
+  <p class="post-meta">
+    <time datetime="2021-07-28 00:00:00 +0800">2021-07-28</time>
+  </p>
+  
+  <h1>Apple Pay</h1>
+
+  <ul id="toc" class="section-nav">
+</ul>
+<div class="mermaid">
+sequenceDiagram
+    autonumber
+    participant sdk as iOS SDK
+    participant b as Backend
+    participant as as Apple Service
+    sdk-&gt;&gt;b: 获取商品列表
+    b--&gt;&gt;sdk: 从后台获取商品id和对应展示的图片文案信息
+    sdk-&gt;&gt;b: 根据商品id生成预订单
+    b--&gt;&gt;sdk: 返回订单id
+    sdk-&gt;&gt;b: 根据商品id生成预订单
+    b--&gt;&gt;sdk: 返回 订单sid
+    sdk-&gt;&gt;as: 发起真实的支付
+    as--&gt;&gt;sdk: 用户支付, 苹果返回票据信息(receipt-data)
+    sdk-&gt;&gt;b: 提交票据信息和 订单sid 到服务端
+    Note right of sdk: 这一步容易丢单, 如何解决?
+    b-&gt;&gt;as: 验证票据信息
+    as--&gt;&gt;b: 验证成功/失败
+    b--&gt;&gt;sdk: 修改订单状态, 并通知SDK支付成功或失败
+</div>
+
+<p>连续订阅</p>
+
+<div class="mermaid">
+graph LR;
+    pay([用户签订协议, 获取 receipt]);
+    receipt([获取 receipt]);
+    verify([到扣款日拿receipt去苹果那边验证]);
+    getNotDelay([发现有未过期的订单信息])
+    success([扣款成功])
+    pay--&gt;receipt--&gt;verify--&gt;getNotDelay--&gt;success--&gt;verify
+</div>
+
+<p>需提供的接口</p>
+
+<ol>
+  <li>商品列表接口</li>
+  <li>创建订单接口</li>
+  <li>提交票据信息接口</li>
+</ol>
+
+<p>需要解决的问题</p>
+
+<ol>
+  <li>丢单问题</li>
+  <li>校验时候的问题</li>
+  <li>连续包月时候的扣费, 怎么保证可靠性比较高</li>
+</ol>
+
+<p>参考:</p>
+
+<ul>
+  <li><a href="http://ifumei.cc/2019/12/24/iospay/" target="_blank" rel="noopener noreferrer">springboot接入苹果内购</a></li>
+</ul>
+
+</article>
+
+      </div>
+    </main>
+
+    
+  </body>
+</html>
