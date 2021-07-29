@@ -11,15 +11,15 @@
 <meta property="og:title" content="Apple Pay" />
 <meta name="author" content="dengqinghua" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="sequenceDiagram autonumber participant sdk as iOS SDK participant b as Backend participant as as Apple Service sdk-&gt;&gt;b: 获取商品列表 b–&gt;&gt;sdk: 从后台获取商品id和对应展示的图片文案信息 sdk-&gt;&gt;b: 根据商品id生成预订单 b–&gt;&gt;sdk: 返回 订单sid sdk-&gt;&gt;as: 发起真实的支付 as–&gt;&gt;sdk: 用户支付, 苹果返回票据信息(receipt-data) sdk-&gt;&gt;b: 提交票据信息和 订单sid 到服务端 Note right of sdk: 这一步容易丢单, 如何解决? b-&gt;&gt;as: 验证票据信息 as–&gt;&gt;b: 验证成功/失败 b–&gt;&gt;sdk: 修改订单状态, 并通知SDK支付成功或失败" />
-<meta property="og:description" content="sequenceDiagram autonumber participant sdk as iOS SDK participant b as Backend participant as as Apple Service sdk-&gt;&gt;b: 获取商品列表 b–&gt;&gt;sdk: 从后台获取商品id和对应展示的图片文案信息 sdk-&gt;&gt;b: 根据商品id生成预订单 b–&gt;&gt;sdk: 返回 订单sid sdk-&gt;&gt;as: 发起真实的支付 as–&gt;&gt;sdk: 用户支付, 苹果返回票据信息(receipt-data) sdk-&gt;&gt;b: 提交票据信息和 订单sid 到服务端 Note right of sdk: 这一步容易丢单, 如何解决? b-&gt;&gt;as: 验证票据信息 as–&gt;&gt;b: 验证成功/失败 b–&gt;&gt;sdk: 修改订单状态, 并通知SDK支付成功或失败" />
+<meta name="description" content="sequenceDiagram autonumber participant sdk as iOS SDK participant b as Backend participant as as Apple Service sdk-&gt;&gt;b: 获取商品列表 b–&gt;&gt;sdk: 从后台获取商品id和对应展示的图片文案信息 sdk-&gt;&gt;b: 根据商品id 生成/获取预订单 Note right of sdk: 需要先去查一下这个用户在商品id下之前是不是有未完成的订单 b–&gt;&gt;sdk: 返回 订单sid sdk-&gt;&gt;as: 发起真实的支付 as–&gt;&gt;sdk: 用户支付, 苹果返回票据信息(receipt-data)如果苹果未返回, 则在 App 启动的时候返回 sdk-&gt;&gt;b: 提交票据信息和 订单sid 到服务端 Note right of sdk: 这一步容易丢单, 如何解决? 因为苹果容易丢失掉订单sid 需要取未完成的一条 b-&gt;&gt;as: 验证票据信息 as–&gt;&gt;b: 验证成功/失败 b–&gt;&gt;sdk: 修改订单状态, 并通知SDK支付成功或失败 sdk–&gt;&gt;as: 成功则将订单进行关闭" />
+<meta property="og:description" content="sequenceDiagram autonumber participant sdk as iOS SDK participant b as Backend participant as as Apple Service sdk-&gt;&gt;b: 获取商品列表 b–&gt;&gt;sdk: 从后台获取商品id和对应展示的图片文案信息 sdk-&gt;&gt;b: 根据商品id 生成/获取预订单 Note right of sdk: 需要先去查一下这个用户在商品id下之前是不是有未完成的订单 b–&gt;&gt;sdk: 返回 订单sid sdk-&gt;&gt;as: 发起真实的支付 as–&gt;&gt;sdk: 用户支付, 苹果返回票据信息(receipt-data)如果苹果未返回, 则在 App 启动的时候返回 sdk-&gt;&gt;b: 提交票据信息和 订单sid 到服务端 Note right of sdk: 这一步容易丢单, 如何解决? 因为苹果容易丢失掉订单sid 需要取未完成的一条 b-&gt;&gt;as: 验证票据信息 as–&gt;&gt;b: 验证成功/失败 b–&gt;&gt;sdk: 修改订单状态, 并通知SDK支付成功或失败 sdk–&gt;&gt;as: 成功则将订单进行关闭" />
 <link rel="canonical" href="https://dengqinghua.github.io/apple-pay.html" />
 <meta property="og:url" content="https://dengqinghua.github.io/apple-pay.html" />
 <meta property="og:site_name" content="Dengqinghua.42" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-07-28T00:00:00+08:00" />
 <script type="application/ld+json">
-{"headline":"Apple Pay","dateModified":"2021-07-28T00:00:00+08:00","datePublished":"2021-07-28T00:00:00+08:00","url":"https://dengqinghua.github.io/apple-pay.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://dengqinghua.github.io/apple-pay.html"},"author":{"@type":"Person","name":"dengqinghua"},"description":"sequenceDiagram autonumber participant sdk as iOS SDK participant b as Backend participant as as Apple Service sdk-&gt;&gt;b: 获取商品列表 b–&gt;&gt;sdk: 从后台获取商品id和对应展示的图片文案信息 sdk-&gt;&gt;b: 根据商品id生成预订单 b–&gt;&gt;sdk: 返回 订单sid sdk-&gt;&gt;as: 发起真实的支付 as–&gt;&gt;sdk: 用户支付, 苹果返回票据信息(receipt-data) sdk-&gt;&gt;b: 提交票据信息和 订单sid 到服务端 Note right of sdk: 这一步容易丢单, 如何解决? b-&gt;&gt;as: 验证票据信息 as–&gt;&gt;b: 验证成功/失败 b–&gt;&gt;sdk: 修改订单状态, 并通知SDK支付成功或失败","@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"headline":"Apple Pay","dateModified":"2021-07-28T00:00:00+08:00","datePublished":"2021-07-28T00:00:00+08:00","url":"https://dengqinghua.github.io/apple-pay.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://dengqinghua.github.io/apple-pay.html"},"author":{"@type":"Person","name":"dengqinghua"},"description":"sequenceDiagram autonumber participant sdk as iOS SDK participant b as Backend participant as as Apple Service sdk-&gt;&gt;b: 获取商品列表 b–&gt;&gt;sdk: 从后台获取商品id和对应展示的图片文案信息 sdk-&gt;&gt;b: 根据商品id 生成/获取预订单 Note right of sdk: 需要先去查一下这个用户在商品id下之前是不是有未完成的订单 b–&gt;&gt;sdk: 返回 订单sid sdk-&gt;&gt;as: 发起真实的支付 as–&gt;&gt;sdk: 用户支付, 苹果返回票据信息(receipt-data)如果苹果未返回, 则在 App 启动的时候返回 sdk-&gt;&gt;b: 提交票据信息和 订单sid 到服务端 Note right of sdk: 这一步容易丢单, 如何解决? 因为苹果容易丢失掉订单sid 需要取未完成的一条 b-&gt;&gt;as: 验证票据信息 as–&gt;&gt;b: 验证成功/失败 b–&gt;&gt;sdk: 修改订单状态, 并通知SDK支付成功或失败 sdk–&gt;&gt;as: 成功则将订单进行关闭","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <link type="application/atom+xml" rel="alternate" href="https://dengqinghua.github.io/feed.xml" title="Dengqinghua.42" />
@@ -55,15 +55,17 @@ sequenceDiagram
     participant as as Apple Service
     sdk-&gt;&gt;b: 获取商品列表
     b--&gt;&gt;sdk: 从后台获取商品id和对应展示的图片文案信息
-    sdk-&gt;&gt;b: 根据商品id生成预订单
+    sdk-&gt;&gt;b: 根据商品id 生成/获取预订单
+    Note right of sdk: 需要先去查一下这个用户在商品id下之前是不是有未完成的订单
     b--&gt;&gt;sdk: 返回 订单sid
     sdk-&gt;&gt;as: 发起真实的支付
-    as--&gt;&gt;sdk: 用户支付, 苹果返回票据信息(receipt-data)
+    as--&gt;&gt;sdk: 用户支付, 苹果返回票据信息(receipt-data)<br>如果苹果未返回, 则在 App 启动的时候返回
     sdk-&gt;&gt;b: 提交票据信息和 订单sid 到服务端
-    Note right of sdk: 这一步容易丢单, 如何解决?
+    Note right of sdk: 这一步容易丢单, 如何解决? <br>因为苹果容易丢失掉订单sid <br>需要取未完成的一条
     b-&gt;&gt;as: 验证票据信息
     as--&gt;&gt;b: 验证成功/失败
     b--&gt;&gt;sdk: 修改订单状态, 并通知SDK支付成功或失败
+    sdk--&gt;&gt;as: 成功则将订单进行关闭
 </div>
 
 <p>连续订阅</p>
@@ -71,14 +73,14 @@ sequenceDiagram
 <div class="mermaid">
 graph LR;
     pay([用户签订协议, 获取 receipt]);
-    receipt([获取 receipt]);
-    verify([到扣款日拿receipt去苹果那边验证]);
+    receipt([记录 订单 和 receipt]);
+    verify([建议每天都拿receipt去苹果那边验证]);
     getNotDelay([发现有未过期的订单信息])
     success([扣款成功])
     pay--&gt;receipt--&gt;verify--&gt;getNotDelay--&gt;success--&gt;verify
 </div>
 
-<p>需提供的接口</p>
+<p>需提供的接口:</p>
 
 <ol>
   <li>商品列表接口</li>
@@ -86,17 +88,23 @@ graph LR;
   <li>提交票据信息接口</li>
 </ol>
 
-<p>需要解决的问题</p>
+<p>关键点:</p>
 
 <ol>
-  <li>丢单问题</li>
-  <li>校验时候的问题</li>
-  <li>连续包月时候的扣费, 怎么保证可靠性比较高</li>
+  <li>记录收据信息, 校验收据是否完成</li>
+  <li>订单号没有给的情况，需要自己去找对应的订单</li>
+  <li>收据成功获取之后，需要服务端告诉 收据 的验签结果
+    <ul>
+      <li>成功, 客户端关单</li>
+      <li>失败, 提供客户端信息</li>
+    </ul>
+  </li>
 </ol>
 
 <p>参考:</p>
 
 <ul>
+  <li><a href="https://medium.com/@tyy.sh/in-app-purchase-%E6%80%BB%E7%BB%93-e8a88a54d8d9" target="_blank" rel="noopener noreferrer">IAP</a></li>
   <li><a href="http://ifumei.cc/2019/12/24/iospay/" target="_blank" rel="noopener noreferrer">springboot接入苹果内购</a></li>
 </ul>
 
