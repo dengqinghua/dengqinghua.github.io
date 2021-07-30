@@ -4,11 +4,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>推荐系统学习笔记</title>
+  <title>推荐系统 Notes</title>
 
   <!-- Begin Jekyll SEO tag v2.6.1 -->
 <meta name="generator" content="Jekyll v3.8.7" />
-<meta property="og:title" content="推荐系统学习笔记" />
+<meta property="og:title" content="推荐系统 Notes" />
 <meta name="author" content="dengqinghua" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="基本方式" />
@@ -19,7 +19,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-07-29T00:00:00+08:00" />
 <script type="application/ld+json">
-{"headline":"推荐系统学习笔记","dateModified":"2021-07-29T00:00:00+08:00","datePublished":"2021-07-29T00:00:00+08:00","url":"https://dengqinghua.github.io/recommend-sys.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://dengqinghua.github.io/recommend-sys.html"},"author":{"@type":"Person","name":"dengqinghua"},"description":"基本方式","@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"headline":"推荐系统 Notes","dateModified":"2021-07-29T00:00:00+08:00","datePublished":"2021-07-29T00:00:00+08:00","url":"https://dengqinghua.github.io/recommend-sys.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://dengqinghua.github.io/recommend-sys.html"},"author":{"@type":"Person","name":"dengqinghua"},"description":"基本方式","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <link type="application/atom+xml" rel="alternate" href="https://dengqinghua.github.io/feed.xml" title="Dengqinghua.42" />
@@ -43,7 +43,7 @@
     <time datetime="2021-07-29 00:00:00 +0800">2021-07-29</time>
   </p>
   
-  <h1>推荐系统学习笔记</h1>
+  <h1>推荐系统 Notes</h1>
 
   <ul id="toc" class="section-nav">
 <li class="toc-entry toc-h2"><a href="#%E5%9F%BA%E6%9C%AC%E6%96%B9%E5%BC%8F">基本方式</a></li>
@@ -56,7 +56,13 @@
 <li class="toc-entry toc-h3"><a href="#%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84">技术架构</a></li>
 </ul>
 </li>
-<li class="toc-entry toc-h2"><a href="#%E5%9F%BA%E4%BA%8E%E5%86%85%E5%AE%B9%E7%9A%84%E6%8E%A8%E8%8D%90content-based">基于内容的推荐(content-based)</a></li>
+<li class="toc-entry toc-h2">
+<a href="#%E5%9F%BA%E4%BA%8E%E5%86%85%E5%AE%B9%E7%9A%84%E6%8E%A8%E8%8D%90content-based">基于内容的推荐(content-based)</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#%E8%90%BD%E5%9C%B0%E6%96%B9%E6%A1%88">落地方案</a></li>
+<li class="toc-entry toc-h3"><a href="#%E5%A4%87%E9%80%89%E6%96%B9%E6%A1%88">备选方案</a></li>
+</ul>
+</li>
 <li class="toc-entry toc-h2"><a href="#%E5%9F%BA%E4%BA%8E%E5%8D%8F%E5%90%8C%E7%9A%84%E6%8E%A8%E8%8D%90cf-collaborative-filtering">基于协同的推荐(CF, Collaborative Filtering)</a></li>
 <li class="toc-entry toc-h2"><a href="#ref">Ref</a></li>
 </ul>
@@ -210,14 +216,14 @@ graph LR;
   <li>Online, 直接面向外部提供接口, 一般是直接从 Nearline 的缓存存储中拿到数据返回, 有时延要求
     <ul>
       <li>分发用户事件</li>
-      <li>组装缓存中的数据</li>
+      <li>组装缓存中的数据
+        <blockquote>
+          <p>如果是数据不大的话，可以考虑只有两层, Online 和 Offline, Offline 直接将结果写入告诉缓存即可</p>
+        </blockquote>
+      </li>
     </ul>
   </li>
 </ul>
-
-<blockquote>
-  <p>如果是数据不大的话，可以考虑只有两层, Online 和 Offline, Offline 直接将结果写入告诉缓存即可</p>
-</blockquote>
 
 <h3 id="技术架构">
 <a class="anchor" href="#%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84" aria-hidden="true"><span class="octicon octicon-link"></span></a>技术架构</h3>
@@ -259,7 +265,6 @@ graph TB
     bb(特征向量 <br>故事3 白噪声4 ... );
     taged --&gt; t1 &amp; t2 &amp; t3--&gt;bb
     end
-
     subgraph 推荐
     cc(推荐的内容列表 <br> 利用余弦相似度算法计算TopN物品)
     end
@@ -282,7 +287,47 @@ graph TB
 <ul>
   <li>内容标签需要人工打</li>
   <li>用户的潜在兴趣无法挖掘</li>
-  <li>全新用户没法推荐</li>
+  <li>全新用户没法推荐(冷启动问题)</li>
+</ul>
+
+<h3 id="落地方案">
+<a class="anchor" href="#%E8%90%BD%E5%9C%B0%E6%96%B9%E6%A1%88" aria-hidden="true"><span class="octicon octicon-link"></span></a>落地方案</h3>
+
+<div class="mermaid">
+graph TB
+    subgraph Offline
+      storage1(存储1 <br> MySQL);
+      storage2(存储2 <br> ES ?);
+      storage3(存储3 <br> ...);
+      cal(计算用户和内容的匹配度 <br>余弦相似度, 皮尔逊相关系数 和 Jaccard);
+      cache(缓存 <br>Redis);
+    end
+    subgraph Nearline
+      EventHandler(事件收集 <br> EventListener 或者 Redis);
+    end
+    subgraph Online
+      event1(用户行为事件 <br> 收藏 播放 分享 ...);
+      event2(新内容发布);
+      fetch(获取推荐的内容TopN数据);
+      do(聚合和处理);
+    end
+
+    event1 &amp; event2--&gt;EventHandler--&gt;storage1 &amp; storage2 &amp; storage3--&gt;cal--&gt;cache--&gt;fetch--&gt;do
+</div>
+
+<p>考虑点</p>
+
+<ul>
+  <li>基于当前的业务量和数据, 尽量使用简单的方式, 不引入新的中间件和非常重的框架(所以这里不会考虑引入 kafka, Spark 等工具)</li>
+  <li>计算路劲足够快和有效, 但是需要有超时设计</li>
+  <li>需要考虑是否应该有数据补足和兜底方案，在新用户进入的时候，提供一批系统预设的数据(解决冷启动问题)</li>
+</ul>
+
+<h3 id="备选方案">
+<a class="anchor" href="#%E5%A4%87%E9%80%89%E6%96%B9%E6%A1%88" aria-hidden="true"><span class="octicon octicon-link"></span></a>备选方案</h3>
+
+<ul>
+  <li>直接按照需求直接读库实时计算</li>
 </ul>
 
 <h2 id="基于协同的推荐cf-collaborative-filtering">
@@ -355,7 +400,6 @@ graph TB
 graph TB
     uu(搜索和用户A和用户B, C的 相似度);
     ii(根据相似度, 估算用户A 在新item3和item4的分数);
-
     uu --&gt; ii
 </div>
 
@@ -376,7 +420,6 @@ graph TB
   <li><a href="https://ai.tencent.com/ailab/nlp/en/embedding.html" target="_blank" rel="noopener noreferrer">Tencent Word2Vec</a></li>
   <li><a href="https://spark.apache.org/docs/2.2.3/ml-features.html" target="_blank" rel="noopener noreferrer">Spark ML features</a></li>
 </ul>
-
 
 </article>
 

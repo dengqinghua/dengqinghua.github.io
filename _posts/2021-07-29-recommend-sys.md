@@ -2,7 +2,7 @@
 layout: post
 categories: showed note
 toc: true
-title: 推荐系统学习笔记
+title: 推荐系统 Notes
 ---
 
 ## 基本方式
@@ -90,9 +90,7 @@ graph LR;
 - Online, 直接面向外部提供接口, 一般是直接从 Nearline 的缓存存储中拿到数据返回, 有时延要求
   + 分发用户事件
   + 组装缓存中的数据
-
 > 如果是数据不大的话，可以考虑只有两层, Online 和 Offline, Offline 直接将结果写入告诉缓存即可
-
 
 ### 技术架构
 - Offline
@@ -125,7 +123,6 @@ graph TB
     bb(特征向量 <br />故事3 白噪声4 ... );
     taged --> t1 & t2 & t3-->bb
     end
-
     subgraph 推荐
     cc(推荐的内容列表 <br > 利用余弦相似度算法计算TopN物品)
     end
@@ -143,7 +140,41 @@ graph TB
 缺点
   - 内容标签需要人工打
   - 用户的潜在兴趣无法挖掘
-  - 全新用户没法推荐
+  - 全新用户没法推荐(冷启动问题)
+
+### 落地方案
+
+<div class="mermaid" markdown="0">
+graph TB
+    subgraph Offline
+      storage1(存储1 <br > MySQL);
+      storage2(存储2 <br > ES ?);
+      storage3(存储3 <br > ...);
+      cal(计算用户和内容的匹配度 <br >余弦相似度, 皮尔逊相关系数 和 Jaccard);
+      cache(缓存 <br >Redis);
+    end
+    subgraph Nearline
+      EventHandler(事件收集 <br > EventListener 或者 Redis);
+    end
+    subgraph Online
+      event1(用户行为事件 <br > 收藏 播放 分享 ...);
+      event2(新内容发布);
+      fetch(获取推荐的内容TopN数据);
+      do(聚合和处理);
+    end
+
+    event1 & event2-->EventHandler-->storage1 & storage2 & storage3-->cal-->cache-->fetch-->do
+</div>
+
+考虑点
+
+- 基于当前的业务量和数据, 尽量使用简单的方式, 不引入新的中间件和非常重的框架(所以这里不会考虑引入 kafka, Spark 等工具)
+- 计算路劲足够快和有效, 但是需要有超时设计
+- 需要考虑是否应该有数据补足和兜底方案，在新用户进入的时候，提供一批系统预设的数据(解决冷启动问题)
+
+### 备选方案
+
+- 直接按照需求直接读库实时计算
 
 ## 基于协同的推荐(CF, Collaborative Filtering)
 > 使用行为数据，利用集体智慧，即 用户和用户的行为，物品和物品之间相互交叉和干涉，主要包括 u2u2i 和 u2i2i
@@ -166,7 +197,6 @@ graph TB
 graph TB
     uu(搜索和用户A和用户B, C的 相似度);
     ii(根据相似度, 估算用户A 在新item3和item4的分数);
-
     uu --> ii
 </div>
 
@@ -182,4 +212,3 @@ graph TB
 - [中文分词](https://github.com/fxsjy/jieba)
 - [Tencent Word2Vec](https://ai.tencent.com/ailab/nlp/en/embedding.html)
 - [Spark ML features](https://spark.apache.org/docs/2.2.3/ml-features.html)
-
