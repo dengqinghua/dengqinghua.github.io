@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>推荐系统学习笔记</title>
+
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="推荐系统学习笔记" />
+<meta name="author" content="dengqinghua" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="基本方式" />
+<meta property="og:description" content="基本方式" />
+<link rel="canonical" href="https://dengqinghua.github.io/recommend-sys.html" />
+<meta property="og:url" content="https://dengqinghua.github.io/recommend-sys.html" />
+<meta property="og:site_name" content="Dengqinghua.42" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-07-29T00:00:00+08:00" />
+<script type="application/ld+json">
+{"headline":"推荐系统学习笔记","dateModified":"2021-07-29T00:00:00+08:00","datePublished":"2021-07-29T00:00:00+08:00","url":"https://dengqinghua.github.io/recommend-sys.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://dengqinghua.github.io/recommend-sys.html"},"author":{"@type":"Person","name":"dengqinghua"},"description":"基本方式","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link type="application/atom+xml" rel="alternate" href="https://dengqinghua.github.io/feed.xml" title="Dengqinghua.42" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/logo.png" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/zoom.css" />
+  <script src="assets/js/mermaid.min.js"></script>
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/zoom.min.js"></script>
+  <script src="assets/js/zoom_init.js"></script>
+  <script src="assets/js/mermaid_config.js"></script>
+</head>
+<body a="light">
+    <main class="page-content" aria-label="Content">
+      <div class="w">
+        <a href="/">..</a>
+
+<article>
+  <p class="post-meta">
+    <time datetime="2021-07-29 00:00:00 +0800">2021-07-29</time>
+  </p>
+  
+  <h1>推荐系统学习笔记</h1>
+
+  <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#%E5%9F%BA%E6%9C%AC%E6%96%B9%E5%BC%8F">基本方式</a></li>
+<li class="toc-entry toc-h2"><a href="#%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98">解决的问题</a></li>
+<li class="toc-entry toc-h2">
+<a href="#%E7%8E%AF%E8%8A%82">环节</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#%E5%8F%AC%E5%9B%9E%E8%B7%AF%E5%8A%B2">召回路劲</a></li>
+<li class="toc-entry toc-h3"><a href="#netflix%E6%8E%A8%E8%8D%90%E6%9E%B6%E6%9E%84">Netflix推荐架构</a></li>
+<li class="toc-entry toc-h3"><a href="#%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84">技术架构</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#%E5%9F%BA%E4%BA%8E%E5%86%85%E5%AE%B9%E7%9A%84%E6%8E%A8%E8%8D%90content-based">基于内容的推荐(content-based)</a></li>
+<li class="toc-entry toc-h2"><a href="#%E5%9F%BA%E4%BA%8E%E5%8D%8F%E5%90%8C%E7%9A%84%E6%8E%A8%E8%8D%90cf-collaborative-filtering">基于协同的推荐(CF, Collaborative Filtering)</a></li>
+<li class="toc-entry toc-h2"><a href="#ref">Ref</a></li>
+</ul>
+<h2 id="基本方式">
+<a class="anchor" href="#%E5%9F%BA%E6%9C%AC%E6%96%B9%E5%BC%8F" aria-hidden="true"><span class="octicon octicon-link"></span></a>基本方式</h2>
+
+<ul>
+  <li>
+    <p>基于行为的协同过滤</p>
+
+    <p>你选择了A, 跟 A 相似的东西会推荐给你</p>
+  </li>
+  <li>
+    <p>基于内容相似推荐</p>
+
+    <p>你选择了A, 跟 A 属于相同类别的东西会推荐给你</p>
+  </li>
+</ul>
+
+<h2 id="解决的问题">
+<a class="anchor" href="#%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98" aria-hidden="true"><span class="octicon octicon-link"></span></a>解决的问题</h2>
+
+<ul>
+  <li>信息过载。是帮用户从非常多的数据中(比如上千万的商品)选择</li>
+  <li>挖掘长尾。长尾一般是冷门数据，冷门数据的总和往往比热门数据要多，冷门数据也具有非常大的价值</li>
+  <li>用户体验。</li>
+</ul>
+
+<h2 id="环节">
+<a class="anchor" href="#%E7%8E%AF%E8%8A%82" aria-hidden="true"><span class="octicon octicon-link"></span></a>环节</h2>
+<p>问题: 从海量数据中，提取和用户相关的十几条数据，并且在 XXX ms 内返回</p>
+
+<div class="mermaid">
+graph LR;
+  input([原始数据 <br> 亿/千万])
+  callback(召回 <br>万/千);
+  sort(排序 <br>千/百);
+  filter(调整 <br>百/十);
+  output([结果 <br> 十])
+  input--&gt;callback--&gt;sort--&gt;filter--&gt;output
+</div>
+
+<ol>
+  <li>召回解决了信息过载的问题，将数量级极大地降低</li>
+  <li>排序可以使用二分算法, 得出用户是否喜欢(喜欢1 不喜欢为0) 和 喜欢的概率, 这样就能得到权重
+    <blockquote>
+      <p>如果数量不大, 则可以绕过召回阶段, 直接进行排序</p>
+    </blockquote>
+  </li>
+  <li>调整做到了 去重, 已读过滤/在线过滤, 热门补足, 分页 和 合并内容信息等</li>
+</ol>
+
+<h3 id="召回路劲">
+<a class="anchor" href="#%E5%8F%AC%E5%9B%9E%E8%B7%AF%E5%8A%B2" aria-hidden="true"><span class="octicon octicon-link"></span></a>召回路劲</h3>
+<p>名词解释</p>
+
+<ul>
+  <li>u: user, 用户</li>
+  <li>i: item</li>
+  <li>2: to, 代表的是边</li>
+</ul>
+
+<p>u2i 代表的是 user to item</p>
+
+<div class="mermaid">
+graph LR;
+  user(用户)
+  item(item);
+  user--&gt;item
+</div>
+
+<p>推荐系统解决的是 用户如何找到 item</p>
+
+<div class="mermaid">
+graph LR;
+  user(用户)
+  unkown(...);
+  item(item);
+  user--&gt;unkown--&gt;item
+</div>
+
+<p>这里提出了召回方式</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">路劲</th>
+      <th style="text-align: center">解释</th>
+      <th style="text-align: center">例子</th>
+      <th style="text-align: center">方法</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">i2i</td>
+      <td style="text-align: center">你看了itemA,推荐给你itemB</td>
+      <td style="text-align: center">头条的相似文章推荐</td>
+      <td style="text-align: center">item相似度, 协同过滤 和 关联规则(比如人工标注)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">u2i</td>
+      <td style="text-align: center">用户的直接行为</td>
+      <td style="text-align: center">点击过的内容但是未购买的商品, 很容易产生购买行为</td>
+      <td style="text-align: center">用户行为数据</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">u2i2i</td>
+      <td style="text-align: center">将 u2i 得到的结果, 推荐给新的用户</td>
+      <td style="text-align: center">N/A</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">u2u2i</td>
+      <td style="text-align: center">用户聚类，获得相似的用户，再根据用户的推荐给当前用户</td>
+      <td style="text-align: center">相同年龄/性别的用户, 相同点击行为的用户推荐相似的内容</td>
+      <td style="text-align: center">用户聚类, 用户行为，来进行 u2u 部分</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">u2tag2i</td>
+      <td style="text-align: center">先算出用户的tag, 在匹配 tag 和 item 的关系</td>
+      <td style="text-align: center">豆瓣, B站的 tag, tag效果比较好, 内容不会扩展</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">u2***2i</td>
+      <td style="text-align: center">基于图的算法</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="netflix推荐架构">
+<a class="anchor" href="#netflix%E6%8E%A8%E8%8D%90%E6%9E%B6%E6%9E%84" aria-hidden="true"><span class="octicon octicon-link"></span></a>Netflix推荐架构</h3>
+<p><img src="assets/images/netflix_framework.png" alt="framework" width="80%"></p>
+
+<ul>
+  <li>Offline, 计算离线数据, 一般提供 小时/天/月 级别的数据
+    <ul>
+      <li>海量数据存储和计算</li>
+      <li>离线计算</li>
+      <li>机器学习和模型训练</li>
+    </ul>
+  </li>
+  <li>Nearline, 利用离线数据和当前的实时数据, 计算当前的热数据和 TopN 数据等，存储到缓存中
+    <ul>
+      <li>接收实时事件</li>
+      <li>计算实时数据并写入缓存</li>
+    </ul>
+  </li>
+  <li>Online, 直接面向外部提供接口, 一般是直接从 Nearline 的缓存存储中拿到数据返回, 有时延要求
+    <ul>
+      <li>分发用户事件</li>
+      <li>组装缓存中的数据</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>如果是数据不大的话，可以考虑只有两层, Online 和 Offline, Offline 直接将结果写入告诉缓存即可</p>
+</blockquote>
+
+<h3 id="技术架构">
+<a class="anchor" href="#%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84" aria-hidden="true"><span class="octicon octicon-link"></span></a>技术架构</h3>
+<ul>
+  <li>Offline</li>
+  <li>Nearline</li>
+  <li>Online</li>
+  <li>存储
+    <ul>
+      <li>redis</li>
+      <li>memcache</li>
+    </ul>
+  </li>
+  <li>超时处理, 兜底补足</li>
+  <li>本地LRU缓存</li>
+</ul>
+
+<h2 id="基于内容的推荐content-based">
+<a class="anchor" href="#%E5%9F%BA%E4%BA%8E%E5%86%85%E5%AE%B9%E7%9A%84%E6%8E%A8%E8%8D%90content-based" aria-hidden="true"><span class="octicon octicon-link"></span></a>基于内容的推荐(content-based)</h2>
+<blockquote>
+  <p>给用户推荐 之前喜欢过的物品, 以及相似的物品。 即 u2i2i 和 u2Tag2i, 仅分析单用户本身, 用户和用户之间的行为互不干涉和影响</p>
+</blockquote>
+
+<div class="mermaid">
+graph TB
+    subgraph 用户
+    action(偏好);
+    action1(点赞 <br>权重 2);
+    action2(收藏 <br>权重 3);
+    action3(播放 <br>权重 1);
+    aa(偏好向量 <br>故事3 白噪声2 ... );
+    action --&gt; action1 &amp; action2 &amp; action3--&gt;aa
+    end
+    subgraph 内容
+    taged(特征 <br>故事/白噪音/仙侠);
+    t1(故事 <br>权重 2);
+    t2(音乐 <br>权重 3);
+    t3(白噪声 <br>权重 1);
+    bb(特征向量 <br>故事3 白噪声4 ... );
+    taged --&gt; t1 &amp; t2 &amp; t3--&gt;bb
+    end
+
+    subgraph 推荐
+    cc(推荐的内容列表 <br> 利用余弦相似度算法计算TopN物品)
+    end
+    aa --&gt; cc
+    bb --&gt; cc
+</div>
+
+<ul>
+  <li>余弦相似度计算, 计算向量和向量之间的距离</li>
+</ul>
+
+<p>优点：</p>
+<ul>
+  <li>只需要单个用户的信息，用户和用户之间没有关联</li>
+  <li>可以推荐最新的或者冷门的物品</li>
+  <li>容易做解释</li>
+</ul>
+
+<p>缺点</p>
+<ul>
+  <li>内容标签需要人工打</li>
+  <li>用户的潜在兴趣无法挖掘</li>
+  <li>全新用户没法推荐</li>
+</ul>
+
+<h2 id="基于协同的推荐cf-collaborative-filtering">
+<a class="anchor" href="#%E5%9F%BA%E4%BA%8E%E5%8D%8F%E5%90%8C%E7%9A%84%E6%8E%A8%E8%8D%90cf-collaborative-filtering" aria-hidden="true"><span class="octicon octicon-link"></span></a>基于协同的推荐(CF, Collaborative Filtering)</h2>
+<blockquote>
+  <p>使用行为数据，利用集体智慧，即 用户和用户的行为，物品和物品之间相互交叉和干涉，主要包括 u2u2i 和 u2i2i</p>
+</blockquote>
+
+<ol>
+  <li>
+    <p>u2u2i: user1喜欢 x1, user2也喜欢 x1; 那么user1喜欢的 x2 可以推荐给 user2</p>
+  </li>
+  <li>
+    <p>u2i2i: user1喜欢 x1, x1 和 x2 很相似; 那么 可以推荐 x2 给 user1.</p>
+  </li>
+</ol>
+
+<p>下面的例子: 用户A，B，C 已经对部分 item 进行了打分, 现在要给 用户A 的 item 进行排序 和 推荐</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">用户/item的评分</th>
+      <th style="text-align: center">item1</th>
+      <th style="text-align: center">item2</th>
+      <th style="text-align: center">item3</th>
+      <th style="text-align: center">item4</th>
+      <th style="text-align: center">item5</th>
+      <th style="text-align: center">item6</th>
+      <th style="text-align: center">item7</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">用户A</td>
+      <td style="text-align: center">8分</td>
+      <td style="text-align: center">3分</td>
+      <td style="text-align: center">?</td>
+      <td style="text-align: center">?</td>
+      <td style="text-align: center">?</td>
+      <td style="text-align: center">?</td>
+      <td style="text-align: center">2分</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">用户B</td>
+      <td style="text-align: center">7分</td>
+      <td style="text-align: center">10分</td>
+      <td style="text-align: center">3分</td>
+      <td style="text-align: center">?</td>
+      <td style="text-align: center">8分</td>
+      <td style="text-align: center">9分</td>
+      <td style="text-align: center">?</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">用户C</td>
+      <td style="text-align: center">8分</td>
+      <td style="text-align: center">1分</td>
+      <td style="text-align: center">8分</td>
+      <td style="text-align: center">10分</td>
+      <td style="text-align: center">2分</td>
+      <td style="text-align: center">?</td>
+      <td style="text-align: center">8分</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>通过协同过滤的方式如下</p>
+
+<div class="mermaid">
+graph TB
+    uu(搜索和用户A和用户B, C的 相似度);
+    ii(根据相似度, 估算用户A 在新item3和item4的分数);
+
+    uu --&gt; ii
+</div>
+
+<p>相似度计算</p>
+
+<ul>
+  <li>Jaccard相似度</li>
+  <li>余弦相似度</li>
+  <li>皮尔逊相关系数, Pearson’s r</li>
+</ul>
+
+<h2 id="ref">
+<a class="anchor" href="#ref" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ref</h2>
+<ul>
+  <li><a href="https://www.bilibili.com/video/BV1Dz411B7wd" target="_blank" rel="noopener noreferrer">推荐系统学习视频</a></li>
+  <li><a href="https://netflixtechblog.com/system-architectures-for-personalization-and-recommendation-e081aa94b5d8" target="_blank" rel="noopener noreferrer">Netflix 推荐系统架构</a></li>
+  <li><a href="https://github.com/fxsjy/jieba" target="_blank" rel="noopener noreferrer">中文分词</a></li>
+  <li><a href="https://ai.tencent.com/ailab/nlp/en/embedding.html" target="_blank" rel="noopener noreferrer">Tencent Word2Vec</a></li>
+  <li><a href="https://spark.apache.org/docs/2.2.3/ml-features.html" target="_blank" rel="noopener noreferrer">Spark ML features</a></li>
+</ul>
+
+
+</article>
+
+      </div>
+    </main>
+
+    
+  </body>
+</html>

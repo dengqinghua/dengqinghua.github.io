@@ -1,5 +1,311 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-07-29T09:32:14+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
-</subtitle><author><name>dengqinghua</name></author><entry><title type="html">Apple Pay</title><link href="https://dengqinghua.github.io/apple-pay.html" rel="alternate" type="text/html" title="Apple Pay" /><published>2021-07-28T00:00:00+08:00</published><updated>2021-07-28T00:00:00+08:00</updated><id>https://dengqinghua.github.io/apple-pay</id><content type="html" xml:base="https://dengqinghua.github.io/apple-pay.html">&lt;div class=&quot;mermaid&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-07-30T09:09:59+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+</subtitle><author><name>dengqinghua</name></author><entry><title type="html">推荐系统学习笔记</title><link href="https://dengqinghua.github.io/recommend-sys.html" rel="alternate" type="text/html" title="推荐系统学习笔记" /><published>2021-07-29T00:00:00+08:00</published><updated>2021-07-29T00:00:00+08:00</updated><id>https://dengqinghua.github.io/recommend-sys</id><content type="html" xml:base="https://dengqinghua.github.io/recommend-sys.html">&lt;h2 id=&quot;基本方式&quot;&gt;基本方式&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;基于行为的协同过滤&lt;/p&gt;
+
+    &lt;p&gt;你选择了A, 跟 A 相似的东西会推荐给你&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;基于内容相似推荐&lt;/p&gt;
+
+    &lt;p&gt;你选择了A, 跟 A 属于相同类别的东西会推荐给你&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;解决的问题&quot;&gt;解决的问题&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;信息过载。是帮用户从非常多的数据中(比如上千万的商品)选择&lt;/li&gt;
+  &lt;li&gt;挖掘长尾。长尾一般是冷门数据，冷门数据的总和往往比热门数据要多，冷门数据也具有非常大的价值&lt;/li&gt;
+  &lt;li&gt;用户体验。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;环节&quot;&gt;环节&lt;/h2&gt;
+&lt;p&gt;问题: 从海量数据中，提取和用户相关的十几条数据，并且在 XXX ms 内返回&lt;/p&gt;
+
+&lt;div class=&quot;mermaid&quot;&gt;
+graph LR;
+  input([原始数据 &lt;br /&gt; 亿/千万])
+  callback(召回 &lt;br /&gt;万/千);
+  sort(排序 &lt;br /&gt;千/百);
+  filter(调整 &lt;br /&gt;百/十);
+  output([结果 &lt;br /&gt; 十])
+  input--&amp;gt;callback--&amp;gt;sort--&amp;gt;filter--&amp;gt;output
+&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;召回解决了信息过载的问题，将数量级极大地降低&lt;/li&gt;
+  &lt;li&gt;排序可以使用二分算法, 得出用户是否喜欢(喜欢1 不喜欢为0) 和 喜欢的概率, 这样就能得到权重
+    &lt;blockquote&gt;
+      &lt;p&gt;如果数量不大, 则可以绕过召回阶段, 直接进行排序&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;调整做到了 去重, 已读过滤/在线过滤, 热门补足, 分页 和 合并内容信息等&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;召回路劲&quot;&gt;召回路劲&lt;/h3&gt;
+&lt;p&gt;名词解释&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;u: user, 用户&lt;/li&gt;
+  &lt;li&gt;i: item&lt;/li&gt;
+  &lt;li&gt;2: to, 代表的是边&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;u2i 代表的是 user to item&lt;/p&gt;
+
+&lt;div class=&quot;mermaid&quot;&gt;
+graph LR;
+  user(用户)
+  item(item);
+  user--&amp;gt;item
+&lt;/div&gt;
+
+&lt;p&gt;推荐系统解决的是 用户如何找到 item&lt;/p&gt;
+
+&lt;div class=&quot;mermaid&quot;&gt;
+graph LR;
+  user(用户)
+  unkown(...);
+  item(item);
+  user--&amp;gt;unkown--&amp;gt;item
+&lt;/div&gt;
+
+&lt;p&gt;这里提出了召回方式&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;路劲&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;解释&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;例子&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;方法&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;i2i&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;你看了itemA,推荐给你itemB&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;头条的相似文章推荐&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;item相似度, 协同过滤 和 关联规则(比如人工标注)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;u2i&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;用户的直接行为&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;点击过的内容但是未购买的商品, 很容易产生购买行为&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;用户行为数据&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;u2i2i&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;将 u2i 得到的结果, 推荐给新的用户&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;N/A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;u2u2i&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;用户聚类，获得相似的用户，再根据用户的推荐给当前用户&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;相同年龄/性别的用户, 相同点击行为的用户推荐相似的内容&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;用户聚类, 用户行为，来进行 u2u 部分&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;u2tag2i&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;先算出用户的tag, 在匹配 tag 和 item 的关系&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;豆瓣, B站的 tag, tag效果比较好, 内容不会扩展&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;u2***2i&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;基于图的算法&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;netflix推荐架构&quot;&gt;Netflix推荐架构&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;assets/images/netflix_framework.png&quot; alt=&quot;framework&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Offline, 计算离线数据, 一般提供 小时/天/月 级别的数据
+    &lt;ul&gt;
+      &lt;li&gt;海量数据存储和计算&lt;/li&gt;
+      &lt;li&gt;离线计算&lt;/li&gt;
+      &lt;li&gt;机器学习和模型训练&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Nearline, 利用离线数据和当前的实时数据, 计算当前的热数据和 TopN 数据等，存储到缓存中
+    &lt;ul&gt;
+      &lt;li&gt;接收实时事件&lt;/li&gt;
+      &lt;li&gt;计算实时数据并写入缓存&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Online, 直接面向外部提供接口, 一般是直接从 Nearline 的缓存存储中拿到数据返回, 有时延要求
+    &lt;ul&gt;
+      &lt;li&gt;分发用户事件&lt;/li&gt;
+      &lt;li&gt;组装缓存中的数据&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;如果是数据不大的话，可以考虑只有两层, Online 和 Offline, Offline 直接将结果写入告诉缓存即可&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;技术架构&quot;&gt;技术架构&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Offline&lt;/li&gt;
+  &lt;li&gt;Nearline&lt;/li&gt;
+  &lt;li&gt;Online&lt;/li&gt;
+  &lt;li&gt;存储
+    &lt;ul&gt;
+      &lt;li&gt;redis&lt;/li&gt;
+      &lt;li&gt;memcache&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;超时处理, 兜底补足&lt;/li&gt;
+  &lt;li&gt;本地LRU缓存&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;基于内容的推荐content-based&quot;&gt;基于内容的推荐(content-based)&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;给用户推荐 之前喜欢过的物品, 以及相似的物品。 即 u2i2i 和 u2Tag2i, 仅分析单用户本身, 用户和用户之间的行为互不干涉和影响&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;mermaid&quot;&gt;
+graph TB
+    subgraph 用户
+    action(偏好);
+    action1(点赞 &lt;br /&gt;权重 2);
+    action2(收藏 &lt;br /&gt;权重 3);
+    action3(播放 &lt;br /&gt;权重 1);
+    aa(偏好向量 &lt;br /&gt;故事3 白噪声2 ... );
+    action --&amp;gt; action1 &amp;amp; action2 &amp;amp; action3--&amp;gt;aa
+    end
+    subgraph 内容
+    taged(特征 &lt;br /&gt;故事/白噪音/仙侠);
+    t1(故事 &lt;br /&gt;权重 2);
+    t2(音乐 &lt;br /&gt;权重 3);
+    t3(白噪声 &lt;br /&gt;权重 1);
+    bb(特征向量 &lt;br /&gt;故事3 白噪声4 ... );
+    taged --&amp;gt; t1 &amp;amp; t2 &amp;amp; t3--&amp;gt;bb
+    end
+
+    subgraph 推荐
+    cc(推荐的内容列表 &lt;br /&gt; 利用余弦相似度算法计算TopN物品)
+    end
+    aa --&amp;gt; cc
+    bb --&amp;gt; cc
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;余弦相似度计算, 计算向量和向量之间的距离&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;优点：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;只需要单个用户的信息，用户和用户之间没有关联&lt;/li&gt;
+  &lt;li&gt;可以推荐最新的或者冷门的物品&lt;/li&gt;
+  &lt;li&gt;容易做解释&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;缺点&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;内容标签需要人工打&lt;/li&gt;
+  &lt;li&gt;用户的潜在兴趣无法挖掘&lt;/li&gt;
+  &lt;li&gt;全新用户没法推荐&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;基于协同的推荐cf-collaborative-filtering&quot;&gt;基于协同的推荐(CF, Collaborative Filtering)&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;使用行为数据，利用集体智慧，即 用户和用户的行为，物品和物品之间相互交叉和干涉，主要包括 u2u2i 和 u2i2i&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;u2u2i: user1喜欢 x1, user2也喜欢 x1; 那么user1喜欢的 x2 可以推荐给 user2&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;u2i2i: user1喜欢 x1, x1 和 x2 很相似; 那么 可以推荐 x2 给 user1.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;下面的例子: 用户A，B，C 已经对部分 item 进行了打分, 现在要给 用户A 的 item 进行排序 和 推荐&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;用户/item的评分&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;item1&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;item2&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;item3&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;item4&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;item5&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;item6&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;item7&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;用户A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8分&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3分&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;?&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;?&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;?&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;?&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2分&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;用户B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7分&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10分&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3分&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;?&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8分&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9分&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;?&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;用户C&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8分&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1分&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8分&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10分&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2分&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;?&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8分&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;通过协同过滤的方式如下&lt;/p&gt;
+
+&lt;div class=&quot;mermaid&quot;&gt;
+graph TB
+    uu(搜索和用户A和用户B, C的 相似度);
+    ii(根据相似度, 估算用户A 在新item3和item4的分数);
+
+    uu --&amp;gt; ii
+&lt;/div&gt;
+
+&lt;p&gt;相似度计算&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Jaccard相似度&lt;/li&gt;
+  &lt;li&gt;余弦相似度&lt;/li&gt;
+  &lt;li&gt;皮尔逊相关系数, Pearson’s r&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;ref&quot;&gt;Ref&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.bilibili.com/video/BV1Dz411B7wd&quot;&gt;推荐系统学习视频&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://netflixtechblog.com/system-architectures-for-personalization-and-recommendation-e081aa94b5d8&quot;&gt;Netflix 推荐系统架构&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/fxsjy/jieba&quot;&gt;中文分词&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ai.tencent.com/ailab/nlp/en/embedding.html&quot;&gt;Tencent Word2Vec&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://spark.apache.org/docs/2.2.3/ml-features.html&quot;&gt;Spark ML features&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">基本方式</summary></entry><entry><title type="html">Apple Pay</title><link href="https://dengqinghua.github.io/apple-pay.html" rel="alternate" type="text/html" title="Apple Pay" /><published>2021-07-28T00:00:00+08:00</published><updated>2021-07-28T00:00:00+08:00</updated><id>https://dengqinghua.github.io/apple-pay</id><content type="html" xml:base="https://dengqinghua.github.io/apple-pay.html">&lt;div class=&quot;mermaid&quot;&gt;
 sequenceDiagram
     autonumber
     participant sdk as iOS SDK
@@ -1779,186 +2085,4 @@ graph LR;
 &lt;ol&gt;
   &lt;li&gt;如果按弦很吃力，可以尝试比较轻一点儿的拨弦方式&lt;/li&gt;
   &lt;li&gt;尝试将弹琴这件事情转化为一个感性的事情，录音这件事情也是.&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry><entry><title type="html">转位和弦</title><link href="https://dengqinghua.github.io/chord-inversion.html" rel="alternate" type="text/html" title="转位和弦" /><published>2021-03-06T00:00:00+08:00</published><updated>2021-03-06T00:00:00+08:00</updated><id>https://dengqinghua.github.io/chord-inversion</id><content type="html" xml:base="https://dengqinghua.github.io/chord-inversion.html">&lt;blockquote&gt;
-  &lt;p&gt;Navigate Better!&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;对于三和弦, 注意 654 和 543 的 弦 之间的距离是一样，所以指型都是一样的, 只有包含 2,3 弦才会不一样. 所以三和弦来说, 有&lt;strong&gt;九种指型&lt;/strong&gt;. [Nine shapes]&lt;/p&gt;
-
-&lt;hr data-content=&quot; 大三 &quot; /&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;654&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-C-654.png&quot; alt=&quot;chord-inversion-C-654.png&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;543&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-C-543.png&quot; alt=&quot;chord-inversion-C-543.png&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;432&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-C-432.png&quot; alt=&quot;chord-inversion-C-432.png&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;321&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-C-321.png&quot; alt=&quot;chord-inversion-C-321.png&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;hr data-content=&quot; 小三 &quot; /&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;654&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm-654.png&quot; alt=&quot;chord-inversion-Cm-654.png&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;543&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm-543.png&quot; alt=&quot;chord-inversion-Cm-543.png&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;432&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm-432.png&quot; alt=&quot;chord-inversion-Cm-432.png&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;321&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm-321.png&quot; alt=&quot;chord-inversion-Cm-321.png&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;hr data-content=&quot; 大七 &quot; /&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;6543&lt;/p&gt;
-
-    &lt;p&gt;七级为 root 时候, 音色会比较奇怪, 但是可以作为一个比较好的过渡和弦&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cmajor7-6543.png&quot; alt=&quot;chord-inversion-CM7-6543.png&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;5432&lt;/p&gt;
-
-    &lt;p&gt;注: 一级转位(3 为 root)时候非常好听&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cmajor7-5432.png&quot; alt=&quot;chord-inversion-CM7-5432.png&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;4321&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cmajor7-4321.png&quot; alt=&quot;chord-inversion-CM7-4321.png&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;6432&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cmajor7-6432.png&quot; alt=&quot;chord-inversion-CM7-6432.png&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;5321&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cmajor7-5321.png&quot; alt=&quot;chord-inversion-CM7-5321.png&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;hr data-content=&quot; 属七 &quot; /&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;6543&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-C7-6543.png&quot; alt=&quot;chord-inversion-C7-6543.png&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;5432&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-C7-5432.png&quot; alt=&quot;chord-inversion-C7-5432.png&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;4321&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-C7-4321.png&quot; alt=&quot;chord-inversion-C7-4321.png&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;6432&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-C7-6432.png&quot; alt=&quot;chord-inversion-C7-6432.png&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;5321&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-C7-5321.png&quot; alt=&quot;chord-inversion-C7-5321.png&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;hr data-content=&quot; 小七 &quot; /&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;6543&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cmin7-6543.png&quot; alt=&quot;chord-inversion-Cmin-6543.png&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;5432&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cmin7-5432.png&quot; alt=&quot;chord-inversion-Cmin7-5432.png&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;4321&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cmin7-4321.png&quot; alt=&quot;chord-inversion-Cmin7-4321.png&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;6432&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cmin7-6432.png&quot; alt=&quot;chord-inversion-Cmin7-6432.png&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;5321&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cmin7-5321.png&quot; alt=&quot;chord-inversion-Cmin7-5321.png&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;hr data-content=&quot; 半减七 &quot; /&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Cmb5 可以看做是 Ebmin6 或者是 Ab9, 将半减七和弦看做是 side note&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;6543&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm7b5-6543.png&quot; alt=&quot;chord-inversion-Cm7b5-6543.png&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;5432&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm7b5-5432.png&quot; alt=&quot;chord-inversion-Cm7b5-5432.png&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;4321&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm7b5-4321.png&quot; alt=&quot;chord-inversion-Cm7b5-4321.png&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;6432&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm7b5-6432.png&quot; alt=&quot;chord-inversion-Cm7b5-6432.png&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;5321&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;assets/images/chord-inversion-Cm7b5-5321.png&quot; alt=&quot;chord-inversion-Cm7b5-5321.png&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html">Navigate Better!</summary></entry></feed>
+&lt;/ol&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry></feed>
