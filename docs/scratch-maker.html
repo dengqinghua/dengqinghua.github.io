@@ -86,128 +86,129 @@ chmod -R 777 /var/www/site
 
 <h4 id="软件安装">
 <a class="anchor" href="#%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85" aria-hidden="true"><span class="octicon octicon-link"></span></a>软件安装</h4>
-<p>安装 git, <a href="https://docs.docker.com/engine/install/centos/" target="_blank" rel="noopener noreferrer">docker</a>, docker-compose, jq, gitlab-runner, node, nginx</p>
-
-<hr data-content=" git ">
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo yum remove git*
-sudo yum -y install https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm
-sudo yum install git
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo yum install -y git nginx ruby jq
 </code></pre></div></div>
 
-<hr data-content=" gitlab-runner ">
+<ul>
+  <li><a href="https://docs.docker.com/engine/install/centos/" target="_blank" rel="noopener noreferrer">docker</a></li>
+  <li>
+    <p><a href="https://docs.gitlab.com/runner/install/linux-repository.html" target="_blank" rel="noopener noreferrer">gitlab-runner</a></p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -L "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh" | sudo bash
-sudo -E yum install -y gitlab-runner
-</code></pre></div></div>
+    <p>需要将 runner 加入到 root, docker 中，并设置 gitlab-runner 的基本 cp, nginx 等权限</p>
 
-<p><a href="https://docs.gitlab.com/runner/install/linux-repository.html" target="_blank" rel="noopener noreferrer">Ref</a></p>
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  sudo usermod -aG root gitlab-runner
+  sudo usermod -aG docker gitlab-runner
+  sudo visudo
+  gitlab-runner ALL=(ALL) NOPASSWD: /usr/sbin/nginx, /usr/bin/cp
+</code></pre></div>    </div>
+  </li>
+  <li>node
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  curl -sL https://rpm.nodesource.com/setup_12.x | sudo bash -lu
+  sudo yum install -y nodejs
+</code></pre></div>    </div>
+  </li>
+  <li>nginx
+    <details>
+      <summary>
+  NGINX 的一些配置参考
+  </summary>
+      <p>静态文件</p>
 
-<p>需要将 runner 加入到 root 中</p>
+      <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  server {
+      listen 80;
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo usermod -aG root gitlab-runner
-sudo usermod -aG docker gitlab-runner
-</code></pre></div></div>
-<p>设置 gitlab-runner 的基本 cp, nginx 等权限</p>
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header Host $host;
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo visudo
-gitlab-runner ALL=(ALL) NOPASSWD: /usr/sbin/nginx, /usr/bin/cp
-</code></pre></div></div>
+      server_name admin.exmaple.com;
 
-<hr data-content=" node ">
+      client_max_body_size 200M;
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -sL https://rpm.nodesource.com/setup_12.x | sudo bash -lu
-sudo yum install -y nodejs
-</code></pre></div></div>
+      root /var/www/site/admin_dev;
+      location / {
+        index index.html index.htm;
+        try_files $uri /index.html;
+      }
 
-<hr data-content=" nginx ">
+      gzip on;
+      gzip_buffers 32 4K;
+      gzip_comp_level 6;
+      gzip_min_length 100;
+      gzip_types application/javascript text/css text/xml;
+      gzip_disable "MSIE [1-6]\.";
+      gzip_vary on;
+  }
+</code></pre></div>      </div>
 
-<p>静态文件</p>
+      <p>SSL</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>server {
+      <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  server {
+      listen 443 ssl;
+
+      server_name api0.exmaple.com;
+      ## 这个文件需要放在 /etc/nginx 的目录下
+      ssl_certificate 1_api0.exmaple.com_bundle.crt;
+      ssl_certificate_key 2_api0.exmaple.com.key;
+      ssl_session_timeout 5m;
+      ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+      ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
+      ssl_prefer_server_ciphers on;
+
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header Host $host;
+
+      client_max_body_size 100M;
+
+      location / {
+        proxy_pass http://127.0.0.1:8888;
+      }
+  }
+</code></pre></div>      </div>
+
+      <p>负载均衡</p>
+
+      <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  upstream java_prod_server {
+    server 127.0.0.1:8880;
+    server 127.0.0.1:8881;
+  }
+</code></pre></div>      </div>
+
+      <p>重定向</p>
+
+      <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  server {
     listen 80;
-
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header Host $host;
 
     server_name admin.exmaple.com;
 
-    client_max_body_size 200M;
+    return 301 https://admin.exmaple.com$request_uri;
+  }
+</code></pre></div>      </div>
 
-    root /var/www/site/admin_dev;
-    location / {
-      index index.html index.htm;
-      try_files $uri /index.html;
-    }
+      <p>Nginx的简单鉴权</p>
 
-    gzip on;
-    gzip_buffers 32 4K;
-    gzip_comp_level 6;
-    gzip_min_length 100;
-    gzip_types application/javascript text/css text/xml;
-    gzip_disable "MSIE [1-6]\.";
-    gzip_vary on;
-}
-</code></pre></div></div>
+      <p><a href="https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-http-basic-authentication/" target="_blank" rel="noopener noreferrer">Ref</a></p>
 
-<p>SSL</p>
+      <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  sudo yum install httpd-tools
+  sudo htpasswd -c /etc/nginx/.htpasswd user1
+  cat /etc/nginx/.htpasswd
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>server {
-    listen 443 ssl;
+  Nginx 中的配置
+  location /api {
+      auth_basic           "admin area";
+      auth_basic_user_file /etc/nginx/.htpasswd;
+  }
+</code></pre></div>      </div>
 
-    server_name api0.exmaple.com;
-    ## 这个文件需要放在 /etc/nginx 的目录下
-    ssl_certificate 1_api0.exmaple.com_bundle.crt;
-    ssl_certificate_key 2_api0.exmaple.com.key;
-    ssl_session_timeout 5m;
-    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
-    ssl_prefer_server_ciphers on;
-
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header Host $host;
-
-    client_max_body_size 100M;
-
-    location / {
-      proxy_pass http://127.0.0.1:8888;
-    }
-}
-</code></pre></div></div>
-
-<p>负载均衡</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>upstream java_prod_server {
-  server 127.0.0.1:8880;
-  server 127.0.0.1:8881;
-}
-</code></pre></div></div>
-
-<p>重定向</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>server {
-  listen 80;
-
-  server_name admin.exmaple.com;
-
-  return 301 https://admin.exmaple.com$request_uri;
-}
-</code></pre></div></div>
-
-<p>Nginx的简单鉴权</p>
-
-<p><a href="https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-http-basic-authentication/" target="_blank" rel="noopener noreferrer">Ref</a></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo yum install httpd-tools
-sudo htpasswd -c /etc/nginx/.htpasswd user1
-cat /etc/nginx/.htpasswd
-
-Nginx 中的配置
-location /api {
-    auth_basic           "admin area";
-    auth_basic_user_file /etc/nginx/.htpasswd;
-}
-</code></pre></div></div>
+    </details>
+  </li>
+</ul>
 
 <h3 id="基础设施">
 <a class="anchor" href="#%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD" aria-hidden="true"><span class="octicon octicon-link"></span></a>基础设施</h3>
@@ -310,14 +311,13 @@ prod-deploy:
 <ul>
   <li><a href="https://github.com/jl-borges/maker/blob/main/mysql/docker-compose.yml" target="_blank" rel="noopener noreferrer">MySQL</a></li>
   <li><a href="https://github.com/jl-borges/maker/blob/main/redis/docker-compose.yml" target="_blank" rel="noopener noreferrer">Redis</a></li>
-  <li><a href="https://github.com/jl-borges/docker-elk" target="_blank" rel="noopener noreferrer">ELK</a></li>
-</ul>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.12.1-x86_64.rpm
-sudo rpm -vi filebeat-7.12.1-x86_64.rpm
-</code></pre></div></div>
-
-<ul>
+  <li>
+<a href="https://github.com/jl-borges/docker-elk" target="_blank" rel="noopener noreferrer">ELK</a>
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.12.1-x86_64.rpm
+  sudo rpm -vi filebeat-7.12.1-x86_64.rpm
+</code></pre></div>    </div>
+  </li>
   <li>Kafak, TODO</li>
 </ul>
 
@@ -339,21 +339,17 @@ sudo rpm -vi filebeat-7.12.1-x86_64.rpm
   </li>
   <li>购买机器和服务
     <ul>
-      <li>dev 机器, 4核8G 50G硬盘, 2M带宽 3619.74 元/年, 377.66 元/月</li>
-      <li>qa 机器, 2核4G 50G硬盘, 2M带宽 3619.74 元/年, 377.66 元/月</li>
-      <li>prod 机器, 2核4G 50G硬盘, 2M带宽 1980.3 元, 205 元/月</li>
-      <li>ES 服务 1核2G, 189.60 元/月</li>
-      <li>MySQL 主库 552 元/月, 一年 5497.92 元</li>
-      <li>MySQL 从库 174 元/月, 一年 5497.92 元</li>
-      <li>短信服务 470.00 元/1万条</li>
-      <li>七牛服务 预计 300/月 (使用 CDN 功能, 不包括流量加速等)</li>
+      <li>dev 机器, 4核8G 50G硬盘, 2M带宽</li>
+      <li>qa 机器, 2核4G 50G硬盘, 2M带宽</li>
+      <li>prod 机器, 2核4G 50G硬盘, 2M带宽</li>
+      <li>ES 服务 2核4G</li>
+      <li>MySQL 主库</li>
+      <li>MySQL 从库</li>
+      <li>短信服务</li>
+      <li>七牛服务</li>
     </ul>
-
-    <blockquote>
-      <p>机器和服务总费用: 按月购买: 2644 元/月</p>
-    </blockquote>
   </li>
-  <li>基础服务搭建(1天)
+  <li>基础服务搭建
     <ul>
       <li>gitlab, 代码仓库, 部署在 dev 机器上</li>
       <li>maven, java 基础库</li>
@@ -364,7 +360,7 @@ sudo rpm -vi filebeat-7.12.1-x86_64.rpm
       <li>redis 服务</li>
     </ul>
   </li>
-  <li>基础代码部署和初次上线(1天)
+  <li>基础代码部署和初次上线
     <ul>
       <li>利用基础包, 生成后端的基础代码</li>
       <li>利用 antd, 生成现成的 admin 代码</li>
@@ -372,7 +368,7 @@ sudo rpm -vi filebeat-7.12.1-x86_64.rpm
       <li>gitlab-ci 配置</li>
     </ul>
   </li>
-  <li>核心配置(1天)
+  <li>核心配置
     <ul>
       <li>包名称</li>
       <li>支付秘钥</li>
@@ -380,15 +376,11 @@ sudo rpm -vi filebeat-7.12.1-x86_64.rpm
       <li>数据库/redis 配置等</li>
     </ul>
   </li>
-  <li>测试和数据配置(2天)
+  <li>测试和数据配置
     <ul>
       <li>核心接口整理</li>
       <li>配置后台数据</li>
     </ul>
-
-    <blockquote>
-      <p>已经备案的基础下, 大概在 5 天左右的时间, 从 0 到 1 交付一个已上线的后端 API 调用 和 具有基础功能的 admin 后台</p>
-    </blockquote>
   </li>
 </ol>
 

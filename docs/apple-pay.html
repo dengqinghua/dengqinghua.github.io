@@ -106,7 +106,32 @@ graph LR;
 <ul>
   <li><a href="https://medium.com/@tyy.sh/in-app-purchase-%E6%80%BB%E7%BB%93-e8a88a54d8d9" target="_blank" rel="noopener noreferrer">IAP</a></li>
   <li><a href="http://ifumei.cc/2019/12/24/iospay/" target="_blank" rel="noopener noreferrer">springboot接入苹果内购</a></li>
+  <li><a href="https://developer.apple.com/documentation/storekit/original_api_for_in-app_purchase/validating_receipts_with_the_app_store" target="_blank" rel="noopener noreferrer">苹果校验流程</a></li>
 </ul>
+
+<p>支付流程</p>
+
+<div class="mermaid">
+graph TB;
+    biz([业务]);
+    biz1(Java);
+    biz11(BFF <br>App);
+    biz12(BFF <br>Admin);
+    biz2(React+Antd);
+    biz-m1(microservice<br> 内容<br>单曲 合集 Q&amp;E 老师等)
+    biz-m3(microservice<br> 支付<br> 微信 支付宝 华为支付 苹果支付)
+    biz-m4(microservice<br> 用户<br>登录/注册 反馈 VIP信息)
+    biz-m5(microservice<br> 运营活动<br> 广告 Banner 优惠活动)
+    biz-m6(microservice<br> 用户日志<br>音频播放日志)
+    biz-m7(microservice<br> RBAC<br>权限 角色)
+    biz22(CRM);
+    biz23(H5);
+    biz--&gt;biz1 &amp; biz2;
+    biz1--&gt;biz11 &amp; biz12;
+    biz2--&gt;biz22 &amp; biz23;
+    biz11 --&gt; biz-m3 &amp; biz-m4 &amp; biz-m6
+    biz11 &amp; biz12 --&gt; biz-m1 &amp; biz-m5 &amp; biz-m7
+</div>
 
 </article>
 

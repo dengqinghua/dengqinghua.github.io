@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-07-30T11:38:27+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-08-07T14:07:04+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
 </subtitle><author><name>dengqinghua</name></author><entry><title type="html">推荐系统 Notes</title><link href="https://dengqinghua.github.io/recommend-sys.html" rel="alternate" type="text/html" title="推荐系统 Notes" /><published>2021-07-29T00:00:00+08:00</published><updated>2021-07-29T00:00:00+08:00</updated><id>https://dengqinghua.github.io/recommend-sys</id><content type="html" xml:base="https://dengqinghua.github.io/recommend-sys.html">&lt;h2 id=&quot;基本方式&quot;&gt;基本方式&lt;/h2&gt;
 
 &lt;ul&gt;
@@ -400,7 +400,32 @@ graph LR;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://medium.com/@tyy.sh/in-app-purchase-%E6%80%BB%E7%BB%93-e8a88a54d8d9&quot;&gt;IAP&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://ifumei.cc/2019/12/24/iospay/&quot;&gt;springboot接入苹果内购&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">sequenceDiagram autonumber participant sdk as iOS SDK participant b as Backend participant as as Apple Service sdk-&amp;gt;&amp;gt;b: 获取商品列表 b--&amp;gt;&amp;gt;sdk: 从后台获取商品id和对应展示的图片文案信息 sdk-&amp;gt;&amp;gt;b: 根据商品id 生成/获取预订单 Note right of sdk: 需要先去查一下这个用户在商品id下之前是不是有未完成的订单 b--&amp;gt;&amp;gt;sdk: 返回 订单sid sdk-&amp;gt;&amp;gt;as: 发起真实的支付 as--&amp;gt;&amp;gt;sdk: 用户支付, 苹果返回票据信息(receipt-data)如果苹果未返回, 则在 App 启动的时候返回 sdk-&amp;gt;&amp;gt;b: 提交票据信息和 订单sid 到服务端 Note right of sdk: 这一步容易丢单, 如何解决? 因为苹果容易丢失掉订单sid 需要取未完成的一条 b-&amp;gt;&amp;gt;as: 验证票据信息 as--&amp;gt;&amp;gt;b: 验证成功/失败 b--&amp;gt;&amp;gt;sdk: 修改订单状态, 并通知SDK支付成功或失败 sdk--&amp;gt;&amp;gt;as: 成功则将订单进行关闭</summary></entry><entry><title type="html">ease backend from 0 to 1</title><link href="https://dengqinghua.github.io/3-month-sharing.html" rel="alternate" type="text/html" title="ease backend from 0 to 1" /><published>2021-07-26T00:00:00+08:00</published><updated>2021-07-26T00:00:00+08:00</updated><id>https://dengqinghua.github.io/3-month-sharing</id><content type="html" xml:base="https://dengqinghua.github.io/3-month-sharing.html">&lt;p&gt;该部分为后端团队(2人) 从0到1 搭建的一套架构体系。&lt;/p&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.apple.com/documentation/storekit/original_api_for_in-app_purchase/validating_receipts_with_the_app_store&quot;&gt;苹果校验流程&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;支付流程&lt;/p&gt;
+
+&lt;div class=&quot;mermaid&quot;&gt;
+graph TB;
+    biz([业务]);
+    biz1(Java);
+    biz11(BFF &lt;br /&gt;App);
+    biz12(BFF &lt;br /&gt;Admin);
+    biz2(React+Antd);
+    biz-m1(microservice&lt;br /&gt; 内容&lt;br /&gt;单曲 合集 Q&amp;amp;E 老师等)
+    biz-m3(microservice&lt;br /&gt; 支付&lt;br /&gt; 微信 支付宝 华为支付 苹果支付)
+    biz-m4(microservice&lt;br /&gt; 用户&lt;br /&gt;登录/注册 反馈 VIP信息)
+    biz-m5(microservice&lt;br /&gt; 运营活动&lt;br /&gt; 广告 Banner 优惠活动)
+    biz-m6(microservice&lt;br /&gt; 用户日志&lt;br /&gt;音频播放日志)
+    biz-m7(microservice&lt;br /&gt; RBAC&lt;br /&gt;权限 角色)
+    biz22(CRM);
+    biz23(H5);
+    biz--&amp;gt;biz1 &amp;amp; biz2;
+    biz1--&amp;gt;biz11 &amp;amp; biz12;
+    biz2--&amp;gt;biz22 &amp;amp; biz23;
+    biz11 --&amp;gt; biz-m3 &amp;amp; biz-m4 &amp;amp; biz-m6
+    biz11 &amp;amp; biz12 --&amp;gt; biz-m1 &amp;amp; biz-m5 &amp;amp; biz-m7
+&lt;/div&gt;</content><author><name>dengqinghua</name></author><summary type="html">sequenceDiagram autonumber participant sdk as iOS SDK participant b as Backend participant as as Apple Service sdk-&amp;gt;&amp;gt;b: 获取商品列表 b--&amp;gt;&amp;gt;sdk: 从后台获取商品id和对应展示的图片文案信息 sdk-&amp;gt;&amp;gt;b: 根据商品id 生成/获取预订单 Note right of sdk: 需要先去查一下这个用户在商品id下之前是不是有未完成的订单 b--&amp;gt;&amp;gt;sdk: 返回 订单sid sdk-&amp;gt;&amp;gt;as: 发起真实的支付 as--&amp;gt;&amp;gt;sdk: 用户支付, 苹果返回票据信息(receipt-data)如果苹果未返回, 则在 App 启动的时候返回 sdk-&amp;gt;&amp;gt;b: 提交票据信息和 订单sid 到服务端 Note right of sdk: 这一步容易丢单, 如何解决? 因为苹果容易丢失掉订单sid 需要取未完成的一条 b-&amp;gt;&amp;gt;as: 验证票据信息 as--&amp;gt;&amp;gt;b: 验证成功/失败 b--&amp;gt;&amp;gt;sdk: 修改订单状态, 并通知SDK支付成功或失败 sdk--&amp;gt;&amp;gt;as: 成功则将订单进行关闭</summary></entry><entry><title type="html">ease backend from 0 to 1</title><link href="https://dengqinghua.github.io/3-month-sharing.html" rel="alternate" type="text/html" title="ease backend from 0 to 1" /><published>2021-07-26T00:00:00+08:00</published><updated>2021-07-26T00:00:00+08:00</updated><id>https://dengqinghua.github.io/3-month-sharing</id><content type="html" xml:base="https://dengqinghua.github.io/3-month-sharing.html">&lt;p&gt;该部分为后端团队(2人) 从0到1 搭建的一套架构体系。&lt;/p&gt;
 
 &lt;p&gt;由于公司和团队的整体规模不大，从业务的发展和业务的复杂度来说 ，
 应选择&lt;strong&gt;快速部署，成本(机器/运维和部署)低，依赖少，稳定性高&lt;/strong&gt;的架构。&lt;/p&gt;
@@ -1733,128 +1758,122 @@ chmod -R 777 /var/www/site
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h4 id=&quot;软件安装&quot;&gt;软件安装&lt;/h4&gt;
-&lt;p&gt;安装 git, &lt;a href=&quot;https://docs.docker.com/engine/install/centos/&quot;&gt;docker&lt;/a&gt;, docker-compose, jq, gitlab-runner, node, nginx&lt;/p&gt;
-
-&lt;hr data-content=&quot; git &quot; /&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo yum remove git*
-sudo yum -y install https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm
-sudo yum install git
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo yum install -y git nginx ruby jq
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;hr data-content=&quot; gitlab-runner &quot; /&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.docker.com/engine/install/centos/&quot;&gt;docker&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://docs.gitlab.com/runner/install/linux-repository.html&quot;&gt;gitlab-runner&lt;/a&gt;&lt;/p&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl -L &quot;https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh&quot; | sudo bash
-sudo -E yum install -y gitlab-runner
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;p&gt;需要将 runner 加入到 root, docker 中，并设置 gitlab-runner 的基本 cp, nginx 等权限&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://docs.gitlab.com/runner/install/linux-repository.html&quot;&gt;Ref&lt;/a&gt;&lt;/p&gt;
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  sudo usermod -aG root gitlab-runner
+  sudo usermod -aG docker gitlab-runner
+  sudo visudo
+  gitlab-runner ALL=(ALL) NOPASSWD: /usr/sbin/nginx, /usr/bin/cp
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;node
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  curl -sL https://rpm.nodesource.com/setup_12.x | sudo bash -lu
+  sudo yum install -y nodejs
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;nginx
+    &lt;details&gt;
+      &lt;summary&gt;
+  NGINX 的一些配置参考
+  &lt;/summary&gt;
+      &lt;p&gt;静态文件&lt;/p&gt;
 
-&lt;p&gt;需要将 runner 加入到 root 中&lt;/p&gt;
+      &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  server {
+      listen 80;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo usermod -aG root gitlab-runner
-sudo usermod -aG docker gitlab-runner
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;设置 gitlab-runner 的基本 cp, nginx 等权限&lt;/p&gt;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header Host $host;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo visudo
-gitlab-runner ALL=(ALL) NOPASSWD: /usr/sbin/nginx, /usr/bin/cp
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+      server_name admin.exmaple.com;
 
-&lt;hr data-content=&quot; node &quot; /&gt;
+      client_max_body_size 200M;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl -sL https://rpm.nodesource.com/setup_12.x | sudo bash -lu
-sudo yum install -y nodejs
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+      root /var/www/site/admin_dev;
+      location / {
+        index index.html index.htm;
+        try_files $uri /index.html;
+      }
 
-&lt;hr data-content=&quot; nginx &quot; /&gt;
+      gzip on;
+      gzip_buffers 32 4K;
+      gzip_comp_level 6;
+      gzip_min_length 100;
+      gzip_types application/javascript text/css text/xml;
+      gzip_disable &quot;MSIE [1-6]\.&quot;;
+      gzip_vary on;
+  }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;      &lt;/div&gt;
 
-&lt;p&gt;静态文件&lt;/p&gt;
+      &lt;p&gt;SSL&lt;/p&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;server {
+      &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  server {
+      listen 443 ssl;
+
+      server_name api0.exmaple.com;
+      ## 这个文件需要放在 /etc/nginx 的目录下
+      ssl_certificate 1_api0.exmaple.com_bundle.crt;
+      ssl_certificate_key 2_api0.exmaple.com.key;
+      ssl_session_timeout 5m;
+      ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+      ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
+      ssl_prefer_server_ciphers on;
+
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header Host $host;
+
+      client_max_body_size 100M;
+
+      location / {
+        proxy_pass http://127.0.0.1:8888;
+      }
+  }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;      &lt;/div&gt;
+
+      &lt;p&gt;负载均衡&lt;/p&gt;
+
+      &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  upstream java_prod_server {
+    server 127.0.0.1:8880;
+    server 127.0.0.1:8881;
+  }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;      &lt;/div&gt;
+
+      &lt;p&gt;重定向&lt;/p&gt;
+
+      &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  server {
     listen 80;
-
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header Host $host;
 
     server_name admin.exmaple.com;
 
-    client_max_body_size 200M;
+    return 301 https://admin.exmaple.com$request_uri;
+  }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;      &lt;/div&gt;
 
-    root /var/www/site/admin_dev;
-    location / {
-      index index.html index.htm;
-      try_files $uri /index.html;
-    }
+      &lt;p&gt;Nginx的简单鉴权&lt;/p&gt;
 
-    gzip on;
-    gzip_buffers 32 4K;
-    gzip_comp_level 6;
-    gzip_min_length 100;
-    gzip_types application/javascript text/css text/xml;
-    gzip_disable &quot;MSIE [1-6]\.&quot;;
-    gzip_vary on;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;p&gt;&lt;a href=&quot;https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-http-basic-authentication/&quot;&gt;Ref&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;SSL&lt;/p&gt;
+      &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  sudo yum install httpd-tools
+  sudo htpasswd -c /etc/nginx/.htpasswd user1
+  cat /etc/nginx/.htpasswd
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;server {
-    listen 443 ssl;
+  Nginx 中的配置
+  location /api {
+      auth_basic           &quot;admin area&quot;;
+      auth_basic_user_file /etc/nginx/.htpasswd;
+  }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;      &lt;/div&gt;
 
-    server_name api0.exmaple.com;
-    ## 这个文件需要放在 /etc/nginx 的目录下
-    ssl_certificate 1_api0.exmaple.com_bundle.crt;
-    ssl_certificate_key 2_api0.exmaple.com.key;
-    ssl_session_timeout 5m;
-    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
-    ssl_prefer_server_ciphers on;
-
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header Host $host;
-
-    client_max_body_size 100M;
-
-    location / {
-      proxy_pass http://127.0.0.1:8888;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;负载均衡&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;upstream java_prod_server {
-  server 127.0.0.1:8880;
-  server 127.0.0.1:8881;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;重定向&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;server {
-  listen 80;
-
-  server_name admin.exmaple.com;
-
-  return 301 https://admin.exmaple.com$request_uri;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Nginx的简单鉴权&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-http-basic-authentication/&quot;&gt;Ref&lt;/a&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo yum install httpd-tools
-sudo htpasswd -c /etc/nginx/.htpasswd user1
-cat /etc/nginx/.htpasswd
-
-Nginx 中的配置
-location /api {
-    auth_basic           &quot;admin area&quot;;
-    auth_basic_user_file /etc/nginx/.htpasswd;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;/details&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h3 id=&quot;基础设施&quot;&gt;基础设施&lt;/h3&gt;
 &lt;h4 id=&quot;gitlab&quot;&gt;gitlab&lt;/h4&gt;
@@ -1953,14 +1972,11 @@ prod-deploy:
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/jl-borges/maker/blob/main/mysql/docker-compose.yml&quot;&gt;MySQL&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/jl-borges/maker/blob/main/redis/docker-compose.yml&quot;&gt;Redis&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/jl-borges/docker-elk&quot;&gt;ELK&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.12.1-x86_64.rpm
-sudo rpm -vi filebeat-7.12.1-x86_64.rpm
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/jl-borges/docker-elk&quot;&gt;ELK&lt;/a&gt;
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.12.1-x86_64.rpm
+  sudo rpm -vi filebeat-7.12.1-x86_64.rpm
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
   &lt;li&gt;Kafak, TODO&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -1980,21 +1996,17 @@ sudo rpm -vi filebeat-7.12.1-x86_64.rpm
   &lt;/li&gt;
   &lt;li&gt;购买机器和服务
     &lt;ul&gt;
-      &lt;li&gt;dev 机器, 4核8G 50G硬盘, 2M带宽 3619.74 元/年, 377.66 元/月&lt;/li&gt;
-      &lt;li&gt;qa 机器, 2核4G 50G硬盘, 2M带宽 3619.74 元/年, 377.66 元/月&lt;/li&gt;
-      &lt;li&gt;prod 机器, 2核4G 50G硬盘, 2M带宽 1980.3 元, 205 元/月&lt;/li&gt;
-      &lt;li&gt;ES 服务 1核2G, 189.60 元/月&lt;/li&gt;
-      &lt;li&gt;MySQL 主库 552 元/月, 一年 5497.92 元&lt;/li&gt;
-      &lt;li&gt;MySQL 从库 174 元/月, 一年 5497.92 元&lt;/li&gt;
-      &lt;li&gt;短信服务 470.00 元/1万条&lt;/li&gt;
-      &lt;li&gt;七牛服务 预计 300/月 (使用 CDN 功能, 不包括流量加速等)&lt;/li&gt;
+      &lt;li&gt;dev 机器, 4核8G 50G硬盘, 2M带宽&lt;/li&gt;
+      &lt;li&gt;qa 机器, 2核4G 50G硬盘, 2M带宽&lt;/li&gt;
+      &lt;li&gt;prod 机器, 2核4G 50G硬盘, 2M带宽&lt;/li&gt;
+      &lt;li&gt;ES 服务 2核4G&lt;/li&gt;
+      &lt;li&gt;MySQL 主库&lt;/li&gt;
+      &lt;li&gt;MySQL 从库&lt;/li&gt;
+      &lt;li&gt;短信服务&lt;/li&gt;
+      &lt;li&gt;七牛服务&lt;/li&gt;
     &lt;/ul&gt;
-
-    &lt;blockquote&gt;
-      &lt;p&gt;机器和服务总费用: 按月购买: 2644 元/月&lt;/p&gt;
-    &lt;/blockquote&gt;
   &lt;/li&gt;
-  &lt;li&gt;基础服务搭建(1天)
+  &lt;li&gt;基础服务搭建
     &lt;ul&gt;
       &lt;li&gt;gitlab, 代码仓库, 部署在 dev 机器上&lt;/li&gt;
       &lt;li&gt;maven, java 基础库&lt;/li&gt;
@@ -2005,7 +2017,7 @@ sudo rpm -vi filebeat-7.12.1-x86_64.rpm
       &lt;li&gt;redis 服务&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;基础代码部署和初次上线(1天)
+  &lt;li&gt;基础代码部署和初次上线
     &lt;ul&gt;
       &lt;li&gt;利用基础包, 生成后端的基础代码&lt;/li&gt;
       &lt;li&gt;利用 antd, 生成现成的 admin 代码&lt;/li&gt;
@@ -2013,7 +2025,7 @@ sudo rpm -vi filebeat-7.12.1-x86_64.rpm
       &lt;li&gt;gitlab-ci 配置&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;核心配置(1天)
+  &lt;li&gt;核心配置
     &lt;ul&gt;
       &lt;li&gt;包名称&lt;/li&gt;
       &lt;li&gt;支付秘钥&lt;/li&gt;
@@ -2021,15 +2033,11 @@ sudo rpm -vi filebeat-7.12.1-x86_64.rpm
       &lt;li&gt;数据库/redis 配置等&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;测试和数据配置(2天)
+  &lt;li&gt;测试和数据配置
     &lt;ul&gt;
       &lt;li&gt;核心接口整理&lt;/li&gt;
       &lt;li&gt;配置后台数据&lt;/li&gt;
     &lt;/ul&gt;
-
-    &lt;blockquote&gt;
-      &lt;p&gt;已经备案的基础下, 大概在 5 天左右的时间, 从 0 到 1 交付一个已上线的后端 API 调用 和 具有基础功能的 admin 后台&lt;/p&gt;
-    &lt;/blockquote&gt;
   &lt;/li&gt;
 &lt;/ol&gt;</content><author><name>dengqinghua</name></author><summary type="html">运维 机器配置 4核8G</summary></entry><entry><title type="html">机器学习</title><link href="https://dengqinghua.github.io/machine-learning-learning.html" rel="alternate" type="text/html" title="机器学习" /><published>2021-04-23T00:00:00+08:00</published><updated>2021-04-23T00:00:00+08:00</updated><id>https://dengqinghua.github.io/machine-learning-learning</id><content type="html" xml:base="https://dengqinghua.github.io/machine-learning-learning.html">&lt;h2 id=&quot;词汇&quot;&gt;词汇&lt;/h2&gt;
 
