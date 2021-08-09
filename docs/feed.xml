@@ -1,5 +1,46 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-08-07T14:07:04+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
-</subtitle><author><name>dengqinghua</name></author><entry><title type="html">推荐系统 Notes</title><link href="https://dengqinghua.github.io/recommend-sys.html" rel="alternate" type="text/html" title="推荐系统 Notes" /><published>2021-07-29T00:00:00+08:00</published><updated>2021-07-29T00:00:00+08:00</updated><id>https://dengqinghua.github.io/recommend-sys</id><content type="html" xml:base="https://dengqinghua.github.io/recommend-sys.html">&lt;h2 id=&quot;基本方式&quot;&gt;基本方式&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-08-09T16:00:09+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+</subtitle><author><name>dengqinghua</name></author><entry><title type="html">录音相关的思考</title><link href="https://dengqinghua.github.io/r1.html" rel="alternate" type="text/html" title="录音相关的思考" /><published>2021-07-30T00:00:00+08:00</published><updated>2021-07-30T00:00:00+08:00</updated><id>https://dengqinghua.github.io/r1</id><content type="html" xml:base="https://dengqinghua.github.io/r1.html">&lt;blockquote&gt;
+  &lt;p&gt;如何提高录音的效率？多练习基本功，提高专注度，多听，多感受…&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;录音&quot;&gt;录音&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;一定要跟着节拍器慢速练习，无任何呲音和其他的问题时，再进行录音&lt;/li&gt;
+  &lt;li&gt;如果在 &lt;strong&gt;30分钟&lt;/strong&gt; 内未完成一次完整的录音，则放弃录音并再进行练习&lt;/li&gt;
+  &lt;li&gt;一次的录音时间控制在 &lt;strong&gt;60分钟&lt;/strong&gt; 内&lt;/li&gt;
+  &lt;li&gt;在录音之前，不能持续弹奏时间超过 &lt;strong&gt;30分钟&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;练习&quot;&gt;练习&lt;/h2&gt;
+&lt;h3 id=&quot;基本功&quot;&gt;基本功&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;爬格子, 保留指 慢速&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;./boxed-penatonic&quot;&gt;音阶, box penatonic&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;./chord-inversion&quot;&gt;和弦, chord inversion&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://pan.baidu.com/disk/home#/all?vmode=list&amp;amp;path=%2F42%2F%E9%9F%B3%E4%B9%90%2F%E6%95%99%E6%9D%90%2FProGuitar%2FopenStringLick&quot;&gt;open string licks&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://pan.baidu.com/disk/home#/all?vmode=list&amp;amp;path=%2F42%2F%E9%9F%B3%E4%B9%90%2F%E6%95%99%E6%9D%90%2FProGuitar%2FbanjoRolls&quot;&gt;banjo rolls&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://pan.baidu.com/disk/home#/all?vmode=list&amp;amp;path=%2F42%2F%E9%9F%B3%E4%B9%90%2F%E6%95%99%E6%9D%90%2FProGuitar%2Fharmonic&quot;&gt;harp harmonics&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://pan.baidu.com/disk/home#/all?vmode=list&amp;amp;path=%2F42%2F%E9%9F%B3%E4%B9%90%2F%E6%95%99%E6%9D%90%2FProGuitar%2FArp&quot;&gt;arppeggio&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;曲子&quot;&gt;曲子&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;多听原曲，在练习的时候一定要多听原曲，感受原曲的律动&lt;/li&gt;
+  &lt;li&gt;节拍器是必须的，要尝试多种不同的速度进行演奏, 看自己的极限在哪里&lt;/li&gt;
+  &lt;li&gt;练习的时候就进行录音，不是整块的录音而是录片段（不需要视频，只是录音）&lt;/li&gt;
+  &lt;li&gt;不熟练的地方一定要反复练习, 现阶段主要包括
+    &lt;ul&gt;
+      &lt;li&gt;和弦转换, 不能太快也不能太慢，保留音要做好&lt;/li&gt;
+      &lt;li&gt;切音的时值, 控制好对应的时值&lt;/li&gt;
+      &lt;li&gt;勾弦问题，勾弦一定要有力而且均匀，需要经常练习&lt;/li&gt;
+      &lt;li&gt;速度问题，需要每个音都弹得很清晰&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;将自己已经录音过的曲子也放入到练习中, 并且尝试改变其中的音，节奏, 和弦, key 和 速度&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;混音&quot;&gt;混音&lt;/h2&gt;
+&lt;p&gt;LogicPro&lt;/p&gt;</content><author><name>dengqinghua</name></author><summary type="html">如何提高录音的效率？多练习基本功，提高专注度，多听，多感受…</summary></entry><entry><title type="html">推荐系统 Notes</title><link href="https://dengqinghua.github.io/recommend-sys.html" rel="alternate" type="text/html" title="推荐系统 Notes" /><published>2021-07-29T00:00:00+08:00</published><updated>2021-07-29T00:00:00+08:00</updated><id>https://dengqinghua.github.io/recommend-sys</id><content type="html" xml:base="https://dengqinghua.github.io/recommend-sys.html">&lt;h2 id=&quot;基本方式&quot;&gt;基本方式&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
@@ -1741,7 +1782,63 @@ why?
   &lt;li&gt;package -&amp;gt; crate(executable binary) -&amp;gt; module&lt;/li&gt;
   &lt;li&gt;deref coercion, turn &amp;amp;s2 to &amp;amp;s2[..]&lt;/li&gt;
   &lt;li&gt;trait, interface like&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">词汇</summary></entry><entry><title type="html">maker of application</title><link href="https://dengqinghua.github.io/scratch-maker.html" rel="alternate" type="text/html" title="maker of application" /><published>2021-04-23T00:00:00+08:00</published><updated>2021-04-23T00:00:00+08:00</updated><id>https://dengqinghua.github.io/scratch-maker</id><content type="html" xml:base="https://dengqinghua.github.io/scratch-maker.html">&lt;h3 id=&quot;运维&quot;&gt;运维&lt;/h3&gt;
+&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">词汇</summary></entry><entry><title type="html">机器学习</title><link href="https://dengqinghua.github.io/machine-learning-learning.html" rel="alternate" type="text/html" title="机器学习" /><published>2021-04-23T00:00:00+08:00</published><updated>2021-04-23T00:00:00+08:00</updated><id>https://dengqinghua.github.io/machine-learning-learning</id><content type="html" xml:base="https://dengqinghua.github.io/machine-learning-learning.html">&lt;h2 id=&quot;词汇&quot;&gt;词汇&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ML, machine learning&lt;/li&gt;
+  &lt;li&gt;generic algorithms, 范式算法&lt;/li&gt;
+  &lt;li&gt;supervised learning, 监督式学习, 明确知道答案, 去推导答案&lt;/li&gt;
+  &lt;li&gt;unsupervised learning, 非监督学习, 不知道答案, 生产一个答案&lt;/li&gt;
+  &lt;li&gt;LEARNING, AKA: figuring out an equation to solve a specific problem based on some example data&lt;/li&gt;
+  &lt;li&gt;weight, 权重&lt;/li&gt;
+  &lt;li&gt;stateless algorithm, 无状态的算法, 比如神经网络的计算, 每次算法之间不存在关联&lt;/li&gt;
+  &lt;li&gt;RNN: Recurrent Neural Networks, 可重复使用的神经网络&lt;/li&gt;
+  &lt;li&gt;Turing Completeness, 如果一系列操作数据的规则（如指令集、编程语言、细胞自动机）可以用来模拟任何图灵机，那么它是图灵完备的&lt;/li&gt;
+  &lt;li&gt;Turinig Machine, 图灵机, 一种将人的计算行为抽象化的数学逻辑机，其更抽象的意义为一种计算模型&lt;/li&gt;
+  &lt;li&gt;Feature selection, 特征选择, 为了构建模型而选择相关特征（即属性、指标）子集的过程(简化模型, 缩短训练时间, 降低方差)&lt;/li&gt;
+  &lt;li&gt;CNN, convolutional neural networks&lt;/li&gt;
+  &lt;li&gt;Downsampling, 缩减像素, 一般来说, 会用 max-pooling 算法来进行操作(非线性形式的降采样)&lt;/li&gt;
+  &lt;li&gt;Four Catergories: True Positive, True Negative, False Positive, False Negative&lt;/li&gt;
+  &lt;li&gt;ML Metrics: Precison and Recall(Precision: 测试中对的数目/总的测试数目, Recall: 对的数目/总的对的数目)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;方法&quot;&gt;方法&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;线性关系 (linear relationship)&lt;/p&gt;
+
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; f(x, y, z) = ax + by + cz
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;neuron 神经元&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;ol&gt;
+        &lt;li&gt;We made a simple estimation function that takes in a set of inputs and multiplies them by weights to get an output. Call this simple function a &lt;strong&gt;neuron&lt;/strong&gt;.&lt;/li&gt;
+        &lt;li&gt;By chaining lots of simple neurons together, we can model functions that are too complicated to be modeled by one single neuron.&lt;/li&gt;
+      &lt;/ol&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;状态模拟&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;mermaid&quot;&gt;
+graph LR;
+    Input--&amp;gt;StatefulMode--&amp;gt;Output;
+    StatefulMode-- SaveState --&amp;gt;StatefulMode
+&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;CNN&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;mermaid&quot;&gt;
+graph LR;
+    Input--&amp;gt;Convolution--&amp;gt;Max-Polling--&amp;gt;Full-Connected--&amp;gt;Output;
+&lt;/div&gt;</content><author><name>dengqinghua</name></author><summary type="html">词汇</summary></entry><entry><title type="html">maker of application</title><link href="https://dengqinghua.github.io/scratch-maker.html" rel="alternate" type="text/html" title="maker of application" /><published>2021-04-23T00:00:00+08:00</published><updated>2021-04-23T00:00:00+08:00</updated><id>https://dengqinghua.github.io/scratch-maker</id><content type="html" xml:base="https://dengqinghua.github.io/scratch-maker.html">&lt;h3 id=&quot;运维&quot;&gt;运维&lt;/h3&gt;
 &lt;h4 id=&quot;机器配置&quot;&gt;机器配置&lt;/h4&gt;
 &lt;p&gt;4核8G&lt;/p&gt;
 
@@ -2039,94 +2136,4 @@ prod-deploy:
       &lt;li&gt;配置后台数据&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>dengqinghua</name></author><summary type="html">运维 机器配置 4核8G</summary></entry><entry><title type="html">机器学习</title><link href="https://dengqinghua.github.io/machine-learning-learning.html" rel="alternate" type="text/html" title="机器学习" /><published>2021-04-23T00:00:00+08:00</published><updated>2021-04-23T00:00:00+08:00</updated><id>https://dengqinghua.github.io/machine-learning-learning</id><content type="html" xml:base="https://dengqinghua.github.io/machine-learning-learning.html">&lt;h2 id=&quot;词汇&quot;&gt;词汇&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;ML, machine learning&lt;/li&gt;
-  &lt;li&gt;generic algorithms, 范式算法&lt;/li&gt;
-  &lt;li&gt;supervised learning, 监督式学习, 明确知道答案, 去推导答案&lt;/li&gt;
-  &lt;li&gt;unsupervised learning, 非监督学习, 不知道答案, 生产一个答案&lt;/li&gt;
-  &lt;li&gt;LEARNING, AKA: figuring out an equation to solve a specific problem based on some example data&lt;/li&gt;
-  &lt;li&gt;weight, 权重&lt;/li&gt;
-  &lt;li&gt;stateless algorithm, 无状态的算法, 比如神经网络的计算, 每次算法之间不存在关联&lt;/li&gt;
-  &lt;li&gt;RNN: Recurrent Neural Networks, 可重复使用的神经网络&lt;/li&gt;
-  &lt;li&gt;Turing Completeness, 如果一系列操作数据的规则（如指令集、编程语言、细胞自动机）可以用来模拟任何图灵机，那么它是图灵完备的&lt;/li&gt;
-  &lt;li&gt;Turinig Machine, 图灵机, 一种将人的计算行为抽象化的数学逻辑机，其更抽象的意义为一种计算模型&lt;/li&gt;
-  &lt;li&gt;Feature selection, 特征选择, 为了构建模型而选择相关特征（即属性、指标）子集的过程(简化模型, 缩短训练时间, 降低方差)&lt;/li&gt;
-  &lt;li&gt;CNN, convolutional neural networks&lt;/li&gt;
-  &lt;li&gt;Downsampling, 缩减像素, 一般来说, 会用 max-pooling 算法来进行操作(非线性形式的降采样)&lt;/li&gt;
-  &lt;li&gt;Four Catergories: True Positive, True Negative, False Positive, False Negative&lt;/li&gt;
-  &lt;li&gt;ML Metrics: Precison and Recall(Precision: 测试中对的数目/总的测试数目, Recall: 对的数目/总的对的数目)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;方法&quot;&gt;方法&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;线性关系 (linear relationship)&lt;/p&gt;
-
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; f(x, y, z) = ax + by + cz
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;neuron 神经元&lt;/p&gt;
-
-    &lt;blockquote&gt;
-      &lt;ol&gt;
-        &lt;li&gt;We made a simple estimation function that takes in a set of inputs and multiplies them by weights to get an output. Call this simple function a &lt;strong&gt;neuron&lt;/strong&gt;.&lt;/li&gt;
-        &lt;li&gt;By chaining lots of simple neurons together, we can model functions that are too complicated to be modeled by one single neuron.&lt;/li&gt;
-      &lt;/ol&gt;
-    &lt;/blockquote&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;状态模拟&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;mermaid&quot;&gt;
-graph LR;
-    Input--&amp;gt;StatefulMode--&amp;gt;Output;
-    StatefulMode-- SaveState --&amp;gt;StatefulMode
-&lt;/div&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;CNN&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;mermaid&quot;&gt;
-graph LR;
-    Input--&amp;gt;Convolution--&amp;gt;Max-Polling--&amp;gt;Full-Connected--&amp;gt;Output;
-&lt;/div&gt;</content><author><name>dengqinghua</name></author><summary type="html">词汇</summary></entry><entry><title type="html">跟着感觉走</title><link href="https://dengqinghua.github.io/follow-the-beat.html" rel="alternate" type="text/html" title="跟着感觉走" /><published>2021-04-13T00:00:00+08:00</published><updated>2021-04-13T00:00:00+08:00</updated><id>https://dengqinghua.github.io/follow-the-beat</id><content type="html" xml:base="https://dengqinghua.github.io/follow-the-beat.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;曲谱: &lt;a href=&quot;assets/js/pdf.js/web/viewer.html?file=/assets/doc/跟着感觉走.pdf&quot;&gt;PDF&lt;/a&gt; &lt;a href=&quot;assets/doc/跟着感觉走.gp&quot;&gt;GuitarPro&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;来源: &lt;a href=&quot;https://www.bilibili.com/video/BV1Cx411e7zX&quot;&gt;《赶着感觉走》 吉他指弹 Solo By【蓝色六弦】独家编曲&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;我的翻弹: &lt;a href=&quot;https://www.bilibili.com/video/BV1Ki4y1A7Kv&quot;&gt;吉他指弹 跟着感觉走&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr data-content=&quot; 难点 &quot; /&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;节奏稳&lt;/li&gt;
-  &lt;li&gt;轻松的 boom-check 的感觉&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;hr data-content=&quot; 需要加强的 &quot; /&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;节奏还是不太稳&lt;/li&gt;
-  &lt;li&gt;整体的感觉不够好, 不太放松&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;hr data-content=&quot; 做的不错的 &quot; /&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;延音不错，在一些音的处理上用心了&lt;/li&gt;
-  &lt;li&gt;比之前好像要稳一些。可能得益于节拍器的练习(但是还不够稳)&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;hr data-content=&quot; 下次录音我会尝试的 &quot; /&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;如果按弦很吃力，可以尝试比较轻一点儿的拨弦方式&lt;/li&gt;
-  &lt;li&gt;尝试将弹琴这件事情转化为一个感性的事情，录音这件事情也是.&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry></feed>
+&lt;/ol&gt;</content><author><name>dengqinghua</name></author><summary type="html">运维 机器配置 4核8G</summary></entry></feed>
