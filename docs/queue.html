@@ -45,43 +45,20 @@
   
   <h1>pulsar 队列实践</h1>
 
-  <ul id="toc" class="section-nav">
-<li class="toc-entry toc-h2">
-<a href="#architecture">Architecture</a>
-<ul>
-<li class="toc-entry toc-h3"><a href="#%E6%9E%B6%E6%9E%84">架构</a></li>
-<li class="toc-entry toc-h3"><a href="#%E6%B6%88%E6%81%AF%E8%AE%A2%E9%98%85%E6%96%B9%E5%BC%8F">消息订阅方式</a></li>
-<li class="toc-entry toc-h3"><a href="#%E6%B6%88%E6%81%AF%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">消息的生命周期</a></li>
-</ul>
-</li>
-<li class="toc-entry toc-h2">
-<a href="#event-%E5%92%8C-%E5%85%83%E6%95%B0%E6%8D%AE">Event 和 元数据</a>
-<ul>
-<li class="toc-entry toc-h3"><a href="#event-%E6%B2%BB%E7%90%86">Event 治理</a></li>
-<li class="toc-entry toc-h3"><a href="#%E5%85%83%E6%95%B0%E6%8D%AE">元数据</a></li>
-</ul>
-</li>
-<li class="toc-entry toc-h2"><a href="#%E9%83%A8%E7%BD%B2%E6%96%B9%E5%BC%8F">部署方式</a></li>
-<li class="toc-entry toc-h2"><a href="#%E5%A6%82%E4%BD%95%E8%B7%9F%E8%B8%AA%E5%92%8C%E6%9F%A5%E8%AF%A2">如何跟踪和查询</a></li>
-</ul>
-<h2 id="architecture">
-<a class="anchor" href="#architecture" aria-hidden="true"><span class="octicon octicon-link"></span></a>Architecture</h2>
-<h3 id="架构">
-<a class="anchor" href="#%E6%9E%B6%E6%9E%84" aria-hidden="true"><span class="octicon octicon-link"></span></a>架构</h3>
+  <h2 id="architecture">Architecture</h2>
+<h3 id="架构">架构</h3>
 
 <p><img src="assets/images/pul-system-architecture.png" alt="pul-system-architecture.png"></p>
 
 <p><a href="http://pulsar.apache.org/docs/en/2.3.2/concepts-messaging" target="_blank" rel="noopener noreferrer">Ref</a></p>
 
-<h3 id="消息订阅方式">
-<a class="anchor" href="#%E6%B6%88%E6%81%AF%E8%AE%A2%E9%98%85%E6%96%B9%E5%BC%8F" aria-hidden="true"><span class="octicon octicon-link"></span></a>消息订阅方式</h3>
+<h3 id="消息订阅方式">消息订阅方式</h3>
 
 <p><img src="assets/images/pul-subscription-modes.png" alt="pul-subscribe"></p>
 
 <p><a href="http://pulsar.apache.org/docs/en/2.3.2/concepts-messaging/" target="_blank" rel="noopener noreferrer">Ref</a></p>
 
-<h3 id="消息的生命周期">
-<a class="anchor" href="#%E6%B6%88%E6%81%AF%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F" aria-hidden="true"><span class="octicon octicon-link"></span></a>消息的生命周期</h3>
+<h3 id="消息的生命周期">消息的生命周期</h3>
 
 <div class="mermaid">
 graph LR;
@@ -93,10 +70,8 @@ graph LR;
 
 <p>更多消息相关, 见 <a href="http://pulsar.apache.org/docs/en/concepts-messaging" target="_blank" rel="noopener noreferrer">这里</a></p>
 
-<h2 id="event-和-元数据">
-<a class="anchor" href="#event-%E5%92%8C-%E5%85%83%E6%95%B0%E6%8D%AE" aria-hidden="true"><span class="octicon octicon-link"></span></a>Event 和 元数据</h2>
-<h3 id="event-治理">
-<a class="anchor" href="#event-%E6%B2%BB%E7%90%86" aria-hidden="true"><span class="octicon octicon-link"></span></a>Event 治理</h3>
+<h2 id="event-和-元数据">Event 和 元数据</h2>
+<h3 id="event-治理">Event 治理</h3>
 <p>在 Ease 的后端服务中, 我们是通过 <a href="https://gitlab.easeprime.com/ease/lib-box/-/tree/master/common-lib/src/main/java/com/easeprime/bfs/common/event" target="_blank" rel="noopener noreferrer">common-lib</a> 包进行封装和处理的</p>
 
 <p>该部分的组织形式如下</p>
@@ -160,8 +135,7 @@ graph LR;
   end
 </div>
 
-<h3 id="元数据">
-<a class="anchor" href="#%E5%85%83%E6%95%B0%E6%8D%AE" aria-hidden="true"><span class="octicon octicon-link"></span></a>元数据</h3>
+<h3 id="元数据">元数据</h3>
 <ol>
   <li>
     <p>eventId 和 targetId</p>
@@ -177,12 +151,9 @@ graph LR;
       <li>pulsar 不能保证 exactl once, 一些重要的业务需要自己能保证是可重复执行的</li>
       <li>理论上消息是不会丢失的, 但是在 Rebalance 时, 也可能出现数据丢失的情况</li>
     </ul>
+
+    <p>更多内容见 <a href="https://pulsar.apache.org/docs/en/2.7.1/concepts-messaging/" target="_blank" rel="noopener noreferrer">concepts-messaging</a></p>
   </li>
-</ol>
-
-<p>更多内容见 <a href="https://pulsar.apache.org/docs/en/2.7.1/concepts-messaging/" target="_blank" rel="noopener noreferrer">concepts-messaging</a></p>
-
-<ol>
   <li>
     <p>事件和事务的问题</p>
 
@@ -216,13 +187,11 @@ graph LR;
   </li>
 </ol>
 
-<h2 id="部署方式">
-<a class="anchor" href="#%E9%83%A8%E7%BD%B2%E6%96%B9%E5%BC%8F" aria-hidden="true"><span class="octicon octicon-link"></span></a>部署方式</h2>
+<h2 id="部署方式">部署方式</h2>
 
 <p><img src="assets/images/pul-deploy1.png" alt="deploy1"></p>
 
-<h2 id="如何跟踪和查询">
-<a class="anchor" href="#%E5%A6%82%E4%BD%95%E8%B7%9F%E8%B8%AA%E5%92%8C%E6%9F%A5%E8%AF%A2" aria-hidden="true"><span class="octicon octicon-link"></span></a>如何跟踪和查询</h2>
+<h2 id="如何跟踪和查询">如何跟踪和查询</h2>
 <p>方式1: 根据用户id 或者 deviceId 进行<a href="https://es-ras1ax3s.kibana.tencentelasticsearch.com:5601/goto/71238f43bd59b8022e7ee9f67238eb45" target="_blank" rel="noopener noreferrer">查询</a></p>
 
 <p><img src="assets/images/pul-example1.png" alt="example1"></p>
