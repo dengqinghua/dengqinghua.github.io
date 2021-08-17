@@ -89,6 +89,13 @@ chmod -R 777 /var/www/site
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo yum install -y git nginx ruby jq
 </code></pre></div></div>
 
+<p>需要将 docker, nginx, filebeat 加入到自启动项目中</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo systemctl enable docker.service
+sudo systemctl enable nginx.service
+sudo systemctl enable filebeat.service
+</code></pre></div></div>
+
 <ul>
   <li><a href="https://docs.docker.com/engine/install/centos/" target="_blank" rel="noopener noreferrer">docker</a></li>
   <li>
@@ -216,7 +223,19 @@ chmod -R 777 /var/www/site
 <a class="anchor" href="#gitlab" aria-hidden="true"><span class="octicon octicon-link"></span></a>gitlab</h4>
 <p><a href="https://github.com/jl-borges/docker-gitlab" target="_blank" rel="noopener noreferrer">Ref</a></p>
 
-<p>注意，需要配置服务器的 swap, 见这里 <a href="https://docs.gitlab.com/omnibus/settings/memory_constrained_envs.html" target="_blank" rel="noopener noreferrer">SWAP</a></p>
+<ol>
+  <li>注意，需要配置服务器的 swap, 见这里 <a href="https://docs.gitlab.com/omnibus/settings/memory_constrained_envs.html" target="_blank" rel="noopener noreferrer">SWAP</a>
+</li>
+  <li>
+    <p>建议设置晚上定时重启对应 gitlab 服务, gitlab 经常有内存泄漏问题, <a href="https://crontab.guru/#0_*_*_*" target="_blank" rel="noopener noreferrer">定时重启</a> 是最简单粗暴的方式</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>   sudo crontab -e
+   # 设置每天凌晨4点的时候重启 gitlab
+   0 4 * * * docker restart gitlab_gitlab_1
+</code></pre></div>    </div>
+  </li>
+</ol>
 
 <p>需要更改的配置</p>
 

@@ -1,5 +1,160 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-08-09T16:00:09+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
-</subtitle><author><name>dengqinghua</name></author><entry><title type="html">录音相关的思考</title><link href="https://dengqinghua.github.io/r1.html" rel="alternate" type="text/html" title="录音相关的思考" /><published>2021-07-30T00:00:00+08:00</published><updated>2021-07-30T00:00:00+08:00</updated><id>https://dengqinghua.github.io/r1</id><content type="html" xml:base="https://dengqinghua.github.io/r1.html">&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-08-17T14:44:09+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+</subtitle><author><name>dengqinghua</name></author><entry><title type="html">pulsar 队列实践</title><link href="https://dengqinghua.github.io/queue.html" rel="alternate" type="text/html" title="pulsar 队列实践" /><published>2021-08-16T00:00:00+08:00</published><updated>2021-08-16T00:00:00+08:00</updated><id>https://dengqinghua.github.io/queue</id><content type="html" xml:base="https://dengqinghua.github.io/queue.html">&lt;h2 id=&quot;architecture&quot;&gt;Architecture&lt;/h2&gt;
+&lt;h3 id=&quot;架构&quot;&gt;架构&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/pul-system-architecture.png&quot; alt=&quot;pul-system-architecture.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://pulsar.apache.org/docs/en/2.3.2/concepts-messaging&quot;&gt;Ref&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;消息订阅方式&quot;&gt;消息订阅方式&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/pul-subscription-modes.png&quot; alt=&quot;pul-subscribe&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://pulsar.apache.org/docs/en/2.3.2/concepts-messaging/&quot;&gt;Ref&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;消息的生命周期&quot;&gt;消息的生命周期&lt;/h3&gt;
+
+&lt;div class=&quot;mermaid&quot;&gt;
+graph LR;
+  produce(生产数据)
+  consumer(被不同的消费者, 并进行 ACK);
+  expire(过期 和 清理);
+  produce--&amp;gt;consumer--&amp;gt;expire
+&lt;/div&gt;
+
+&lt;p&gt;更多消息相关, 见 &lt;a href=&quot;http://pulsar.apache.org/docs/en/concepts-messaging&quot;&gt;这里&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;event-和-元数据&quot;&gt;Event 和 元数据&lt;/h2&gt;
+&lt;h3 id=&quot;event-治理&quot;&gt;Event 治理&lt;/h3&gt;
+&lt;p&gt;在 Ease 的后端服务中, 我们是通过 &lt;a href=&quot;https://gitlab.easeprime.com/ease/lib-box/-/tree/master/common-lib/src/main/java/com/easeprime/bfs/common/event&quot;&gt;common-lib&lt;/a&gt; 包进行封装和处理的&lt;/p&gt;
+
+&lt;p&gt;该部分的组织形式如下&lt;/p&gt;
+
+&lt;div class=&quot;mermaid&quot;&gt;
+graph LR;
+  subgraph 消费者
+  eventConsumer(eventConsumer);
+  h1(handler1);
+  h2(handler2);
+  event2(&quot;onEvent(event)&quot;)
+  eventConsumer--&amp;gt;h1 &amp;amp; h2 --&amp;gt; event2
+  end
+
+  subgraph 生产者
+  eventProducer(eventProducer);
+  pulsar1(Topic: pulsar-media);
+  event1(SendEvent)
+  eventProducer--&amp;gt;pulsar1--&amp;gt;event1
+  end
+
+  subgraph 事件定义
+  event(event)
+  payload(payload)
+  eventType(eventType);
+  eventCode(eventCode);
+  desc(desc);
+  event--&amp;gt;eventType &amp;amp; payload
+  eventType--&amp;gt;eventCode &amp;amp; desc;
+  end
+&lt;/div&gt;
+
+&lt;p&gt;当用户完成一个音频的播放时候的操作&lt;/p&gt;
+
+&lt;div class=&quot;mermaid&quot;&gt;
+graph LR;
+  subgraph 消费者
+  eventConsumer(eventConsumer);
+  h1(DE完播计算 handler);
+  h2(用户播放数据缓存刷新 handler);
+  h3(XXX Handler);
+  eventConsumer--&amp;gt;h1 &amp;amp; h2 &amp;amp; h3
+  end
+
+  subgraph 生产者
+  eventProducer(eventProducer);
+  pulsar1(Topic: media);
+  event1(发送事件: MEDIA_LOG_FINISH)
+  eventProducer--&amp;gt;pulsar1--&amp;gt;event1
+  end
+
+  subgraph 音频播放完成事件
+  event(event)
+  payload(MediaLogFinishPayload)
+  payload1(mediaId)
+  payload2(memberId)
+  payload3(playTo)
+  eventType(MEDIA_LOG_FINISH);
+  event--&amp;gt;eventType &amp;amp; payload
+  payload --&amp;gt; payload1 &amp;amp; payload2 &amp;amp; payload3
+  end
+&lt;/div&gt;
+
+&lt;h3 id=&quot;元数据&quot;&gt;元数据&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;eventId 和 targetId&lt;/p&gt;
+
+    &lt;p&gt;这里会要求传 targetId, 用来作为 有序消费。我们经常的场景是: 同一个用户id 的某种类型数据，希望可以有序地消费&lt;/p&gt;
+
+    &lt;p&gt;比如用户的统计数据, 如果是队列本身可以保证有序, 则大概率是有序的, 可以避免过多的数据库的锁竞争问题&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;消费次数和消息丢失的问题&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;pulsar 不能保证 exactl once, 一些重要的业务需要自己能保证是可重复执行的&lt;/li&gt;
+      &lt;li&gt;理论上消息是不会丢失的, 但是在 Rebalance 时, 也可能出现数据丢失的情况&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;更多内容见 &lt;a href=&quot;https://pulsar.apache.org/docs/en/2.7.1/concepts-messaging/&quot;&gt;concepts-messaging&lt;/a&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;事件和事务的问题&lt;/p&gt;
+
+    &lt;p&gt;有时候会因为业务本身的复杂性, 在很多个业务逻辑的 上下文，都会发送对应的事件&lt;/p&gt;
+
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; @Transactional
+ void doSth() {
+   // ① 更新用户信息
+   updateMember
+   sendMemberUpdateEvent
+
+   // ② 更新Vip状态
+   updateMemberVip
+   sendMemberVipUpdateEvent
+
+   // ③ 记录日志
+   updateMemberVipLog
+ }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;如果上面在 ③  记录日志的时候报错了，那么会导致 ①  和 ②  回滚, 此时事件理论上被发出去了, 会导致其他的业务逻辑的问题。&lt;/p&gt;
+
+    &lt;p&gt;故这里发送事件的逻辑专门进行了处理。注意&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;所有的事件，都是在 事务提交 之后，才会进行发送。&lt;/p&gt;
+    &lt;/blockquote&gt;
+
+    &lt;p&gt;代码实现逻辑见&lt;a href=&quot;https://gitlab.easeprime.com/ease/lib-box/-/blob/master/common-lib/src/main/java/com/easeprime/bfs/common/event/AbstractEventProducer.java#L61&quot;&gt;这里&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;部署方式&quot;&gt;部署方式&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/pul-deploy1.png&quot; alt=&quot;deploy1&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;如何跟踪和查询&quot;&gt;如何跟踪和查询&lt;/h2&gt;
+&lt;p&gt;方式1: 根据用户id 或者 deviceId 进行&lt;a href=&quot;https://es-ras1ax3s.kibana.tencentelasticsearch.com:5601/goto/71238f43bd59b8022e7ee9f67238eb45&quot;&gt;查询&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/pul-example1.png&quot; alt=&quot;example1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;方式2: 查看用户的消费 &lt;a href=&quot;https://es-ras1ax3s.kibana.tencentelasticsearch.com:5601/app/discover#/context/5a116e80-b931-11eb-83c7-d711353ac049/toW5UnsBQlxvtLDU4s7e?_g=(filters:!())&amp;amp;_a=(columns:!(message,container.name),filters:!(('$state':(store:appState),meta:(alias:!n,disabled:!t,index:'5a116e80-b931-11eb-83c7-d711353ac049',key:container.name,negate:!t,params:(query:dev_backend_service_8881),type:phrase),query:(match_phrase:(container.name:dev_backend_service_8881))),('$state':(store:appState),meta:(alias:!n,disabled:!t,index:'5a116e80-b931-11eb-83c7-d711353ac049',key:container.name,negate:!t,params:(query:dev_backend_service_8880),type:phrase),query:(match_phrase:(container.name:dev_backend_service_8880)))))&quot;&gt;上下文&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/pul-example2.png&quot; alt=&quot;example2&quot; /&gt;&lt;/p&gt;</content><author><name>dengqinghua</name></author><summary type="html">Architecture 架构</summary></entry><entry><title type="html">录音相关的思考</title><link href="https://dengqinghua.github.io/r1.html" rel="alternate" type="text/html" title="录音相关的思考" /><published>2021-07-30T00:00:00+08:00</published><updated>2021-07-30T00:00:00+08:00</updated><id>https://dengqinghua.github.io/r1</id><content type="html" xml:base="https://dengqinghua.github.io/r1.html">&lt;blockquote&gt;
   &lt;p&gt;如何提高录音的效率？多练习基本功，提高专注度，多听，多感受…&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -1782,63 +1937,7 @@ why?
   &lt;li&gt;package -&amp;gt; crate(executable binary) -&amp;gt; module&lt;/li&gt;
   &lt;li&gt;deref coercion, turn &amp;amp;s2 to &amp;amp;s2[..]&lt;/li&gt;
   &lt;li&gt;trait, interface like&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">词汇</summary></entry><entry><title type="html">机器学习</title><link href="https://dengqinghua.github.io/machine-learning-learning.html" rel="alternate" type="text/html" title="机器学习" /><published>2021-04-23T00:00:00+08:00</published><updated>2021-04-23T00:00:00+08:00</updated><id>https://dengqinghua.github.io/machine-learning-learning</id><content type="html" xml:base="https://dengqinghua.github.io/machine-learning-learning.html">&lt;h2 id=&quot;词汇&quot;&gt;词汇&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;ML, machine learning&lt;/li&gt;
-  &lt;li&gt;generic algorithms, 范式算法&lt;/li&gt;
-  &lt;li&gt;supervised learning, 监督式学习, 明确知道答案, 去推导答案&lt;/li&gt;
-  &lt;li&gt;unsupervised learning, 非监督学习, 不知道答案, 生产一个答案&lt;/li&gt;
-  &lt;li&gt;LEARNING, AKA: figuring out an equation to solve a specific problem based on some example data&lt;/li&gt;
-  &lt;li&gt;weight, 权重&lt;/li&gt;
-  &lt;li&gt;stateless algorithm, 无状态的算法, 比如神经网络的计算, 每次算法之间不存在关联&lt;/li&gt;
-  &lt;li&gt;RNN: Recurrent Neural Networks, 可重复使用的神经网络&lt;/li&gt;
-  &lt;li&gt;Turing Completeness, 如果一系列操作数据的规则（如指令集、编程语言、细胞自动机）可以用来模拟任何图灵机，那么它是图灵完备的&lt;/li&gt;
-  &lt;li&gt;Turinig Machine, 图灵机, 一种将人的计算行为抽象化的数学逻辑机，其更抽象的意义为一种计算模型&lt;/li&gt;
-  &lt;li&gt;Feature selection, 特征选择, 为了构建模型而选择相关特征（即属性、指标）子集的过程(简化模型, 缩短训练时间, 降低方差)&lt;/li&gt;
-  &lt;li&gt;CNN, convolutional neural networks&lt;/li&gt;
-  &lt;li&gt;Downsampling, 缩减像素, 一般来说, 会用 max-pooling 算法来进行操作(非线性形式的降采样)&lt;/li&gt;
-  &lt;li&gt;Four Catergories: True Positive, True Negative, False Positive, False Negative&lt;/li&gt;
-  &lt;li&gt;ML Metrics: Precison and Recall(Precision: 测试中对的数目/总的测试数目, Recall: 对的数目/总的对的数目)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;方法&quot;&gt;方法&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;线性关系 (linear relationship)&lt;/p&gt;
-
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; f(x, y, z) = ax + by + cz
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;neuron 神经元&lt;/p&gt;
-
-    &lt;blockquote&gt;
-      &lt;ol&gt;
-        &lt;li&gt;We made a simple estimation function that takes in a set of inputs and multiplies them by weights to get an output. Call this simple function a &lt;strong&gt;neuron&lt;/strong&gt;.&lt;/li&gt;
-        &lt;li&gt;By chaining lots of simple neurons together, we can model functions that are too complicated to be modeled by one single neuron.&lt;/li&gt;
-      &lt;/ol&gt;
-    &lt;/blockquote&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;状态模拟&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;mermaid&quot;&gt;
-graph LR;
-    Input--&amp;gt;StatefulMode--&amp;gt;Output;
-    StatefulMode-- SaveState --&amp;gt;StatefulMode
-&lt;/div&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;CNN&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;mermaid&quot;&gt;
-graph LR;
-    Input--&amp;gt;Convolution--&amp;gt;Max-Polling--&amp;gt;Full-Connected--&amp;gt;Output;
-&lt;/div&gt;</content><author><name>dengqinghua</name></author><summary type="html">词汇</summary></entry><entry><title type="html">maker of application</title><link href="https://dengqinghua.github.io/scratch-maker.html" rel="alternate" type="text/html" title="maker of application" /><published>2021-04-23T00:00:00+08:00</published><updated>2021-04-23T00:00:00+08:00</updated><id>https://dengqinghua.github.io/scratch-maker</id><content type="html" xml:base="https://dengqinghua.github.io/scratch-maker.html">&lt;h3 id=&quot;运维&quot;&gt;运维&lt;/h3&gt;
+&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">词汇</summary></entry><entry><title type="html">maker of application</title><link href="https://dengqinghua.github.io/scratch-maker.html" rel="alternate" type="text/html" title="maker of application" /><published>2021-04-23T00:00:00+08:00</published><updated>2021-04-23T00:00:00+08:00</updated><id>https://dengqinghua.github.io/scratch-maker</id><content type="html" xml:base="https://dengqinghua.github.io/scratch-maker.html">&lt;h3 id=&quot;运维&quot;&gt;运维&lt;/h3&gt;
 &lt;h4 id=&quot;机器配置&quot;&gt;机器配置&lt;/h4&gt;
 &lt;p&gt;4核8G&lt;/p&gt;
 
@@ -1856,6 +1955,13 @@ chmod -R 777 /var/www/site
 
 &lt;h4 id=&quot;软件安装&quot;&gt;软件安装&lt;/h4&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo yum install -y git nginx ruby jq
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;需要将 docker, nginx, filebeat 加入到自启动项目中&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo systemctl enable docker.service
+sudo systemctl enable nginx.service
+sudo systemctl enable filebeat.service
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;ul&gt;
@@ -1976,7 +2082,17 @@ chmod -R 777 /var/www/site
 &lt;h4 id=&quot;gitlab&quot;&gt;gitlab&lt;/h4&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/jl-borges/docker-gitlab&quot;&gt;Ref&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;注意，需要配置服务器的 swap, 见这里 &lt;a href=&quot;https://docs.gitlab.com/omnibus/settings/memory_constrained_envs.html&quot;&gt;SWAP&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;注意，需要配置服务器的 swap, 见这里 &lt;a href=&quot;https://docs.gitlab.com/omnibus/settings/memory_constrained_envs.html&quot;&gt;SWAP&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;建议设置晚上定时重启对应 gitlab 服务, gitlab 经常有内存泄漏问题, &lt;a href=&quot;https://crontab.guru/#0_*_*_*&quot;&gt;定时重启&lt;/a&gt; 是最简单粗暴的方式&lt;/p&gt;
+
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   sudo crontab -e
+   # 设置每天凌晨4点的时候重启 gitlab
+   0 4 * * * docker restart gitlab_gitlab_1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;p&gt;需要更改的配置&lt;/p&gt;
 

@@ -27,6 +27,14 @@ chmod -R 777 /var/www/site
 sudo yum install -y git nginx ruby jq
 ```
 
+需要将 docker, nginx, filebeat 加入到自启动项目中
+
+```
+sudo systemctl enable docker.service
+sudo systemctl enable nginx.service
+sudo systemctl enable filebeat.service
+```
+
 - [docker](https://docs.docker.com/engine/install/centos/)
 - [gitlab-runner](https://docs.gitlab.com/runner/install/linux-repository.html)
 
@@ -147,9 +155,17 @@ sudo yum install -y git nginx ruby jq
 #### gitlab
 [Ref](https://github.com/jl-borges/docker-gitlab)
 
-注意，需要配置服务器的 swap, 见这里 [SWAP](https://docs.gitlab.com/omnibus/settings/memory_constrained_envs.html)
+1. 注意，需要配置服务器的 swap, 见这里 [SWAP](https://docs.gitlab.com/omnibus/settings/memory_constrained_envs.html)
+2. 建议设置晚上定时重启对应 gitlab 服务, gitlab 经常有内存泄漏问题, [定时重启](https://crontab.guru/#0_*_*_*) 是最简单粗暴的方式
+
+      ```
+      sudo crontab -e
+      # 设置每天凌晨4点的时候重启 gitlab
+      0 4 * * * docker restart gitlab_gitlab_1
+      ```
 
 需要更改的配置
+
 
 ```
 TZ=Asia/Shanghai
