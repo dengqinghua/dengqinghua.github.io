@@ -27,6 +27,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="/logo.png" />
   <link rel="stylesheet" href="/assets/css/main.css" />
   <link rel="stylesheet" href="/assets/css/zoom.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
   <script src="assets/js/mermaid.min.js"></script>
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/zoom.min.js"></script>
@@ -159,20 +160,20 @@ graph LR;
 
     <p>有时候会因为业务本身的复杂性, 在很多个业务逻辑的 上下文，都会发送对应的事件</p>
 
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code> @Transactional
- void doSth() {
-   // ① 更新用户信息
-   updateMember
-   sendMemberUpdateEvent
+    <div class="language-java highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> <span class="nd">@Transactional</span>
+ <span class="kt">void</span> <span class="nf">doSth</span><span class="o">()</span> <span class="o">{</span>
+   <span class="c1">// ① 更新用户信息</span>
+   <span class="n">updateMember</span>
+   <span class="n">sendMemberUpdateEvent</span>
 
-   // ② 更新Vip状态
-   updateMemberVip
-   sendMemberVipUpdateEvent
+   <span class="c1">// ② 更新Vip状态</span>
+   <span class="n">updateMemberVip</span>
+   <span class="n">sendMemberVipUpdateEvent</span>
 
-   // ③ 记录日志
-   updateMemberVipLog
- }
+   <span class="c1">// ③ 记录日志</span>
+   <span class="n">updateMemberVipLog</span>
+ <span class="o">}</span>
 </code></pre></div>    </div>
 
     <p>如果上面在 ③  记录日志的时候报错了，那么会导致 ①  和 ②  回滚, 此时事件理论上被发出去了, 会导致其他的业务逻辑的问题。</p>

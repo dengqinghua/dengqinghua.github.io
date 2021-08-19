@@ -71,16 +71,18 @@ table, th, td {
 }
 
 code {
-  color: white;
-  background: black;
-  border-radius: 10px;
-  padding: 0px 2px 0px 2px;
+  // padding: 0px 2px 0px 2px;
+  font-size: 90%;
 }
 
 div.highlighter-rouge code {
   display: block;
   overflow-x: auto;
   padding: 1rem;
+}
+
+.highlight {
+  border-radius: 10px;
 }
 
 blockquote {

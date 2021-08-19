@@ -10,7 +10,7 @@ title: maker of application
 4核8G
 
 #### 用户配置
-```
+```bash
 sudo su -
 useradd YouName
 passwd YouName
@@ -23,13 +23,13 @@ chmod -R 777 /var/www/site
 ```
 
 #### 软件安装
-```
+```bash
 sudo yum install -y git nginx ruby jq
 ```
 
 需要将 docker, nginx, filebeat 加入到自启动项目中
 
-```
+```bash
 sudo systemctl enable docker.service
 sudo systemctl enable nginx.service
 sudo systemctl enable filebeat.service
@@ -40,7 +40,7 @@ sudo systemctl enable filebeat.service
 
     需要将 runner 加入到 root, docker 中，并设置 gitlab-runner 的基本 cp, nginx 等权限
 
-    ```
+    ```bash
     sudo usermod -aG root gitlab-runner
     sudo usermod -aG docker gitlab-runner
     sudo visudo
@@ -48,7 +48,7 @@ sudo systemctl enable filebeat.service
     ```
 
 - node
-    ```
+    ```bash
     curl -sL https://rpm.nodesource.com/setup_12.x | sudo bash -lu
     sudo yum install -y nodejs
     ```
@@ -59,7 +59,7 @@ sudo systemctl enable filebeat.service
     </summary>
     静态文件
 
-    ```
+    ```nginx
     server {
         listen 80;
 

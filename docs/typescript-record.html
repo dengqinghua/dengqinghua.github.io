@@ -27,6 +27,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="/logo.png" />
   <link rel="stylesheet" href="/assets/css/main.css" />
   <link rel="stylesheet" href="/assets/css/zoom.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
   <script src="assets/js/mermaid.min.js"></script>
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/zoom.min.js"></script>
@@ -54,9 +55,9 @@
   <li>ts-node, yard add -g ts-node</li>
 </ul>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew install node, yarn
-yarn add -g typescript ts-node
-# 获取安装的二进制地址
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>node, yarn
+yarn add <span class="nt">-g</span> typescript ts-node
+<span class="c"># 获取安装的二进制地址</span>
 yarn bin
 </code></pre></div></div>
 
@@ -64,7 +65,7 @@ yarn bin
 
 <p>可以通过 tsc 去理解当前的 ts 的语法糖</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tsc class.ts --lib es2016,dom --pretty
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tsc class.ts <span class="nt">--lib</span> es2016,dom <span class="nt">--pretty</span>
 </code></pre></div></div>
 
 <div class="mermaid">
@@ -131,31 +132,31 @@ graph TD;
 
 <hr data-content=" tuple ">
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var a = [10, "d"]
-var x:string|number = a[0]
-var y:string|number = a[1]
-console.log("x is " + x)
-console.log("y is " + y)
-var [x, y] = a
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="dl">"</span><span class="s2">d</span><span class="dl">"</span><span class="p">]</span>
+<span class="kd">var</span> <span class="nx">x</span><span class="p">:</span><span class="nx">string</span><span class="o">|</span><span class="nx">number</span> <span class="o">=</span> <span class="nx">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="kd">var</span> <span class="nx">y</span><span class="p">:</span><span class="nx">string</span><span class="o">|</span><span class="nx">number</span> <span class="o">=</span> <span class="nx">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">x is </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">x</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">y is </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">y</span><span class="p">)</span>
+<span class="kd">var</span> <span class="p">[</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">]</span> <span class="o">=</span> <span class="nx">a</span>
 </code></pre></div></div>
 
 <hr data-content=" union ">
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let a:string|number;
-a = 12
-a = "d"
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">a</span><span class="p">:</span><span class="nx">string</span><span class="o">|</span><span class="nx">number</span><span class="p">;</span>
+<span class="nx">a</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="nx">a</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">d</span><span class="dl">"</span>
 </code></pre></div></div>
 
 <p>一般多个类型的时候, 会使用 typeof 来做判断</p>
 
 <hr data-content=" interface ">
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>interface IPerson {
-  name:string
-  other:number|string
-}
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">IPerson</span> <span class="p">{</span>
+  <span class="nl">name</span><span class="p">:</span><span class="nx">string</span>
+  <span class="nx">other</span><span class="p">:</span><span class="nx">number</span><span class="o">|</span><span class="nx">string</span>
+<span class="p">}</span>
 
-const person:IPerson = { name: "a", other: 1 }
+<span class="kd">const</span> <span class="nx">person</span><span class="p">:</span><span class="nx">IPerson</span> <span class="o">=</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">,</span> <span class="na">other</span><span class="p">:</span> <span class="mi">1</span> <span class="p">}</span>
 </code></pre></div></div>
 
 <hr data-content=" class ">
@@ -177,10 +178,10 @@ graph TD;
 
 <hr data-content=" namespace, module ">
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>namespace A {
-  export interface IPerson {}
-  export class IClazz {}
-}
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">namespace</span> <span class="nx">A</span> <span class="p">{</span>
+  <span class="k">export</span> <span class="kr">interface</span> <span class="nx">IPerson</span> <span class="p">{}</span>
+  <span class="k">export</span> <span class="kd">class</span> <span class="nx">IClazz</span> <span class="p">{}</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
 <p>module: external 和 internal</p>

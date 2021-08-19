@@ -12,7 +12,7 @@ title: typescript
 - typescript, yard add -g typescript
 - ts-node, yard add -g ts-node
 
-```
+```bash
 brew install node, yarn
 yarn add -g typescript ts-node
 # 获取安装的二进制地址
@@ -24,7 +24,9 @@ yarn bin
 
 可以通过 tsc 去理解当前的 ts 的语法糖
 
-    tsc class.ts --lib es2016,dom --pretty
+```bash
+tsc class.ts --lib es2016,dom --pretty
+```
 
 <div class="mermaid" markdown="0">
 graph LR;
@@ -74,7 +76,7 @@ Rest Parameters: `function a(id:number, ...restParams:string[]) {}`
 ---------------
 {: data-content=" tuple "}
 
-```
+```ts
 var a = [10, "d"]
 var x:string|number = a[0]
 var y:string|number = a[1]
@@ -86,7 +88,7 @@ var [x, y] = a
 ---------------
 {: data-content=" union "}
 
-```
+```ts
 let a:string|number;
 a = 12
 a = "d"
@@ -97,7 +99,7 @@ a = "d"
 ---------------
 {: data-content=" interface "}
 
-```
+```ts
 interface IPerson {
   name:string
   other:number|string
@@ -125,7 +127,7 @@ typescipt 不支持多继承
 ---------------
 {: data-content=" namespace, module "}
 
-```
+```ts
 namespace A {
   export interface IPerson {}
   export class IClazz {}

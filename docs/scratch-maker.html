@@ -27,6 +27,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="/logo.png" />
   <link rel="stylesheet" href="/assets/css/main.css" />
   <link rel="stylesheet" href="/assets/css/zoom.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
   <script src="assets/js/mermaid.min.js"></script>
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/zoom.min.js"></script>
@@ -73,27 +74,27 @@
 
 <h4 id="用户配置">
 <a class="anchor" href="#%E7%94%A8%E6%88%B7%E9%85%8D%E7%BD%AE" aria-hidden="true"><span class="octicon octicon-link"></span></a>用户配置</h4>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo su -
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>su -
 useradd YouName
 passwd YouName
 visudo
-YouName ALL=(ALL) NOPASSWD:ALL
+YouName <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> NOPASSWD:ALL
 
-# 设置通用的目录
-mkdir -p /var/www/site
-chmod -R 777 /var/www/site
+<span class="c"># 设置通用的目录</span>
+<span class="nb">mkdir</span> <span class="nt">-p</span> /var/www/site
+<span class="nb">chmod</span> <span class="nt">-R</span> 777 /var/www/site
 </code></pre></div></div>
 
 <h4 id="软件安装">
 <a class="anchor" href="#%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85" aria-hidden="true"><span class="octicon octicon-link"></span></a>软件安装</h4>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo yum install -y git nginx ruby jq
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>yum <span class="nb">install</span> <span class="nt">-y</span> git nginx ruby jq
 </code></pre></div></div>
 
 <p>需要将 docker, nginx, filebeat 加入到自启动项目中</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo systemctl enable docker.service
-sudo systemctl enable nginx.service
-sudo systemctl enable filebeat.service
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>systemctl <span class="nb">enable </span>docker.service
+<span class="nb">sudo </span>systemctl <span class="nb">enable </span>nginx.service
+<span class="nb">sudo </span>systemctl <span class="nb">enable </span>filebeat.service
 </code></pre></div></div>
 
 <ul>
@@ -103,17 +104,17 @@ sudo systemctl enable filebeat.service
 
     <p>需要将 runner 加入到 root, docker 中，并设置 gitlab-runner 的基本 cp, nginx 等权限</p>
 
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>  sudo usermod -aG root gitlab-runner
-  sudo usermod -aG docker gitlab-runner
-  sudo visudo
-  gitlab-runner ALL=(ALL) NOPASSWD: /usr/sbin/nginx, /usr/bin/cp
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="nb">sudo </span>usermod <span class="nt">-aG</span> root gitlab-runner
+  <span class="nb">sudo </span>usermod <span class="nt">-aG</span> docker gitlab-runner
+  <span class="nb">sudo </span>visudo
+  gitlab-runner <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> NOPASSWD: /usr/sbin/nginx, /usr/bin/cp
 </code></pre></div>    </div>
   </li>
   <li>node
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>  curl -sL https://rpm.nodesource.com/setup_12.x | sudo bash -lu
-  sudo yum install -y nodejs
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  curl <span class="nt">-sL</span> https://rpm.nodesource.com/setup_12.x | <span class="nb">sudo </span>bash <span class="nt">-lu</span>
+  <span class="nb">sudo </span>yum <span class="nb">install</span> <span class="nt">-y</span> nodejs
 </code></pre></div>    </div>
   </li>
   <li>nginx
@@ -123,31 +124,31 @@ sudo systemctl enable filebeat.service
   </summary>
       <p>静态文件</p>
 
-      <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>  server {
-      listen 80;
+      <div class="language-nginx highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="k">server</span> <span class="p">{</span>
+      <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
 
-      proxy_set_header X-Real-IP $remote_addr;
-      proxy_set_header Host $host;
+      <span class="kn">proxy_set_header</span> <span class="s">X-Real-IP</span> <span class="nv">$remote_addr</span><span class="p">;</span>
+      <span class="kn">proxy_set_header</span> <span class="s">Host</span> <span class="nv">$host</span><span class="p">;</span>
 
-      server_name admin.exmaple.com;
+      <span class="kn">server_name</span> <span class="s">admin.exmaple.com</span><span class="p">;</span>
 
-      client_max_body_size 200M;
+      <span class="kn">client_max_body_size</span> <span class="mi">200M</span><span class="p">;</span>
 
-      root /var/www/site/admin_dev;
-      location / {
-        index index.html index.htm;
-        try_files $uri /index.html;
-      }
+      <span class="kn">root</span> <span class="n">/var/www/site/admin_dev</span><span class="p">;</span>
+      <span class="kn">location</span> <span class="n">/</span> <span class="p">{</span>
+        <span class="kn">index</span> <span class="s">index.html</span> <span class="s">index.htm</span><span class="p">;</span>
+        <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="n">/index.html</span><span class="p">;</span>
+      <span class="p">}</span>
 
-      gzip on;
-      gzip_buffers 32 4K;
-      gzip_comp_level 6;
-      gzip_min_length 100;
-      gzip_types application/javascript text/css text/xml;
-      gzip_disable "MSIE [1-6]\.";
-      gzip_vary on;
-  }
+      <span class="kn">gzip</span> <span class="no">on</span><span class="p">;</span>
+      <span class="kn">gzip_buffers</span> <span class="mi">32</span> <span class="mi">4K</span><span class="p">;</span>
+      <span class="kn">gzip_comp_level</span> <span class="mi">6</span><span class="p">;</span>
+      <span class="kn">gzip_min_length</span> <span class="mi">100</span><span class="p">;</span>
+      <span class="kn">gzip_types</span> <span class="nc">application/javascript</span> <span class="nc">text/css</span> <span class="nc">text/xml</span><span class="p">;</span>
+      <span class="kn">gzip_disable</span> <span class="s">"MSIE</span> <span class="s">[1-6]</span><span class="err">\</span><span class="s">."</span><span class="p">;</span>
+      <span class="kn">gzip_vary</span> <span class="no">on</span><span class="p">;</span>
+  <span class="p">}</span>
 </code></pre></div>      </div>
 
       <p>SSL</p>

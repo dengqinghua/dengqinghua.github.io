@@ -14,7 +14,7 @@ title: Rust 学习笔记
   <summary  markdown="0">
   eg.
   </summary>
-  ```
+  ```rust
   let a = 1
   let a = 2
   ```
