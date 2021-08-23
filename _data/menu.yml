@@ -27,7 +27,7 @@ entries:
       limit: 10
       show_more: true
       show_more_text: See archive...
-      show_more_url: music.html
+      show_more_url: music_index.html
   - title: notes
     post_list:
       category: note
