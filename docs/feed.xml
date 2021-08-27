@@ -1,16 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-08-24T01:04:34+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-08-27T14:17:30+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
 </subtitle><author><name>dengqinghua</name></author><entry><title type="html">pulsar 队列实践</title><link href="https://dengqinghua.github.io/queue.html" rel="alternate" type="text/html" title="pulsar 队列实践" /><published>2021-08-16T00:00:00+08:00</published><updated>2021-08-16T00:00:00+08:00</updated><id>https://dengqinghua.github.io/queue</id><content type="html" xml:base="https://dengqinghua.github.io/queue.html">&lt;h2 id=&quot;architecture&quot;&gt;Architecture&lt;/h2&gt;
 &lt;h3 id=&quot;架构&quot;&gt;架构&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;assets/images/pul-system-architecture.png&quot; alt=&quot;pul-system-architecture.png&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://pulsar.apache.org/docs/en/2.3.2/concepts-messaging&quot;&gt;Ref&lt;/a&gt;&lt;/p&gt;
-
 &lt;h3 id=&quot;消息订阅方式&quot;&gt;消息订阅方式&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;assets/images/pul-subscription-modes.png&quot; alt=&quot;pul-subscribe&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://pulsar.apache.org/docs/en/2.3.2/concepts-messaging/&quot;&gt;Ref&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;消息的生命周期&quot;&gt;消息的生命周期&lt;/h3&gt;
 
@@ -92,19 +88,16 @@ graph LR;
 &lt;h3 id=&quot;元数据&quot;&gt;元数据&lt;/h3&gt;
 &lt;ol&gt;
   &lt;li&gt;
-    &lt;p&gt;eventId 和 targetId&lt;/p&gt;
+    &lt;p&gt;orderingKey&lt;/p&gt;
 
-    &lt;p&gt;这里会要求传 targetId, 用来作为 有序消费。我们经常的场景是: 同一个用户id 的某种类型数据，希望可以有序地消费&lt;/p&gt;
+    &lt;p&gt;这里支持传 orderingKey, 用来作为 有序消费。我们经常的场景是: 同一个用户id 的某种类型数据，希望可以有序地消费&lt;/p&gt;
 
     &lt;p&gt;比如用户的统计数据, 如果是队列本身可以保证有序, 则大概率是有序的, 可以避免过多的数据库的锁竞争问题&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;消费次数和消息丢失的问题&lt;/p&gt;
 
-    &lt;ul&gt;
-      &lt;li&gt;pulsar 不能保证 exactl once, 一些重要的业务需要自己能保证是可重复执行的&lt;/li&gt;
-      &lt;li&gt;理论上消息是不会丢失的, 但是在 Rebalance 时, 也可能出现数据丢失的情况&lt;/li&gt;
-    &lt;/ul&gt;
+    &lt;p&gt;pulsar 理论上是 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;at-least-once semantics&lt;/code&gt;, 一些重要的业务需要自己能保证是可重复执行的&lt;/p&gt;
 
     &lt;p&gt;更多内容见 &lt;a href=&quot;https://pulsar.apache.org/docs/en/2.7.1/concepts-messaging/&quot;&gt;concepts-messaging&lt;/a&gt;&lt;/p&gt;
   &lt;/li&gt;
@@ -113,19 +106,19 @@ graph LR;
 
     &lt;p&gt;有时候会因为业务本身的复杂性, 在很多个业务逻辑的 上下文，都会发送对应的事件&lt;/p&gt;
 
-    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nd&quot;&gt;@Transactional&lt;/span&gt;
- &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;doSth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-   &lt;span class=&quot;c1&quot;&gt;// ① 更新用户信息&lt;/span&gt;
-   &lt;span class=&quot;n&quot;&gt;updateMember&lt;/span&gt;
-   &lt;span class=&quot;n&quot;&gt;sendMemberUpdateEvent&lt;/span&gt;
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; @Transactional
+ void doSth() {
+   // ① 更新用户信息
+   updateMember
+   sendMemberUpdateEvent
 
-   &lt;span class=&quot;c1&quot;&gt;// ② 更新Vip状态&lt;/span&gt;
-   &lt;span class=&quot;n&quot;&gt;updateMemberVip&lt;/span&gt;
-   &lt;span class=&quot;n&quot;&gt;sendMemberVipUpdateEvent&lt;/span&gt;
+   // ② 更新Vip状态
+   updateMemberVip
+   sendMemberVipUpdateEvent
 
-   &lt;span class=&quot;c1&quot;&gt;// ③ 记录日志&lt;/span&gt;
-   &lt;span class=&quot;n&quot;&gt;updateMemberVipLog&lt;/span&gt;
- &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+   // ③ 记录日志
+   updateMemberVipLog
+ }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
 
     &lt;p&gt;如果上面在 ③  记录日志的时候报错了，那么会导致 ①  和 ②  回滚, 此时事件理论上被发出去了, 会导致其他的业务逻辑的问题。&lt;/p&gt;
@@ -151,7 +144,16 @@ graph LR;
 
 &lt;p&gt;方式2: 查看用户的消费 &lt;a href=&quot;https://es-ras1ax3s.kibana.tencentelasticsearch.com:5601/app/discover#/context/5a116e80-b931-11eb-83c7-d711353ac049/toW5UnsBQlxvtLDU4s7e?_g=(filters:!())&amp;amp;_a=(columns:!(message,container.name),filters:!(('$state':(store:appState),meta:(alias:!n,disabled:!t,index:'5a116e80-b931-11eb-83c7-d711353ac049',key:container.name,negate:!t,params:(query:dev_backend_service_8881),type:phrase),query:(match_phrase:(container.name:dev_backend_service_8881))),('$state':(store:appState),meta:(alias:!n,disabled:!t,index:'5a116e80-b931-11eb-83c7-d711353ac049',key:container.name,negate:!t,params:(query:dev_backend_service_8880),type:phrase),query:(match_phrase:(container.name:dev_backend_service_8880)))))&quot;&gt;上下文&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;assets/images/pul-example2.png&quot; alt=&quot;example2&quot; /&gt;&lt;/p&gt;</content><author><name>dengqinghua</name></author><summary type="html">Architecture 架构</summary></entry><entry><title type="html">录音相关的思考</title><link href="https://dengqinghua.github.io/r1.html" rel="alternate" type="text/html" title="录音相关的思考" /><published>2021-07-30T00:00:00+08:00</published><updated>2021-07-30T00:00:00+08:00</updated><id>https://dengqinghua.github.io/r1</id><content type="html" xml:base="https://dengqinghua.github.io/r1.html">&lt;blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;assets/images/pul-example2.png&quot; alt=&quot;example2&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://pulsar.apache.org/docs/en/2.3.2/concepts-messaging/&quot;&gt;Pulsar Messaging&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.confluent.io/kafka-vs-pulsar/&quot;&gt;Kafka vs. Pulsar vs. RabbitMQ: Performance, Architecture, and Features Compared&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.confluent.io/blog/kafka-fastest-messaging-system/&quot;&gt;Benchmarking Apache Kafka, Apache Pulsar, and RabbitMQ: Which is the Fastest?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/182573701&quot;&gt;Pulsar 与 Kafka 全方位对比（上篇）：功能、性能、用例&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/61525447/apache-pulsar-message-delivery-semantics&quot;&gt;Apache Pulsar Message Delivery Semantics&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">Architecture 架构</summary></entry><entry><title type="html">录音相关的思考</title><link href="https://dengqinghua.github.io/r1.html" rel="alternate" type="text/html" title="录音相关的思考" /><published>2021-07-30T00:00:00+08:00</published><updated>2021-07-30T00:00:00+08:00</updated><id>https://dengqinghua.github.io/r1</id><content type="html" xml:base="https://dengqinghua.github.io/r1.html">&lt;blockquote&gt;
   &lt;p&gt;如何提高录音的效率？多练习基本功，提高专注度，多听，多感受…&lt;/p&gt;
 &lt;/blockquote&gt;
 

@@ -46,20 +46,40 @@
   
   <h1>pulsar 队列实践</h1>
 
-  <h2 id="architecture">Architecture</h2>
-<h3 id="架构">架构</h3>
+  <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2">
+<a href="#architecture">Architecture</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#%E6%9E%B6%E6%9E%84">架构</a></li>
+<li class="toc-entry toc-h3"><a href="#%E6%B6%88%E6%81%AF%E8%AE%A2%E9%98%85%E6%96%B9%E5%BC%8F">消息订阅方式</a></li>
+<li class="toc-entry toc-h3"><a href="#%E6%B6%88%E6%81%AF%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">消息的生命周期</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2">
+<a href="#event-%E5%92%8C-%E5%85%83%E6%95%B0%E6%8D%AE">Event 和 元数据</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#event-%E6%B2%BB%E7%90%86">Event 治理</a></li>
+<li class="toc-entry toc-h3"><a href="#%E5%85%83%E6%95%B0%E6%8D%AE">元数据</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#%E9%83%A8%E7%BD%B2%E6%96%B9%E5%BC%8F">部署方式</a></li>
+<li class="toc-entry toc-h2"><a href="#%E5%A6%82%E4%BD%95%E8%B7%9F%E8%B8%AA%E5%92%8C%E6%9F%A5%E8%AF%A2">如何跟踪和查询</a></li>
+<li class="toc-entry toc-h2"><a href="#reference">Reference</a></li>
+</ul>
+<h2 id="architecture">
+<a class="anchor" href="#architecture" aria-hidden="true"><span class="octicon octicon-link"></span></a>Architecture</h2>
+<h3 id="架构">
+<a class="anchor" href="#%E6%9E%B6%E6%9E%84" aria-hidden="true"><span class="octicon octicon-link"></span></a>架构</h3>
 
 <p><img src="assets/images/pul-system-architecture.png" alt="pul-system-architecture.png"></p>
 
-<p><a href="http://pulsar.apache.org/docs/en/2.3.2/concepts-messaging" target="_blank" rel="noopener noreferrer">Ref</a></p>
-
-<h3 id="消息订阅方式">消息订阅方式</h3>
+<h3 id="消息订阅方式">
+<a class="anchor" href="#%E6%B6%88%E6%81%AF%E8%AE%A2%E9%98%85%E6%96%B9%E5%BC%8F" aria-hidden="true"><span class="octicon octicon-link"></span></a>消息订阅方式</h3>
 
 <p><img src="assets/images/pul-subscription-modes.png" alt="pul-subscribe"></p>
 
-<p><a href="http://pulsar.apache.org/docs/en/2.3.2/concepts-messaging/" target="_blank" rel="noopener noreferrer">Ref</a></p>
-
-<h3 id="消息的生命周期">消息的生命周期</h3>
+<h3 id="消息的生命周期">
+<a class="anchor" href="#%E6%B6%88%E6%81%AF%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F" aria-hidden="true"><span class="octicon octicon-link"></span></a>消息的生命周期</h3>
 
 <div class="mermaid">
 graph LR;
@@ -71,8 +91,10 @@ graph LR;
 
 <p>更多消息相关, 见 <a href="http://pulsar.apache.org/docs/en/concepts-messaging" target="_blank" rel="noopener noreferrer">这里</a></p>
 
-<h2 id="event-和-元数据">Event 和 元数据</h2>
-<h3 id="event-治理">Event 治理</h3>
+<h2 id="event-和-元数据">
+<a class="anchor" href="#event-%E5%92%8C-%E5%85%83%E6%95%B0%E6%8D%AE" aria-hidden="true"><span class="octicon octicon-link"></span></a>Event 和 元数据</h2>
+<h3 id="event-治理">
+<a class="anchor" href="#event-%E6%B2%BB%E7%90%86" aria-hidden="true"><span class="octicon octicon-link"></span></a>Event 治理</h3>
 <p>在 Ease 的后端服务中, 我们是通过 <a href="https://gitlab.easeprime.com/ease/lib-box/-/tree/master/common-lib/src/main/java/com/easeprime/bfs/common/event" target="_blank" rel="noopener noreferrer">common-lib</a> 包进行封装和处理的</p>
 
 <p>该部分的组织形式如下</p>
@@ -136,22 +158,20 @@ graph LR;
   end
 </div>
 
-<h3 id="元数据">元数据</h3>
+<h3 id="元数据">
+<a class="anchor" href="#%E5%85%83%E6%95%B0%E6%8D%AE" aria-hidden="true"><span class="octicon octicon-link"></span></a>元数据</h3>
 <ol>
   <li>
-    <p>eventId 和 targetId</p>
+    <p>orderingKey</p>
 
-    <p>这里会要求传 targetId, 用来作为 有序消费。我们经常的场景是: 同一个用户id 的某种类型数据，希望可以有序地消费</p>
+    <p>这里支持传 orderingKey, 用来作为 有序消费。我们经常的场景是: 同一个用户id 的某种类型数据，希望可以有序地消费</p>
 
     <p>比如用户的统计数据, 如果是队列本身可以保证有序, 则大概率是有序的, 可以避免过多的数据库的锁竞争问题</p>
   </li>
   <li>
     <p>消费次数和消息丢失的问题</p>
 
-    <ul>
-      <li>pulsar 不能保证 exactl once, 一些重要的业务需要自己能保证是可重复执行的</li>
-      <li>理论上消息是不会丢失的, 但是在 Rebalance 时, 也可能出现数据丢失的情况</li>
-    </ul>
+    <p>pulsar 理论上是 <code class="language-plaintext highlighter-rouge">at-least-once semantics</code>, 一些重要的业务需要自己能保证是可重复执行的</p>
 
     <p>更多内容见 <a href="https://pulsar.apache.org/docs/en/2.7.1/concepts-messaging/" target="_blank" rel="noopener noreferrer">concepts-messaging</a></p>
   </li>
@@ -160,20 +180,20 @@ graph LR;
 
     <p>有时候会因为业务本身的复杂性, 在很多个业务逻辑的 上下文，都会发送对应的事件</p>
 
-    <div class="language-java highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code> <span class="nd">@Transactional</span>
- <span class="kt">void</span> <span class="nf">doSth</span><span class="o">()</span> <span class="o">{</span>
-   <span class="c1">// ① 更新用户信息</span>
-   <span class="n">updateMember</span>
-   <span class="n">sendMemberUpdateEvent</span>
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> @Transactional
+ void doSth() {
+   // ① 更新用户信息
+   updateMember
+   sendMemberUpdateEvent
 
-   <span class="c1">// ② 更新Vip状态</span>
-   <span class="n">updateMemberVip</span>
-   <span class="n">sendMemberVipUpdateEvent</span>
+   // ② 更新Vip状态
+   updateMemberVip
+   sendMemberVipUpdateEvent
 
-   <span class="c1">// ③ 记录日志</span>
-   <span class="n">updateMemberVipLog</span>
- <span class="o">}</span>
+   // ③ 记录日志
+   updateMemberVipLog
+ }
 </code></pre></div>    </div>
 
     <p>如果上面在 ③  记录日志的时候报错了，那么会导致 ①  和 ②  回滚, 此时事件理论上被发出去了, 会导致其他的业务逻辑的问题。</p>
@@ -188,11 +208,13 @@ graph LR;
   </li>
 </ol>
 
-<h2 id="部署方式">部署方式</h2>
+<h2 id="部署方式">
+<a class="anchor" href="#%E9%83%A8%E7%BD%B2%E6%96%B9%E5%BC%8F" aria-hidden="true"><span class="octicon octicon-link"></span></a>部署方式</h2>
 
 <p><img src="assets/images/pul-deploy1.png" alt="deploy1"></p>
 
-<h2 id="如何跟踪和查询">如何跟踪和查询</h2>
+<h2 id="如何跟踪和查询">
+<a class="anchor" href="#%E5%A6%82%E4%BD%95%E8%B7%9F%E8%B8%AA%E5%92%8C%E6%9F%A5%E8%AF%A2" aria-hidden="true"><span class="octicon octicon-link"></span></a>如何跟踪和查询</h2>
 <p>方式1: 根据用户id 或者 deviceId 进行<a href="https://es-ras1ax3s.kibana.tencentelasticsearch.com:5601/goto/71238f43bd59b8022e7ee9f67238eb45" target="_blank" rel="noopener noreferrer">查询</a></p>
 
 <p><img src="assets/images/pul-example1.png" alt="example1"></p>
@@ -200,6 +222,16 @@ graph LR;
 <p>方式2: 查看用户的消费 <a href="https://es-ras1ax3s.kibana.tencentelasticsearch.com:5601/app/discover#/context/5a116e80-b931-11eb-83c7-d711353ac049/toW5UnsBQlxvtLDU4s7e?_g=(filters:!())&amp;_a=(columns:!(message,container.name),filters:!(('%24state':(store:appState),meta:(alias:!n,disabled:!t,index:'5a116e80-b931-11eb-83c7-d711353ac049',key:container.name,negate:!t,params:(query:dev_backend_service_8881),type:phrase),query:(match_phrase:(container.name:dev_backend_service_8881))),('%24state':(store:appState),meta:(alias:!n,disabled:!t,index:'5a116e80-b931-11eb-83c7-d711353ac049',key:container.name,negate:!t,params:(query:dev_backend_service_8880),type:phrase),query:(match_phrase:(container.name:dev_backend_service_8880)))))" target="_blank" rel="noopener noreferrer">上下文</a></p>
 
 <p><img src="assets/images/pul-example2.png" alt="example2"></p>
+
+<h2 id="reference">
+<a class="anchor" href="#reference" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reference</h2>
+<ul>
+  <li><a href="http://pulsar.apache.org/docs/en/2.3.2/concepts-messaging/" target="_blank" rel="noopener noreferrer">Pulsar Messaging</a></li>
+  <li><a href="https://www.confluent.io/kafka-vs-pulsar/" target="_blank" rel="noopener noreferrer">Kafka vs. Pulsar vs. RabbitMQ: Performance, Architecture, and Features Compared</a></li>
+  <li><a href="https://www.confluent.io/blog/kafka-fastest-messaging-system/" target="_blank" rel="noopener noreferrer">Benchmarking Apache Kafka, Apache Pulsar, and RabbitMQ: Which is the Fastest?</a></li>
+  <li><a href="https://zhuanlan.zhihu.com/p/182573701" target="_blank" rel="noopener noreferrer">Pulsar 与 Kafka 全方位对比（上篇）：功能、性能、用例</a></li>
+  <li><a href="https://stackoverflow.com/questions/61525447/apache-pulsar-message-delivery-semantics" target="_blank" rel="noopener noreferrer">Apache Pulsar Message Delivery Semantics</a></li>
+</ul>
 
 </article>
 
