@@ -1,5 +1,59 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-08-27T14:17:30+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
-</subtitle><author><name>dengqinghua</name></author><entry><title type="html">pulsar 队列实践</title><link href="https://dengqinghua.github.io/queue.html" rel="alternate" type="text/html" title="pulsar 队列实践" /><published>2021-08-16T00:00:00+08:00</published><updated>2021-08-16T00:00:00+08:00</updated><id>https://dengqinghua.github.io/queue</id><content type="html" xml:base="https://dengqinghua.github.io/queue.html">&lt;h2 id=&quot;architecture&quot;&gt;Architecture&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-08-30T16:50:25+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+</subtitle><author><name>dengqinghua</name></author><entry><title type="html">Folsom Blues</title><link href="https://dengqinghua.github.io/folsom-blues.html" rel="alternate" type="text/html" title="Folsom Blues" /><published>2021-08-29T00:00:00+08:00</published><updated>2021-08-29T00:00:00+08:00</updated><id>https://dengqinghua.github.io/folsom-blues</id><content type="html" xml:base="https://dengqinghua.github.io/folsom-blues.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;曲谱: &lt;a href=&quot;https://pan.baidu.com/disk/pdfview?path=%2F42%2F%E9%9F%B3%E4%B9%90%2F%E6%95%99%E6%9D%90%2FProGuitar%2FfolsomPrisonBlues%2Femil-ernebro-folsom-prison-blues.pdf&amp;amp;size=128339&amp;amp;fsid=427847537413829&quot;&gt;PDF&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;来源: &lt;a href=&quot;https://www.proguitar.com/academy/lessons/folsom-prison-blues&quot;&gt;Folsom Blues Guitar&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;我的翻弹: &lt;a href=&quot;https://b23.tv/GhUk2V&quot;&gt;美式指弹 folsom prison blues - emil ernebro-哔哩哔哩&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr data-content=&quot; 律动 &quot; /&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;boom-chick&lt;/li&gt;
+  &lt;li&gt;制音，一些时值需要突然制音，会更有感觉&lt;/li&gt;
+  &lt;li&gt;不完全制音，需要在单个根音的时候，单独弹响，再闷掉&lt;/li&gt;
+  &lt;li&gt;不要过渡揉弦，一点儿都不好听&lt;/li&gt;
+  &lt;li&gt;节奏稳定性 &amp;gt; 自以为是的律动感 &amp;gt; 完全没有律动的稳定弹奏&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr data-content=&quot; 需要加强的 &quot; /&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;节奏有很大的问题，一定要带着节拍器弹琴&lt;/li&gt;
+  &lt;li&gt;无论是换和弦，还是速弹，一定要慢速，很 &lt;strong&gt;轻松&lt;/strong&gt; 地弹出来才可&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在练习地不是很熟练的情况下，不要对一次录制成功抱有太大的期望(侥幸心理太重只会带来焦虑感)，&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;30分钟内的录制才是录制，多余 30分钟的部分只能是练习，越到后面，录制效率越差，已经完全是机械化的肌肉记忆了&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;对吉他上的指板不太熟，一些 属七和弦 的基本按法不是很熟悉&lt;/li&gt;
+  &lt;li&gt;加强对击弦勾弦的练习，才能真正地掌握 Emil 的真正技巧&lt;/li&gt;
+  &lt;li&gt;尝试改变一下曲子的一些音，节奏，加上自己的一些想法&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr data-content=&quot; 做的不错的 &quot; /&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;带着节拍器进行录音，节奏感觉还比较稳&lt;/li&gt;
+  &lt;li&gt;有了前面的失败的录制经验之后，之后录制的时候还比较放松&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr data-content=&quot; 下次录音我会尝试的 &quot; /&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;尝试分段录制&lt;/li&gt;
+  &lt;li&gt;尝试不同的速度练习，对应有问题的部分着重练习&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr data-content=&quot; 思考 &quot; /&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;其实 emil 的曲子练习多了之后，发现他其实很强调曲子的整体的律动感觉，会让你觉得曲子比较简单，但是在一些细节上处理不好之后，整个曲子就会变了味道&lt;/li&gt;
+  &lt;li&gt;对于和弦，乐理，速度，花里胡哨的技巧而言，没有什么比 &lt;strong&gt;稳定的节拍，干净的演奏，合适的律动&lt;/strong&gt; 更重要了，要多注重自己的节拍的稳定性 和 音符的稳定性 上面&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry><entry><title type="html">pulsar 队列实践</title><link href="https://dengqinghua.github.io/queue.html" rel="alternate" type="text/html" title="pulsar 队列实践" /><published>2021-08-16T00:00:00+08:00</published><updated>2021-08-16T00:00:00+08:00</updated><id>https://dengqinghua.github.io/queue</id><content type="html" xml:base="https://dengqinghua.github.io/queue.html">&lt;h2 id=&quot;architecture&quot;&gt;Architecture&lt;/h2&gt;
 &lt;h3 id=&quot;架构&quot;&gt;架构&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;assets/images/pul-system-architecture.png&quot; alt=&quot;pul-system-architecture.png&quot; /&gt;&lt;/p&gt;
@@ -106,19 +160,19 @@ graph LR;
 
     &lt;p&gt;有时候会因为业务本身的复杂性, 在很多个业务逻辑的 上下文，都会发送对应的事件&lt;/p&gt;
 
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; @Transactional
- void doSth() {
-   // ① 更新用户信息
-   updateMember
-   sendMemberUpdateEvent
+    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nd&quot;&gt;@Transactional&lt;/span&gt;
+ &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;doSth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;c1&quot;&gt;// ① 更新用户信息&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;updateMember&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;sendMemberUpdateEvent&lt;/span&gt;
 
-   // ② 更新Vip状态
-   updateMemberVip
-   sendMemberVipUpdateEvent
+   &lt;span class=&quot;c1&quot;&gt;// ② 更新Vip状态&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;updateMemberVip&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;sendMemberVipUpdateEvent&lt;/span&gt;
 
-   // ③ 记录日志
-   updateMemberVipLog
- }
+   &lt;span class=&quot;c1&quot;&gt;// ③ 记录日志&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;updateMemberVipLog&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
 
     &lt;p&gt;如果上面在 ③  记录日志的时候报错了，那么会导致 ①  和 ②  回滚, 此时事件理论上被发出去了, 会导致其他的业务逻辑的问题。&lt;/p&gt;
@@ -1912,319 +1966,4 @@ why?
   &lt;li&gt;package -&amp;gt; crate(executable binary) -&amp;gt; module&lt;/li&gt;
   &lt;li&gt;deref coercion, turn &amp;amp;s2 to &amp;amp;s2[..]&lt;/li&gt;
   &lt;li&gt;trait, interface like&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">词汇</summary></entry><entry><title type="html">maker of application</title><link href="https://dengqinghua.github.io/scratch-maker.html" rel="alternate" type="text/html" title="maker of application" /><published>2021-04-23T00:00:00+08:00</published><updated>2021-04-23T00:00:00+08:00</updated><id>https://dengqinghua.github.io/scratch-maker</id><content type="html" xml:base="https://dengqinghua.github.io/scratch-maker.html">&lt;h3 id=&quot;运维&quot;&gt;运维&lt;/h3&gt;
-&lt;h4 id=&quot;机器配置&quot;&gt;机器配置&lt;/h4&gt;
-&lt;p&gt;4核8G&lt;/p&gt;
-
-&lt;h4 id=&quot;用户配置&quot;&gt;用户配置&lt;/h4&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;su -
-useradd YouName
-passwd YouName
-visudo
-YouName &lt;span class=&quot;nv&quot;&gt;ALL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;ALL&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; NOPASSWD:ALL
-
-&lt;span class=&quot;c&quot;&gt;# 设置通用的目录&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /var/www/site
-&lt;span class=&quot;nb&quot;&gt;chmod&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-R&lt;/span&gt; 777 /var/www/site
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;软件安装&quot;&gt;软件安装&lt;/h4&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;yum &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; git nginx ruby jq
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;需要将 docker, nginx, filebeat 加入到自启动项目中&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl &lt;span class=&quot;nb&quot;&gt;enable &lt;/span&gt;docker.service
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl &lt;span class=&quot;nb&quot;&gt;enable &lt;/span&gt;nginx.service
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl &lt;span class=&quot;nb&quot;&gt;enable &lt;/span&gt;filebeat.service
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.docker.com/engine/install/centos/&quot;&gt;docker&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://docs.gitlab.com/runner/install/linux-repository.html&quot;&gt;gitlab-runner&lt;/a&gt;&lt;/p&gt;
-
-    &lt;p&gt;需要将 runner 加入到 root, docker 中，并设置 gitlab-runner 的基本 cp, nginx 等权限&lt;/p&gt;
-
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;usermod &lt;span class=&quot;nt&quot;&gt;-aG&lt;/span&gt; root gitlab-runner
-  &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;usermod &lt;span class=&quot;nt&quot;&gt;-aG&lt;/span&gt; docker gitlab-runner
-  &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;visudo
-  gitlab-runner &lt;span class=&quot;nv&quot;&gt;ALL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;ALL&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; NOPASSWD: /usr/sbin/nginx, /usr/bin/cp
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;node
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  curl &lt;span class=&quot;nt&quot;&gt;-sL&lt;/span&gt; https://rpm.nodesource.com/setup_12.x | &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;bash &lt;span class=&quot;nt&quot;&gt;-lu&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;yum &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; nodejs
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;nginx
-    &lt;details&gt;
-      &lt;summary&gt;
-  NGINX 的一些配置参考
-  &lt;/summary&gt;
-      &lt;p&gt;静态文件&lt;/p&gt;
-
-      &lt;div class=&quot;language-nginx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;k&quot;&gt;server&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;kn&quot;&gt;listen&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-      &lt;span class=&quot;kn&quot;&gt;proxy_set_header&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;X-Real-IP&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$remote_addr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;kn&quot;&gt;proxy_set_header&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Host&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$host&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-      &lt;span class=&quot;kn&quot;&gt;server_name&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;admin.exmaple.com&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-      &lt;span class=&quot;kn&quot;&gt;client_max_body_size&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200M&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-      &lt;span class=&quot;kn&quot;&gt;root&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;/var/www/site/admin_dev&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;kn&quot;&gt;location&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;kn&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;index.html&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;index.htm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;kn&quot;&gt;try_files&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$uri&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;/index.html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-      &lt;span class=&quot;kn&quot;&gt;gzip&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;kn&quot;&gt;gzip_buffers&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4K&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;kn&quot;&gt;gzip_comp_level&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;kn&quot;&gt;gzip_min_length&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;kn&quot;&gt;gzip_types&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;application/javascript&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;text/css&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;text/xml&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;kn&quot;&gt;gzip_disable&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;MSIE&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;[1-6]&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;kn&quot;&gt;gzip_vary&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;      &lt;/div&gt;
-
-      &lt;p&gt;SSL&lt;/p&gt;
-
-      &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  server {
-      listen 443 ssl;
-
-      server_name api0.exmaple.com;
-      ## 这个文件需要放在 /etc/nginx 的目录下
-      ssl_certificate 1_api0.exmaple.com_bundle.crt;
-      ssl_certificate_key 2_api0.exmaple.com.key;
-      ssl_session_timeout 5m;
-      ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-      ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
-      ssl_prefer_server_ciphers on;
-
-      proxy_set_header X-Real-IP $remote_addr;
-      proxy_set_header Host $host;
-
-      client_max_body_size 100M;
-
-      location / {
-        proxy_pass http://127.0.0.1:8888;
-      }
-  }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;      &lt;/div&gt;
-
-      &lt;p&gt;负载均衡&lt;/p&gt;
-
-      &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  upstream java_prod_server {
-    server 127.0.0.1:8880;
-    server 127.0.0.1:8881;
-  }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;      &lt;/div&gt;
-
-      &lt;p&gt;重定向&lt;/p&gt;
-
-      &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  server {
-    listen 80;
-
-    server_name admin.exmaple.com;
-
-    return 301 https://admin.exmaple.com$request_uri;
-  }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;      &lt;/div&gt;
-
-      &lt;p&gt;Nginx的简单鉴权&lt;/p&gt;
-
-      &lt;p&gt;&lt;a href=&quot;https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-http-basic-authentication/&quot;&gt;Ref&lt;/a&gt;&lt;/p&gt;
-
-      &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  sudo yum install httpd-tools
-  sudo htpasswd -c /etc/nginx/.htpasswd user1
-  cat /etc/nginx/.htpasswd
-
-  Nginx 中的配置
-  location /api {
-      auth_basic           &quot;admin area&quot;;
-      auth_basic_user_file /etc/nginx/.htpasswd;
-  }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;      &lt;/div&gt;
-
-    &lt;/details&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;基础设施&quot;&gt;基础设施&lt;/h3&gt;
-&lt;h4 id=&quot;gitlab&quot;&gt;gitlab&lt;/h4&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/jl-borges/docker-gitlab&quot;&gt;Ref&lt;/a&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;注意，需要配置服务器的 swap, 见这里 &lt;a href=&quot;https://docs.gitlab.com/omnibus/settings/memory_constrained_envs.html&quot;&gt;SWAP&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;建议设置晚上定时重启对应 gitlab 服务, gitlab 经常有内存泄漏问题, &lt;a href=&quot;https://crontab.guru/#0_*_*_*&quot;&gt;定时重启&lt;/a&gt; 是最简单粗暴的方式&lt;/p&gt;
-
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   sudo crontab -e
-   # 设置每天凌晨4点的时候重启 gitlab
-   0 4 * * * docker restart gitlab_gitlab_1
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;需要更改的配置&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;TZ=Asia/Shanghai
-GITLAB_TIMEZONE=Asia/Shanghai
-GITLAB_HOST=gitlab.youDomain.com
-
-GITLAB_ROOT_PASSWORD=password!1234
-GITLAB_ROOT_EMAIL=youEmail
-
-SMTP_ENABLED=true
-SMTP_DOMAIN=youDomain.com
-SMTP_HOST=smtp.ym.163.com
-SMTP_PORT=25
-SMTP_USER=noreply@youDomain.com
-SMTP_PASS=youDomainPsw
-SMTP_STARTTLS=true
-SMTP_TLS=false
-SMTP_AUTHENTICATION=plain
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;下面是 CI 的配置例子&lt;/p&gt;
-
-&lt;hr data-content=&quot; java &quot; /&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/jl-borges/maker/blob/main/java/.gitlab-ci.yml&quot;&gt;.gitlab-ci.yml&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/jl-borges/maker/blob/main/java/deploy.sh&quot;&gt;deploy.sh&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/jl-borges/maker/blob/main/java/ci_settings.xml&quot;&gt;ci_setting.yml&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/jl-borges/maker/blob/main/java/Dockerfile&quot;&gt;Dockerfile&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr data-content=&quot; node &quot; /&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;stages:
-  - prod-build
-  - prod-deploy
-variables:
-  BUILD_MACHINE_IP: 172.21.x.x
-cache:
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-    - node_modules/
-prod-build:
-  stage: prod-build
-  tags:
-    - adminBuild
-  script:
-    - npm install --registry=https://registry.npm.taobao.org
-    - npm run build:prod
-    - mkdir -p /var/www/site/admin_prod
-    - cp -rf $PWD/dist/** /var/www/site/admin_prod
-prod-deploy:
-  tags:
-    - prod
-  stage: prod-deploy
-  when: manual
-  script:
-    - scp -Cr youName@$BUILD_MACHINE_IP:/var/www/site/admin_prod /var/www/site/
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;其他&quot;&gt;其他&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://github.com/jl-borges/maker/blob/main/maven/docker-compose.yml&quot;&gt;Maven&lt;/a&gt;&lt;/p&gt;
-
-    &lt;p&gt;注: 密码需要到 /nexus-data/admin.password 里面去查看&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://github.com/jl-borges/docker-reviewboard&quot;&gt;Reviewboard&lt;/a&gt;&lt;/p&gt;
-
-    &lt;p&gt;注: 这里不能调用 docker-compose down, 该部分会删除记录… 重启的话, 执行 docker-compose restart&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://github.com/jl-borges/spring-boot-admin&quot;&gt;Spring boot admin&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://github.com/jl-borges/baota?organization=jl-borges&amp;amp;organization=jl-borges&quot;&gt;宝塔&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://github.com/jl-borges/netdata&quot;&gt;Netdata&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://github.com/jl-borges/metabase&quot;&gt;BI&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;中间件&quot;&gt;中间件&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/jl-borges/maker/blob/main/mysql/docker-compose.yml&quot;&gt;MySQL&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/jl-borges/maker/blob/main/redis/docker-compose.yml&quot;&gt;Redis&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/jl-borges/docker-elk&quot;&gt;ELK&lt;/a&gt;
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.12.1-x86_64.rpm
-  sudo rpm -vi filebeat-7.12.1-x86_64.rpm
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Kafak, TODO&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;业务系统&quot;&gt;业务系统&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Java, see legacy&lt;/li&gt;
-  &lt;li&gt;Antd-React, see legacy&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;搭建系统路线&quot;&gt;搭建系统路线&lt;/h3&gt;
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;域名购买, ssl 证书申请, 域名备案&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;邮箱配置, 办公软件等&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;购买机器和服务
-    &lt;ul&gt;
-      &lt;li&gt;dev 机器, 4核8G 50G硬盘, 2M带宽&lt;/li&gt;
-      &lt;li&gt;qa 机器, 2核4G 50G硬盘, 2M带宽&lt;/li&gt;
-      &lt;li&gt;prod 机器, 2核4G 50G硬盘, 2M带宽&lt;/li&gt;
-      &lt;li&gt;ES 服务 2核4G&lt;/li&gt;
-      &lt;li&gt;MySQL 主库&lt;/li&gt;
-      &lt;li&gt;MySQL 从库&lt;/li&gt;
-      &lt;li&gt;短信服务&lt;/li&gt;
-      &lt;li&gt;七牛服务&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;基础服务搭建
-    &lt;ul&gt;
-      &lt;li&gt;gitlab, 代码仓库, 部署在 dev 机器上&lt;/li&gt;
-      &lt;li&gt;maven, java 基础库&lt;/li&gt;
-      &lt;li&gt;netdata, 服务器监控&lt;/li&gt;
-      &lt;li&gt;metabase, bi工具&lt;/li&gt;
-      &lt;li&gt;elk, 日志收集工具&lt;/li&gt;
-      &lt;li&gt;sba, java 日志收集&lt;/li&gt;
-      &lt;li&gt;redis 服务&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;基础代码部署和初次上线
-    &lt;ul&gt;
-      &lt;li&gt;利用基础包, 生成后端的基础代码&lt;/li&gt;
-      &lt;li&gt;利用 antd, 生成现成的 admin 代码&lt;/li&gt;
-      &lt;li&gt;nginx 配置&lt;/li&gt;
-      &lt;li&gt;gitlab-ci 配置&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;核心配置
-    &lt;ul&gt;
-      &lt;li&gt;包名称&lt;/li&gt;
-      &lt;li&gt;支付秘钥&lt;/li&gt;
-      &lt;li&gt;短信/七牛配置&lt;/li&gt;
-      &lt;li&gt;数据库/redis 配置等&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;测试和数据配置
-    &lt;ul&gt;
-      &lt;li&gt;核心接口整理&lt;/li&gt;
-      &lt;li&gt;配置后台数据&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>dengqinghua</name></author><summary type="html">运维 机器配置 4核8G</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">词汇</summary></entry></feed>
