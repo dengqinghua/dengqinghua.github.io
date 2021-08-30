@@ -217,14 +217,14 @@ graph LR;
   <li>Online, 直接面向外部提供接口, 一般是直接从 Nearline 的缓存存储中拿到数据返回, 有时延要求
     <ul>
       <li>分发用户事件</li>
-      <li>组装缓存中的数据
-        <blockquote>
-          <p>如果是数据不大的话，可以考虑只有两层, Online 和 Offline, Offline 直接将结果写入告诉缓存即可</p>
-        </blockquote>
-      </li>
+      <li>组装缓存中的数据</li>
     </ul>
   </li>
 </ul>
+
+<blockquote>
+  <p>如果是数据不大的话，可以考虑只有两层, Online 和 Offline, Offline 直接将结果写入告诉缓存即可</p>
+</blockquote>
 
 <h3 id="技术架构">
 <a class="anchor" href="#%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84" aria-hidden="true"><span class="octicon octicon-link"></span></a>技术架构</h3>

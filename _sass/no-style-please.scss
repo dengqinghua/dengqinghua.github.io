@@ -58,16 +58,37 @@ pre {
 hr {
   text-align: center;
   border: 0;
-
   &:before { content: '' }
   &:after { content: attr(data-content) '' }
 }
 
+th {
+  font-weight: 500;
+  min-width: 100px;
+}
+
 table, th, td {
-  width: -webkit-fill-available;
-  border: thin solid black;
+  border-spacing: 0.5rem;
+  border: thin solid #666;
   border-collapse: collapse;
   padding: 0.4rem;
+  margin: 0.1rem;
+}
+
+table {
+  width: -webkit-fill-available;
+  border-collapse: collapse;
+  border-radius: 9px;
+  border-style: hidden; /* hide standard table (collapsed) border */
+  box-shadow: 0 0 0 1px #666; /* this draws the table border  */ 
+}
+
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 9px;
+}
+
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 9px;
 }
 
 code {
@@ -87,10 +108,30 @@ div.highlighter-rouge code {
 
 blockquote {
   font-style: italic;
-  border: thin solid black;
-  padding: 1rem;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""""\2018""";
+}
 
-  p { margin: 0; }
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 3em;
+  line-height: 0.1em;
+  margin-right: 0.01em;
+  vertical-align: -0.4em;
+}
+blockquote:after  {
+  content: close-quote;
+}
+blockquote p {
+  display: inline;
+}
+
+blockquote {
+    margin: 0;
 }
 
 img {

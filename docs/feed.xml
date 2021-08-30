@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-08-30T16:50:25+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-08-30T18:25:18+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
 </subtitle><author><name>dengqinghua</name></author><entry><title type="html">Folsom Blues</title><link href="https://dengqinghua.github.io/folsom-blues.html" rel="alternate" type="text/html" title="Folsom Blues" /><published>2021-08-29T00:00:00+08:00</published><updated>2021-08-29T00:00:00+08:00</updated><id>https://dengqinghua.github.io/folsom-blues</id><content type="html" xml:base="https://dengqinghua.github.io/folsom-blues.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
 
 &lt;ul&gt;
@@ -23,7 +23,7 @@
   &lt;li&gt;节奏有很大的问题，一定要带着节拍器弹琴&lt;/li&gt;
   &lt;li&gt;无论是换和弦，还是速弹，一定要慢速，很 &lt;strong&gt;轻松&lt;/strong&gt; 地弹出来才可&lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;在练习地不是很熟练的情况下，不要对一次录制成功抱有太大的期望(侥幸心理太重只会带来焦虑感)，&lt;/p&gt;
+    &lt;p&gt;在练习地不是很熟练的情况下，不要对一次录制成功抱有太大的期望(侥幸心理太重只会带来焦虑感)&lt;/p&gt;
 
     &lt;blockquote&gt;
       &lt;p&gt;30分钟内的录制才是录制，多余 30分钟的部分只能是练习，越到后面，录制效率越差，已经完全是机械化的肌肉记忆了&lt;/p&gt;
@@ -393,14 +393,14 @@ graph LR;
   &lt;li&gt;Online, 直接面向外部提供接口, 一般是直接从 Nearline 的缓存存储中拿到数据返回, 有时延要求
     &lt;ul&gt;
       &lt;li&gt;分发用户事件&lt;/li&gt;
-      &lt;li&gt;组装缓存中的数据
-        &lt;blockquote&gt;
-          &lt;p&gt;如果是数据不大的话，可以考虑只有两层, Online 和 Offline, Offline 直接将结果写入告诉缓存即可&lt;/p&gt;
-        &lt;/blockquote&gt;
-      &lt;/li&gt;
+      &lt;li&gt;组装缓存中的数据&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;如果是数据不大的话，可以考虑只有两层, Online 和 Offline, Offline 直接将结果写入告诉缓存即可&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;h3 id=&quot;技术架构&quot;&gt;技术架构&lt;/h3&gt;
 &lt;ul&gt;
