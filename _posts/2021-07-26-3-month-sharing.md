@@ -19,7 +19,7 @@ title: ease backend from 0 to 1
 从成本问题上考虑，大多数的中间件都是购买的，会根据现有的业务情况选择不同类型的中间件
 
 ## 架构
-<div style="width: 640px; height: 480px; margin: 5px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://lucid.app/documents/embeddedchart/83d28533-b9d0-4763-8856-2e35a98dfb7c" id="YLa9QOnOcl0V"></iframe></div>
+![aaa](https://lucid.app/publicSegments/view/0df2d560-1ba3-4d8d-b2fd-c648a6dc77bf/image.png)
 
 <div class="mermaid" markdown="0">
 graph LR;
