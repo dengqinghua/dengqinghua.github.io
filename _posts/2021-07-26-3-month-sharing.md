@@ -4,23 +4,25 @@ toc: true
 title: ease backend from 0 to 1
 ---
 
-该部分为后端团队(2人) 从0到1 搭建的一套架构体系。
+该部分为后端团队 (2人) 从0 到 1 搭建的一套架构体系。
 
-由于公司和团队的整体规模不大，从业务的发展和业务的复杂度来说 ，
-应选择**快速部署，成本(机器/运维和部署)低，依赖少，稳定性高**的架构。
+>
+由于公司和团队的整体规模不大，从业务的发展和业务的复杂度来说，
+应选择 **快速部署，成本(机器/运维和部署)低，依赖少，稳定性高** 的架构。
 
 这里的架构主要由三部分构成
 
-- Devops；基于 gitlab CI/CD 轻量级Devops, 可实现完整的快速部署，扩容的操作
-- 业务；前后端分离，后端使用 BFF + Microservice 的架构，前端使用 React 技术栈
-- 中间件；选择比较稳定的中间件，如 MySQL，Redis 和 ES 等。
+- Devops 基于 gitlab CI/CD 轻量级Devops, 可实现完整的快速部署，扩容的操作
+- 业务 前后端分离，后端使用 BFF + Microservice 的架构，前端使用 React 技术栈
+- 中间件 选择比较稳定的中间件，如 MySQL，Redis 和 ES 等。
 
 从成本问题上考虑，大多数的中间件都是购买的，会根据现有的业务情况选择不同类型的中间件
 
 ## 架构
+<div style="width: 640px; height: 480px; margin: 5px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://lucid.app/documents/embeddedchart/83d28533-b9d0-4763-8856-2e35a98dfb7c" id="YLa9QOnOcl0V"></iframe></div>
 
 <div class="mermaid" markdown="0">
-graph TB;
+graph LR;
     arch([Ease 后端架构]);
     op([Devops]);
     op1(gitlab CI/CD)

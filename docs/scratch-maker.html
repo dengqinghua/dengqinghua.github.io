@@ -153,65 +153,65 @@ YouName <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)
 
       <p>SSL</p>
 
-      <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>  server {
-      listen 443 ssl;
+      <div class="language-nginx highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="k">server</span> <span class="p">{</span>
+      <span class="kn">listen</span> <span class="mi">443</span> <span class="s">ssl</span><span class="p">;</span>
 
-      server_name api0.exmaple.com;
-      ## 这个文件需要放在 /etc/nginx 的目录下
-      ssl_certificate 1_api0.exmaple.com_bundle.crt;
-      ssl_certificate_key 2_api0.exmaple.com.key;
-      ssl_session_timeout 5m;
-      ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-      ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
-      ssl_prefer_server_ciphers on;
+      <span class="kn">server_name</span> <span class="s">api0.exmaple.com</span><span class="p">;</span>
+      <span class="c1">## 这个文件需要放在 /etc/nginx 的目录下</span>
+      <span class="kn">ssl_certificate</span> <span class="s">1_api0.exmaple.com_bundle.crt</span><span class="p">;</span>
+      <span class="kn">ssl_certificate_key</span> <span class="s">2_api0.exmaple.com.key</span><span class="p">;</span>
+      <span class="kn">ssl_session_timeout</span> <span class="mi">5m</span><span class="p">;</span>
+      <span class="kn">ssl_protocols</span> <span class="s">TLSv1</span> <span class="s">TLSv1.1</span> <span class="s">TLSv1.2</span><span class="p">;</span>
+      <span class="kn">ssl_ciphers</span> <span class="s">ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE</span><span class="p">;</span>
+      <span class="kn">ssl_prefer_server_ciphers</span> <span class="no">on</span><span class="p">;</span>
 
-      proxy_set_header X-Real-IP $remote_addr;
-      proxy_set_header Host $host;
+      <span class="kn">proxy_set_header</span> <span class="s">X-Real-IP</span> <span class="nv">$remote_addr</span><span class="p">;</span>
+      <span class="kn">proxy_set_header</span> <span class="s">Host</span> <span class="nv">$host</span><span class="p">;</span>
 
-      client_max_body_size 100M;
+      <span class="kn">client_max_body_size</span> <span class="mi">100M</span><span class="p">;</span>
 
-      location / {
-        proxy_pass http://127.0.0.1:8888;
-      }
-  }
+      <span class="kn">location</span> <span class="n">/</span> <span class="p">{</span>
+        <span class="kn">proxy_pass</span> <span class="s">http://127.0.0.1:8888</span><span class="p">;</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
 </code></pre></div>      </div>
 
       <p>负载均衡</p>
 
-      <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>  upstream java_prod_server {
-    server 127.0.0.1:8880;
-    server 127.0.0.1:8881;
-  }
+      <div class="language-nginx highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="k">upstream</span> <span class="s">java_prod_server</span> <span class="p">{</span>
+    <span class="kn">server</span> <span class="nf">127.0.0.1</span><span class="p">:</span><span class="mi">8880</span><span class="p">;</span>
+    <span class="kn">server</span> <span class="nf">127.0.0.1</span><span class="p">:</span><span class="mi">8881</span><span class="p">;</span>
+  <span class="p">}</span>
 </code></pre></div>      </div>
 
       <p>重定向</p>
 
-      <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>  server {
-    listen 80;
+      <div class="language-nginx highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="k">server</span> <span class="p">{</span>
+    <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
 
-    server_name admin.exmaple.com;
+    <span class="kn">server_name</span> <span class="s">admin.exmaple.com</span><span class="p">;</span>
 
-    return 301 https://admin.exmaple.com$request_uri;
-  }
+    <span class="kn">return</span> <span class="mi">301</span> <span class="s">https://admin.exmaple.com</span><span class="nv">$request_uri</span><span class="p">;</span>
+  <span class="p">}</span>
 </code></pre></div>      </div>
 
       <p>Nginx的简单鉴权</p>
 
       <p><a href="https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-http-basic-authentication/" target="_blank" rel="noopener noreferrer">Ref</a></p>
 
-      <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>  sudo yum install httpd-tools
-  sudo htpasswd -c /etc/nginx/.htpasswd user1
-  cat /etc/nginx/.htpasswd
+      <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="nb">sudo </span>yum <span class="nb">install </span>httpd-tools
+  <span class="nb">sudo </span>htpasswd <span class="nt">-c</span> /etc/nginx/.htpasswd user1
+  <span class="nb">cat</span> /etc/nginx/.htpasswd
 
   Nginx 中的配置
-  location /api {
-      auth_basic           "admin area";
-      auth_basic_user_file /etc/nginx/.htpasswd;
-  }
+  location /api <span class="o">{</span>
+      auth_basic           <span class="s2">"admin area"</span><span class="p">;</span>
+      auth_basic_user_file /etc/nginx/.htpasswd<span class="p">;</span>
+  <span class="o">}</span>
 </code></pre></div>      </div>
 
     </details>
@@ -230,32 +230,32 @@ YouName <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)
   <li>
     <p>建议设置晚上定时重启对应 gitlab 服务, gitlab 经常有内存泄漏问题, <a href="https://crontab.guru/#0_*_*_*" target="_blank" rel="noopener noreferrer">定时重启</a> 是最简单粗暴的方式</p>
 
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>   sudo crontab -e
-   # 设置每天凌晨4点的时候重启 gitlab
-   0 4 * * * docker restart gitlab_gitlab_1
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>   <span class="nb">sudo </span>crontab <span class="nt">-e</span>
+   <span class="c"># 设置每天凌晨4点的时候重启 gitlab</span>
+   0 4 <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> docker restart gitlab_gitlab_1
 </code></pre></div>    </div>
   </li>
 </ol>
 
 <p>需要更改的配置</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TZ=Asia/Shanghai
-GITLAB_TIMEZONE=Asia/Shanghai
-GITLAB_HOST=gitlab.youDomain.com
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">TZ=Asia/Shanghai</span>
+<span class="s">GITLAB_TIMEZONE=Asia/Shanghai</span>
+<span class="s">GITLAB_HOST=gitlab.youDomain.com</span>
 
-GITLAB_ROOT_PASSWORD=password!1234
-GITLAB_ROOT_EMAIL=youEmail
+<span class="s">GITLAB_ROOT_PASSWORD=password!1234</span>
+<span class="s">GITLAB_ROOT_EMAIL=youEmail</span>
 
-SMTP_ENABLED=true
-SMTP_DOMAIN=youDomain.com
-SMTP_HOST=smtp.ym.163.com
-SMTP_PORT=25
-SMTP_USER=noreply@youDomain.com
-SMTP_PASS=youDomainPsw
-SMTP_STARTTLS=true
-SMTP_TLS=false
-SMTP_AUTHENTICATION=plain
+<span class="s">SMTP_ENABLED=true</span>
+<span class="s">SMTP_DOMAIN=youDomain.com</span>
+<span class="s">SMTP_HOST=smtp.ym.163.com</span>
+<span class="s">SMTP_PORT=25</span>
+<span class="s">SMTP_USER=noreply@youDomain.com</span>
+<span class="s">SMTP_PASS=youDomainPsw</span>
+<span class="s">SMTP_STARTTLS=true</span>
+<span class="s">SMTP_TLS=false</span>
+<span class="s">SMTP_AUTHENTICATION=plain</span>
 </code></pre></div></div>
 
 <p>下面是 CI 的配置例子</p>
@@ -271,31 +271,31 @@ SMTP_AUTHENTICATION=plain
 
 <hr data-content=" node ">
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>stages:
-  - prod-build
-  - prod-deploy
-variables:
-  BUILD_MACHINE_IP: 172.21.x.x
-cache:
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-    - node_modules/
-prod-build:
-  stage: prod-build
-  tags:
-    - adminBuild
-  script:
-    - npm install --registry=https://registry.npm.taobao.org
-    - npm run build:prod
-    - mkdir -p /var/www/site/admin_prod
-    - cp -rf $PWD/dist/** /var/www/site/admin_prod
-prod-deploy:
-  tags:
-    - prod
-  stage: prod-deploy
-  when: manual
-  script:
-    - scp -Cr youName@$BUILD_MACHINE_IP:/var/www/site/admin_prod /var/www/site/
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">stages</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">prod-build</span>
+  <span class="pi">-</span> <span class="s">prod-deploy</span>
+<span class="na">variables</span><span class="pi">:</span>
+  <span class="na">BUILD_MACHINE_IP</span><span class="pi">:</span> <span class="s">172.21.x.x</span>
+<span class="na">cache</span><span class="pi">:</span>
+  <span class="na">key</span><span class="pi">:</span> <span class="s">${CI_COMMIT_REF_SLUG}</span>
+  <span class="na">paths</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">node_modules/</span>
+<span class="na">prod-build</span><span class="pi">:</span>
+  <span class="na">stage</span><span class="pi">:</span> <span class="s">prod-build</span>
+  <span class="na">tags</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">adminBuild</span>
+  <span class="na">script</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">npm install --registry=https://registry.npm.taobao.org</span>
+    <span class="pi">-</span> <span class="s">npm run build:prod</span>
+    <span class="pi">-</span> <span class="s">mkdir -p /var/www/site/admin_prod</span>
+    <span class="pi">-</span> <span class="s">cp -rf $PWD/dist/** /var/www/site/admin_prod</span>
+<span class="na">prod-deploy</span><span class="pi">:</span>
+  <span class="na">tags</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">prod</span>
+  <span class="na">stage</span><span class="pi">:</span> <span class="s">prod-deploy</span>
+  <span class="na">when</span><span class="pi">:</span> <span class="s">manual</span>
+  <span class="na">script</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">scp -Cr youName@$BUILD_MACHINE_IP:/var/www/site/admin_prod /var/www/site/</span>
 </code></pre></div></div>
 
 <h4 id="其他">
@@ -333,9 +333,9 @@ prod-deploy:
   <li><a href="https://github.com/jl-borges/maker/blob/main/redis/docker-compose.yml" target="_blank" rel="noopener noreferrer">Redis</a></li>
   <li>
 <a href="https://github.com/jl-borges/docker-elk" target="_blank" rel="noopener noreferrer">ELK</a>
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>  curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.12.1-x86_64.rpm
-  sudo rpm -vi filebeat-7.12.1-x86_64.rpm
+    <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  curl <span class="nt">-L</span> <span class="nt">-O</span> https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.12.1-x86_64.rpm
+  <span class="nb">sudo </span>rpm <span class="nt">-vi</span> filebeat-7.12.1-x86_64.rpm
 </code></pre></div>    </div>
   </li>
   <li>Kafak, TODO</li>

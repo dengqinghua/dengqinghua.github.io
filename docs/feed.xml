@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-08-30T18:25:18+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-08-31T14:52:01+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
 </subtitle><author><name>dengqinghua</name></author><entry><title type="html">Folsom Blues</title><link href="https://dengqinghua.github.io/folsom-blues.html" rel="alternate" type="text/html" title="Folsom Blues" /><published>2021-08-29T00:00:00+08:00</published><updated>2021-08-29T00:00:00+08:00</updated><id>https://dengqinghua.github.io/folsom-blues</id><content type="html" xml:base="https://dengqinghua.github.io/folsom-blues.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
 
 &lt;ul&gt;
@@ -447,9 +447,7 @@ graph TB
     bb --&amp;gt; cc
 &lt;/div&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;余弦相似度计算, 计算向量和向量之间的距离&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;余弦相似度计算, 计算向量和向量之间的距离&lt;/p&gt;
 
 &lt;p&gt;优点：&lt;/p&gt;
 &lt;ul&gt;
@@ -650,25 +648,31 @@ graph LR;
   &lt;li&gt;&lt;a href=&quot;https://medium.com/@tyy.sh/in-app-purchase-%E6%80%BB%E7%BB%93-e8a88a54d8d9&quot;&gt;IAP&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://ifumei.cc/2019/12/24/iospay/&quot;&gt;springboot接入苹果内购&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://developer.apple.com/documentation/storekit/original_api_for_in-app_purchase/validating_receipts_with_the_app_store&quot;&gt;苹果校验流程&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">sequenceDiagram autonumber participant sdk as iOS SDK participant b as Backend participant as as Apple Service sdk-&amp;gt;&amp;gt;b: 获取商品列表 b--&amp;gt;&amp;gt;sdk: 从后台获取商品id和对应展示的图片文案信息 sdk-&amp;gt;&amp;gt;b: 根据商品id 生成/获取预订单 Note right of sdk: 需要先去查一下这个用户在商品id下之前是不是有未完成的订单 b--&amp;gt;&amp;gt;sdk: 返回 订单sid sdk-&amp;gt;&amp;gt;as: 发起真实的支付 as--&amp;gt;&amp;gt;sdk: 用户支付, 苹果返回票据信息(receipt-data)如果苹果未返回, 则在 App 启动的时候返回 sdk-&amp;gt;&amp;gt;b: 提交票据信息和 订单sid 到服务端 Note right of sdk: 这一步容易丢单, 如何解决? 因为苹果容易丢失掉订单sid 需要取未完成的一条 b-&amp;gt;&amp;gt;as: 验证票据信息 as--&amp;gt;&amp;gt;b: 验证成功/失败 b--&amp;gt;&amp;gt;sdk: 修改订单状态, 并通知SDK支付成功或失败 sdk--&amp;gt;&amp;gt;as: 成功则将订单进行关闭</summary></entry><entry><title type="html">ease backend from 0 to 1</title><link href="https://dengqinghua.github.io/3-month-sharing.html" rel="alternate" type="text/html" title="ease backend from 0 to 1" /><published>2021-07-26T00:00:00+08:00</published><updated>2021-07-26T00:00:00+08:00</updated><id>https://dengqinghua.github.io/3-month-sharing</id><content type="html" xml:base="https://dengqinghua.github.io/3-month-sharing.html">&lt;p&gt;该部分为后端团队(2人) 从0到1 搭建的一套架构体系。&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">sequenceDiagram autonumber participant sdk as iOS SDK participant b as Backend participant as as Apple Service sdk-&amp;gt;&amp;gt;b: 获取商品列表 b--&amp;gt;&amp;gt;sdk: 从后台获取商品id和对应展示的图片文案信息 sdk-&amp;gt;&amp;gt;b: 根据商品id 生成/获取预订单 Note right of sdk: 需要先去查一下这个用户在商品id下之前是不是有未完成的订单 b--&amp;gt;&amp;gt;sdk: 返回 订单sid sdk-&amp;gt;&amp;gt;as: 发起真实的支付 as--&amp;gt;&amp;gt;sdk: 用户支付, 苹果返回票据信息(receipt-data)如果苹果未返回, 则在 App 启动的时候返回 sdk-&amp;gt;&amp;gt;b: 提交票据信息和 订单sid 到服务端 Note right of sdk: 这一步容易丢单, 如何解决? 因为苹果容易丢失掉订单sid 需要取未完成的一条 b-&amp;gt;&amp;gt;as: 验证票据信息 as--&amp;gt;&amp;gt;b: 验证成功/失败 b--&amp;gt;&amp;gt;sdk: 修改订单状态, 并通知SDK支付成功或失败 sdk--&amp;gt;&amp;gt;as: 成功则将订单进行关闭</summary></entry><entry><title type="html">ease backend from 0 to 1</title><link href="https://dengqinghua.github.io/3-month-sharing.html" rel="alternate" type="text/html" title="ease backend from 0 to 1" /><published>2021-07-26T00:00:00+08:00</published><updated>2021-07-26T00:00:00+08:00</updated><id>https://dengqinghua.github.io/3-month-sharing</id><content type="html" xml:base="https://dengqinghua.github.io/3-month-sharing.html">&lt;p&gt;该部分为后端团队 (2人) 从0 到 1 搭建的一套架构体系。&lt;/p&gt;
 
-&lt;p&gt;由于公司和团队的整体规模不大，从业务的发展和业务的复杂度来说 ，
-应选择&lt;strong&gt;快速部署，成本(机器/运维和部署)低，依赖少，稳定性高&lt;/strong&gt;的架构。&lt;/p&gt;
+&lt;blockquote&gt;
+
+  &lt;p&gt;由于公司和团队的整体规模不大，从业务的发展和业务的复杂度来说，
+应选择 &lt;strong&gt;快速部署，成本(机器/运维和部署)低，依赖少，稳定性高&lt;/strong&gt; 的架构。&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;这里的架构主要由三部分构成&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Devops；基于 gitlab CI/CD 轻量级Devops, 可实现完整的快速部署，扩容的操作&lt;/li&gt;
-  &lt;li&gt;业务；前后端分离，后端使用 BFF + Microservice 的架构，前端使用 React 技术栈&lt;/li&gt;
-  &lt;li&gt;中间件；选择比较稳定的中间件，如 MySQL，Redis 和 ES 等。&lt;/li&gt;
+  &lt;li&gt;Devops 基于 gitlab CI/CD 轻量级Devops, 可实现完整的快速部署，扩容的操作&lt;/li&gt;
+  &lt;li&gt;业务 前后端分离，后端使用 BFF + Microservice 的架构，前端使用 React 技术栈&lt;/li&gt;
+  &lt;li&gt;中间件 选择比较稳定的中间件，如 MySQL，Redis 和 ES 等。&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;从成本问题上考虑，大多数的中间件都是购买的，会根据现有的业务情况选择不同类型的中间件&lt;/p&gt;
 
 &lt;h2 id=&quot;架构&quot;&gt;架构&lt;/h2&gt;
+&lt;div style=&quot;width: 640px; height: 480px; margin: 5px; position: relative;&quot;&gt;
+  &lt;iframe allowfullscreen=&quot;&quot; frameborder=&quot;0&quot; style=&quot;width:640px; height:480px&quot; src=&quot;https://lucid.app/documents/embeddedchart/83d28533-b9d0-4763-8856-2e35a98dfb7c&quot; id=&quot;YLa9QOnOcl0V&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
 
 &lt;div class=&quot;mermaid&quot;&gt;
-graph TB;
+graph LR;
     arch([Ease 后端架构]);
     op([Devops]);
     op1(gitlab CI/CD)
@@ -1144,7 +1148,7 @@ graph TB;
     style op14 fill:#f96f,stroke-dasharray: 5 5
     style op15 fill:#f96f,stroke-dasharray: 5 5
     style op3 fill:#f96f,stroke-dasharray: 5 5
-&lt;/div&gt;</content><author><name>dengqinghua</name></author><summary type="html">该部分为后端团队(2人) 从0到1 搭建的一套架构体系。</summary></entry><entry><title type="html">晋升指南笔记</title><link href="https://dengqinghua.github.io/learn-how-to-promote.html" rel="alternate" type="text/html" title="晋升指南笔记" /><published>2021-07-14T00:00:00+08:00</published><updated>2021-07-14T00:00:00+08:00</updated><id>https://dengqinghua.github.io/learn-how-to-promote</id><content type="html" xml:base="https://dengqinghua.github.io/learn-how-to-promote.html">&lt;h2 id=&quot;comd-能力模型&quot;&gt;COMD 能力模型&lt;/h2&gt;
+&lt;/div&gt;</content><author><name>dengqinghua</name></author><summary type="html">该部分为后端团队 (2人) 从0 到 1 搭建的一套架构体系。</summary></entry><entry><title type="html">晋升指南笔记</title><link href="https://dengqinghua.github.io/learn-how-to-promote.html" rel="alternate" type="text/html" title="晋升指南笔记" /><published>2021-07-14T00:00:00+08:00</published><updated>2021-07-14T00:00:00+08:00</updated><id>https://dengqinghua.github.io/learn-how-to-promote</id><content type="html" xml:base="https://dengqinghua.github.io/learn-how-to-promote.html">&lt;h2 id=&quot;comd-能力模型&quot;&gt;COMD 能力模型&lt;/h2&gt;
 &lt;p&gt;COMD, aka, Complexity-Oriented Multi-Dimension 多维度 + 复杂度&lt;/p&gt;
 
 &lt;ol&gt;

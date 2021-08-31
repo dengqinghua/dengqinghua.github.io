@@ -88,7 +88,7 @@ sudo systemctl enable filebeat.service
 
     SSL
 
-    ```
+    ```nginx
     server {
         listen 443 ssl;
 
@@ -114,7 +114,7 @@ sudo systemctl enable filebeat.service
 
     负载均衡
 
-    ```
+    ```nginx
     upstream java_prod_server {
       server 127.0.0.1:8880;
       server 127.0.0.1:8881;
@@ -123,7 +123,7 @@ sudo systemctl enable filebeat.service
 
     重定向
 
-    ```
+    ```nginx
     server {
       listen 80;
 
@@ -137,7 +137,7 @@ sudo systemctl enable filebeat.service
 
     [Ref](https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-http-basic-authentication/)
 
-    ```
+    ```bash
     sudo yum install httpd-tools
     sudo htpasswd -c /etc/nginx/.htpasswd user1
     cat /etc/nginx/.htpasswd
@@ -158,7 +158,7 @@ sudo systemctl enable filebeat.service
 1. 注意，需要配置服务器的 swap, 见这里 [SWAP](https://docs.gitlab.com/omnibus/settings/memory_constrained_envs.html)
 2. 建议设置晚上定时重启对应 gitlab 服务, gitlab 经常有内存泄漏问题, [定时重启](https://crontab.guru/#0_*_*_*) 是最简单粗暴的方式
 
-      ```
+      ```bash
       sudo crontab -e
       # 设置每天凌晨4点的时候重启 gitlab
       0 4 * * * docker restart gitlab_gitlab_1
@@ -167,7 +167,7 @@ sudo systemctl enable filebeat.service
 需要更改的配置
 
 
-```
+```yml
 TZ=Asia/Shanghai
 GITLAB_TIMEZONE=Asia/Shanghai
 GITLAB_HOST=gitlab.youDomain.com
@@ -199,7 +199,7 @@ SMTP_AUTHENTICATION=plain
 --------
 {: data-content=" node " }
 
-```
+```yml
 stages:
   - prod-build
   - prod-deploy
@@ -250,7 +250,7 @@ prod-deploy:
 - [MySQL](https://github.com/jl-borges/maker/blob/main/mysql/docker-compose.yml)
 - [Redis](https://github.com/jl-borges/maker/blob/main/redis/docker-compose.yml)
 - [ELK](https://github.com/jl-borges/docker-elk)
-    ```
+    ```bash
     curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.12.1-x86_64.rpm
     sudo rpm -vi filebeat-7.12.1-x86_64.rpm
     ```
