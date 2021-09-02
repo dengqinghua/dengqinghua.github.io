@@ -19,8 +19,6 @@ title: ease backend from 0 to 1
 从成本问题上考虑，大多数的中间件都是购买的，会根据现有的业务情况选择不同类型的中间件
 
 ## 架构
-![aaa](https://lucid.app/publicSegments/view/0df2d560-1ba3-4d8d-b2fd-c648a6dc77bf/image.png)
-
 <div class="mermaid" markdown="0">
 graph LR;
     arch([Ease 后端架构]);
