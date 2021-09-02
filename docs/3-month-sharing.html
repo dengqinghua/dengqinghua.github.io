@@ -4,11 +4,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>ease backend from 0 to 1</title>
+  <title>从 0 到 1 搭建 ease 后端服务</title>
 
   <!-- Begin Jekyll SEO tag v2.6.1 -->
 <meta name="generator" content="Jekyll v3.8.7" />
-<meta property="og:title" content="ease backend from 0 to 1" />
+<meta property="og:title" content="从 0 到 1 搭建 ease 后端服务" />
 <meta name="author" content="dengqinghua" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="该部分为后端团队 (2人) 从0 到 1 搭建的一套架构体系。" />
@@ -19,7 +19,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-07-26T00:00:00+08:00" />
 <script type="application/ld+json">
-{"headline":"ease backend from 0 to 1","dateModified":"2021-07-26T00:00:00+08:00","datePublished":"2021-07-26T00:00:00+08:00","url":"https://dengqinghua.github.io/3-month-sharing.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://dengqinghua.github.io/3-month-sharing.html"},"author":{"@type":"Person","name":"dengqinghua"},"description":"该部分为后端团队 (2人) 从0 到 1 搭建的一套架构体系。","@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"headline":"从 0 到 1 搭建 ease 后端服务","dateModified":"2021-07-26T00:00:00+08:00","datePublished":"2021-07-26T00:00:00+08:00","url":"https://dengqinghua.github.io/3-month-sharing.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://dengqinghua.github.io/3-month-sharing.html"},"author":{"@type":"Person","name":"dengqinghua"},"description":"该部分为后端团队 (2人) 从0 到 1 搭建的一套架构体系。","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <link type="application/atom+xml" rel="alternate" href="https://dengqinghua.github.io/feed.xml" title="Dengqinghua.42" />
@@ -44,7 +44,7 @@
     <time datetime="2021-07-26 00:00:00 +0800">2021-07-26</time>
   </p>
   
-  <h1>ease backend from 0 to 1</h1>
+  <h1>从 0 到 1 搭建 ease 后端服务</h1>
 
   <ul id="toc" class="section-nav">
 <li class="toc-entry toc-h2">
@@ -133,7 +133,7 @@ graph LR;
     sys2(BI);
     sys3(MySQL);
     sys4(Redis);
-    sys5(队列);
+    sys5(Pulsa队列);
     arch--&gt;op &amp; biz &amp; sys;
     op--&gt;op1 &amp; op2 &amp; op3;
     op1--&gt;op11 &amp; op12 &amp; op13;
@@ -161,15 +161,15 @@ graph LR;
     style sys2 fill:#f96f,stroke:#333,stroke-width:4px
     style sys3 fill:#f96f,stroke:#333,stroke-width:4px
     style sys4 fill:#f96f,stroke:#333,stroke-width:4px
+    style sys5 fill:#f96f,stroke:#333,stroke-width:4px
 
     style op3 fill:#f96f,stroke-dasharray: 5 5
-    style sys5 fill:#f96f,stroke-dasharray: 5 5
 </div>
 
 <h3 id="devops">
 <a class="anchor" href="#devops" aria-hidden="true"><span class="octicon octicon-link"></span></a>Devops</h3>
 <div class="mermaid">
-graph TB;
+graph LR;
     op([Devops]);
     op1(gitlab CI/CD)
     op11(自动部署)
@@ -289,7 +289,7 @@ swap
 <h3 id="业务">
 <a class="anchor" href="#%E4%B8%9A%E5%8A%A1" aria-hidden="true"><span class="octicon octicon-link"></span></a>业务</h3>
 <div class="mermaid">
-graph TB;
+graph LR;
     biz([业务]);
     biz1(Java);
     biz11(BFF <br>App);
@@ -317,7 +317,7 @@ graph TB;
 <p>BFF 层为流量入口, 主要处理 鉴权，参数校验，拼装 microservice 接口中需要的参数，并聚合各个 microservice 的返回结果, 一般来说，我们的缓存也会放在 BFF 层</p>
 
 <div class="mermaid">
-graph TB;
+graph LR;
     biz1(首页为你接口 <br>/tag/media/group/v2/forYou);
     check(校验参数 获取用户id);
     biz11(内容<br>单曲 合集 Q&amp;E 老师等);
@@ -334,7 +334,7 @@ graph TB;
 <h3 id="中间件">
 <a class="anchor" href="#%E4%B8%AD%E9%97%B4%E4%BB%B6" aria-hidden="true"><span class="octicon octicon-link"></span></a>中间件</h3>
 <div class="mermaid">
-graph TB;
+graph LR;
     sys([中间件]);
     sys0(Nginx);
     sys00(HTTPS);
@@ -347,7 +347,7 @@ graph TB;
     sys2(BI/大数据);
     sys3(MySQL);
     sys4(Redis);
-    sys5(队列);
+    sys5(Pulsa队列);
     sys--&gt;sys0 &amp; sys1 &amp; sys2 &amp; sys3 &amp; sys4 &amp; sys5;
     sys0--&gt;sys00 &amp; sys01 &amp; sys02 &amp; sys03;
     sys1--&gt;sys11 &amp; sys12;
@@ -500,28 +500,28 @@ what is ELK?
           <summary>
 eg
 </summary>
-          <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>input { beats { port =&gt; 5044 } tcp { port =&gt; 5000 } }
+          <div class="language-ruby highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="n">input</span> <span class="p">{</span> <span class="n">beats</span> <span class="p">{</span> <span class="n">port</span> <span class="o">=&gt;</span> <span class="mi">5044</span> <span class="p">}</span> <span class="n">tcp</span> <span class="p">{</span> <span class="n">port</span> <span class="o">=&gt;</span> <span class="mi">5000</span> <span class="p">}</span> <span class="p">}</span>
 
-filter {
-  grok {
-    match =&gt; { "message" =&gt; ['%{TIMESTAMP_ISO8601:reqTime}  %{GREEDYDATA} %{URIPATH:reqUri}, %{GREEDYDATA}time cost = %{NUMBER:reqCostMs} ms'] }
-  }
-  mutate {
-    convert =&gt; { "reqCostMs" =&gt; "integer" }
-  }
-  date {
-    match =&gt; [ "reqTime", "ISO8601", "YYYY-MM-dd HH:mm:ss", "YYYY-MM-dd HH:mm:ss.ZZZ" ]
-      target =&gt; "reqTime"
-      locale =&gt; "en"
-  }
-}
-output {
-  elasticsearch {
-    hosts =&gt; "172.21.16.2:9200"
-      ecs_compatibility =&gt; disabled
-  }
-}
+<span class="n">filter</span> <span class="p">{</span>
+  <span class="n">grok</span> <span class="p">{</span>
+    <span class="n">match</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">"message"</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'%{TIMESTAMP_ISO8601:reqTime}  %{GREEDYDATA} %{URIPATH:reqUri}, %{GREEDYDATA}time cost = %{NUMBER:reqCostMs} ms'</span><span class="p">]</span> <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="n">mutate</span> <span class="p">{</span>
+    <span class="n">convert</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">"reqCostMs"</span> <span class="o">=&gt;</span> <span class="s2">"integer"</span> <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="n">date</span> <span class="p">{</span>
+    <span class="n">match</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">"reqTime"</span><span class="p">,</span> <span class="s2">"ISO8601"</span><span class="p">,</span> <span class="s2">"YYYY-MM-dd HH:mm:ss"</span><span class="p">,</span> <span class="s2">"YYYY-MM-dd HH:mm:ss.ZZZ"</span> <span class="p">]</span>
+      <span class="n">target</span> <span class="o">=&gt;</span> <span class="s2">"reqTime"</span>
+      <span class="n">locale</span> <span class="o">=&gt;</span> <span class="s2">"en"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">output</span> <span class="p">{</span>
+  <span class="n">elasticsearch</span> <span class="p">{</span>
+    <span class="n">hosts</span> <span class="o">=&gt;</span> <span class="s2">"172.21.16.2:9200"</span>
+      <span class="n">ecs_compatibility</span> <span class="o">=&gt;</span> <span class="n">disabled</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>          </div>
         </details>
       </li>
@@ -535,13 +535,17 @@ output {
   <li>生产优先
     <ul>
       <li>推荐</li>
+      <li>搜索</li>
       <li>分享</li>
       <li>营销活动</li>
       <li>大数据分析</li>
     </ul>
   </li>
-  <li>
-    <p>服务化</p>
+  <li>服务化
+    <ul>
+      <li>K8S</li>
+      <li>核心 SLO/SLI 统计和监控</li>
+    </ul>
 
     <blockquote>
       <p>只有在业务量起来之后，推荐，大数据，微服务这些才会有意义</p>
@@ -550,7 +554,7 @@ output {
 </ul>
 
 <div class="mermaid">
-graph TB;
+graph LR;
     op([Devops]);
     op1(gitlab CI/CD)
     op10(K8S)

@@ -1,7 +1,8 @@
 ---
 layout: post
+categories: showed
 toc: true
-title: ease backend from 0 to 1
+title: 从 0 到 1 搭建 ease 后端服务
 ---
 
 该部分为后端团队 (2人) 从0 到 1 搭建的一套架构体系。
@@ -59,7 +60,7 @@ graph LR;
     sys2(BI);
     sys3(MySQL);
     sys4(Redis);
-    sys5(队列);
+    sys5(Pulsa队列);
     arch-->op & biz & sys;
     op-->op1 & op2 & op3;
     op1-->op11 & op12 & op13;
@@ -87,14 +88,14 @@ graph LR;
     style sys2 fill:#f96f,stroke:#333,stroke-width:4px
     style sys3 fill:#f96f,stroke:#333,stroke-width:4px
     style sys4 fill:#f96f,stroke:#333,stroke-width:4px
+    style sys5 fill:#f96f,stroke:#333,stroke-width:4px
 
     style op3 fill:#f96f,stroke-dasharray: 5 5
-    style sys5 fill:#f96f,stroke-dasharray: 5 5
 </div>
 
 ### Devops
 <div class="mermaid" markdown="0">
-graph TB;
+graph LR;
     op([Devops]);
     op1(gitlab CI/CD)
     op11(自动部署)
@@ -170,7 +171,7 @@ graph TB;
 
 ### 业务
 <div class="mermaid" markdown="0">
-graph TB;
+graph LR;
     biz([业务]);
     biz1(Java);
     biz11(BFF <br >App);
@@ -197,7 +198,7 @@ BFF, Backend for Frontend
 BFF 层为流量入口, 主要处理 鉴权，参数校验，拼装 microservice 接口中需要的参数，并聚合各个 microservice 的返回结果, 一般来说，我们的缓存也会放在 BFF 层
 
 <div class="mermaid" markdown="0">
-graph TB;
+graph LR;
     biz1(首页为你接口 <br />/tag/media/group/v2/forYou);
     check(校验参数 获取用户id);
     biz11(内容<br >单曲 合集 Q&E 老师等);
@@ -213,7 +214,7 @@ graph TB;
 
 ### 中间件
 <div class="mermaid" markdown="0">
-graph TB;
+graph LR;
     sys([中间件]);
     sys0(Nginx);
     sys00(HTTPS);
@@ -226,7 +227,7 @@ graph TB;
     sys2(BI/大数据);
     sys3(MySQL);
     sys4(Redis);
-    sys5(队列);
+    sys5(Pulsa队列);
     sys-->sys0 & sys1 & sys2 & sys3 & sys4 & sys5;
     sys0-->sys00 & sys01 & sys02 & sys03;
     sys1-->sys11 & sys12;
@@ -351,7 +352,7 @@ beats 收集日志, logstash 处理日志, elasticsearch 存储日志, kibana �
       <summary  markdown="0">
       eg
       </summary>
-      ```
+      ```ruby
       input { beats { port => 5044 } tcp { port => 5000 } }
 
       filter {
@@ -380,15 +381,18 @@ beats 收集日志, logstash 处理日志, elasticsearch 存储日志, kibana �
 ## What the next...
 - 生产优先
   + 推荐
+  + 搜索
   + 分享
   + 营销活动
   + 大数据分析
 - 服务化
+  + K8S
+  + 核心 SLO/SLI 统计和监控
 
   > 只有在业务量起来之后，推荐，大数据，微服务这些才会有意义
 
 <div class="mermaid" markdown="0">
-graph TB;
+graph LR;
     op([Devops]);
     op1(gitlab CI/CD)
     op10(K8S)

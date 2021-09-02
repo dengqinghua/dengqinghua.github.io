@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-09-02T09:54:04+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-09-02T15:39:17+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
 </subtitle><author><name>dengqinghua</name></author><entry><title type="html">Folsom Blues</title><link href="https://dengqinghua.github.io/folsom-blues.html" rel="alternate" type="text/html" title="Folsom Blues" /><published>2021-08-29T00:00:00+08:00</published><updated>2021-08-29T00:00:00+08:00</updated><id>https://dengqinghua.github.io/folsom-blues</id><content type="html" xml:base="https://dengqinghua.github.io/folsom-blues.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
 
 &lt;ul&gt;
@@ -648,7 +648,7 @@ graph LR;
   &lt;li&gt;&lt;a href=&quot;https://medium.com/@tyy.sh/in-app-purchase-%E6%80%BB%E7%BB%93-e8a88a54d8d9&quot;&gt;IAP&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://ifumei.cc/2019/12/24/iospay/&quot;&gt;springboot接入苹果内购&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://developer.apple.com/documentation/storekit/original_api_for_in-app_purchase/validating_receipts_with_the_app_store&quot;&gt;苹果校验流程&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">sequenceDiagram autonumber participant sdk as iOS SDK participant b as Backend participant as as Apple Service sdk-&amp;gt;&amp;gt;b: 获取商品列表 b--&amp;gt;&amp;gt;sdk: 从后台获取商品id和对应展示的图片文案信息 sdk-&amp;gt;&amp;gt;b: 根据商品id 生成/获取预订单 Note right of sdk: 需要先去查一下这个用户在商品id下之前是不是有未完成的订单 b--&amp;gt;&amp;gt;sdk: 返回 订单sid sdk-&amp;gt;&amp;gt;as: 发起真实的支付 as--&amp;gt;&amp;gt;sdk: 用户支付, 苹果返回票据信息(receipt-data)如果苹果未返回, 则在 App 启动的时候返回 sdk-&amp;gt;&amp;gt;b: 提交票据信息和 订单sid 到服务端 Note right of sdk: 这一步容易丢单, 如何解决? 因为苹果容易丢失掉订单sid 需要取未完成的一条 b-&amp;gt;&amp;gt;as: 验证票据信息 as--&amp;gt;&amp;gt;b: 验证成功/失败 b--&amp;gt;&amp;gt;sdk: 修改订单状态, 并通知SDK支付成功或失败 sdk--&amp;gt;&amp;gt;as: 成功则将订单进行关闭</summary></entry><entry><title type="html">ease backend from 0 to 1</title><link href="https://dengqinghua.github.io/3-month-sharing.html" rel="alternate" type="text/html" title="ease backend from 0 to 1" /><published>2021-07-26T00:00:00+08:00</published><updated>2021-07-26T00:00:00+08:00</updated><id>https://dengqinghua.github.io/3-month-sharing</id><content type="html" xml:base="https://dengqinghua.github.io/3-month-sharing.html">&lt;p&gt;该部分为后端团队 (2人) 从0 到 1 搭建的一套架构体系。&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">sequenceDiagram autonumber participant sdk as iOS SDK participant b as Backend participant as as Apple Service sdk-&amp;gt;&amp;gt;b: 获取商品列表 b--&amp;gt;&amp;gt;sdk: 从后台获取商品id和对应展示的图片文案信息 sdk-&amp;gt;&amp;gt;b: 根据商品id 生成/获取预订单 Note right of sdk: 需要先去查一下这个用户在商品id下之前是不是有未完成的订单 b--&amp;gt;&amp;gt;sdk: 返回 订单sid sdk-&amp;gt;&amp;gt;as: 发起真实的支付 as--&amp;gt;&amp;gt;sdk: 用户支付, 苹果返回票据信息(receipt-data)如果苹果未返回, 则在 App 启动的时候返回 sdk-&amp;gt;&amp;gt;b: 提交票据信息和 订单sid 到服务端 Note right of sdk: 这一步容易丢单, 如何解决? 因为苹果容易丢失掉订单sid 需要取未完成的一条 b-&amp;gt;&amp;gt;as: 验证票据信息 as--&amp;gt;&amp;gt;b: 验证成功/失败 b--&amp;gt;&amp;gt;sdk: 修改订单状态, 并通知SDK支付成功或失败 sdk--&amp;gt;&amp;gt;as: 成功则将订单进行关闭</summary></entry><entry><title type="html">从 0 到 1 搭建 ease 后端服务</title><link href="https://dengqinghua.github.io/3-month-sharing.html" rel="alternate" type="text/html" title="从 0 到 1 搭建 ease 后端服务" /><published>2021-07-26T00:00:00+08:00</published><updated>2021-07-26T00:00:00+08:00</updated><id>https://dengqinghua.github.io/3-month-sharing</id><content type="html" xml:base="https://dengqinghua.github.io/3-month-sharing.html">&lt;p&gt;该部分为后端团队 (2人) 从0 到 1 搭建的一套架构体系。&lt;/p&gt;
 
 &lt;blockquote&gt;
 
@@ -707,7 +707,7 @@ graph LR;
     sys2(BI);
     sys3(MySQL);
     sys4(Redis);
-    sys5(队列);
+    sys5(Pulsa队列);
     arch--&amp;gt;op &amp;amp; biz &amp;amp; sys;
     op--&amp;gt;op1 &amp;amp; op2 &amp;amp; op3;
     op1--&amp;gt;op11 &amp;amp; op12 &amp;amp; op13;
@@ -735,14 +735,14 @@ graph LR;
     style sys2 fill:#f96f,stroke:#333,stroke-width:4px
     style sys3 fill:#f96f,stroke:#333,stroke-width:4px
     style sys4 fill:#f96f,stroke:#333,stroke-width:4px
+    style sys5 fill:#f96f,stroke:#333,stroke-width:4px
 
     style op3 fill:#f96f,stroke-dasharray: 5 5
-    style sys5 fill:#f96f,stroke-dasharray: 5 5
 &lt;/div&gt;
 
 &lt;h3 id=&quot;devops&quot;&gt;Devops&lt;/h3&gt;
 &lt;div class=&quot;mermaid&quot;&gt;
-graph TB;
+graph LR;
     op([Devops]);
     op1(gitlab CI/CD)
     op11(自动部署)
@@ -859,7 +859,7 @@ swap
 
 &lt;h3 id=&quot;业务&quot;&gt;业务&lt;/h3&gt;
 &lt;div class=&quot;mermaid&quot;&gt;
-graph TB;
+graph LR;
     biz([业务]);
     biz1(Java);
     biz11(BFF &lt;br /&gt;App);
@@ -886,7 +886,7 @@ graph TB;
 &lt;p&gt;BFF 层为流量入口, 主要处理 鉴权，参数校验，拼装 microservice 接口中需要的参数，并聚合各个 microservice 的返回结果, 一般来说，我们的缓存也会放在 BFF 层&lt;/p&gt;
 
 &lt;div class=&quot;mermaid&quot;&gt;
-graph TB;
+graph LR;
     biz1(首页为你接口 &lt;br /&gt;/tag/media/group/v2/forYou);
     check(校验参数 获取用户id);
     biz11(内容&lt;br /&gt;单曲 合集 Q&amp;amp;E 老师等);
@@ -902,7 +902,7 @@ graph TB;
 
 &lt;h3 id=&quot;中间件&quot;&gt;中间件&lt;/h3&gt;
 &lt;div class=&quot;mermaid&quot;&gt;
-graph TB;
+graph LR;
     sys([中间件]);
     sys0(Nginx);
     sys00(HTTPS);
@@ -915,7 +915,7 @@ graph TB;
     sys2(BI/大数据);
     sys3(MySQL);
     sys4(Redis);
-    sys5(队列);
+    sys5(Pulsa队列);
     sys--&amp;gt;sys0 &amp;amp; sys1 &amp;amp; sys2 &amp;amp; sys3 &amp;amp; sys4 &amp;amp; sys5;
     sys0--&amp;gt;sys00 &amp;amp; sys01 &amp;amp; sys02 &amp;amp; sys03;
     sys1--&amp;gt;sys11 &amp;amp; sys12;
@@ -1058,27 +1058,27 @@ what is ELK?
           &lt;summary&gt;
 eg
 &lt;/summary&gt;
-          &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;input { beats { port =&amp;gt; 5044 } tcp { port =&amp;gt; 5000 } }
+          &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;beats&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5044&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tcp&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5000&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-filter {
-  grok {
-    match =&amp;gt; { &quot;message&quot; =&amp;gt; ['%{TIMESTAMP_ISO8601:reqTime}  %{GREEDYDATA} %{URIPATH:reqUri}, %{GREEDYDATA}time cost = %{NUMBER:reqCostMs} ms'] }
-  }
-  mutate {
-    convert =&amp;gt; { &quot;reqCostMs&quot; =&amp;gt; &quot;integer&quot; }
-  }
-  date {
-    match =&amp;gt; [ &quot;reqTime&quot;, &quot;ISO8601&quot;, &quot;YYYY-MM-dd HH:mm:ss&quot;, &quot;YYYY-MM-dd HH:mm:ss.ZZZ&quot; ]
-      target =&amp;gt; &quot;reqTime&quot;
-      locale =&amp;gt; &quot;en&quot;
-  }
-}
-output {
-  elasticsearch {
-    hosts =&amp;gt; &quot;172.21.16.2:9200&quot;
-      ecs_compatibility =&amp;gt; disabled
-  }
-}
+&lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;grok&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;message&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'%{TIMESTAMP_ISO8601:reqTime}  %{GREEDYDATA} %{URIPATH:reqUri}, %{GREEDYDATA}time cost = %{NUMBER:reqCostMs} ms'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;mutate&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;convert&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;reqCostMs&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;integer&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;reqTime&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ISO8601&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;YYYY-MM-dd HH:mm:ss&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;YYYY-MM-dd HH:mm:ss.ZZZ&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;target&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;reqTime&quot;&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;locale&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;en&quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;elasticsearch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;hosts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;172.21.16.2:9200&quot;&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;ecs_compatibility&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;disabled&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;          &lt;/div&gt;
         &lt;/details&gt;
       &lt;/li&gt;
@@ -1091,13 +1091,17 @@ output {
   &lt;li&gt;生产优先
     &lt;ul&gt;
       &lt;li&gt;推荐&lt;/li&gt;
+      &lt;li&gt;搜索&lt;/li&gt;
       &lt;li&gt;分享&lt;/li&gt;
       &lt;li&gt;营销活动&lt;/li&gt;
       &lt;li&gt;大数据分析&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;服务化&lt;/p&gt;
+  &lt;li&gt;服务化
+    &lt;ul&gt;
+      &lt;li&gt;K8S&lt;/li&gt;
+      &lt;li&gt;核心 SLO/SLI 统计和监控&lt;/li&gt;
+    &lt;/ul&gt;
 
     &lt;blockquote&gt;
       &lt;p&gt;只有在业务量起来之后，推荐，大数据，微服务这些才会有意义&lt;/p&gt;
@@ -1106,7 +1110,7 @@ output {
 &lt;/ul&gt;
 
 &lt;div class=&quot;mermaid&quot;&gt;
-graph TB;
+graph LR;
     op([Devops]);
     op1(gitlab CI/CD)
     op10(K8S)
