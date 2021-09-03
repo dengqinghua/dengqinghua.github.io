@@ -110,10 +110,11 @@ div.highlighter-rouge code {
 }
 
 blockquote {
+  border-radius: 3px;
   font-style: italic;
   background: #f9f9f9;
   border-left: 10px solid #ccc;
-  margin: 1.5em 10px;
+  margin: 10px 0 10px 0px;
   padding: 0.5em 10px;
   quotes: "\201C""""\2018""";
 }
@@ -131,11 +132,6 @@ blockquote:after  {
 }
 blockquote p {
   display: inline;
-}
-
-blockquote {
-  border-radius: 3px;
-  margin: 0;
 }
 
 img {

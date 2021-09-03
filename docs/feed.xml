@@ -1,5 +1,92 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-09-02T15:39:17+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
-</subtitle><author><name>dengqinghua</name></author><entry><title type="html">Folsom Blues</title><link href="https://dengqinghua.github.io/folsom-blues.html" rel="alternate" type="text/html" title="Folsom Blues" /><published>2021-08-29T00:00:00+08:00</published><updated>2021-08-29T00:00:00+08:00</updated><id>https://dengqinghua.github.io/folsom-blues</id><content type="html" xml:base="https://dengqinghua.github.io/folsom-blues.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-09-03T14:48:43+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+</subtitle><author><name>dengqinghua</name></author><entry><title type="html">检索技术学习笔记</title><link href="https://dengqinghua.github.io/all-for-search.html" rel="alternate" type="text/html" title="检索技术学习笔记" /><published>2021-09-01T00:00:00+08:00</published><updated>2021-09-01T00:00:00+08:00</updated><id>https://dengqinghua.github.io/all-for-search</id><content type="html" xml:base="https://dengqinghua.github.io/all-for-search.html">&lt;h2 id=&quot;检索的本质&quot;&gt;检索的本质&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;名称&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;特点&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;按下标查询复杂度&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;更新复杂度&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;缺点&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;数组&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;连续空间存储&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;O(1)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;O(n)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;需要向操作系统申请连续空间, 在频繁修改或者 大数据 的情况下更新效率会比较差&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;链表&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;非连续空间存储&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;O(n)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;O(1)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;检索效率低&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;使用 &lt;strong&gt;二分查找法&lt;/strong&gt; 检索一个值是否存在&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;名称&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;按下标查询复杂度&lt;/th&gt;
+      &lt;th&gt;更新复杂度&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;有序数组&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;O(logn)&lt;/td&gt;
+      &lt;td&gt;O(n)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;有序链表&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;O(n)&lt;/td&gt;
+      &lt;td&gt;O(n)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;这里的 O(n) + O(logn) 是认为等于 O(n)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;检索核心思路&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;有序化&lt;/li&gt;
+  &lt;li&gt;快速减少查询范围(如 二分查找法, 快速过滤掉一半的内容)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;检索维度&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;数据量大小&lt;/li&gt;
+  &lt;li&gt;使用场景(查询/更新)&lt;/li&gt;
+  &lt;li&gt;数据模型本身的存储空间(如 二叉树 和 红黑树 需要存储的元数据的大小不同)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;平衡二叉树&quot;&gt;平衡二叉树&lt;/h2&gt;
+&lt;p&gt;一般来说，我们之前学习的都是先有 二叉树 的概念和特性，再去聊二叉树的 查询/更新 复杂度 等&lt;/p&gt;
+
+&lt;p&gt;这里给了一个很好的思路：&lt;strong&gt;如何让 链表 可以通过 O(logn) 的复杂度 进行 二分查找?&lt;/strong&gt; 答案之一就是 二叉树 的设计&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nc&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nc&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nc&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;二叉树的最坏的情况是形成一个链表，即使有序，查询复杂度也是 O(n) 此时需要改造为二叉平衡树(AVL) 或者 红黑树 等， 本质上来说，是为了让树的左边和右边尽可能的平衡&lt;/p&gt;
+
+&lt;p&gt;AVL 树可以保证高平衡度, 但是 AVL 的节点的更新需要 &lt;strong&gt;多次旋转&lt;/strong&gt;, 并且需要 &lt;strong&gt;保存平衡因子&lt;/strong&gt;(树的高度) 等, 所以一些更新频率高的场景，基本都会使用 红黑树 来作为基础的数据结构&lt;/p&gt;</content><author><name>dengqinghua</name></author><summary type="html">检索的本质</summary></entry><entry><title type="html">Folsom Blues</title><link href="https://dengqinghua.github.io/folsom-blues.html" rel="alternate" type="text/html" title="Folsom Blues" /><published>2021-08-29T00:00:00+08:00</published><updated>2021-08-29T00:00:00+08:00</updated><id>https://dengqinghua.github.io/folsom-blues</id><content type="html" xml:base="https://dengqinghua.github.io/folsom-blues.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
 
 &lt;ul&gt;
   &lt;li&gt;曲谱: &lt;a href=&quot;https://pan.baidu.com/disk/pdfview?path=%2F42%2F%E9%9F%B3%E4%B9%90%2F%E6%95%99%E6%9D%90%2FProGuitar%2FfolsomPrisonBlues%2Femil-ernebro-folsom-prison-blues.pdf&amp;amp;size=128339&amp;amp;fsid=427847537413829&quot;&gt;PDF&lt;/a&gt;&lt;/li&gt;
@@ -248,7 +335,7 @@ graph LR;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;混音&quot;&gt;混音&lt;/h2&gt;
-&lt;p&gt;LogicPro&lt;/p&gt;</content><author><name>dengqinghua</name></author><summary type="html">如何提高录音的效率？多练习基本功，提高专注度，多听，多感受…</summary></entry><entry><title type="html">推荐系统 Notes</title><link href="https://dengqinghua.github.io/recommend-sys.html" rel="alternate" type="text/html" title="推荐系统 Notes" /><published>2021-07-29T00:00:00+08:00</published><updated>2021-07-29T00:00:00+08:00</updated><id>https://dengqinghua.github.io/recommend-sys</id><content type="html" xml:base="https://dengqinghua.github.io/recommend-sys.html">&lt;h2 id=&quot;基本方式&quot;&gt;基本方式&lt;/h2&gt;
+&lt;p&gt;LogicPro&lt;/p&gt;</content><author><name>dengqinghua</name></author><summary type="html">如何提高录音的效率？多练习基本功，提高专注度，多听，多感受…</summary></entry><entry><title type="html">推荐系统学习笔记</title><link href="https://dengqinghua.github.io/recommend-sys.html" rel="alternate" type="text/html" title="推荐系统学习笔记" /><published>2021-07-29T00:00:00+08:00</published><updated>2021-07-29T00:00:00+08:00</updated><id>https://dengqinghua.github.io/recommend-sys</id><content type="html" xml:base="https://dengqinghua.github.io/recommend-sys.html">&lt;h2 id=&quot;基本方式&quot;&gt;基本方式&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
@@ -1918,56 +2005,4 @@ graph TD;
   &lt;li&gt;多弹弹有趣的曲子&lt;/li&gt;
   &lt;li&gt;多听听不同风格的曲子&lt;/li&gt;
   &lt;li&gt;经常录一小段, 30s以内, 保持录音的感觉&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html">录音</summary></entry><entry><title type="html">Rust 学习笔记</title><link href="https://dengqinghua.github.io/rust-learning.html" rel="alternate" type="text/html" title="Rust 学习笔记" /><published>2021-05-10T00:00:00+08:00</published><updated>2021-05-10T00:00:00+08:00</updated><id>https://dengqinghua.github.io/rust-learning</id><content type="html" xml:base="https://dengqinghua.github.io/rust-learning.html">&lt;h2 id=&quot;词汇&quot;&gt;词汇&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;crate, a collection of Rust source code files&lt;/li&gt;
-  &lt;li&gt;immutable varibale, immutable by default&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;shadowing, mutable varibales can be shadowed&lt;/p&gt;
-
-    &lt;details&gt;
-      &lt;summary&gt;
-eg.
-&lt;/summary&gt;
-      &lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;      &lt;/div&gt;
-    &lt;/details&gt;
-  &lt;/li&gt;
-  &lt;li&gt;scalar types, integers, floating-point numbers, booleans and characters&lt;/li&gt;
-  &lt;li&gt;two’s complement wrapping. i8 when 256 -&amp;gt; 0&lt;/li&gt;
-  &lt;li&gt;turple and array. turple is a multi types data source with fixed length like array&lt;/li&gt;
-  &lt;li&gt;(), an empty tuple&lt;/li&gt;
-  &lt;li&gt;ownership, make memory safely guarantees&lt;/li&gt;
-  &lt;li&gt;mutation only once, can prevent data races at compile time
-    &lt;ul&gt;
-      &lt;li&gt;
-        &lt;p&gt;borrow as immutable, should not used after borrowed as mutable&lt;/p&gt;
-
-        &lt;details&gt;
-          &lt;summary&gt;
-why?
-&lt;/summary&gt;
-          &lt;p&gt;data race reason:&lt;/p&gt;
-
-          &lt;ul&gt;
-            &lt;li&gt;Two or more pointers access the same data at the same time.&lt;/li&gt;
-            &lt;li&gt;At least one of the pointers is being used to write to the data.&lt;/li&gt;
-            &lt;li&gt;There’s no mechanism being used to synchronize access to the data.&lt;/li&gt;
-          &lt;/ul&gt;
-        &lt;/details&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;reference rule
-    &lt;ul&gt;
-      &lt;li&gt;any given time, you can have either one mutable ref or any number of immutable refs&lt;/li&gt;
-      &lt;li&gt;refs must always be valid (no dangling refs)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;all things are private by default&lt;/li&gt;
-  &lt;li&gt;package -&amp;gt; crate(executable binary) -&amp;gt; module&lt;/li&gt;
-  &lt;li&gt;deref coercion, turn &amp;amp;s2 to &amp;amp;s2[..]&lt;/li&gt;
-  &lt;li&gt;trait, interface like&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">词汇</summary></entry></feed>
+&lt;/ol&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html">录音</summary></entry></feed>

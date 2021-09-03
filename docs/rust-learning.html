@@ -27,12 +27,15 @@
   <link rel="shortcut icon" type="image/x-icon" href="/logo.png" />
   <link rel="stylesheet" href="/assets/css/main.css" />
   <link rel="stylesheet" href="/assets/css/zoom.css" />
+  <link rel="stylesheet" href="/assets/css/gitalk.css" />
   <link rel="stylesheet" href="/assets/css/syntax.css" />
   <script src="assets/js/mermaid.min.js"></script>
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/zoom.min.js"></script>
   <script src="assets/js/zoom_init.js"></script>
   <script src="assets/js/mermaid_config.js"></script>
+  <script src="assets/js/gitalk.min.js"></script>
+  <script src="assets/js/gitalk_init.js"></script>
 </head>
 <body a="light">
     <main class="page-content" aria-label="Content">
@@ -102,6 +105,13 @@ why?
 </ul>
 
 </article>
+
+<div id="comment"></div>
+<script>
+  gitalk.render('comment');
+</script>
+
+
 
       </div>
     </main>

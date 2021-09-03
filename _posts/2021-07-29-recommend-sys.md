@@ -2,7 +2,7 @@
 layout: post
 categories: showed note
 toc: true
-title: 推荐系统 Notes
+title: 推荐系统学习笔记
 ---
 
 ## 基本方式
