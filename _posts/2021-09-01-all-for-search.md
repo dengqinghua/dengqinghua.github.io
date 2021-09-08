@@ -6,46 +6,91 @@ title: 检索技术学习笔记
 ---
 
 ## 检索的本质
+需要关注下面几点
 
-| 名称 | 特点 | 按下标查询复杂度 | 更新复杂度 | 缺点 |
-| :-------------: | :-------------: | :-------------: | :-------------: | :-------------: |
-| 数组 | 连续空间存储 | O(1) | O(n) | 需要向操作系统申请连续空间, 在频繁修改或者 大数据 的情况下更新效率会比较差 |
-| 链表 | 非连续空间存储 | O(n) | O(1) | 检索效率低 |
+- 快速的缩小检索范围
+    + 二分查找法, 缩小一半
+    + 跳表, 跳动步长 > 1
+    + B/B+树, 以磁盘片为步长，一次过滤掉一个(4K)或者多个快
+    + 位图/Hash/布隆过滤器, 利用概率/数组下标 快速寻找或者判断元素
+    + Roaring Bitmap, 高位存储 bucket 信息，低位存储位图信息
+    + TopK & 非精准 TopK
+- 利用存储、访问特性进行检索优化, 估算内存和磁盘的空间占比, 减少磁盘IO(磁盘), 利用磁盘的顺序读, 避免随机读
+    + B+ 树
+    + 日志记录使用 LSM 树
+- 空间冗余换取时间
+    + 跳表, 冗余步长
+    + AVL, 冗余叶子高度信息
+    + 倒排索引
+- 缓存
+    + 热点数据使用 LRU 缓存
+
+在工业界中，往往会几个算法组合起来进行使用，如使用跳表来实现 posting-list, 两个 posting-list 求交集的时候，直接将小的那个变成 Hash 等
+
+另外，要注意两点
+
+>
+1. 内存的检索效率比磁盘高许多，因此，能加载到内存中的数据，我们要尽可能加载到内存中。
+2. 大数据集合拆成小数据集合处理(快速缩小检索范围)
 
 
-使用 **二分查找法** 检索一个值是否存在
+![speed-in-2020.png](assets/images/speed-in-2020.png)
 
-| 名称 | 按下标查询复杂度 | 更新复杂度 |
-| :-------------: | :-------------: |
-| 有序数组 | O(logn) | O(n) |
-| 有序链表 | O(n) | O(n) |
+参考: [数字](https://colin-scott.github.io/personal_website/research/interactive_latency.html)
 
-> 这里的 O(n) + O(logn) 是认为等于 O(n)
+更新策略
 
-检索核心思路
+- Double Buffer, 利用冗余减少更新频率
+- 全量(只读) + 增量更新(可读可写)
 
-- 有序化
-- 快速减少查询范围(如 二分查找法, 快速过滤掉一半的内容)
+指导思想
 
-检索维度
+- 索引和数据分离
+- 减少磁盘IO
+- 读写分离, 避免锁
+- 分层处理 (非精准 TopK -> TopK), 搜索降级
 
-- 数据量大小
-- 使用场景(查询/更新)
-- 数据模型本身的存储空间(如 二叉树 和 红黑树 需要存储的元数据的大小不同)
+## 方案设计
+### 搜索方案
+<div class="mermaid" markdown="0">
+graph LR
+    subgraph 查询
+      cache(内存);
+      es(ES API);
+      MySQL(降级 MySQL);
+    end
+    subgraph 索引更新
+      EventHandler(Pulsa队列);
+      storage1(存储1 <br > ES-主查询引擎);
+      storage2(存储2 <br > MySQL-容灾);
+      storage3(存储3 <br > 内存-热词,TopK 等信息);
+    end
+    subgraph 源数据事件
+      event1(单曲/合集/QE/DE 更新);
+      event2(老师更新);
+      event3(标签更新);
+    end
+    subgraph 宽表Schema
+      field(索引字段);
+      weight(搜索权重值);
+    end
 
-## 平衡二叉树
-一般来说，我们之前学习的都是先有 二叉树 的概念和特性，再去聊二叉树的 查询/更新 复杂度 等
+    event1 & event2 & field & weight-->EventHandler-->storage1 & storage2 & storage3;
+    cache-->storage1;
+    es-->storage2;
+    MySQL-->storage3;
+</div>
 
-这里给了一个很好的思路：**如何让 链表 可以通过 O(logn) 的复杂度 进行 二分查找?** 答案之一就是 二叉树 的设计
+| 方案 | 优点 | 缺点 | 扩展性 | 难度 |
+| :-------------: | :-------------: | :-------------: |
+| 内存 | 速度快，可使用 [H2](https://www.h2database.com/html/main.html) 和 [Lucene](http://www.h2database.com/javadoc/index.html) 结合进行检索, 当前数据量大概为 500K, 可考虑全部导入 | 数据量变大之后容易导致 OOM, 需要处理多实例的数据同步问题 | 一般 | ⭐️⭐️⭐️ |
+| ES | 主流, 满足基本的搜索需求, 丰富的 API, 分词功能支持较好 | 引入第三方组件, 容易造成单点, 服务可靠性无法保证 | 好 | ⭐️⭐️ |
+| MySQL | 接入成本小, 原生的 MySQL 支持简单的全文索引 和 ngram 分词 | 功能有限, 不支持复杂的分词逻辑, 不支持预先设置字段权重 | 差 | ⭐️⭐️ |
 
-```java
-class Node {
-  Node left;
-  Node right;
-  Object value;
-}
-```
+### 部署方案
+分开部署
 
-二叉树的最坏的情况是形成一个链表，即使有序，查询复杂度也是 O(n) 此时需要改造为二叉平衡树(AVL) 或者 红黑树 等， 本质上来说，是为了让树的左边和右边尽可能的平衡
-
-AVL 树可以保证高平衡度, 但是 AVL 的节点的更新需要 **多次旋转**, 并且需要 **保存平衡因子**(树的高度) 等, 所以一些更新频率高的场景，基本都会使用 红黑树 来作为基础的数据结构
+## Reference
+- [检索技术核心20讲-极客时间](https://time.geekbang.org/column/intro/298)
+- [H2 全文检索](https://zhuanlan.zhihu.com/p/142833556)
+- [MySQL Full-Text Search Functions](https://dev.mysql.com/doc/refman/8.0/en/fulltext-search.html)

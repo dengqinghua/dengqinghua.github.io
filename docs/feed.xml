@@ -1,92 +1,145 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-09-03T15:24:39+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-09-08T18:23:47+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
 </subtitle><author><name>dengqinghua</name></author><entry><title type="html">检索技术学习笔记</title><link href="https://dengqinghua.github.io/all-for-search.html" rel="alternate" type="text/html" title="检索技术学习笔记" /><published>2021-09-01T00:00:00+08:00</published><updated>2021-09-01T00:00:00+08:00</updated><id>https://dengqinghua.github.io/all-for-search</id><content type="html" xml:base="https://dengqinghua.github.io/all-for-search.html">&lt;h2 id=&quot;检索的本质&quot;&gt;检索的本质&lt;/h2&gt;
+&lt;p&gt;需要关注下面几点&lt;/p&gt;
 
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;名称&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;特点&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;按下标查询复杂度&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;更新复杂度&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;缺点&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;数组&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;连续空间存储&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;O(1)&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;O(n)&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;需要向操作系统申请连续空间, 在频繁修改或者 大数据 的情况下更新效率会比较差&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;链表&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;非连续空间存储&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;O(n)&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;O(1)&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;检索效率低&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;ul&gt;
+  &lt;li&gt;快速的缩小检索范围
+    &lt;ul&gt;
+      &lt;li&gt;二分查找法, 缩小一半&lt;/li&gt;
+      &lt;li&gt;跳表, 跳动步长 &amp;gt; 1&lt;/li&gt;
+      &lt;li&gt;B/B+树, 以磁盘片为步长，一次过滤掉一个(4K)或者多个快&lt;/li&gt;
+      &lt;li&gt;位图/Hash/布隆过滤器, 利用概率/数组下标 快速寻找或者判断元素&lt;/li&gt;
+      &lt;li&gt;Roaring Bitmap, 高位存储 bucket 信息，低位存储位图信息&lt;/li&gt;
+      &lt;li&gt;TopK &amp;amp; 非精准 TopK&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;利用存储、访问特性进行检索优化, 估算内存和磁盘的空间占比, 减少磁盘IO(磁盘), 利用磁盘的顺序读, 避免随机读
+    &lt;ul&gt;
+      &lt;li&gt;B+ 树&lt;/li&gt;
+      &lt;li&gt;日志记录使用 LSM 树&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;空间冗余换取时间
+    &lt;ul&gt;
+      &lt;li&gt;跳表, 冗余步长&lt;/li&gt;
+      &lt;li&gt;AVL, 冗余叶子高度信息&lt;/li&gt;
+      &lt;li&gt;倒排索引&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;缓存
+    &lt;ul&gt;
+      &lt;li&gt;热点数据使用 LRU 缓存&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;使用 &lt;strong&gt;二分查找法&lt;/strong&gt; 检索一个值是否存在&lt;/p&gt;
+&lt;p&gt;在工业界中，往往会几个算法组合起来进行使用，如使用跳表来实现 posting-list, 两个 posting-list 求交集的时候，直接将小的那个变成 Hash 等&lt;/p&gt;
 
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;名称&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;按下标查询复杂度&lt;/th&gt;
-      &lt;th&gt;更新复杂度&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;有序数组&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;O(logn)&lt;/td&gt;
-      &lt;td&gt;O(n)&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;有序链表&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;O(n)&lt;/td&gt;
-      &lt;td&gt;O(n)&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;p&gt;另外，要注意两点&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;这里的 O(n) + O(logn) 是认为等于 O(n)&lt;/p&gt;
+
+  &lt;ol&gt;
+    &lt;li&gt;内存的检索效率比磁盘高许多，因此，能加载到内存中的数据，我们要尽可能加载到内存中。&lt;/li&gt;
+    &lt;li&gt;大数据集合拆成小数据集合处理(快速缩小检索范围)&lt;/li&gt;
+  &lt;/ol&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;检索核心思路&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;assets/images/speed-in-2020.png&quot; alt=&quot;speed-in-2020.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;参考: &lt;a href=&quot;https://colin-scott.github.io/personal_website/research/interactive_latency.html&quot;&gt;数字&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;更新策略&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;有序化&lt;/li&gt;
-  &lt;li&gt;快速减少查询范围(如 二分查找法, 快速过滤掉一半的内容)&lt;/li&gt;
+  &lt;li&gt;Double Buffer, 利用冗余减少更新频率&lt;/li&gt;
+  &lt;li&gt;全量(只读) + 增量更新(可读可写)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;检索维度&lt;/p&gt;
+&lt;p&gt;指导思想&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;数据量大小&lt;/li&gt;
-  &lt;li&gt;使用场景(查询/更新)&lt;/li&gt;
-  &lt;li&gt;数据模型本身的存储空间(如 二叉树 和 红黑树 需要存储的元数据的大小不同)&lt;/li&gt;
+  &lt;li&gt;索引和数据分离&lt;/li&gt;
+  &lt;li&gt;减少磁盘IO&lt;/li&gt;
+  &lt;li&gt;读写分离, 避免锁&lt;/li&gt;
+  &lt;li&gt;分层处理 (非精准 TopK -&amp;gt; TopK), 搜索降级&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;平衡二叉树&quot;&gt;平衡二叉树&lt;/h2&gt;
-&lt;p&gt;一般来说，我们之前学习的都是先有 二叉树 的概念和特性，再去聊二叉树的 查询/更新 复杂度 等&lt;/p&gt;
+&lt;h2 id=&quot;方案设计&quot;&gt;方案设计&lt;/h2&gt;
+&lt;h3 id=&quot;搜索方案&quot;&gt;搜索方案&lt;/h3&gt;
+&lt;div class=&quot;mermaid&quot;&gt;
+graph LR
+    subgraph 查询
+      cache(内存);
+      es(ES API);
+      MySQL(降级 MySQL);
+    end
+    subgraph 索引更新
+      EventHandler(Pulsa队列);
+      storage1(存储1 &lt;br /&gt; ES-主查询引擎);
+      storage2(存储2 &lt;br /&gt; MySQL-容灾);
+      storage3(存储3 &lt;br /&gt; 内存-热词,TopK 等信息);
+    end
+    subgraph 源数据事件
+      event1(单曲/合集/QE/DE 更新);
+      event2(老师更新);
+      event3(标签更新);
+    end
+    subgraph 宽表Schema
+      field(索引字段);
+      weight(搜索权重值);
+    end
 
-&lt;p&gt;这里给了一个很好的思路：&lt;strong&gt;如何让 链表 可以通过 O(logn) 的复杂度 进行 二分查找?&lt;/strong&gt; 答案之一就是 二叉树 的设计&lt;/p&gt;
+    event1 &amp;amp; event2 &amp;amp; field &amp;amp; weight--&amp;gt;EventHandler--&amp;gt;storage1 &amp;amp; storage2 &amp;amp; storage3;
+    cache--&amp;gt;storage1;
+    es--&amp;gt;storage2;
+    MySQL--&amp;gt;storage3;
+&lt;/div&gt;
 
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nc&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nc&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nc&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;方案&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;优点&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;缺点&lt;/th&gt;
+      &lt;th&gt;扩展性&lt;/th&gt;
+      &lt;th&gt;难度&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;内存&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;速度快，可使用 &lt;a href=&quot;https://www.h2database.com/html/main.html&quot;&gt;H2&lt;/a&gt; 和 &lt;a href=&quot;http://www.h2database.com/javadoc/index.html&quot;&gt;Lucene&lt;/a&gt; 结合进行检索, 当前数据量大概为 500K, 可考虑全部导入&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;数据量变大之后容易导致 OOM, 需要处理多实例的数据同步问题&lt;/td&gt;
+      &lt;td&gt;一般&lt;/td&gt;
+      &lt;td&gt;⭐️⭐️⭐️&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;ES&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;主流, 满足基本的搜索需求, 丰富的 API, 分词功能支持较好&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;引入第三方组件, 容易造成单点, 服务可靠性无法保证&lt;/td&gt;
+      &lt;td&gt;好&lt;/td&gt;
+      &lt;td&gt;⭐️⭐️&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;MySQL&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;接入成本小, 原生的 MySQL 支持简单的全文索引 和 ngram 分词&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;功能有限, 不支持复杂的分词逻辑, 不支持预先设置字段权重&lt;/td&gt;
+      &lt;td&gt;差&lt;/td&gt;
+      &lt;td&gt;⭐️⭐️&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
-&lt;p&gt;二叉树的最坏的情况是形成一个链表，即使有序，查询复杂度也是 O(n) 此时需要改造为二叉平衡树(AVL) 或者 红黑树 等， 本质上来说，是为了让树的左边和右边尽可能的平衡&lt;/p&gt;
+&lt;h3 id=&quot;部署方案&quot;&gt;部署方案&lt;/h3&gt;
+&lt;p&gt;分开部署&lt;/p&gt;
 
-&lt;p&gt;AVL 树可以保证高平衡度, 但是 AVL 的节点的更新需要 &lt;strong&gt;多次旋转&lt;/strong&gt;, 并且需要 &lt;strong&gt;保存平衡因子&lt;/strong&gt;(树的高度) 等, 所以一些更新频率高的场景，基本都会使用 红黑树 来作为基础的数据结构&lt;/p&gt;</content><author><name>dengqinghua</name></author><summary type="html">检索的本质</summary></entry><entry><title type="html">Folsom Blues</title><link href="https://dengqinghua.github.io/folsom-blues.html" rel="alternate" type="text/html" title="Folsom Blues" /><published>2021-08-29T00:00:00+08:00</published><updated>2021-08-29T00:00:00+08:00</updated><id>https://dengqinghua.github.io/folsom-blues</id><content type="html" xml:base="https://dengqinghua.github.io/folsom-blues.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://time.geekbang.org/column/intro/298&quot;&gt;检索技术核心20讲-极客时间&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/142833556&quot;&gt;H2 全文检索&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://dev.mysql.com/doc/refman/8.0/en/fulltext-search.html&quot;&gt;MySQL Full-Text Search Functions&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">检索的本质 需要关注下面几点</summary></entry><entry><title type="html">Folsom Blues</title><link href="https://dengqinghua.github.io/folsom-blues.html" rel="alternate" type="text/html" title="Folsom Blues" /><published>2021-08-29T00:00:00+08:00</published><updated>2021-08-29T00:00:00+08:00</updated><id>https://dengqinghua.github.io/folsom-blues</id><content type="html" xml:base="https://dengqinghua.github.io/folsom-blues.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
 
 &lt;ul&gt;
   &lt;li&gt;曲谱: &lt;a href=&quot;https://pan.baidu.com/disk/pdfview?path=%2F42%2F%E9%9F%B3%E4%B9%90%2F%E6%95%99%E6%9D%90%2FProGuitar%2FfolsomPrisonBlues%2Femil-ernebro-folsom-prison-blues.pdf&amp;amp;size=128339&amp;amp;fsid=427847537413829&quot;&gt;PDF&lt;/a&gt;&lt;/li&gt;
