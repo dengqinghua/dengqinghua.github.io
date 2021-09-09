@@ -68,7 +68,9 @@
 <li class="toc-entry toc-h2">
 <a href="#%E8%90%BD%E5%9C%B0%E6%96%B9%E6%A1%88">落地方案</a>
 <ul>
-<li class="toc-entry toc-h3"><a href="#%E9%83%A8%E7%BD%B2%E6%96%B9%E6%A1%88">部署方案</a></li>
+<li class="toc-entry toc-h3"><a href="#%E6%90%9C%E7%B4%A2">搜索</a></li>
+<li class="toc-entry toc-h3"><a href="#%E7%B4%A2%E5%BC%95">索引</a></li>
+<li class="toc-entry toc-h3"><a href="#%E9%83%A8%E7%BD%B2">部署</a></li>
 </ul>
 </li>
 <li class="toc-entry toc-h2"><a href="#reference">Reference</a></li>
@@ -269,7 +271,8 @@
 
 <h2 id="落地方案">
 <a class="anchor" href="#%E8%90%BD%E5%9C%B0%E6%96%B9%E6%A1%88" aria-hidden="true"><span class="octicon octicon-link"></span></a>落地方案</h2>
-<p>搜索流程</p>
+<h3 id="搜索">
+<a class="anchor" href="#%E6%90%9C%E7%B4%A2" aria-hidden="true"><span class="octicon octicon-link"></span></a>搜索</h3>
 
 <div class="mermaid">
 graph LR;
@@ -279,6 +282,8 @@ graph LR;
     onMemeroy--&gt;es--&gt;MySQL
 </div>
 
+<h3 id="索引">
+<a class="anchor" href="#%E7%B4%A2%E5%BC%95" aria-hidden="true"><span class="octicon octicon-link"></span></a>索引</h3>
 <ol>
   <li>采用 ES 作为主要的搜索引擎, 通过事件维护索引的更新</li>
   <li>使用 MySQL 的 fulltext 作为容灾方案</li>
@@ -313,8 +318,8 @@ graph LR
     MySQL--&gt;storage3;
 </div>
 
-<h3 id="部署方案">
-<a class="anchor" href="#%E9%83%A8%E7%BD%B2%E6%96%B9%E6%A1%88" aria-hidden="true"><span class="octicon octicon-link"></span></a>部署方案</h3>
+<h3 id="部署">
+<a class="anchor" href="#%E9%83%A8%E7%BD%B2" aria-hidden="true"><span class="octicon octicon-link"></span></a>部署</h3>
 <ol>
   <li>如果采用 H2 作为搜索引擎, 为了服务的简单行来说，需要考虑 <strong>新建项目</strong>, 而且需要维护好数据更新的问题</li>
   <li>如果使用 ES 或者 MySQL 作为搜索引擎, 则可不需要考虑单独起项目，在原有项目上开发即可</li>

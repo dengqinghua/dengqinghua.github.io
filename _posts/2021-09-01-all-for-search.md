@@ -143,7 +143,7 @@ curl -X GET 'https://es/search' -H 'Content-Type: application/json' \
 对比于 MySQL, 更提供了全套的管理后台，
 
 ## 落地方案
-搜索流程
+### 搜索
 
 <div class="mermaid" markdown="0">
 graph LR;
@@ -153,6 +153,7 @@ graph LR;
     onMemeroy-->es-->MySQL
 </div>
 
+### 索引
 1. 采用 ES 作为主要的搜索引擎, 通过事件维护索引的更新
 2. 使用 MySQL 的 fulltext 作为容灾方案
 
@@ -185,7 +186,7 @@ graph LR
     MySQL-->storage3;
 </div>
 
-### 部署方案
+### 部署
 1. 如果采用 H2 作为搜索引擎, 为了服务的简单行来说，需要考虑 **新建项目**, 而且需要维护好数据更新的问题
 2. 如果使用 ES 或者 MySQL 作为搜索引擎, 则可不需要考虑单独起项目，在原有项目上开发即可
 3. 无论使用哪一种方案，都需要将搜索服务部署到单独的服务器中，通过 Nginx 的二级域名进行流量转发和分流处理, 该部分在 Nginx 层控制即可
