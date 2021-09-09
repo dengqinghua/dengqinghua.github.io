@@ -55,14 +55,14 @@
 <a href="#%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1">方案设计</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#%E6%90%9C%E7%B4%A2%E6%96%B9%E6%A1%88">搜索方案</a></li>
-</ul>
-</li>
-<li class="toc-entry toc-h2">
+<li class="toc-entry toc-h3">
 <a href="#%E4%BE%8B%E5%AD%90">例子</a>
 <ul>
-<li class="toc-entry toc-h3"><a href="#mysql">MySQL</a></li>
-<li class="toc-entry toc-h3"><a href="#h2">H2</a></li>
-<li class="toc-entry toc-h3"><a href="#es">ES</a></li>
+<li class="toc-entry toc-h4"><a href="#mysql">MySQL</a></li>
+<li class="toc-entry toc-h4"><a href="#h2">H2</a></li>
+<li class="toc-entry toc-h4"><a href="#es">ES</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-entry toc-h2">
@@ -160,7 +160,15 @@
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: center">内存</td>
+      <td style="text-align: center">MySQL</td>
+      <td style="text-align: center">接入成本小, 原生的 MySQL 支持简单的全文索引 和 ngram 分词</td>
+      <td style="text-align: center">功能<a href="https://dev.mysql.com/doc/refman/5.7/en/fulltext-restrictions.html" target="_blank" rel="noopener noreferrer">有限</a>, 不支持复杂的分词逻辑, 不支持预先设置字段权重</td>
+      <td>⭐️</td>
+      <td>⭐️</td>
+      <td>直接接入并使用 MyBatisPlus 进行查询即可</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">内存(H2)</td>
       <td style="text-align: center">速度快，可使用 <a href="https://www.h2database.com/html/main.html" target="_blank" rel="noopener noreferrer">H2</a> 和 <a href="http://www.h2database.com/javadoc/index.html" target="_blank" rel="noopener noreferrer">Lucene</a> 结合进行检索, 当前数据量大概为 500K, 可考虑全部导入</td>
       <td style="text-align: center">数据量变大之后容易导致 OOM, 需要处理多实例的数据同步问题</td>
       <td>⭐️⭐️</td>
@@ -175,21 +183,13 @@
       <td>⭐️⭐️</td>
       <td>1. 接入 ES<br> 2. 实现 ES Wrapper <br>3. 提供统一的搜索接口</td>
     </tr>
-    <tr>
-      <td style="text-align: center">MySQL</td>
-      <td style="text-align: center">接入成本小, 原生的 MySQL 支持简单的全文索引 和 ngram 分词</td>
-      <td style="text-align: center">功能<a href="https://dev.mysql.com/doc/refman/5.7/en/fulltext-restrictions.html" target="_blank" rel="noopener noreferrer">有限</a>, 不支持复杂的分词逻辑, 不支持预先设置字段权重</td>
-      <td>⭐️</td>
-      <td>⭐️</td>
-      <td>直接接入并使用 MyBatisPlus 进行查询即可</td>
-    </tr>
   </tbody>
 </table>
 
-<h2 id="例子">
-<a class="anchor" href="#%E4%BE%8B%E5%AD%90" aria-hidden="true"><span class="octicon octicon-link"></span></a>例子</h2>
-<h3 id="mysql">
-<a class="anchor" href="#mysql" aria-hidden="true"><span class="octicon octicon-link"></span></a>MySQL</h3>
+<h3 id="例子">
+<a class="anchor" href="#%E4%BE%8B%E5%AD%90" aria-hidden="true"><span class="octicon octicon-link"></span></a>例子</h3>
+<h4 id="mysql">
+<a class="anchor" href="#mysql" aria-hidden="true"><span class="octicon octicon-link"></span></a>MySQL</h4>
 <p>给 media 表的 content 字段 添加全文索引, 这里使用了 <a href="https://dev.mysql.com/doc/refman/5.7/en/fulltext-search-ngram.html" target="_blank" rel="noopener noreferrer">ngram</a> 作为分词器</p>
 
 <p>分词的字数由 <code class="language-plaintext highlighter-rouge">ngram_token_size</code> 参数进行控制</p>
@@ -237,14 +237,14 @@
 <span class="mi">2</span> <span class="k">rows</span> <span class="k">in</span> <span class="k">set</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">04</span> <span class="n">sec</span><span class="p">)</span>
 </code></pre></div></div>
 
-<h3 id="h2">
-<a class="anchor" href="#h2" aria-hidden="true"><span class="octicon octicon-link"></span></a>H2</h3>
+<h4 id="h2">
+<a class="anchor" href="#h2" aria-hidden="true"><span class="octicon octicon-link"></span></a>H2</h4>
 <p>例子见 <a href="https://zhuanlan.zhihu.com/p/142833556" target="_blank" rel="noopener noreferrer">H2 的全文检索功能</a></p>
 
 <p>H2 可以结合 Lucene 一起进行使用, 但是从 API 的设计和扩展性来说，都有比较大的限制，可以作为测试使用，不适合用在生产环境中</p>
 
-<h3 id="es">
-<a class="anchor" href="#es" aria-hidden="true"><span class="octicon octicon-link"></span></a>ES</h3>
+<h4 id="es">
+<a class="anchor" href="#es" aria-hidden="true"><span class="octicon octicon-link"></span></a>ES</h4>
 <p>ES 作为专业的搜索引擎，有丰富的功能和 API，在<a href="./3-month-sharing">之前</a>我们便使用了 ELK 做日志相关的收集和查询，
 在稳定性和查询速度上面都要对应的保证。</p>
 

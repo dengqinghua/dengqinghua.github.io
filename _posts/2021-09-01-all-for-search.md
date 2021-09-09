@@ -55,12 +55,12 @@ title: 检索技术探索
 
 | 方案 | 优点 | 缺点 | 扩展性 | 难度 | 实现方式 |
 | :-------------: | :-------------: | :-------------: |
-| 内存 | 速度快，可使用 [H2](https://www.h2database.com/html/main.html) 和 [Lucene](http://www.h2database.com/javadoc/index.html) 结合进行检索, 当前数据量大概为 500K, 可考虑全部导入 | 数据量变大之后容易导致 OOM, 需要处理多实例的数据同步问题 | ⭐️⭐️ | ⭐️⭐️⭐️ | 1. 接入 H2<br/> 2. 提供同步更新机制 <br/>3. OOM 优化 <br/>4. 分词优化方案和调试方案 |
-| ES | 主流, 满足基本的搜索需求, 丰富的 API, 分词功能支持较好 | 引入第三方组件, 容易造成单点, 服务可靠性无法保证 | ⭐️⭐️⭐️⭐️⭐️ | ⭐️⭐️ | 1. 接入 ES<br/> 2. 实现 ES Wrapper <br/>3. 提供统一的搜索接口 |
 | MySQL | 接入成本小, 原生的 MySQL 支持简单的全文索引 和 ngram 分词 | 功能[有限](https://dev.mysql.com/doc/refman/5.7/en/fulltext-restrictions.html), 不支持复杂的分词逻辑, 不支持预先设置字段权重 | ⭐️ | ⭐️ | 直接接入并使用 MyBatisPlus 进行查询即可 |
+| 内存(H2) | 速度快，可使用 [H2](https://www.h2database.com/html/main.html) 和 [Lucene](http://www.h2database.com/javadoc/index.html) 结合进行检索, 当前数据量大概为 500K, 可考虑全部导入 | 数据量变大之后容易导致 OOM, 需要处理多实例的数据同步问题 | ⭐️⭐️ | ⭐️⭐️⭐️ | 1. 接入 H2<br/> 2. 提供同步更新机制 <br/>3. OOM 优化 <br/>4. 分词优化方案和调试方案 |
+| ES | 主流, 满足基本的搜索需求, 丰富的 API, 分词功能支持较好 | 引入第三方组件, 容易造成单点, 服务可靠性无法保证 | ⭐️⭐️⭐️⭐️⭐️ | ⭐️⭐️ | 1. 接入 ES<br/> 2. 实现 ES Wrapper <br/>3. 提供统一的搜索接口 |
 
-## 例子
-### MySQL
+### 例子
+#### MySQL
 给 media 表的 content 字段 添加全文索引, 这里使用了 [ngram](https://dev.mysql.com/doc/refman/5.7/en/fulltext-search-ngram.html) 作为分词器
 
 分词的字数由 `ngram_token_size` 参数进行控制
@@ -111,12 +111,12 @@ mysql> select id,match (content) AGAINST ('眠') as score from media where id in
 2 rows in set (0.04 sec)
 ```
 
-### H2
+#### H2
 例子见 [H2 的全文检索功能](https://zhuanlan.zhihu.com/p/142833556)
 
 H2 可以结合 Lucene 一起进行使用, 但是从 API 的设计和扩展性来说，都有比较大的限制，可以作为测试使用，不适合用在生产环境中
 
-### ES
+#### ES
 ES 作为专业的搜索引擎，有丰富的功能和 API，在[之前](./3-month-sharing)我们便使用了 ELK 做日志相关的收集和查询，
 在稳定性和查询速度上面都要对应的保证。
 

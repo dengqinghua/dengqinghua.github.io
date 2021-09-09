@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-09-09T17:48:27+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-09-09T17:54:10+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
 </subtitle><author><name>dengqinghua</name></author><entry><title type="html">检索技术探索</title><link href="https://dengqinghua.github.io/all-for-search.html" rel="alternate" type="text/html" title="检索技术探索" /><published>2021-09-01T00:00:00+08:00</published><updated>2021-09-01T00:00:00+08:00</updated><id>https://dengqinghua.github.io/all-for-search</id><content type="html" xml:base="https://dengqinghua.github.io/all-for-search.html">&lt;h2 id=&quot;检索的本质&quot;&gt;检索的本质&lt;/h2&gt;
 &lt;p&gt;需要关注下面几点&lt;/p&gt;
 
@@ -81,7 +81,15 @@
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;内存&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;MySQL&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;接入成本小, 原生的 MySQL 支持简单的全文索引 和 ngram 分词&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;功能&lt;a href=&quot;https://dev.mysql.com/doc/refman/5.7/en/fulltext-restrictions.html&quot;&gt;有限&lt;/a&gt;, 不支持复杂的分词逻辑, 不支持预先设置字段权重&lt;/td&gt;
+      &lt;td&gt;⭐️&lt;/td&gt;
+      &lt;td&gt;⭐️&lt;/td&gt;
+      &lt;td&gt;直接接入并使用 MyBatisPlus 进行查询即可&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;内存(H2)&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;速度快，可使用 &lt;a href=&quot;https://www.h2database.com/html/main.html&quot;&gt;H2&lt;/a&gt; 和 &lt;a href=&quot;http://www.h2database.com/javadoc/index.html&quot;&gt;Lucene&lt;/a&gt; 结合进行检索, 当前数据量大概为 500K, 可考虑全部导入&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;数据量变大之后容易导致 OOM, 需要处理多实例的数据同步问题&lt;/td&gt;
       &lt;td&gt;⭐️⭐️&lt;/td&gt;
@@ -96,19 +104,11 @@
       &lt;td&gt;⭐️⭐️&lt;/td&gt;
       &lt;td&gt;1. 接入 ES&lt;br /&gt; 2. 实现 ES Wrapper &lt;br /&gt;3. 提供统一的搜索接口&lt;/td&gt;
     &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;MySQL&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;接入成本小, 原生的 MySQL 支持简单的全文索引 和 ngram 分词&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;功能&lt;a href=&quot;https://dev.mysql.com/doc/refman/5.7/en/fulltext-restrictions.html&quot;&gt;有限&lt;/a&gt;, 不支持复杂的分词逻辑, 不支持预先设置字段权重&lt;/td&gt;
-      &lt;td&gt;⭐️&lt;/td&gt;
-      &lt;td&gt;⭐️&lt;/td&gt;
-      &lt;td&gt;直接接入并使用 MyBatisPlus 进行查询即可&lt;/td&gt;
-    &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;h2 id=&quot;例子&quot;&gt;例子&lt;/h2&gt;
-&lt;h3 id=&quot;mysql&quot;&gt;MySQL&lt;/h3&gt;
+&lt;h3 id=&quot;例子&quot;&gt;例子&lt;/h3&gt;
+&lt;h4 id=&quot;mysql&quot;&gt;MySQL&lt;/h4&gt;
 &lt;p&gt;给 media 表的 content 字段 添加全文索引, 这里使用了 &lt;a href=&quot;https://dev.mysql.com/doc/refman/5.7/en/fulltext-search-ngram.html&quot;&gt;ngram&lt;/a&gt; 作为分词器&lt;/p&gt;
 
 &lt;p&gt;分词的字数由 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ngram_token_size&lt;/code&gt; 参数进行控制&lt;/p&gt;
@@ -156,12 +156,12 @@
 &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;rows&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;04&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;h2&quot;&gt;H2&lt;/h3&gt;
+&lt;h4 id=&quot;h2&quot;&gt;H2&lt;/h4&gt;
 &lt;p&gt;例子见 &lt;a href=&quot;https://zhuanlan.zhihu.com/p/142833556&quot;&gt;H2 的全文检索功能&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;H2 可以结合 Lucene 一起进行使用, 但是从 API 的设计和扩展性来说，都有比较大的限制，可以作为测试使用，不适合用在生产环境中&lt;/p&gt;
 
-&lt;h3 id=&quot;es&quot;&gt;ES&lt;/h3&gt;
+&lt;h4 id=&quot;es&quot;&gt;ES&lt;/h4&gt;
 &lt;p&gt;ES 作为专业的搜索引擎，有丰富的功能和 API，在&lt;a href=&quot;./3-month-sharing&quot;&gt;之前&lt;/a&gt;我们便使用了 ELK 做日志相关的收集和查询，
 在稳定性和查询速度上面都要对应的保证。&lt;/p&gt;
 
