@@ -2,7 +2,7 @@
 layout: post
 toc: true
 categories: showed note
-title: 检索技术学习笔记
+title: 检索技术探索
 ---
 
 ## 检索的本质
@@ -52,6 +52,110 @@ title: 检索技术学习笔记
 
 ## 方案设计
 ### 搜索方案
+
+| 方案 | 优点 | 缺点 | 扩展性 | 难度 | 实现方式 |
+| :-------------: | :-------------: | :-------------: |
+| 内存 | 速度快，可使用 [H2](https://www.h2database.com/html/main.html) 和 [Lucene](http://www.h2database.com/javadoc/index.html) 结合进行检索, 当前数据量大概为 500K, 可考虑全部导入 | 数据量变大之后容易导致 OOM, 需要处理多实例的数据同步问题 | ⭐️⭐️ | ⭐️⭐️⭐️ | 1. 接入 H2<br/> 2. 提供同步更新机制 <br/>3. OOM 优化 <br/>4. 分词优化方案和调试方案 |
+| ES | 主流, 满足基本的搜索需求, 丰富的 API, 分词功能支持较好 | 引入第三方组件, 容易造成单点, 服务可靠性无法保证 | ⭐️⭐️⭐️⭐️⭐️ | ⭐️⭐️ | 1. 接入 ES<br/> 2. 实现 ES Wrapper <br/>3. 提供统一的搜索接口 |
+| MySQL | 接入成本小, 原生的 MySQL 支持简单的全文索引 和 ngram 分词 | 功能[有限](https://dev.mysql.com/doc/refman/5.7/en/fulltext-restrictions.html), 不支持复杂的分词逻辑, 不支持预先设置字段权重 | ⭐️ | ⭐️ | 直接接入并使用 MyBatisPlus 进行查询即可 |
+
+## 例子
+### MySQL
+给 media 表的 content 字段 添加全文索引, 这里使用了 [ngram](https://dev.mysql.com/doc/refman/5.7/en/fulltext-search-ngram.html) 作为分词器
+
+分词的字数由 `ngram_token_size` 参数进行控制
+
+```sql
+ALTER TABLE `media` ADD FULLTEXT(`content`) WITH PARSER ngram
+```
+
+```sql
+select id, content  from media where id in (230, 231)\G
+
+*************************** 1. row ***************************
+     id: 230
+content: {"description":"【为什么失眠】\n\n\n【专注练习】\n 为了避免大脑走神，"}
+
+*************************** 2. row ***************************
+     id: 231
+content: {"description":"描述文案","title":"播放器标题"}
+```
+
+查看匹配的分数, 这里拿了两个 id 作为例子
+```sql
+select id,match (content) AGAINST ('为什么失眠') as score from media where id in (230, 231)
+
++-----+--------------------+
+| id  | score              |
++-----+--------------------+
+| 230 | 4.3379950523376465 |
+| 231 |                  0 |
++-----+--------------------+
+2 rows in set (0.05 sec)
+
+mysql> select id,match (content) AGAINST ('失眠') as score from media where id in (230, 231);
++-----+-------------------+
+| id  | score             |
++-----+-------------------+
+| 230 | 8.675990104675293 |
+| 231 |                 0 |
++-----+-------------------+
+
+mysql> select id,match (content) AGAINST ('眠') as score from media where id in (230, 231);
++-----+-------+
+| id  | score |
++-----+-------+
+| 230 |     0 |
+| 231 |     0 |
++-----+-------+
+2 rows in set (0.04 sec)
+```
+
+### H2
+例子见 [H2 的全文检索功能](https://zhuanlan.zhihu.com/p/142833556)
+
+H2 可以结合 Lucene 一起进行使用, 但是从 API 的设计和扩展性来说，都有比较大的限制，可以作为测试使用，不适合用在生产环境中
+
+### ES
+ES 作为专业的搜索引擎，有丰富的功能和 API，在[之前](./3-month-sharing)我们便使用了 ELK 做日志相关的收集和查询，
+在稳定性和查询速度上面都要对应的保证。
+
+相比于 MySQL，ES 提供更细粒度的相关度控制(Relevance Tuning), 即可以指定每个字段的搜索权重，例子
+
+```bash
+curl -X GET 'https://es/search' -H 'Content-Type: application/json' \
+-d '{
+  "search_fields": {
+    "title": {
+      "weight": 10
+    },
+    "description": {
+      "weight": 1
+    },
+    "states": {
+      "weight": 2
+    }
+  },
+  "query": "mountains"
+}'
+```
+
+对比于 MySQL, 更提供了全套的管理后台，
+
+## 落地方案
+搜索流程
+
+<div class="mermaid" markdown="0">
+graph LR;
+    onMemeroy([内存/redis 快速获取搜索结果<br />前缀匹配, 热词检索等]);
+    es([es 检索]);
+    MySQL([MySQL 降级检索]);
+    onMemeroy-->es-->MySQL
+</div>
+
+1. 采用 ES 作为主要的搜索引擎, 通过事件维护索引的更新
+2. 使用 MySQL 的 fulltext 作为容灾方案
+
 <div class="mermaid" markdown="0">
 graph LR
     subgraph 查询
@@ -70,7 +174,7 @@ graph LR
       event2(老师更新);
       event3(标签更新);
     end
-    subgraph 宽表Schema
+    subgraph 宽表 Schema
       field(索引字段);
       weight(搜索权重值);
     end
@@ -81,14 +185,10 @@ graph LR
     MySQL-->storage3;
 </div>
 
-| 方案 | 优点 | 缺点 | 扩展性 | 难度 |
-| :-------------: | :-------------: | :-------------: |
-| 内存 | 速度快，可使用 [H2](https://www.h2database.com/html/main.html) 和 [Lucene](http://www.h2database.com/javadoc/index.html) 结合进行检索, 当前数据量大概为 500K, 可考虑全部导入 | 数据量变大之后容易导致 OOM, 需要处理多实例的数据同步问题 | 一般 | ⭐️⭐️⭐️ |
-| ES | 主流, 满足基本的搜索需求, 丰富的 API, 分词功能支持较好 | 引入第三方组件, 容易造成单点, 服务可靠性无法保证 | 好 | ⭐️⭐️ |
-| MySQL | 接入成本小, 原生的 MySQL 支持简单的全文索引 和 ngram 分词 | 功能有限, 不支持复杂的分词逻辑, 不支持预先设置字段权重 | 差 | ⭐️⭐️ |
-
 ### 部署方案
-分开部署
+1. 如果采用 H2 作为搜索引擎, 为了服务的简单行来说，需要考虑 **新建项目**, 而且需要维护好数据更新的问题
+2. 如果使用 ES 或者 MySQL 作为搜索引擎, 则可不需要考虑单独起项目，在原有项目上开发即可
+3. 无论使用哪一种方案，都需要将搜索服务部署到单独的服务器中，通过 Nginx 的二级域名进行流量转发和分流处理, 该部分在 Nginx 层控制即可
 
 ## Reference
 - [检索技术核心20讲-极客时间](https://time.geekbang.org/column/intro/298)

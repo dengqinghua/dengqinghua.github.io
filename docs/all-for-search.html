@@ -4,25 +4,25 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>检索技术学习笔记</title>
+  <title>检索技术探索</title>
 
   <!-- Begin Jekyll SEO tag v2.6.1 -->
 <meta name="generator" content="Jekyll v3.8.7" />
-<meta property="og:title" content="检索技术学习笔记" />
+<meta property="og:title" content="检索技术探索" />
 <meta name="author" content="dengqinghua" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="检索的本质 需要关注下面几点" />
 <meta property="og:description" content="检索的本质 需要关注下面几点" />
-<link rel="canonical" href="https://dengqinghua.github.io/all-for-search.html" />
-<meta property="og:url" content="https://dengqinghua.github.io/all-for-search.html" />
+<link rel="canonical" href="http://localhost:4000/all-for-search.html" />
+<meta property="og:url" content="http://localhost:4000/all-for-search.html" />
 <meta property="og:site_name" content="Dengqinghua.42" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-09-01T00:00:00+08:00" />
 <script type="application/ld+json">
-{"headline":"检索技术学习笔记","dateModified":"2021-09-01T00:00:00+08:00","datePublished":"2021-09-01T00:00:00+08:00","url":"https://dengqinghua.github.io/all-for-search.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://dengqinghua.github.io/all-for-search.html"},"author":{"@type":"Person","name":"dengqinghua"},"description":"检索的本质 需要关注下面几点","@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"headline":"检索技术探索","dateModified":"2021-09-01T00:00:00+08:00","datePublished":"2021-09-01T00:00:00+08:00","url":"http://localhost:4000/all-for-search.html","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/all-for-search.html"},"author":{"@type":"Person","name":"dengqinghua"},"description":"检索的本质 需要关注下面几点","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-  <link type="application/atom+xml" rel="alternate" href="https://dengqinghua.github.io/feed.xml" title="Dengqinghua.42" />
+  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Dengqinghua.42" />
 
   <link rel="shortcut icon" type="image/x-icon" href="/logo.png" />
   <link rel="stylesheet" href="/assets/css/main.css" />
@@ -47,7 +47,7 @@
     <time datetime="2021-09-01 00:00:00 +0800">2021-09-01</time>
   </p>
   
-  <h1>检索技术学习笔记</h1>
+  <h1>检索技术探索</h1>
 
   <ul id="toc" class="section-nav">
 <li class="toc-entry toc-h2"><a href="#%E6%A3%80%E7%B4%A2%E7%9A%84%E6%9C%AC%E8%B4%A8">检索的本质</a></li>
@@ -55,6 +55,19 @@
 <a href="#%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1">方案设计</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#%E6%90%9C%E7%B4%A2%E6%96%B9%E6%A1%88">搜索方案</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2">
+<a href="#%E4%BE%8B%E5%AD%90">例子</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#mysql">MySQL</a></li>
+<li class="toc-entry toc-h3"><a href="#h2">H2</a></li>
+<li class="toc-entry toc-h3"><a href="#es">ES</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2">
+<a href="#%E8%90%BD%E5%9C%B0%E6%96%B9%E6%A1%88">落地方案</a>
+<ul>
 <li class="toc-entry toc-h3"><a href="#%E9%83%A8%E7%BD%B2%E6%96%B9%E6%A1%88">部署方案</a></li>
 </ul>
 </li>
@@ -131,6 +144,146 @@
 <a class="anchor" href="#%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1" aria-hidden="true"><span class="octicon octicon-link"></span></a>方案设计</h2>
 <h3 id="搜索方案">
 <a class="anchor" href="#%E6%90%9C%E7%B4%A2%E6%96%B9%E6%A1%88" aria-hidden="true"><span class="octicon octicon-link"></span></a>搜索方案</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">方案</th>
+      <th style="text-align: center">优点</th>
+      <th style="text-align: center">缺点</th>
+      <th>扩展性</th>
+      <th>难度</th>
+      <th>实现方式</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">内存</td>
+      <td style="text-align: center">速度快，可使用 <a href="https://www.h2database.com/html/main.html" target="_blank" rel="noopener noreferrer">H2</a> 和 <a href="http://www.h2database.com/javadoc/index.html" target="_blank" rel="noopener noreferrer">Lucene</a> 结合进行检索, 当前数据量大概为 500K, 可考虑全部导入</td>
+      <td style="text-align: center">数据量变大之后容易导致 OOM, 需要处理多实例的数据同步问题</td>
+      <td>⭐️⭐️</td>
+      <td>⭐️⭐️⭐️</td>
+      <td>1. 接入 H2<br> 2. 提供同步更新机制 <br>3. OOM 优化 <br>4. 分词优化方案和调试方案</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">ES</td>
+      <td style="text-align: center">主流, 满足基本的搜索需求, 丰富的 API, 分词功能支持较好</td>
+      <td style="text-align: center">引入第三方组件, 容易造成单点, 服务可靠性无法保证</td>
+      <td>⭐️⭐️⭐️⭐️⭐️</td>
+      <td>⭐️⭐️</td>
+      <td>1. 接入 ES<br> 2. 实现 ES Wrapper <br>3. 提供统一的搜索接口</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">MySQL</td>
+      <td style="text-align: center">接入成本小, 原生的 MySQL 支持简单的全文索引 和 ngram 分词</td>
+      <td style="text-align: center">功能<a href="https://dev.mysql.com/doc/refman/5.7/en/fulltext-restrictions.html" target="_blank" rel="noopener noreferrer">有限</a>, 不支持复杂的分词逻辑, 不支持预先设置字段权重</td>
+      <td>⭐️</td>
+      <td>⭐️</td>
+      <td>直接接入并使用 MyBatisPlus 进行查询即可</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="例子">
+<a class="anchor" href="#%E4%BE%8B%E5%AD%90" aria-hidden="true"><span class="octicon octicon-link"></span></a>例子</h2>
+<h3 id="mysql">
+<a class="anchor" href="#mysql" aria-hidden="true"><span class="octicon octicon-link"></span></a>MySQL</h3>
+<p>给 media 表的 content 字段 添加全文索引, 这里使用了 <a href="https://dev.mysql.com/doc/refman/5.7/en/fulltext-search-ngram.html" target="_blank" rel="noopener noreferrer">ngram</a> 作为分词器</p>
+
+<p>分词的字数由 <code class="language-plaintext highlighter-rouge">ngram_token_size</code> 参数进行控制</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="nv">`media`</span> <span class="k">ADD</span> <span class="n">FULLTEXT</span><span class="p">(</span><span class="nv">`content`</span><span class="p">)</span> <span class="k">WITH</span> <span class="n">PARSER</span> <span class="n">ngram</span>
+</code></pre></div></div>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="n">id</span><span class="p">,</span> <span class="n">content</span>  <span class="k">from</span> <span class="n">media</span> <span class="k">where</span> <span class="n">id</span> <span class="k">in</span> <span class="p">(</span><span class="mi">230</span><span class="p">,</span> <span class="mi">231</span><span class="p">)</span><span class="err">\</span><span class="k">G</span>
+
+<span class="o">***************************</span> <span class="mi">1</span><span class="p">.</span> <span class="k">row</span> <span class="o">***************************</span>
+     <span class="n">id</span><span class="p">:</span> <span class="mi">230</span>
+<span class="n">content</span><span class="p">:</span> <span class="err">{</span><span class="nv">"description"</span><span class="p">:</span><span class="nv">"【为什么失眠】</span><span class="se">\n\n\n</span><span class="nv">【专注练习】</span><span class="se">\n</span><span class="nv"> 为了避免大脑走神，"</span><span class="err">}</span>
+
+<span class="o">***************************</span> <span class="mi">2</span><span class="p">.</span> <span class="k">row</span> <span class="o">***************************</span>
+     <span class="n">id</span><span class="p">:</span> <span class="mi">231</span>
+<span class="n">content</span><span class="p">:</span> <span class="err">{</span><span class="nv">"description"</span><span class="p">:</span><span class="nv">"描述文案"</span><span class="p">,</span><span class="nv">"title"</span><span class="p">:</span><span class="nv">"播放器标题"</span><span class="err">}</span>
+</code></pre></div></div>
+
+<p>查看匹配的分数, 这里拿了两个 id 作为例子</p>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">select</span> <span class="n">id</span><span class="p">,</span><span class="k">match</span> <span class="p">(</span><span class="n">content</span><span class="p">)</span> <span class="n">AGAINST</span> <span class="p">(</span><span class="s1">'为什么失眠'</span><span class="p">)</span> <span class="k">as</span> <span class="n">score</span> <span class="k">from</span> <span class="n">media</span> <span class="k">where</span> <span class="n">id</span> <span class="k">in</span> <span class="p">(</span><span class="mi">230</span><span class="p">,</span> <span class="mi">231</span><span class="p">)</span>
+
+<span class="o">+</span><span class="c1">-----+--------------------+</span>
+<span class="o">|</span> <span class="n">id</span>  <span class="o">|</span> <span class="n">score</span>              <span class="o">|</span>
+<span class="o">+</span><span class="c1">-----+--------------------+</span>
+<span class="o">|</span> <span class="mi">230</span> <span class="o">|</span> <span class="mi">4</span><span class="p">.</span><span class="mi">3379950523376465</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mi">231</span> <span class="o">|</span>                  <span class="mi">0</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">-----+--------------------+</span>
+<span class="mi">2</span> <span class="k">rows</span> <span class="k">in</span> <span class="k">set</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">05</span> <span class="n">sec</span><span class="p">)</span>
+
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="n">id</span><span class="p">,</span><span class="k">match</span> <span class="p">(</span><span class="n">content</span><span class="p">)</span> <span class="n">AGAINST</span> <span class="p">(</span><span class="s1">'失眠'</span><span class="p">)</span> <span class="k">as</span> <span class="n">score</span> <span class="k">from</span> <span class="n">media</span> <span class="k">where</span> <span class="n">id</span> <span class="k">in</span> <span class="p">(</span><span class="mi">230</span><span class="p">,</span> <span class="mi">231</span><span class="p">);</span>
+<span class="o">+</span><span class="c1">-----+-------------------+</span>
+<span class="o">|</span> <span class="n">id</span>  <span class="o">|</span> <span class="n">score</span>             <span class="o">|</span>
+<span class="o">+</span><span class="c1">-----+-------------------+</span>
+<span class="o">|</span> <span class="mi">230</span> <span class="o">|</span> <span class="mi">8</span><span class="p">.</span><span class="mi">675990104675293</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mi">231</span> <span class="o">|</span>                 <span class="mi">0</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">-----+-------------------+</span>
+
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="k">select</span> <span class="n">id</span><span class="p">,</span><span class="k">match</span> <span class="p">(</span><span class="n">content</span><span class="p">)</span> <span class="n">AGAINST</span> <span class="p">(</span><span class="s1">'眠'</span><span class="p">)</span> <span class="k">as</span> <span class="n">score</span> <span class="k">from</span> <span class="n">media</span> <span class="k">where</span> <span class="n">id</span> <span class="k">in</span> <span class="p">(</span><span class="mi">230</span><span class="p">,</span> <span class="mi">231</span><span class="p">);</span>
+<span class="o">+</span><span class="c1">-----+-------+</span>
+<span class="o">|</span> <span class="n">id</span>  <span class="o">|</span> <span class="n">score</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">-----+-------+</span>
+<span class="o">|</span> <span class="mi">230</span> <span class="o">|</span>     <span class="mi">0</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mi">231</span> <span class="o">|</span>     <span class="mi">0</span> <span class="o">|</span>
+<span class="o">+</span><span class="c1">-----+-------+</span>
+<span class="mi">2</span> <span class="k">rows</span> <span class="k">in</span> <span class="k">set</span> <span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">04</span> <span class="n">sec</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="h2">
+<a class="anchor" href="#h2" aria-hidden="true"><span class="octicon octicon-link"></span></a>H2</h3>
+<p>例子见 <a href="https://zhuanlan.zhihu.com/p/142833556" target="_blank" rel="noopener noreferrer">H2 的全文检索功能</a></p>
+
+<p>H2 可以结合 Lucene 一起进行使用, 但是从 API 的设计和扩展性来说，都有比较大的限制，可以作为测试使用，不适合用在生产环境中</p>
+
+<h3 id="es">
+<a class="anchor" href="#es" aria-hidden="true"><span class="octicon octicon-link"></span></a>ES</h3>
+<p>ES 作为专业的搜索引擎，有丰富的功能和 API，在<a href="./3-month-sharing">之前</a>我们便使用了 ELK 做日志相关的收集和查询，
+在稳定性和查询速度上面都要对应的保证。</p>
+
+<p>相比于 MySQL，ES 提供更细粒度的相关度控制(Relevance Tuning), 即可以指定每个字段的搜索权重，例子</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-X</span> GET <span class="s1">'https://es/search'</span> <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{
+  "search_fields": {
+    "title": {
+      "weight": 10
+    },
+    "description": {
+      "weight": 1
+    },
+    "states": {
+      "weight": 2
+    }
+  },
+  "query": "mountains"
+}'</span>
+</code></pre></div></div>
+
+<p>对比于 MySQL, 更提供了全套的管理后台，</p>
+
+<h2 id="落地方案">
+<a class="anchor" href="#%E8%90%BD%E5%9C%B0%E6%96%B9%E6%A1%88" aria-hidden="true"><span class="octicon octicon-link"></span></a>落地方案</h2>
+<p>搜索流程</p>
+
+<div class="mermaid">
+graph LR;
+    onMemeroy([内存/redis 快速获取搜索结果<br>前缀匹配, 热词检索等]);
+    es([es 检索]);
+    MySQL([MySQL 降级检索]);
+    onMemeroy--&gt;es--&gt;MySQL
+</div>
+
+<ol>
+  <li>采用 ES 作为主要的搜索引擎, 通过事件维护索引的更新</li>
+  <li>使用 MySQL 的 fulltext 作为容灾方案</li>
+</ol>
+
 <div class="mermaid">
 graph LR
     subgraph 查询
@@ -149,7 +302,7 @@ graph LR
       event2(老师更新);
       event3(标签更新);
     end
-    subgraph 宽表Schema
+    subgraph 宽表 Schema
       field(索引字段);
       weight(搜索权重值);
     end
@@ -160,44 +313,13 @@ graph LR
     MySQL--&gt;storage3;
 </div>
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">方案</th>
-      <th style="text-align: center">优点</th>
-      <th style="text-align: center">缺点</th>
-      <th>扩展性</th>
-      <th>难度</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">内存</td>
-      <td style="text-align: center">速度快，可使用 <a href="https://www.h2database.com/html/main.html" target="_blank" rel="noopener noreferrer">H2</a> 和 <a href="http://www.h2database.com/javadoc/index.html" target="_blank" rel="noopener noreferrer">Lucene</a> 结合进行检索, 当前数据量大概为 500K, 可考虑全部导入</td>
-      <td style="text-align: center">数据量变大之后容易导致 OOM, 需要处理多实例的数据同步问题</td>
-      <td>一般</td>
-      <td>⭐️⭐️⭐️</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">ES</td>
-      <td style="text-align: center">主流, 满足基本的搜索需求, 丰富的 API, 分词功能支持较好</td>
-      <td style="text-align: center">引入第三方组件, 容易造成单点, 服务可靠性无法保证</td>
-      <td>好</td>
-      <td>⭐️⭐️</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">MySQL</td>
-      <td style="text-align: center">接入成本小, 原生的 MySQL 支持简单的全文索引 和 ngram 分词</td>
-      <td style="text-align: center">功能有限, 不支持复杂的分词逻辑, 不支持预先设置字段权重</td>
-      <td>差</td>
-      <td>⭐️⭐️</td>
-    </tr>
-  </tbody>
-</table>
-
 <h3 id="部署方案">
 <a class="anchor" href="#%E9%83%A8%E7%BD%B2%E6%96%B9%E6%A1%88" aria-hidden="true"><span class="octicon octicon-link"></span></a>部署方案</h3>
-<p>分开部署</p>
+<ol>
+  <li>如果采用 H2 作为搜索引擎, 为了服务的简单行来说，需要考虑 <strong>新建项目</strong>, 而且需要维护好数据更新的问题</li>
+  <li>如果使用 ES 或者 MySQL 作为搜索引擎, 则可不需要考虑单独起项目，在原有项目上开发即可</li>
+  <li>无论使用哪一种方案，都需要将搜索服务部署到单独的服务器中，通过 Nginx 的二级域名进行流量转发和分流处理, 该部分在 Nginx 层控制即可</li>
+</ol>
 
 <h2 id="reference">
 <a class="anchor" href="#reference" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reference</h2>
