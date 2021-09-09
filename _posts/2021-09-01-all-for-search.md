@@ -140,7 +140,7 @@ curl -X GET 'https://es/search' -H 'Content-Type: application/json' \
 }'
 ```
 
-对比于 MySQL, 更提供了全套的管理后台，
+对比于 MySQL, 更提供了全套的管理后台，可在 Kibana 进行对应的索引管理和监控等操作
 
 ## 落地方案
 ### 搜索

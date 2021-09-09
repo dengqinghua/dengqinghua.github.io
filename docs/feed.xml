@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-09-09T17:54:10+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-09-09T18:02:43+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
 </subtitle><author><name>dengqinghua</name></author><entry><title type="html">检索技术探索</title><link href="https://dengqinghua.github.io/all-for-search.html" rel="alternate" type="text/html" title="检索技术探索" /><published>2021-09-01T00:00:00+08:00</published><updated>2021-09-01T00:00:00+08:00</updated><id>https://dengqinghua.github.io/all-for-search</id><content type="html" xml:base="https://dengqinghua.github.io/all-for-search.html">&lt;h2 id=&quot;检索的本质&quot;&gt;检索的本质&lt;/h2&gt;
 &lt;p&gt;需要关注下面几点&lt;/p&gt;
 
@@ -184,7 +184,7 @@
 }'&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;对比于 MySQL, 更提供了全套的管理后台，&lt;/p&gt;
+&lt;p&gt;对比于 MySQL, 更提供了全套的管理后台，可在 Kibana 进行对应的索引管理和监控等操作&lt;/p&gt;
 
 &lt;h2 id=&quot;落地方案&quot;&gt;落地方案&lt;/h2&gt;
 &lt;h3 id=&quot;搜索&quot;&gt;搜索&lt;/h3&gt;
