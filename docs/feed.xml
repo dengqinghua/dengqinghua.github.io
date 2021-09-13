@@ -1,72 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-09-09T18:02:43+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
-</subtitle><author><name>dengqinghua</name></author><entry><title type="html">检索技术探索</title><link href="https://dengqinghua.github.io/all-for-search.html" rel="alternate" type="text/html" title="检索技术探索" /><published>2021-09-01T00:00:00+08:00</published><updated>2021-09-01T00:00:00+08:00</updated><id>https://dengqinghua.github.io/all-for-search</id><content type="html" xml:base="https://dengqinghua.github.io/all-for-search.html">&lt;h2 id=&quot;检索的本质&quot;&gt;检索的本质&lt;/h2&gt;
-&lt;p&gt;需要关注下面几点&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;快速的缩小检索范围
-    &lt;ul&gt;
-      &lt;li&gt;二分查找法, 缩小一半&lt;/li&gt;
-      &lt;li&gt;跳表, 跳动步长 &amp;gt; 1&lt;/li&gt;
-      &lt;li&gt;B/B+树, 以磁盘片为步长，一次过滤掉一个(4K)或者多个快&lt;/li&gt;
-      &lt;li&gt;位图/Hash/布隆过滤器, 利用概率/数组下标 快速寻找或者判断元素&lt;/li&gt;
-      &lt;li&gt;Roaring Bitmap, 高位存储 bucket 信息，低位存储位图信息&lt;/li&gt;
-      &lt;li&gt;TopK &amp;amp; 非精准 TopK&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;利用存储、访问特性进行检索优化, 估算内存和磁盘的空间占比, 减少磁盘IO(磁盘), 利用磁盘的顺序读, 避免随机读
-    &lt;ul&gt;
-      &lt;li&gt;B+ 树&lt;/li&gt;
-      &lt;li&gt;日志记录使用 LSM 树&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;空间冗余换取时间
-    &lt;ul&gt;
-      &lt;li&gt;跳表, 冗余步长&lt;/li&gt;
-      &lt;li&gt;AVL, 冗余叶子高度信息&lt;/li&gt;
-      &lt;li&gt;倒排索引&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;缓存
-    &lt;ul&gt;
-      &lt;li&gt;热点数据使用 LRU 缓存&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;在工业界中，往往会几个算法组合起来进行使用，如使用跳表来实现 posting-list, 两个 posting-list 求交集的时候，直接将小的那个变成 Hash 等&lt;/p&gt;
-
-&lt;p&gt;另外，要注意两点&lt;/p&gt;
-
-&lt;blockquote&gt;
-
-  &lt;ol&gt;
-    &lt;li&gt;内存的检索效率比磁盘高许多，因此，能加载到内存中的数据，我们要尽可能加载到内存中。&lt;/li&gt;
-    &lt;li&gt;大数据集合拆成小数据集合处理(快速缩小检索范围)&lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;assets/images/speed-in-2020.png&quot; alt=&quot;speed-in-2020.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;参考: &lt;a href=&quot;https://colin-scott.github.io/personal_website/research/interactive_latency.html&quot;&gt;数字&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;更新策略&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Double Buffer, 利用冗余减少更新频率&lt;/li&gt;
-  &lt;li&gt;全量(只读) + 增量更新(可读可写)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;指导思想&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;索引和数据分离&lt;/li&gt;
-  &lt;li&gt;减少磁盘IO&lt;/li&gt;
-  &lt;li&gt;读写分离, 避免锁&lt;/li&gt;
-  &lt;li&gt;分层处理 (非精准 TopK -&amp;gt; TopK), 搜索降级&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;方案设计&quot;&gt;方案设计&lt;/h2&gt;
-&lt;h3 id=&quot;搜索方案&quot;&gt;搜索方案&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-09-13T14:40:36+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+</subtitle><author><name>dengqinghua</name></author><entry><title type="html">检索技术探索</title><link href="https://dengqinghua.github.io/all-for-search.html" rel="alternate" type="text/html" title="检索技术探索" /><published>2021-09-01T00:00:00+08:00</published><updated>2021-09-01T00:00:00+08:00</updated><id>https://dengqinghua.github.io/all-for-search</id><content type="html" xml:base="https://dengqinghua.github.io/all-for-search.html">&lt;h2 id=&quot;方案设计&quot;&gt;方案设计&lt;/h2&gt;
+&lt;h3 id=&quot;可选的搜索方案&quot;&gt;可选的搜索方案&lt;/h3&gt;
 
 &lt;table&gt;
   &lt;thead&gt;
@@ -162,10 +96,10 @@
 &lt;p&gt;H2 可以结合 Lucene 一起进行使用, 但是从 API 的设计和扩展性来说，都有比较大的限制，可以作为测试使用，不适合用在生产环境中&lt;/p&gt;
 
 &lt;h4 id=&quot;es&quot;&gt;ES&lt;/h4&gt;
-&lt;p&gt;ES 作为专业的搜索引擎，有丰富的功能和 API，在&lt;a href=&quot;./3-month-sharing&quot;&gt;之前&lt;/a&gt;我们便使用了 ELK 做日志相关的收集和查询，
+&lt;p&gt;ES 作为专业的搜索引擎，有丰富的功能和 API，在&lt;a href=&quot;./3-month-sharing#elk&quot;&gt;之前&lt;/a&gt;我们便使用了 ELK 做日志相关的收集和查询，
 在稳定性和查询速度上面都要对应的保证。&lt;/p&gt;
 
-&lt;p&gt;相比于 MySQL，ES 提供更细粒度的相关度控制(Relevance Tuning), 即可以指定每个字段的搜索权重，例子&lt;/p&gt;
+&lt;p&gt;相比于 MySQL，ES 提供更细粒度的相关度控制(&lt;a href=&quot;https://www.elastic.co/guide/en/app-search/current/relevance-tuning-guide.html&quot;&gt;Relevance Tuning&lt;/a&gt;), 即可以指定每个字段的搜索权重，例子&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl &lt;span class=&quot;nt&quot;&gt;-X&lt;/span&gt; GET &lt;span class=&quot;s1&quot;&gt;'https://es/search'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-H&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Content-Type: application/json'&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{
@@ -186,15 +120,25 @@
 
 &lt;p&gt;对比于 MySQL, 更提供了全套的管理后台，可在 Kibana 进行对应的索引管理和监控等操作&lt;/p&gt;
 
+&lt;p&gt;另外，除了 weight/boost 设置之外, ES 还支持前缀匹配，同义词检索，分词插件等功能，其中 同义词，分词插件 可直接在腾讯云后台中更新&lt;/p&gt;
+
 &lt;h2 id=&quot;落地方案&quot;&gt;落地方案&lt;/h2&gt;
 &lt;h3 id=&quot;搜索&quot;&gt;搜索&lt;/h3&gt;
 
 &lt;div class=&quot;mermaid&quot;&gt;
-graph LR;
-    onMemeroy([内存/redis 快速获取搜索结果&lt;br /&gt;前缀匹配, 热词检索等]);
+flowchart TD;
+    onMemeroy([缓存 获取搜索结果&lt;br /&gt;热词检索/TopK 等]);
     es([es 检索]);
+    E([返回搜索结果]);
+    E1([返回推荐数据]);
     MySQL([MySQL 降级检索]);
-    onMemeroy--&amp;gt;es--&amp;gt;MySQL
+    onMemeroy--&amp;gt;|有结果| E
+    onMemeroy--&amp;gt;|无结果| es
+    es--&amp;gt;|超时或者异常| MySQL
+    es--&amp;gt;|有结果| E
+    es--&amp;gt;|无结果| E1
+    MySQL--&amp;gt;|有结果| E
+    MySQL--&amp;gt;|无结果| E1
 &lt;/div&gt;
 
 &lt;h3 id=&quot;索引&quot;&gt;索引&lt;/h3&gt;
@@ -239,12 +183,148 @@ graph LR
   &lt;li&gt;无论使用哪一种方案，都需要将搜索服务部署到单独的服务器中，通过 Nginx 的二级域名进行流量转发和分流处理, 该部分在 Nginx 层控制即可&lt;/li&gt;
 &lt;/ol&gt;
 
+&lt;h3 id=&quot;任务分析&quot;&gt;任务分析&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;热词维护&lt;/p&gt;
+
+    &lt;p&gt;后台配置，存储 MySQL，使用 guava cache，全量缓存 热词对应的id 至 内存中&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;索引维护&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;确定可供搜索的字段来源&lt;/li&gt;
+      &lt;li&gt;字段更新之后，需要发送对应的事件，使得 ES/MySQL 进行索引的更新&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;搜索&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;优先匹配 热词, 该部分直接从缓存中获取&lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;热词中不存在时, 则使用 ES 进行查询&lt;/p&gt;
+
+        &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;QueryBuilders&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;multiMatchQuery&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;搜索词&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;fields&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;词汇1&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;词汇2&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;冷启动数据&lt;/p&gt;
+
+    &lt;p&gt;未获取到搜索结果时处理如下:&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;如果是搜索超时或者是 es 服务异常, 则 使用 MySQL 作为备选方案&lt;/li&gt;
+      &lt;li&gt;如果是搜索 es 未找到对应的数据结果, 则使用 人工配置的 推荐数据&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;搜索词数据统计&lt;/p&gt;
+
+    &lt;p&gt;logstash 收集搜索相关的词, 下面的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;searchQ&lt;/code&gt; 为搜索的词汇&lt;/p&gt;
+
+    &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;grok&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+     &lt;span class=&quot;n&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;message&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'%{TIMESTAMP_ISO8601:reqTime}  %{GREEDYDATA} params =[{&quot;q&quot;:%{searchQ}}] %{GREEDYDATA}time cost = %{NUMBER:reqCostMs} ms'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;mutate&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+     &lt;span class=&quot;n&quot;&gt;convert&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;reqCostMs&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;integer&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+     &lt;span class=&quot;n&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;reqTime&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ISO8601&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;YYYY-MM-dd HH:mm:ss&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;YYYY-MM-dd HH:mm:ss.ZZZ&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+     &lt;span class=&quot;n&quot;&gt;target&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;reqTime&quot;&lt;/span&gt;
+     &lt;span class=&quot;n&quot;&gt;locale&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;en&quot;&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;其他的优化&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;分词优化，考虑使用不同的分词引擎(如 ik, ngram 等)&lt;/li&gt;
+      &lt;li&gt;同义词优化，配置对应的同义词进行检索优化&lt;/li&gt;
+      &lt;li&gt;拼音，错别字纠正&lt;/li&gt;
+      &lt;li&gt;搜索词补全&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;检索基础理论&quot;&gt;检索基础理论&lt;/h2&gt;
+&lt;p&gt;需要关注下面几点&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;快速的缩小检索范围
+    &lt;ul&gt;
+      &lt;li&gt;二分查找法, 缩小一半&lt;/li&gt;
+      &lt;li&gt;跳表, 跳动步长 &amp;gt; 1&lt;/li&gt;
+      &lt;li&gt;B/B+树, 以磁盘片为步长，一次过滤掉一个(4K)或者多个快&lt;/li&gt;
+      &lt;li&gt;位图/Hash/布隆过滤器, 利用概率/数组下标 快速寻找或者判断元素&lt;/li&gt;
+      &lt;li&gt;Roaring Bitmap, 高位存储 bucket 信息，低位存储位图信息&lt;/li&gt;
+      &lt;li&gt;TopK &amp;amp; 非精准 TopK&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;利用存储、访问特性进行检索优化, 估算内存和磁盘的空间占比, 减少磁盘IO(磁盘), 利用磁盘的顺序读, 避免随机读
+    &lt;ul&gt;
+      &lt;li&gt;B+ 树&lt;/li&gt;
+      &lt;li&gt;日志记录使用 LSM 树&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;空间冗余换取时间
+    &lt;ul&gt;
+      &lt;li&gt;跳表, 冗余步长&lt;/li&gt;
+      &lt;li&gt;AVL, 冗余叶子高度信息&lt;/li&gt;
+      &lt;li&gt;倒排索引&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;缓存
+    &lt;ul&gt;
+      &lt;li&gt;热点数据使用 LRU 缓存&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;在工业界中，往往会几个算法组合起来进行使用，如使用跳表来实现 posting-list, 两个 posting-list 求交集的时候，直接将小的那个变成 Hash 等&lt;/p&gt;
+
+&lt;p&gt;另外，要注意两点&lt;/p&gt;
+
+&lt;blockquote&gt;
+
+  &lt;ol&gt;
+    &lt;li&gt;内存的检索效率比磁盘高许多，因此，能加载到内存中的数据，我们要尽可能加载到内存中。&lt;/li&gt;
+    &lt;li&gt;大数据集合拆成小数据集合处理(快速缩小检索范围)&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/speed-in-2020.png&quot; alt=&quot;speed-in-2020.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;参考: &lt;a href=&quot;https://colin-scott.github.io/personal_website/research/interactive_latency.html&quot;&gt;数字&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;更新策略&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Double Buffer, 利用冗余减少更新频率&lt;/li&gt;
+  &lt;li&gt;全量(只读) + 增量更新(可读可写)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;指导思想&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;索引和数据分离&lt;/li&gt;
+  &lt;li&gt;减少磁盘IO&lt;/li&gt;
+  &lt;li&gt;读写分离, 避免锁&lt;/li&gt;
+  &lt;li&gt;分层处理 (非精准 TopK -&amp;gt; TopK), 搜索降级&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://time.geekbang.org/column/intro/298&quot;&gt;检索技术核心20讲-极客时间&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/142833556&quot;&gt;H2 全文检索&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://dev.mysql.com/doc/refman/8.0/en/fulltext-search.html&quot;&gt;MySQL Full-Text Search Functions&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">检索的本质 需要关注下面几点</summary></entry><entry><title type="html">Folsom Blues</title><link href="https://dengqinghua.github.io/folsom-blues.html" rel="alternate" type="text/html" title="Folsom Blues" /><published>2021-08-29T00:00:00+08:00</published><updated>2021-08-29T00:00:00+08:00</updated><id>https://dengqinghua.github.io/folsom-blues</id><content type="html" xml:base="https://dengqinghua.github.io/folsom-blues.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.elastic.co/guide/en/app-search/current/relevance-tuning-guide.html#relevance-tuning-guide&quot;&gt;Relevance Tuning Guide, Weights and Boosts&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">方案设计 可选的搜索方案</summary></entry><entry><title type="html">Folsom Blues</title><link href="https://dengqinghua.github.io/folsom-blues.html" rel="alternate" type="text/html" title="Folsom Blues" /><published>2021-08-29T00:00:00+08:00</published><updated>2021-08-29T00:00:00+08:00</updated><id>https://dengqinghua.github.io/folsom-blues</id><content type="html" xml:base="https://dengqinghua.github.io/folsom-blues.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
 
 &lt;ul&gt;
   &lt;li&gt;曲谱: &lt;a href=&quot;https://pan.baidu.com/disk/pdfview?path=%2F42%2F%E9%9F%B3%E4%B9%90%2F%E6%95%99%E6%9D%90%2FProGuitar%2FfolsomPrisonBlues%2Femil-ernebro-folsom-prison-blues.pdf&amp;amp;size=128339&amp;amp;fsid=427847537413829&quot;&gt;PDF&lt;/a&gt;&lt;/li&gt;

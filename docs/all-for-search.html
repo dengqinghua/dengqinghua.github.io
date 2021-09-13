@@ -11,15 +11,15 @@
 <meta property="og:title" content="检索技术探索" />
 <meta name="author" content="dengqinghua" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="检索的本质 需要关注下面几点" />
-<meta property="og:description" content="检索的本质 需要关注下面几点" />
+<meta name="description" content="方案设计 可选的搜索方案" />
+<meta property="og:description" content="方案设计 可选的搜索方案" />
 <link rel="canonical" href="https://dengqinghua.github.io/all-for-search.html" />
 <meta property="og:url" content="https://dengqinghua.github.io/all-for-search.html" />
 <meta property="og:site_name" content="Dengqinghua.42" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-09-01T00:00:00+08:00" />
 <script type="application/ld+json">
-{"headline":"检索技术探索","dateModified":"2021-09-01T00:00:00+08:00","datePublished":"2021-09-01T00:00:00+08:00","url":"https://dengqinghua.github.io/all-for-search.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://dengqinghua.github.io/all-for-search.html"},"author":{"@type":"Person","name":"dengqinghua"},"description":"检索的本质 需要关注下面几点","@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"headline":"检索技术探索","dateModified":"2021-09-01T00:00:00+08:00","datePublished":"2021-09-01T00:00:00+08:00","url":"https://dengqinghua.github.io/all-for-search.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://dengqinghua.github.io/all-for-search.html"},"author":{"@type":"Person","name":"dengqinghua"},"description":"方案设计 可选的搜索方案","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <link type="application/atom+xml" rel="alternate" href="https://dengqinghua.github.io/feed.xml" title="Dengqinghua.42" />
@@ -50,11 +50,10 @@
   <h1>检索技术探索</h1>
 
   <ul id="toc" class="section-nav">
-<li class="toc-entry toc-h2"><a href="#%E6%A3%80%E7%B4%A2%E7%9A%84%E6%9C%AC%E8%B4%A8">检索的本质</a></li>
 <li class="toc-entry toc-h2">
 <a href="#%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1">方案设计</a>
 <ul>
-<li class="toc-entry toc-h3"><a href="#%E6%90%9C%E7%B4%A2%E6%96%B9%E6%A1%88">搜索方案</a></li>
+<li class="toc-entry toc-h3"><a href="#%E5%8F%AF%E9%80%89%E7%9A%84%E6%90%9C%E7%B4%A2%E6%96%B9%E6%A1%88">可选的搜索方案</a></li>
 <li class="toc-entry toc-h3">
 <a href="#%E4%BE%8B%E5%AD%90">例子</a>
 <ul>
@@ -71,81 +70,16 @@
 <li class="toc-entry toc-h3"><a href="#%E6%90%9C%E7%B4%A2">搜索</a></li>
 <li class="toc-entry toc-h3"><a href="#%E7%B4%A2%E5%BC%95">索引</a></li>
 <li class="toc-entry toc-h3"><a href="#%E9%83%A8%E7%BD%B2">部署</a></li>
+<li class="toc-entry toc-h3"><a href="#%E4%BB%BB%E5%8A%A1%E5%88%86%E6%9E%90">任务分析</a></li>
 </ul>
 </li>
+<li class="toc-entry toc-h2"><a href="#%E6%A3%80%E7%B4%A2%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA">检索基础理论</a></li>
 <li class="toc-entry toc-h2"><a href="#reference">Reference</a></li>
 </ul>
-<h2 id="检索的本质">
-<a class="anchor" href="#%E6%A3%80%E7%B4%A2%E7%9A%84%E6%9C%AC%E8%B4%A8" aria-hidden="true"><span class="octicon octicon-link"></span></a>检索的本质</h2>
-<p>需要关注下面几点</p>
-
-<ul>
-  <li>快速的缩小检索范围
-    <ul>
-      <li>二分查找法, 缩小一半</li>
-      <li>跳表, 跳动步长 &gt; 1</li>
-      <li>B/B+树, 以磁盘片为步长，一次过滤掉一个(4K)或者多个快</li>
-      <li>位图/Hash/布隆过滤器, 利用概率/数组下标 快速寻找或者判断元素</li>
-      <li>Roaring Bitmap, 高位存储 bucket 信息，低位存储位图信息</li>
-      <li>TopK &amp; 非精准 TopK</li>
-    </ul>
-  </li>
-  <li>利用存储、访问特性进行检索优化, 估算内存和磁盘的空间占比, 减少磁盘IO(磁盘), 利用磁盘的顺序读, 避免随机读
-    <ul>
-      <li>B+ 树</li>
-      <li>日志记录使用 LSM 树</li>
-    </ul>
-  </li>
-  <li>空间冗余换取时间
-    <ul>
-      <li>跳表, 冗余步长</li>
-      <li>AVL, 冗余叶子高度信息</li>
-      <li>倒排索引</li>
-    </ul>
-  </li>
-  <li>缓存
-    <ul>
-      <li>热点数据使用 LRU 缓存</li>
-    </ul>
-  </li>
-</ul>
-
-<p>在工业界中，往往会几个算法组合起来进行使用，如使用跳表来实现 posting-list, 两个 posting-list 求交集的时候，直接将小的那个变成 Hash 等</p>
-
-<p>另外，要注意两点</p>
-
-<blockquote>
-
-  <ol>
-    <li>内存的检索效率比磁盘高许多，因此，能加载到内存中的数据，我们要尽可能加载到内存中。</li>
-    <li>大数据集合拆成小数据集合处理(快速缩小检索范围)</li>
-  </ol>
-</blockquote>
-
-<p><img src="assets/images/speed-in-2020.png" alt="speed-in-2020.png"></p>
-
-<p>参考: <a href="https://colin-scott.github.io/personal_website/research/interactive_latency.html" target="_blank" rel="noopener noreferrer">数字</a></p>
-
-<p>更新策略</p>
-
-<ul>
-  <li>Double Buffer, 利用冗余减少更新频率</li>
-  <li>全量(只读) + 增量更新(可读可写)</li>
-</ul>
-
-<p>指导思想</p>
-
-<ul>
-  <li>索引和数据分离</li>
-  <li>减少磁盘IO</li>
-  <li>读写分离, 避免锁</li>
-  <li>分层处理 (非精准 TopK -&gt; TopK), 搜索降级</li>
-</ul>
-
 <h2 id="方案设计">
 <a class="anchor" href="#%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1" aria-hidden="true"><span class="octicon octicon-link"></span></a>方案设计</h2>
-<h3 id="搜索方案">
-<a class="anchor" href="#%E6%90%9C%E7%B4%A2%E6%96%B9%E6%A1%88" aria-hidden="true"><span class="octicon octicon-link"></span></a>搜索方案</h3>
+<h3 id="可选的搜索方案">
+<a class="anchor" href="#%E5%8F%AF%E9%80%89%E7%9A%84%E6%90%9C%E7%B4%A2%E6%96%B9%E6%A1%88" aria-hidden="true"><span class="octicon octicon-link"></span></a>可选的搜索方案</h3>
 
 <table>
   <thead>
@@ -245,10 +179,10 @@
 
 <h4 id="es">
 <a class="anchor" href="#es" aria-hidden="true"><span class="octicon octicon-link"></span></a>ES</h4>
-<p>ES 作为专业的搜索引擎，有丰富的功能和 API，在<a href="./3-month-sharing">之前</a>我们便使用了 ELK 做日志相关的收集和查询，
+<p>ES 作为专业的搜索引擎，有丰富的功能和 API，在<a href="./3-month-sharing#elk">之前</a>我们便使用了 ELK 做日志相关的收集和查询，
 在稳定性和查询速度上面都要对应的保证。</p>
 
-<p>相比于 MySQL，ES 提供更细粒度的相关度控制(Relevance Tuning), 即可以指定每个字段的搜索权重，例子</p>
+<p>相比于 MySQL，ES 提供更细粒度的相关度控制(<a href="https://www.elastic.co/guide/en/app-search/current/relevance-tuning-guide.html" target="_blank" rel="noopener noreferrer">Relevance Tuning</a>), 即可以指定每个字段的搜索权重，例子</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-X</span> GET <span class="s1">'https://es/search'</span> <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s1">'{
@@ -269,17 +203,27 @@
 
 <p>对比于 MySQL, 更提供了全套的管理后台，可在 Kibana 进行对应的索引管理和监控等操作</p>
 
+<p>另外，除了 weight/boost 设置之外, ES 还支持前缀匹配，同义词检索，分词插件等功能，其中 同义词，分词插件 可直接在腾讯云后台中更新</p>
+
 <h2 id="落地方案">
 <a class="anchor" href="#%E8%90%BD%E5%9C%B0%E6%96%B9%E6%A1%88" aria-hidden="true"><span class="octicon octicon-link"></span></a>落地方案</h2>
 <h3 id="搜索">
 <a class="anchor" href="#%E6%90%9C%E7%B4%A2" aria-hidden="true"><span class="octicon octicon-link"></span></a>搜索</h3>
 
 <div class="mermaid">
-graph LR;
-    onMemeroy([内存/redis 快速获取搜索结果<br>前缀匹配, 热词检索等]);
+flowchart TD;
+    onMemeroy([缓存 获取搜索结果<br>热词检索/TopK 等]);
     es([es 检索]);
+    E([返回搜索结果]);
+    E1([返回推荐数据]);
     MySQL([MySQL 降级检索]);
-    onMemeroy--&gt;es--&gt;MySQL
+    onMemeroy--&gt;|有结果| E
+    onMemeroy--&gt;|无结果| es
+    es--&gt;|超时或者异常| MySQL
+    es--&gt;|有结果| E
+    es--&gt;|无结果| E1
+    MySQL--&gt;|有结果| E
+    MySQL--&gt;|无结果| E1
 </div>
 
 <h3 id="索引">
@@ -326,12 +270,152 @@ graph LR
   <li>无论使用哪一种方案，都需要将搜索服务部署到单独的服务器中，通过 Nginx 的二级域名进行流量转发和分流处理, 该部分在 Nginx 层控制即可</li>
 </ol>
 
+<h3 id="任务分析">
+<a class="anchor" href="#%E4%BB%BB%E5%8A%A1%E5%88%86%E6%9E%90" aria-hidden="true"><span class="octicon octicon-link"></span></a>任务分析</h3>
+<ol>
+  <li>
+    <p>热词维护</p>
+
+    <p>后台配置，存储 MySQL，使用 guava cache，全量缓存 热词对应的id 至 内存中</p>
+  </li>
+  <li>
+    <p>索引维护</p>
+
+    <ul>
+      <li>确定可供搜索的字段来源</li>
+      <li>字段更新之后，需要发送对应的事件，使得 ES/MySQL 进行索引的更新</li>
+    </ul>
+  </li>
+  <li>
+    <p>搜索</p>
+
+    <ul>
+      <li>优先匹配 热词, 该部分直接从缓存中获取</li>
+      <li>
+        <p>热词中不存在时, 则使用 ES 进行查询</p>
+
+        <div class="language-java highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nc">QueryBuilders</span><span class="o">.</span><span class="na">multiMatchQuery</span><span class="o">(</span><span class="s">"搜索词"</span><span class="o">).</span><span class="na">fields</span><span class="o">(</span><span class="nc">Map</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="s">"词汇1"</span><span class="o">,</span> <span class="mi">1</span><span class="n">f</span><span class="o">,</span> <span class="s">"词汇2"</span><span class="o">,</span> <span class="mi">2</span><span class="n">f</span><span class="o">));</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>冷启动数据</p>
+
+    <p>未获取到搜索结果时处理如下:</p>
+
+    <ul>
+      <li>如果是搜索超时或者是 es 服务异常, 则 使用 MySQL 作为备选方案</li>
+      <li>如果是搜索 es 未找到对应的数据结果, 则使用 人工配置的 推荐数据</li>
+    </ul>
+  </li>
+  <li>
+    <p>搜索词数据统计</p>
+
+    <p>logstash 收集搜索相关的词, 下面的 <code class="language-plaintext highlighter-rouge">searchQ</code> 为搜索的词汇</p>
+
+    <div class="language-ruby highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> <span class="n">filter</span> <span class="p">{</span>
+    <span class="n">grok</span> <span class="p">{</span>
+     <span class="n">match</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">"message"</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'%{TIMESTAMP_ISO8601:reqTime}  %{GREEDYDATA} params =[{"q":%{searchQ}}] %{GREEDYDATA}time cost = %{NUMBER:reqCostMs} ms'</span><span class="p">]</span> <span class="p">}</span>
+   <span class="p">}</span>
+   <span class="n">mutate</span> <span class="p">{</span>
+     <span class="n">convert</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s2">"reqCostMs"</span> <span class="o">=&gt;</span> <span class="s2">"integer"</span> <span class="p">}</span>
+   <span class="p">}</span>
+   <span class="n">date</span> <span class="p">{</span>
+     <span class="n">match</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">"reqTime"</span><span class="p">,</span> <span class="s2">"ISO8601"</span><span class="p">,</span> <span class="s2">"YYYY-MM-dd HH:mm:ss"</span><span class="p">,</span> <span class="s2">"YYYY-MM-dd HH:mm:ss.ZZZ"</span> <span class="p">]</span>
+     <span class="n">target</span> <span class="o">=&gt;</span> <span class="s2">"reqTime"</span>
+     <span class="n">locale</span> <span class="o">=&gt;</span> <span class="s2">"en"</span>
+   <span class="p">}</span>
+ <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>其他的优化</p>
+    <ul>
+      <li>分词优化，考虑使用不同的分词引擎(如 ik, ngram 等)</li>
+      <li>同义词优化，配置对应的同义词进行检索优化</li>
+      <li>拼音，错别字纠正</li>
+      <li>搜索词补全</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="检索基础理论">
+<a class="anchor" href="#%E6%A3%80%E7%B4%A2%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA" aria-hidden="true"><span class="octicon octicon-link"></span></a>检索基础理论</h2>
+<p>需要关注下面几点</p>
+
+<ul>
+  <li>快速的缩小检索范围
+    <ul>
+      <li>二分查找法, 缩小一半</li>
+      <li>跳表, 跳动步长 &gt; 1</li>
+      <li>B/B+树, 以磁盘片为步长，一次过滤掉一个(4K)或者多个快</li>
+      <li>位图/Hash/布隆过滤器, 利用概率/数组下标 快速寻找或者判断元素</li>
+      <li>Roaring Bitmap, 高位存储 bucket 信息，低位存储位图信息</li>
+      <li>TopK &amp; 非精准 TopK</li>
+    </ul>
+  </li>
+  <li>利用存储、访问特性进行检索优化, 估算内存和磁盘的空间占比, 减少磁盘IO(磁盘), 利用磁盘的顺序读, 避免随机读
+    <ul>
+      <li>B+ 树</li>
+      <li>日志记录使用 LSM 树</li>
+    </ul>
+  </li>
+  <li>空间冗余换取时间
+    <ul>
+      <li>跳表, 冗余步长</li>
+      <li>AVL, 冗余叶子高度信息</li>
+      <li>倒排索引</li>
+    </ul>
+  </li>
+  <li>缓存
+    <ul>
+      <li>热点数据使用 LRU 缓存</li>
+    </ul>
+  </li>
+</ul>
+
+<p>在工业界中，往往会几个算法组合起来进行使用，如使用跳表来实现 posting-list, 两个 posting-list 求交集的时候，直接将小的那个变成 Hash 等</p>
+
+<p>另外，要注意两点</p>
+
+<blockquote>
+
+  <ol>
+    <li>内存的检索效率比磁盘高许多，因此，能加载到内存中的数据，我们要尽可能加载到内存中。</li>
+    <li>大数据集合拆成小数据集合处理(快速缩小检索范围)</li>
+  </ol>
+</blockquote>
+
+<p><img src="assets/images/speed-in-2020.png" alt="speed-in-2020.png"></p>
+
+<p>参考: <a href="https://colin-scott.github.io/personal_website/research/interactive_latency.html" target="_blank" rel="noopener noreferrer">数字</a></p>
+
+<p>更新策略</p>
+
+<ul>
+  <li>Double Buffer, 利用冗余减少更新频率</li>
+  <li>全量(只读) + 增量更新(可读可写)</li>
+</ul>
+
+<p>指导思想</p>
+
+<ul>
+  <li>索引和数据分离</li>
+  <li>减少磁盘IO</li>
+  <li>读写分离, 避免锁</li>
+  <li>分层处理 (非精准 TopK -&gt; TopK), 搜索降级</li>
+</ul>
+
 <h2 id="reference">
 <a class="anchor" href="#reference" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reference</h2>
 <ul>
   <li><a href="https://time.geekbang.org/column/intro/298" target="_blank" rel="noopener noreferrer">检索技术核心20讲-极客时间</a></li>
   <li><a href="https://zhuanlan.zhihu.com/p/142833556" target="_blank" rel="noopener noreferrer">H2 全文检索</a></li>
   <li><a href="https://dev.mysql.com/doc/refman/8.0/en/fulltext-search.html" target="_blank" rel="noopener noreferrer">MySQL Full-Text Search Functions</a></li>
+  <li><a href="https://www.elastic.co/guide/en/app-search/current/relevance-tuning-guide.html#relevance-tuning-guide" target="_blank" rel="noopener noreferrer">Relevance Tuning Guide, Weights and Boosts</a></li>
 </ul>
 
 </article>
