@@ -108,32 +108,25 @@ flowchart TD;
     es([es 检索]);
     E([返回搜索结果]);
     E1([返回推荐数据]);
-    MySQL([MySQL 降级检索]);
     onMemeroy-->|有结果| E
     onMemeroy-->|无结果| es
-    es-->|超时或者异常| MySQL
     es-->|有结果| E
     es-->|无结果| E1
-    MySQL-->|有结果| E
-    MySQL-->|无结果| E1
 </div>
 
 ### 索引
-1. 采用 ES 作为主要的搜索引擎, 通过事件维护索引的更新
-2. 使用 MySQL 的 fulltext 作为容灾方案
+采用 ES 作为主要的搜索引擎, 通过事件维护索引的更新
 
 <div class="mermaid" markdown="0">
 graph LR
     subgraph 查询
       cache(内存);
       es(ES API);
-      MySQL(降级 MySQL);
     end
     subgraph 索引更新
       EventHandler(Pulsa队列);
       storage1(存储1 <br > ES-主查询引擎);
-      storage2(存储2 <br > MySQL-容灾);
-      storage3(存储3 <br > 内存-热词,TopK 等信息);
+      storage2(存储2 <br > 内存-热词,TopK 等信息);
     end
     subgraph 源数据事件
       event1(单曲/合集/QE/DE 更新);
@@ -145,10 +138,9 @@ graph LR
       weight(搜索权重值);
     end
 
-    event1 & event2 & field & weight-->EventHandler-->storage1 & storage2 & storage3;
+    event1 & event2 & field & weight-->EventHandler-->storage1 & storage2;
     cache-->storage1;
     es-->storage2;
-    MySQL-->storage3;
 </div>
 
 ### 部署
@@ -164,7 +156,7 @@ graph LR
 2. 索引维护
 
     - 确定可供搜索的字段来源
-    - 字段更新之后，需要发送对应的事件，使得 ES/MySQL 进行索引的更新
+    - 字段更新之后，需要发送对应的事件，使得 ES 进行索引的更新
 
 3. 搜索
 
@@ -179,7 +171,6 @@ graph LR
 
     未获取到搜索结果时处理如下:
 
-      + 如果是搜索超时或者是 es 服务异常, 则 使用 MySQL 作为备选方案
       + 如果是搜索 es 未找到对应的数据结果, 则使用 人工配置的 推荐数据
 
 5. 搜索词数据统计
@@ -202,11 +193,31 @@ graph LR
     }
     ```
 
-6. 其他的优化
+6. 数据全量索引
+
+7. 其他的优化
     - 分词优化，考虑使用不同的分词引擎(如 ik, ngram 等)
     - 同义词优化，配置对应的同义词进行检索优化
     - 拼音，错别字纠正
     - 搜索词补全
+
+### 演进计划
+
+<div class="mermaid" markdown="0">
+graph LR;
+  input1([原始数据1 <br /> 亿/千万])
+  input2([原始数据2 <br /> 亿/千万])
+  input3([原始数据... <br /> 亿/千万])
+  callback(召回 <br />万/千);
+  sort(归并排序 <br />千/百);
+  filter(调整 <br />百/十);
+  output([结果 <br /> 十])
+  input1 & input2 & input3-->callback-->sort-->filter-->output
+</div>
+
+![framework](assets/images/netflix_framework.png)
+
+更多内容见 [推荐系统探索](/recommend-sys.html#技术架构)
 
 ## 检索基础理论
 需要关注下面几点
@@ -252,8 +263,194 @@ graph LR
 - 读写分离, 避免锁
 - 分层处理 (非精准 TopK -> TopK), 搜索降级
 
+## ES 实战
+### 基本概念
+- Document Metadata
+  - _index 索引名称
+  - _type 索引类型 7.0版本中只对应一个 type, 为 _doc
+  - _score 相关性打分
+  - _source 数据, 为 JSON 格式
+  - _version 更新的版本
+- Mapping 字段类型定义
+- Setting 部署方式定义
+- Data node 存储数据的 node
+- Coordinating node 分发节点, 并发将请求拆分到不同的节点进行查询
+- Primary/Replica Shard 主/副本分片
+- green, yellow & red 绿色代表主/副本分片均正常, 黄色代表副本分片不正常, 红色代表主分片不正常
+- put 文档
+
+### DevTools
+假设索引名称为 media_es
+
+索引信息查询
+
+```bash
+# 查看 mapping 和 setting 信息
+GET /media_es
+# 查询总数
+GET /media_es/_count
+# 搜索内容 并查看分数
+POST /media_es/_search
+```
+
+cat 查询
+
+```bash
+# 查看所有的索引信息
+GET /_cat/indices
+# 查看所有的分片信息
+GET /_cat/shards
+```
+
+集群信息
+
+```bash
+GET /_cluster/health
+```
+
+增删查改操作
+
+```bash
+# 创建记录
+POST /media_es/_doc
+{
+  "name": "1"
+}
+
+# 更新或者创建 id=1024的记录, 该部分删除原有的索引进行重建
+PUT /media_es/_doc/1024
+{
+  "name": "1"
+}
+
+# 更新索引
+POST /media_es/_update/1024
+{
+  "doc": { "internalName": "this is new" }
+}
+
+GET /media_es/_doc/1024
+
+# 批量操作
+POST /_bulk
+{}
+
+# 批量获取操作
+GET /_mget
+{}
+
+# 批量查询
+GET /_msearch
+{}
+```
+
+分词器
+
+```bash
+GET /_analyze
+{
+  "analyzer": "standard",
+  "text": ["今天是个好的日志", "我吃了一顿烧烤"]
+}
+```
+
+```bash
+GET /media_es/_analyze
+{
+  "field": "name",
+  "text": ["nice"]
+}
+```
+
+### 倒排索引
+正排索引
+
+| document id | content |
+| :-------------: | :-------------: |
+| 1 | elasticsearch server |
+| 2 | server devops good |
+| 3 | elasticsearch very good |
+
+倒排索引
+
+| term | count | document position in content |
+| :-------------: | :-------------: | :-------------: |
+| elasticsearch | 2 | 1:0 3:0 |
+| server | 2 | 1:1 2:0  |
+| good | 2 | 2:0 3:0 |
+| very | 1 | 3:1 |
+
+- 单词词典(Term Dictionary)
+  + B+ 树
+  + Hash
+- 倒排列表(Posting List)
+  + Doc ID
+  + TF (term frequency) 词频, 用于计算相关性
+  + Position 词出现的位置, 用于语句搜索
+  + Offset 位置, 用于高亮
+
+### Analyer 分词器
+关键的[三个部分](https://www.elastic.co/guide/en/elasticsearch/reference/current/analyzer-anatomy.html)
+
+<div class="mermaid" markdown="0">
+graph LR
+    cf([Character Filters]);
+    t([Tokenizer]);
+    tf([Tokenizer Filter]);
+    cf-->t-->tf
+</div>
+
+- Character Filters 过滤器，过滤掉一些如 < & 标签
+- Tokenizer 切分单词，比如按照空格，逗号切分 ["good better best"] 切分为 good, better, best
+- Token Filter 加工单词，如删除 stopwords(a the 等), 将大写改为小写, 删除违禁词等
+
+```bash
+GET /_analyze
+{
+  "analyzer": "standard",
+  "text": ["今天是个好的日子", "我吃了一顿烧烤", "I feel good"]
+}
+```
+
+```bash
+GET /media_es/_analyze
+{
+  "field": "name",
+  "text": ["nice"]
+}
+```
+
+常见的 Analyer
+
+- standard ES 的[默认](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-analyzer.html)的分词器
+- simple
+- whitespace, 将空格去掉
+- stop 将 a, the 去掉
+- keyword 不进行分词, 则使用 keyword
+- pattern 正则分词
+- language 不同语言的分词 (running 会变成 run, foxes 变成 fox 等)
+
+中文分词
+
+> 难点：词语在不同地方的语境不同，假如 **这个瓜不大好吃** 分词为了 瓜，不大，好吃，则完全跟原来的意思相反了
+
+常用的中文分词器
+
+- icu_analyzer
+- [ik_smart](https://github.com/medcl/elasticsearch-analysis-ik) 支持自定义
+- [thulac]
+
+### Relevance 相关性
+评估标准 Information Retrieval
+- Percision 精确度
+- Recall 查全率
+- Ranking 排序
+
+该部分和机器学习里面的评估标准类似，有 True/False Positive 的概念
+
 ## Reference
 - [检索技术核心20讲-极客时间](https://time.geekbang.org/column/intro/298)
+- [Elasticsearch核心技术与实战-极客时间](https://time.geekbang.org/course/detail/100030501-102662)
 - [H2 全文检索](https://zhuanlan.zhihu.com/p/142833556)
 - [MySQL Full-Text Search Functions](https://dev.mysql.com/doc/refman/8.0/en/fulltext-search.html)
 - [Relevance Tuning Guide, Weights and Boosts](https://www.elastic.co/guide/en/app-search/current/relevance-tuning-guide.html#relevance-tuning-guide)
