@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-09-14T15:30:16+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-09-17T14:42:46+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
 </subtitle><author><name>dengqinghua</name></author><entry><title type="html">检索技术探索</title><link href="https://dengqinghua.github.io/all-for-search.html" rel="alternate" type="text/html" title="检索技术探索" /><published>2021-09-01T00:00:00+08:00</published><updated>2021-09-01T00:00:00+08:00</updated><id>https://dengqinghua.github.io/all-for-search</id><content type="html" xml:base="https://dengqinghua.github.io/all-for-search.html">&lt;h2 id=&quot;方案设计&quot;&gt;方案设计&lt;/h2&gt;
 &lt;h3 id=&quot;可选的搜索方案&quot;&gt;可选的搜索方案&lt;/h3&gt;
 
@@ -16,24 +16,24 @@
   &lt;tbody&gt;
     &lt;tr&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;MySQL&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;接入成本小, 原生的 MySQL 支持简单的全文索引 和 ngram 分词&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;功能&lt;a href=&quot;https://dev.mysql.com/doc/refman/5.7/en/fulltext-restrictions.html&quot;&gt;有限&lt;/a&gt;, 不支持复杂的分词逻辑, 不支持预先设置字段权重&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;接入成本小， 原生的 MySQL 支持简单的全文索引 和 ngram 分词&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;功能&lt;a href=&quot;https://dev.mysql.com/doc/refman/5.7/en/fulltext-restrictions.html&quot;&gt;有限&lt;/a&gt;， 不支持复杂的分词逻辑， 不支持预先设置字段权重&lt;/td&gt;
       &lt;td&gt;⭐️&lt;/td&gt;
       &lt;td&gt;⭐️&lt;/td&gt;
       &lt;td&gt;直接接入并使用 MyBatisPlus 进行查询即可&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;内存(H2)&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;速度快，可使用 &lt;a href=&quot;https://www.h2database.com/html/main.html&quot;&gt;H2&lt;/a&gt; 和 &lt;a href=&quot;http://www.h2database.com/javadoc/index.html&quot;&gt;Lucene&lt;/a&gt; 结合进行检索, 当前数据量大概为 500K, 可考虑全部导入&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;数据量变大之后容易导致 OOM, 需要处理多实例的数据同步问题&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;速度快，可使用 &lt;a href=&quot;https://www.h2database.com/html/main.html&quot;&gt;H2&lt;/a&gt; 和 &lt;a href=&quot;http://www.h2database.com/javadoc/index.html&quot;&gt;Lucene&lt;/a&gt; 结合进行检索， 当前数据量大概为 500K， 可考虑全部导入&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;数据量变大之后容易导致 OOM， 需要处理多实例的数据同步问题&lt;/td&gt;
       &lt;td&gt;⭐️⭐️&lt;/td&gt;
       &lt;td&gt;⭐️⭐️⭐️&lt;/td&gt;
       &lt;td&gt;1. 接入 H2&lt;br /&gt; 2. 提供同步更新机制 &lt;br /&gt;3. OOM 优化 &lt;br /&gt;4. 分词优化方案和调试方案&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;ES&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;主流, 满足基本的搜索需求, 丰富的 API, 分词功能支持较好&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;引入第三方组件, 容易造成单点, 服务可靠性无法保证&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;主流， 满足基本的搜索需求， 丰富的 API， 分词功能支持较好&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;引入第三方组件， 容易造成单点， 服务可靠性无法保证&lt;/td&gt;
       &lt;td&gt;⭐️⭐️⭐️⭐️⭐️&lt;/td&gt;
       &lt;td&gt;⭐️⭐️&lt;/td&gt;
       &lt;td&gt;1. 接入 ES&lt;br /&gt; 2. 实现 ES Wrapper &lt;br /&gt;3. 提供统一的搜索接口&lt;/td&gt;
@@ -43,14 +43,14 @@
 
 &lt;h3 id=&quot;例子&quot;&gt;例子&lt;/h3&gt;
 &lt;h4 id=&quot;mysql&quot;&gt;MySQL&lt;/h4&gt;
-&lt;p&gt;给 media 表的 content 字段 添加全文索引, 这里使用了 &lt;a href=&quot;https://dev.mysql.com/doc/refman/5.7/en/fulltext-search-ngram.html&quot;&gt;ngram&lt;/a&gt; 作为分词器&lt;/p&gt;
+&lt;p&gt;给 media 表的 content 字段 添加全文索引， 这里使用了 &lt;a href=&quot;https://dev.mysql.com/doc/refman/5.7/en/fulltext-search-ngram.html&quot;&gt;ngram&lt;/a&gt; 作为分词器&lt;/p&gt;
 
 &lt;p&gt;分词的字数由 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ngram_token_size&lt;/code&gt; 参数进行控制&lt;/p&gt;
 
 &lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;ALTER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;`media`&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ADD&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FULLTEXT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;`content`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;WITH&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PARSER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ngram&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;media&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;230&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;231&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;G&lt;/span&gt;
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;media&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;230&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;231&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;G&lt;/span&gt;
 
 &lt;span class=&quot;o&quot;&gt;***************************&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;row&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;***************************&lt;/span&gt;
      &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;230&lt;/span&gt;
@@ -58,11 +58,11 @@
 
 &lt;span class=&quot;o&quot;&gt;***************************&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;row&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;***************************&lt;/span&gt;
      &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;231&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&quot;描述文案&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&quot;播放器标题&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&quot;描述文案&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&quot;播放器标题&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;查看匹配的分数, 这里拿了两个 id 作为例子&lt;/p&gt;
-&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AGAINST&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'为什么失眠'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;score&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;media&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;230&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;231&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;p&gt;查看匹配的分数， 这里拿了两个 id 作为例子&lt;/p&gt;
+&lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AGAINST&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'为什么失眠'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;score&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;media&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;230&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;231&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
 &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;-----+--------------------+&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;score&lt;/span&gt;              &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
@@ -72,7 +72,7 @@
 &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;-----+--------------------+&lt;/span&gt;
 &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;rows&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;05&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;mysql&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AGAINST&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'失眠'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;score&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;media&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;230&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;231&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;mysql&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AGAINST&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'失眠'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;score&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;media&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;230&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;231&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;-----+-------------------+&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;score&lt;/span&gt;             &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;-----+-------------------+&lt;/span&gt;
@@ -80,7 +80,7 @@
 &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;231&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;                 &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;-----+-------------------+&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;mysql&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AGAINST&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'眠'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;score&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;media&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;230&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;231&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;mysql&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AGAINST&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'眠'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;score&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;media&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;where&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;230&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;231&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;-----+-------+&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;score&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;-----+-------+&lt;/span&gt;
@@ -93,34 +93,34 @@
 &lt;h4 id=&quot;h2&quot;&gt;H2&lt;/h4&gt;
 &lt;p&gt;例子见 &lt;a href=&quot;https://zhuanlan.zhihu.com/p/142833556&quot;&gt;H2 的全文检索功能&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;H2 可以结合 Lucene 一起进行使用, 但是从 API 的设计和扩展性来说，都有比较大的限制，可以作为测试使用，不适合用在生产环境中&lt;/p&gt;
+&lt;p&gt;H2 可以结合 Lucene 一起进行使用， 但是从 API 的设计和扩展性来说，都有比较大的限制，可以作为测试使用，不适合用在生产环境中&lt;/p&gt;
 
 &lt;h4 id=&quot;es&quot;&gt;ES&lt;/h4&gt;
 &lt;p&gt;ES 作为专业的搜索引擎，有丰富的功能和 API，在&lt;a href=&quot;./3-month-sharing#elk&quot;&gt;之前&lt;/a&gt;我们便使用了 ELK 做日志相关的收集和查询，
 在稳定性和查询速度上面都要对应的保证。&lt;/p&gt;
 
-&lt;p&gt;相比于 MySQL，ES 提供更细粒度的相关度控制(&lt;a href=&quot;https://www.elastic.co/guide/en/app-search/current/relevance-tuning-guide.html&quot;&gt;Relevance Tuning&lt;/a&gt;), 即可以指定每个字段的搜索权重，例子&lt;/p&gt;
+&lt;p&gt;相比于 MySQL，ES 提供更细粒度的相关度控制(&lt;a href=&quot;https://www.elastic.co/guide/en/app-search/current/relevance-tuning-guide.html&quot;&gt;Relevance Tuning&lt;/a&gt;)， 即可以指定每个字段的搜索权重，例子&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl &lt;span class=&quot;nt&quot;&gt;-X&lt;/span&gt; GET &lt;span class=&quot;s1&quot;&gt;'https://es/search'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-H&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Content-Type: application/json'&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{
   &quot;search_fields&quot;: {
     &quot;title&quot;: {
       &quot;weight&quot;: 10
-    },
+    }，
     &quot;description&quot;: {
       &quot;weight&quot;: 1
-    },
+    }，
     &quot;states&quot;: {
       &quot;weight&quot;: 2
     }
-  },
+  }，
   &quot;query&quot;: &quot;mountains&quot;
 }'&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;对比于 MySQL, 更提供了全套的管理后台，可在 Kibana 进行对应的索引管理和监控等操作&lt;/p&gt;
+&lt;p&gt;对比于 MySQL， 更提供了全套的管理后台，可在 Kibana 进行对应的索引管理和监控等操作&lt;/p&gt;
 
-&lt;p&gt;另外，除了 weight/boost 设置之外, ES 还支持前缀匹配，同义词检索，分词插件等功能，其中 同义词，分词插件 可直接在腾讯云后台中更新&lt;/p&gt;
+&lt;p&gt;另外，除了 weight/boost 设置之外， ES 还支持前缀匹配，同义词检索，分词插件等功能，其中 同义词，分词插件 可直接在腾讯云后台中更新&lt;/p&gt;
 
 &lt;h2 id=&quot;落地方案&quot;&gt;落地方案&lt;/h2&gt;
 &lt;h3 id=&quot;搜索&quot;&gt;搜索&lt;/h3&gt;
@@ -138,7 +138,7 @@ flowchart TD;
 &lt;/div&gt;
 
 &lt;h3 id=&quot;索引&quot;&gt;索引&lt;/h3&gt;
-&lt;p&gt;采用 ES 作为主要的搜索引擎, 通过事件维护索引的更新&lt;/p&gt;
+&lt;p&gt;采用 ES 作为主要的搜索引擎， 通过事件维护索引的更新&lt;/p&gt;
 
 &lt;div class=&quot;mermaid&quot;&gt;
 graph LR
@@ -149,7 +149,7 @@ graph LR
     subgraph 索引更新
       EventHandler(Pulsa队列);
       storage1(存储1 &lt;br /&gt; ES-主查询引擎);
-      storage2(存储2 &lt;br /&gt; 内存-热词,TopK 等信息);
+      storage2(存储2 &lt;br /&gt; 内存-热词，TopK 等信息);
     end
     subgraph 源数据事件
       event1(单曲/合集/QE/DE 更新);
@@ -168,9 +168,9 @@ graph LR
 
 &lt;h3 id=&quot;部署&quot;&gt;部署&lt;/h3&gt;
 &lt;ol&gt;
-  &lt;li&gt;如果采用 H2 作为搜索引擎, 为了服务的简单行来说，需要考虑 &lt;strong&gt;新建项目&lt;/strong&gt;, 而且需要维护好数据更新的问题&lt;/li&gt;
-  &lt;li&gt;如果使用 ES 或者 MySQL 作为搜索引擎, 则可不需要考虑单独起项目，在原有项目上开发即可&lt;/li&gt;
-  &lt;li&gt;无论使用哪一种方案，都需要将搜索服务部署到单独的服务器中，通过 Nginx 的二级域名进行流量转发和分流处理, 该部分在 Nginx 层控制即可&lt;/li&gt;
+  &lt;li&gt;如果采用 H2 作为搜索引擎， 为了服务的简单行来说，需要考虑 &lt;strong&gt;新建项目&lt;/strong&gt;， 而且需要维护好数据更新的问题&lt;/li&gt;
+  &lt;li&gt;如果使用 ES 或者 MySQL 作为搜索引擎， 则可不需要考虑单独起项目，在原有项目上开发即可&lt;/li&gt;
+  &lt;li&gt;无论使用哪一种方案，都需要将搜索服务部署到单独的服务器中，通过 Nginx 的二级域名进行流量转发和分流处理， 该部分在 Nginx 层控制即可&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h3 id=&quot;任务分析&quot;&gt;任务分析&lt;/h3&gt;
@@ -192,11 +192,11 @@ graph LR
     &lt;p&gt;搜索&lt;/p&gt;
 
     &lt;ul&gt;
-      &lt;li&gt;优先匹配 热词, 该部分直接从缓存中获取&lt;/li&gt;
+      &lt;li&gt;优先匹配 热词， 该部分直接从缓存中获取&lt;/li&gt;
       &lt;li&gt;
-        &lt;p&gt;热词中不存在时, 则使用 ES 进行查询&lt;/p&gt;
+        &lt;p&gt;热词中不存在时， 则使用 ES 进行查询&lt;/p&gt;
 
-        &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;QueryBuilders&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;multiMatchQuery&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;搜索词&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;fields&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;词汇1&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;词汇2&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+        &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;QueryBuilders&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;multiMatchQuery&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;搜索词&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;fields&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;词汇1&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;词汇2&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
@@ -207,13 +207,13 @@ graph LR
     &lt;p&gt;未获取到搜索结果时处理如下:&lt;/p&gt;
 
     &lt;ul&gt;
-      &lt;li&gt;如果是搜索 es 未找到对应的数据结果, 则使用 人工配置的 推荐数据&lt;/li&gt;
+      &lt;li&gt;如果是搜索 es 未找到对应的数据结果， 则使用 人工配置的 推荐数据&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;搜索词数据统计&lt;/p&gt;
 
-    &lt;p&gt;logstash 收集搜索相关的词, 下面的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;searchQ&lt;/code&gt; 为搜索的词汇&lt;/p&gt;
+    &lt;p&gt;logstash 收集搜索相关的词， 下面的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;searchQ&lt;/code&gt; 为搜索的词汇&lt;/p&gt;
 
     &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;grok&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -223,7 +223,7 @@ graph LR
      &lt;span class=&quot;n&quot;&gt;convert&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;reqCostMs&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;integer&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
    &lt;span class=&quot;n&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-     &lt;span class=&quot;n&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;reqTime&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ISO8601&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;YYYY-MM-dd HH:mm:ss&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;YYYY-MM-dd HH:mm:ss.ZZZ&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+     &lt;span class=&quot;n&quot;&gt;match&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;reqTime&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ISO8601&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;YYYY-MM-dd HH:mm:ss&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;YYYY-MM-dd HH:mm:ss.ZZZ&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
      &lt;span class=&quot;n&quot;&gt;target&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;reqTime&quot;&lt;/span&gt;
      &lt;span class=&quot;n&quot;&gt;locale&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;en&quot;&lt;/span&gt;
    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
@@ -236,7 +236,7 @@ graph LR
   &lt;li&gt;
     &lt;p&gt;其他的优化&lt;/p&gt;
     &lt;ul&gt;
-      &lt;li&gt;分词优化，考虑使用不同的分词引擎(如 ik, ngram 等)&lt;/li&gt;
+      &lt;li&gt;分词优化，考虑使用不同的分词引擎(如 ik， ngram 等)&lt;/li&gt;
       &lt;li&gt;同义词优化，配置对应的同义词进行检索优化&lt;/li&gt;
       &lt;li&gt;拼音，错别字纠正&lt;/li&gt;
       &lt;li&gt;搜索词补全&lt;/li&gt;
@@ -268,15 +268,15 @@ graph LR;
 &lt;ul&gt;
   &lt;li&gt;快速的缩小检索范围
     &lt;ul&gt;
-      &lt;li&gt;二分查找法, 缩小一半&lt;/li&gt;
-      &lt;li&gt;跳表, 跳动步长 &amp;gt; 1&lt;/li&gt;
-      &lt;li&gt;B/B+树, 以磁盘片为步长，一次过滤掉一个(4K)或者多个快&lt;/li&gt;
-      &lt;li&gt;位图/Hash/布隆过滤器, 利用概率/数组下标 快速寻找或者判断元素&lt;/li&gt;
-      &lt;li&gt;Roaring Bitmap, 高位存储 bucket 信息，低位存储位图信息&lt;/li&gt;
+      &lt;li&gt;二分查找法， 缩小一半&lt;/li&gt;
+      &lt;li&gt;跳表， 跳动步长 &amp;gt; 1&lt;/li&gt;
+      &lt;li&gt;B/B+树， 以磁盘片为步长，一次过滤掉一个(4K)或者多个快&lt;/li&gt;
+      &lt;li&gt;位图/Hash/布隆过滤器， 利用概率/数组下标 快速寻找或者判断元素&lt;/li&gt;
+      &lt;li&gt;Roaring Bitmap， 高位存储 bucket 信息，低位存储位图信息&lt;/li&gt;
       &lt;li&gt;TopK &amp;amp; 非精准 TopK&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;利用存储、访问特性进行检索优化, 估算内存和磁盘的空间占比, 减少磁盘IO(磁盘), 利用磁盘的顺序读, 避免随机读
+  &lt;li&gt;利用存储、访问特性进行检索优化， 估算内存和磁盘的空间占比， 减少磁盘IO(磁盘)， 利用磁盘的顺序读， 避免随机读
     &lt;ul&gt;
       &lt;li&gt;B+ 树&lt;/li&gt;
       &lt;li&gt;日志记录使用 LSM 树&lt;/li&gt;
@@ -284,8 +284,8 @@ graph LR;
   &lt;/li&gt;
   &lt;li&gt;空间冗余换取时间
     &lt;ul&gt;
-      &lt;li&gt;跳表, 冗余步长&lt;/li&gt;
-      &lt;li&gt;AVL, 冗余叶子高度信息&lt;/li&gt;
+      &lt;li&gt;跳表， 冗余步长&lt;/li&gt;
+      &lt;li&gt;AVL， 冗余叶子高度信息&lt;/li&gt;
       &lt;li&gt;倒排索引&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
@@ -296,7 +296,7 @@ graph LR;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;在工业界中，往往会几个算法组合起来进行使用，如使用跳表来实现 posting-list, 两个 posting-list 求交集的时候，直接将小的那个变成 Hash 等&lt;/p&gt;
+&lt;p&gt;在工业界中，往往会几个算法组合起来进行使用，如使用跳表来实现 posting-list， 两个 posting-list 求交集的时候，直接将小的那个变成 Hash 等&lt;/p&gt;
 
 &lt;p&gt;另外，要注意两点&lt;/p&gt;
 
@@ -315,7 +315,7 @@ graph LR;
 &lt;p&gt;更新策略&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Double Buffer, 利用冗余减少更新频率&lt;/li&gt;
+  &lt;li&gt;Double Buffer， 利用冗余减少更新频率&lt;/li&gt;
   &lt;li&gt;全量(只读) + 增量更新(可读可写)&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -324,8 +324,8 @@ graph LR;
 &lt;ul&gt;
   &lt;li&gt;索引和数据分离&lt;/li&gt;
   &lt;li&gt;减少磁盘IO&lt;/li&gt;
-  &lt;li&gt;读写分离, 避免锁&lt;/li&gt;
-  &lt;li&gt;分层处理 (非精准 TopK -&amp;gt; TopK), 搜索降级&lt;/li&gt;
+  &lt;li&gt;读写分离， 避免锁&lt;/li&gt;
+  &lt;li&gt;分层处理 (非精准 TopK -&amp;gt; TopK)， 搜索降级&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;es-实战&quot;&gt;ES 实战&lt;/h2&gt;
@@ -334,32 +334,32 @@ graph LR;
   &lt;li&gt;Document Metadata
     &lt;ul&gt;
       &lt;li&gt;_index 索引名称&lt;/li&gt;
-      &lt;li&gt;_type 索引类型 7.0版本中只对应一个 type, 为 _doc&lt;/li&gt;
+      &lt;li&gt;_type 索引类型 7.0版本中只对应一个 type， 为 _doc&lt;/li&gt;
       &lt;li&gt;_score 相关性打分&lt;/li&gt;
-      &lt;li&gt;_source 数据, 为 JSON 格式&lt;/li&gt;
+      &lt;li&gt;_source 数据， 为 JSON 格式&lt;/li&gt;
       &lt;li&gt;_version 更新的版本&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;Mapping 字段类型定义&lt;/li&gt;
   &lt;li&gt;Setting 部署方式定义&lt;/li&gt;
   &lt;li&gt;Data node 存储数据的 node&lt;/li&gt;
-  &lt;li&gt;Coordinating node 分发节点, 并发将请求拆分到不同的节点进行查询&lt;/li&gt;
+  &lt;li&gt;Coordinating node 分发节点， 并发将请求拆分到不同的节点进行查询&lt;/li&gt;
   &lt;li&gt;Primary/Replica Shard 主/副本分片&lt;/li&gt;
-  &lt;li&gt;green, yellow &amp;amp; red 绿色代表主/副本分片均正常, 黄色代表副本分片不正常, 红色代表主分片不正常&lt;/li&gt;
+  &lt;li&gt;green， yellow &amp;amp; red 绿色代表主/副本分片均正常， 黄色代表副本分片不正常， 红色代表主分片不正常&lt;/li&gt;
   &lt;li&gt;put 文档&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;devtools&quot;&gt;DevTools&lt;/h3&gt;
-&lt;p&gt;假设索引名称为 media_es&lt;/p&gt;
+&lt;p&gt;假设索引名称为 es_media&lt;/p&gt;
 
 &lt;p&gt;索引信息查询&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 查看 mapping 和 setting 信息&lt;/span&gt;
-GET /media_es
+GET /es_media
 &lt;span class=&quot;c&quot;&gt;# 查询总数&lt;/span&gt;
-GET /media_es/_count
+GET /es_media/_count
 &lt;span class=&quot;c&quot;&gt;# 搜索内容 并查看分数&lt;/span&gt;
-POST /media_es/_search
+POST /es_media/_search
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;cat 查询&lt;/p&gt;
@@ -378,24 +378,24 @@ GET /_cat/shards
 &lt;p&gt;增删查改操作&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 创建记录&lt;/span&gt;
-POST /media_es/_doc
+POST /es_media/_doc
 &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;1&quot;&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
-&lt;span class=&quot;c&quot;&gt;# 更新或者创建 id=1024的记录, 该部分删除原有的索引进行重建&lt;/span&gt;
-PUT /media_es/_doc/1024
+&lt;span class=&quot;c&quot;&gt;# 更新或者创建 id=1024的记录， 该部分删除原有的索引进行重建&lt;/span&gt;
+PUT /es_media/_doc/1024
 &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;1&quot;&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
 &lt;span class=&quot;c&quot;&gt;# 更新索引&lt;/span&gt;
-POST /media_es/_update/1024
+POST /es_media/_update/1024
 &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;s2&quot;&gt;&quot;doc&quot;&lt;/span&gt;: &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;internalName&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;this is new&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
-GET /media_es/_doc/1024
+GET /es_media/_doc/1024
 
 &lt;span class=&quot;c&quot;&gt;# 批量操作&lt;/span&gt;
 POST /_bulk
@@ -414,15 +414,59 @@ GET /_msearch
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET /_analyze
 &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;analyzer&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;standard&quot;&lt;/span&gt;,
-  &lt;span class=&quot;s2&quot;&gt;&quot;text&quot;&lt;/span&gt;: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;今天是个好的日志&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;我吃了一顿烧烤&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;analyzer&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;standard&quot;&lt;/span&gt;，
+  &lt;span class=&quot;s2&quot;&gt;&quot;text&quot;&lt;/span&gt;: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;今天是个好的日志&quot;&lt;/span&gt;， &lt;span class=&quot;s2&quot;&gt;&quot;我吃了一顿烧烤&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET /media_es/_analyze
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET /es_media/_analyze
 &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;field&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;,
+  &lt;span class=&quot;s2&quot;&gt;&quot;field&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;，
   &lt;span class=&quot;s2&quot;&gt;&quot;text&quot;&lt;/span&gt;: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;nice&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;profile 和 制定字段查询&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 查询字段为 title， 并查看 profile 其中 df 代表的是 default_field&lt;/span&gt;
+GET /es_media/_search?q&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;测试&amp;amp;df&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;title
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;profile&quot;&lt;/span&gt;: &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;termQuery 和 phaseQuery&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# phaseQuery&lt;/span&gt;
+GET /es_media/_search?q&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;title:&lt;span class=&quot;s2&quot;&gt;&quot;测试 一下&quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;profile&quot;&lt;/span&gt;: &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# termQuery&lt;/span&gt;
+GET /es_media/_search?q&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;title:&lt;span class=&quot;s2&quot;&gt;&quot;测试 一下&quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;profile&quot;&lt;/span&gt;: &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# boolQuery， 必须要包括 测试 或者 一下&lt;/span&gt;
+GET /es_media/_search?q&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;title:&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;测试 一下&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;profile&quot;&lt;/span&gt;: &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 默认是 OR 的查询&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 制定 AND&lt;/span&gt;
+GET /es_media/_search?q&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;title:&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;测试 AND 一下&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;profile&quot;&lt;/span&gt;: &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 测试的查询方式&lt;/span&gt;
+POST /es_media/_search?q&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;:10
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;explain&quot;&lt;/span&gt;: &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -496,9 +540,9 @@ GET /_msearch
   &lt;li&gt;倒排列表(Posting List)
     &lt;ul&gt;
       &lt;li&gt;Doc ID&lt;/li&gt;
-      &lt;li&gt;TF (term frequency) 词频, 用于计算相关性&lt;/li&gt;
-      &lt;li&gt;Position 词出现的位置, 用于语句搜索&lt;/li&gt;
-      &lt;li&gt;Offset 位置, 用于高亮&lt;/li&gt;
+      &lt;li&gt;TF (term frequency) 词频， 用于计算相关性&lt;/li&gt;
+      &lt;li&gt;Position 词出现的位置， 用于语句搜索&lt;/li&gt;
+      &lt;li&gt;Offset 位置， 用于高亮&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -508,42 +552,42 @@ GET /_msearch
 
 &lt;div class=&quot;mermaid&quot;&gt;
 graph LR
-    cf([Character Filters]);
+    cf([Character ilters]);
     t([Tokenizer]);
     tf([Tokenizer Filter]);
     cf--&amp;gt;t--&amp;gt;tf
 &lt;/div&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Character Filters 过滤器，过滤掉一些如 &amp;lt; &amp;amp; 标签&lt;/li&gt;
-  &lt;li&gt;Tokenizer 切分单词，比如按照空格，逗号切分 [“good better best”] 切分为 good, better, best&lt;/li&gt;
-  &lt;li&gt;Token Filter 加工单词，如删除 stopwords(a the 等), 将大写改为小写, 删除违禁词等&lt;/li&gt;
+  &lt;li&gt;Character Filters 过滤器，过滤掉一些如 &amp;lt; &amp;amp; 标签， 该部分会影响到倒排索引的 position 等信息&lt;/li&gt;
+  &lt;li&gt;Tokenizer 切分单词，比如按照空格，逗号切分 [“good better best”] 切分为 good， better， best&lt;/li&gt;
+  &lt;li&gt;Token Filter 加工单词，如删除 stopwords(a the 等)， 将大写改为小写， 删除违禁词等&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET /_analyze
 &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;analyzer&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;standard&quot;&lt;/span&gt;,
-  &lt;span class=&quot;s2&quot;&gt;&quot;text&quot;&lt;/span&gt;: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;今天是个好的日子&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;我吃了一顿烧烤&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;I feel good&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;analyzer&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;standard&quot;&lt;/span&gt;，
+  &lt;span class=&quot;s2&quot;&gt;&quot;text&quot;&lt;/span&gt;: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;今天是个好的日子&quot;&lt;/span&gt;， &lt;span class=&quot;s2&quot;&gt;&quot;我吃了一顿烧烤&quot;&lt;/span&gt;， &lt;span class=&quot;s2&quot;&gt;&quot;I feel good&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET /media_es/_analyze
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET /es_media/_analyze
 &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;field&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;,
+  &lt;span class=&quot;s2&quot;&gt;&quot;field&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;，
   &lt;span class=&quot;s2&quot;&gt;&quot;text&quot;&lt;/span&gt;: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;nice&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;常见的 Analyer&lt;/p&gt;
+&lt;p&gt;常见的 Analyzer&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;standard ES 的&lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/reference/current/search-analyzer.html&quot;&gt;默认&lt;/a&gt;的分词器&lt;/li&gt;
   &lt;li&gt;simple&lt;/li&gt;
-  &lt;li&gt;whitespace, 将空格去掉&lt;/li&gt;
-  &lt;li&gt;stop 将 a, the 去掉&lt;/li&gt;
-  &lt;li&gt;keyword 不进行分词, 则使用 keyword&lt;/li&gt;
+  &lt;li&gt;whitespace， 将空格去掉&lt;/li&gt;
+  &lt;li&gt;stop 将 a， the 去掉&lt;/li&gt;
+  &lt;li&gt;keyword 不进行分词， 则使用 keyword&lt;/li&gt;
   &lt;li&gt;pattern 正则分词&lt;/li&gt;
-  &lt;li&gt;language 不同语言的分词 (running 会变成 run, foxes 变成 fox 等)&lt;/li&gt;
+  &lt;li&gt;language 不同语言的分词 (running 会变成 run， foxes 变成 fox 等)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;中文分词&lt;/p&gt;
@@ -556,19 +600,144 @@ graph LR
 
 &lt;ul&gt;
   &lt;li&gt;icu_analyzer&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/medcl/elasticsearch-analysis-ik&quot;&gt;ik_smart&lt;/a&gt; 支持自定义&lt;/li&gt;
-  &lt;li&gt;[thulac]&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/medcl/elasticsearch-analysis-ik&quot;&gt;ik_smart&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/hankcs/HanLP&quot;&gt;HanLP&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/medcl/elasticsearch-analysis-pinyin&quot;&gt;Pinyin&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;p&gt;注：可自定义 analyzer， 也可以定义 search_analyzer， 可参考 两者的&lt;a href=&quot;https://stackoverflow.com/a/15932838&quot;&gt;区别&lt;/a&gt;，以及官方的&lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/reference/current/specify-analyzer.html&quot;&gt;建议&lt;/a&gt;&lt;/p&gt;
+
 &lt;h3 id=&quot;relevance-相关性&quot;&gt;Relevance 相关性&lt;/h3&gt;
-&lt;p&gt;评估标准 Information Retrieval&lt;/p&gt;
+&lt;p&gt;评估标准 Information Retrieval 通过下面三个结果来看相关性的结果好坏&lt;/p&gt;
+
 &lt;ul&gt;
-  &lt;li&gt;Percision 精确度&lt;/li&gt;
-  &lt;li&gt;Recall 查全率&lt;/li&gt;
+  &lt;li&gt;Percision 精确度。除了返回精确结果，还包含了哪些非精确的结果&lt;/li&gt;
+  &lt;li&gt;Recall 查全率/召回率，还缺少了哪些数据未返回&lt;/li&gt;
   &lt;li&gt;Ranking 排序&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;该部分和机器学习里面的评估标准类似，有 True/False Positive 的概念&lt;/p&gt;
+
+&lt;h3 id=&quot;mapping&quot;&gt;Mapping&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Dynamic Mapping， 自动创建 Mapping 和 字段
+    &lt;ul&gt;
+      &lt;li&gt;true 可以加字段，可以被索引&lt;/li&gt;
+      &lt;li&gt;false 可以加字段，不可以被索引&lt;/li&gt;
+      &lt;li&gt;strict 不可以加字段，不可以被索引&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;数组的类型依然是 text&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;keyword， 精确值类型， 认为是一个不可分割的词语， 如 App Store， 其他的精确值还包括 数字，日期 等， 该部分没有必要做分词的处理&lt;/li&gt;
+  &lt;li&gt;text， 全文本类型。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;aggregation&quot;&gt;Aggregation&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Bucket， 类似于 MySQL 的 group&lt;/li&gt;
+  &lt;li&gt;Metric， 类似于 MySQL 的 count， min， max 等等&lt;/li&gt;
+  &lt;li&gt;Pipeline&lt;/li&gt;
+  &lt;li&gt;Matrix&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;term-和-text&quot;&gt;Term 和 Text&lt;/h3&gt;
+&lt;p&gt;查询的分类可参考 &lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high-query-builders.html&quot;&gt;Building Queries&lt;/a&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;term 不会做分词处理，类似于 client 中的 keyword
+    &lt;ul&gt;
+      &lt;li&gt;注意，一些 analyzer 会做大小写转换，所以如果你的输入值为 iPHONE， 索引类型为 term， 存储到 ES 中 的 是 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;iphone&lt;/code&gt;， 此时拿 iPHONE 是无法查询到数据的&lt;/li&gt;
+      &lt;li&gt;可以使用 constant score 将查询转化，避免计算 score，提升性能&lt;/li&gt;
+      &lt;li&gt;可以用 es 的多字段属性，添加一个 &lt;a href=&quot;https://stackoverflow.com/questions/48869795/difference-between-a-field-and-the-field-keyword&quot;&gt;keyword&lt;/a&gt; 字段&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;全文查询， 即 text， 查询的时候，会先将 text 分成 term，再进行不同的算分&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;下面是一个 text: &lt;strong&gt;Fox Chicken Nice&lt;/strong&gt; 被查询的例子&lt;/p&gt;
+
+&lt;div class=&quot;mermaid&quot;&gt;
+graph LR
+    fcn([Text &lt;br /&gt;Fox Chicken Nice]);
+    f([Term1 &lt;br /&gt;Fox]);
+    f1([计算分数]);
+    c([Term2 &lt;br /&gt;Chicken]);
+    c1([计算分数]);
+    n([Term3 &lt;br /&gt;Nice]);
+    n1([计算分数]);
+    e([汇总得分并排序输出]);
+    fcn --&amp;gt; f &amp;amp; c &amp;amp; n
+    f --&amp;gt; f1
+    c --&amp;gt; c1
+    n --&amp;gt; n1
+    f1 &amp;amp; c1 &amp;amp; n1 --&amp;gt; e
+&lt;/div&gt;
+
+&lt;h3 id=&quot;bool-数字类型的查询&quot;&gt;bool， 数字类型的查询&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;对于这种不需要分词的类型，可以考虑直接使用 termQuery 查询， 如果不需要计算排序，则使用 constant score 方式，转化为 filter&lt;/li&gt;
+  &lt;li&gt;多值字段，如 labels: [label1， label2] 则为包含关系， 如果需要精确查询则需要增加 labels_count 的字段， 结合起来做精确匹配&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;相关度计算&quot;&gt;相关度计算&lt;/h3&gt;
+&lt;p&gt;TF-IDF 和 BM-25&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;TF term frequency，一个词在全文中所有词中出现的次数&lt;/li&gt;
+  &lt;li&gt;StopWord 类似于 ‘的， 我’ 这样的词，计算 TF 是没有意义的&lt;/li&gt;
+  &lt;li&gt;DF document frequency， 出现过该词的文档，在总文档中的次数， 也就是说该值越大，说明改词就越常见， 值越小，就越稀缺和重要。&lt;/li&gt;
+  &lt;li&gt;IDF inverse DF&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;简单来说一个词的 TF 越高，DF 越低，文档越短，而认为相关度越高&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Boosting， boost 的意思是放大的意思，通过这个值可以控制算分结果&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.elastic.co/guide/en/app-search/current/relevance-tuning-guide.html#relevance-tuning-guide&quot;&gt;Boosting Query&lt;/a&gt; 在查询的时候指定字段的 weight&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html#function-field-value-factor&quot;&gt;Function Score Query&lt;/a&gt; 自定义字段/值的分数计算&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;query-和-filter&quot;&gt;Query 和 Filter&lt;/h3&gt;
+&lt;p&gt;Query 会进行相关性算分，Filter 只是过滤，不进行算分，性能相对更好&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Bool Query
+    &lt;ul&gt;
+      &lt;li&gt;must QueryContext 会算分&lt;/li&gt;
+      &lt;li&gt;should QueryContext 会算分&lt;/li&gt;
+      &lt;li&gt;must_not FilterContext 不会算分&lt;/li&gt;
+      &lt;li&gt;filter FilterContext 必须匹配，不会算分&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;function-score-query&quot;&gt;Function Score Query&lt;/h3&gt;
+&lt;p&gt;可以自定义算分结果&lt;/p&gt;
+
+&lt;h3 id=&quot;serach-template&quot;&gt;Serach Template&lt;/h3&gt;
+&lt;p&gt;搜索的定义 和 搜索的逻辑解耦&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;POST _scripts/media_serach_template
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;script&quot;&lt;/span&gt;: &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;搜索推荐-search-as-you-type-autocomplete-contextcomplete&quot;&gt;搜索推荐 search as you type， AutoComplete， ContextComplete&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Term Suggestion，比如你搜索 go， 自动补全为 good god 等&lt;/li&gt;
+  &lt;li&gt;Phase Suggestion， 比如搜索 I love， 自动建议 I love you， I love dog， I love cat 等等&lt;/li&gt;
+  &lt;li&gt;AutoComplete， ES 在内存中建一个 &lt;a href=&quot;https://en.wikipedia.org/wiki/Finite-state_transducer&quot;&gt;fst(finate state transducer)&lt;/a&gt; 进行检索，该结构类似于 tire， 对比可参考这篇&lt;a href=&quot;https://blog.burntsushi.net/transducers/&quot;&gt;文章&lt;/a&gt; 该部分需要提前在索引中做定义&lt;/li&gt;
+  &lt;li&gt;ContextComplete， 根据上下文进行推荐&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
 &lt;ul&gt;
@@ -576,7 +745,8 @@ graph LR
   &lt;li&gt;&lt;a href=&quot;https://time.geekbang.org/course/detail/100030501-102662&quot;&gt;Elasticsearch核心技术与实战-极客时间&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/142833556&quot;&gt;H2 全文检索&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://dev.mysql.com/doc/refman/8.0/en/fulltext-search.html&quot;&gt;MySQL Full-Text Search Functions&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.elastic.co/guide/en/app-search/current/relevance-tuning-guide.html#relevance-tuning-guide&quot;&gt;Relevance Tuning Guide, Weights and Boosts&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.elastic.co/guide/en/app-search/current/relevance-tuning-guide.html#relevance-tuning-guide&quot;&gt;Relevance Tuning Guide， Weights and Boosts&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high-query-builders.html&quot;&gt;QueryBuilders&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">方案设计 可选的搜索方案</summary></entry><entry><title type="html">Folsom Blues</title><link href="https://dengqinghua.github.io/folsom-blues.html" rel="alternate" type="text/html" title="Folsom Blues" /><published>2021-08-29T00:00:00+08:00</published><updated>2021-08-29T00:00:00+08:00</updated><id>https://dengqinghua.github.io/folsom-blues</id><content type="html" xml:base="https://dengqinghua.github.io/folsom-blues.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
 
 &lt;ul&gt;
