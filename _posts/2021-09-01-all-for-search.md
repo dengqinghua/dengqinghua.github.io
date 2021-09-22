@@ -126,7 +126,7 @@ graph LR
     subgraph 索引更新
       EventHandler(Pulsa队列);
       storage1(存储1 <br > ES-主查询引擎);
-      storage2(存储2 <br > 内存-热词，TopK 等信息);
+      storage2(存储2 <br > 内存-热词,TopK 等信息);
     end
     subgraph 源数据事件
       event1(单曲/合集/QE/DE 更新);
