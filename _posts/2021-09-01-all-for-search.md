@@ -83,14 +83,14 @@ curl -X GET 'https://es/search' -H 'Content-Type: application/json' \
   "search_fields": {
     "title": {
       "weight": 10
-    }，
+    },
     "description": {
       "weight": 1
-    }，
+    },
     "states": {
       "weight": 2
     }
-  }，
+  },
   "query": "mountains"
 }'
 ```
@@ -164,7 +164,7 @@ graph LR
     - 热词中不存在时， 则使用 ES 进行查询
 
       ```java
-      QueryBuilders.multiMatchQuery("搜索词").fields(Map.of("词汇1"， 1f， "词汇2"， 2f));
+      QueryBuilders.multiMatchQuery("搜索词").fields(Map.of("词汇1", 1f， "词汇2", 2f));
       ```
 
 4. 冷启动数据
@@ -195,7 +195,13 @@ graph LR
 
 6. 数据全量索引
 
-7. 其他的优化
+7. 数据统计
+
+      对于数据而言，常见的是 哪些词被经常搜索？搜索的结果的相关度怎么样？搜索的结果有多少人进行了点击？(CTR 是多少)
+
+    ![search_result_example](assets/images/search_result_example.png)
+
+8. 其他的优化
     - 分词优化，考虑使用不同的分词引擎(如 ik， ngram 等)
     - 同义词优化，配置对应的同义词进行检索优化
     - 拼音，错别字纠正
@@ -350,14 +356,14 @@ GET /_msearch
 GET /_analyze
 {
   "analyzer": "standard"，
-  "text": ["今天是个好的日志"， "我吃了一顿烧烤"]
+  "text": ["今天是个好的日志", "我吃了一顿烧烤"]
 }
 ```
 
 ```bash
 GET /es_media/_analyze
 {
-  "field": "name"，
+  "field": "name",
   "text": ["nice"]
 }
 ```
@@ -408,6 +414,15 @@ POST /es_media/_search?q=id:10
 }
 ```
 
+```
+# 重建索引，将一个索引导入到另一个索引
+POST _reindex
+{
+  "source": { "index": "source_index" },
+  "dest": { "index": "new_index" }
+}
+```
+
 ### 倒排索引
 正排索引
 
@@ -454,14 +469,14 @@ graph LR
 GET /_analyze
 {
   "analyzer": "standard"，
-  "text": ["今天是个好的日子"， "我吃了一顿烧烤"， "I feel good"]
+  "text": ["今天是个好的日子", "我吃了一顿烧烤", "I feel good"]
 }
 ```
 
 ```bash
 GET /es_media/_analyze
 {
-  "field": "name"，
+  "field": "name",
   "text": ["nice"]
 }
 ```
@@ -470,11 +485,11 @@ GET /es_media/_analyze
 
 - standard ES 的[默认](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-analyzer.html)的分词器
 - simple
-- whitespace， 将空格去掉
-- stop 将 a， the 去掉
+- whitespace，将空格去掉
+- stop 将 a，the 去掉
 - keyword 不进行分词， 则使用 keyword
 - pattern 正则分词
-- language 不同语言的分词 (running 会变成 run， foxes 变成 fox 等)
+- language 不同语言的分词 (running 会变成 run，foxes 变成 fox 等)
 
 中文分词
 
@@ -510,8 +525,8 @@ GET /es_media/_analyze
 - text， 全文本类型。
 
 ### Aggregation
-- Bucket， 类似于 MySQL 的 group
-- Metric， 类似于 MySQL 的 count， min， max 等等
+- Bucket，类似于 MySQL 的 group
+- Metric，类似于 MySQL 的 count，min，max 等等
 - Pipeline
 - Matrix
 
@@ -552,8 +567,9 @@ TF-IDF 和 BM-25
 
 - TF term frequency，一个词在全文中所有词中出现的次数
 - StopWord 类似于 '的， 我' 这样的词，计算 TF 是没有意义的
-- DF document frequency， 出现过该词的文档，在总文档中的次数， 也就是说该值越大，说明改词就越常见， 值越小，就越稀缺和重要。
+- DF document frequency， 出现过该词的文档，在总文档中的次数， 也就是说该值越大，说明该词就越常见， 值越小，就越稀缺和重要。
 - IDF inverse DF
+
 
 > 简单来说一个词的 TF 越高，DF 越低，文档越短，而认为相关度越高
 
@@ -589,12 +605,106 @@ POST _scripts/media_serach_template
 - Term Suggestion，比如你搜索 go， 自动补全为 good god 等
 - Phase Suggestion， 比如搜索 I love， 自动建议 I love you， I love dog， I love cat 等等
 - AutoComplete， ES 在内存中建一个 [fst(finate state transducer)](https://en.wikipedia.org/wiki/Finite-state_transducer) 进行检索，该结构类似于 tire， 对比可参考这篇[文章](https://blog.burntsushi.net/transducers/) 该部分需要提前在索引中做定义
-- ContextComplete， 根据上下文进行推荐
+- ContextComplete，根据上下文进行推荐
+
+### ES 分布式
+- 故障转移
+  - 当前 shard 存放的副本，是其他的 shard 的副本
+  - 当前 shard 挂掉之后，其他的 shard 会自动同步副本数据
+
+  ![es_shard_example](assets/images/es_shard_example.png)
+
+- 文档分布存储
+  + 路由算法 Hash(_routing) % primary_shards, 这里的 primary_shards 一旦更改，则需要重建索引
+
+- 倒排索引是不可变的
+  + 好处: 不需要考虑并发，很好地利用文件系统的缓存，易于压缩
+  + 坏处: 重建索引的成本比较高
+  + 删除的索引单独存储，搜索的时候，先搜索全部，再过滤掉删除的文档
+
+- Refresh
+  + 单个倒排索引为多个 segment (不可变) 多个 segments + .del = 所有的数据集合
+  + index buffer 为 索引的内存空间, 索引的时候会先写入 index buffer
+  + index buffer 写入 segment 的过程为 refresh
+  + 默认是 1s 进行一次 refresh，由于只有进入了 segment 才会被搜索，所以 es 是近实时的搜索引擎(延迟<=1s)
+  + index buffer 占用内存过多(JVM的 10%) 也会触发 refresh
+
+- Transaction Log
+  + 在写入 index buffer 时候，同步地写入了 transaction log
+  + Transaction Log 在 ES 断电的时候，依然能够进行数据的恢复
+
+- Flush
+  + refresh
+  + 将缓存中的 segment 落到磁盘 (fsync)
+  + 清空 transaction log
+  + 默认 30分钟 调用一次 或者 transaction log 写满(512M)时 调用
+
+- Merge
+  + merge 磁盘的 segment
+  + 真正的删除
+
+- Search Type
+  - DFS Query &/then Fetch
+
+### 分片的生命周期
+TODO: 增删改查的步骤是什么样的，如何使用 内存，磁盘 等来做到 高性能 和 高可用的？
+
+分片数目 和 相关性分数的关系
+
+### 深度分页, 并发更新
+- 深度分页会导致非常大的性能问题，ES 默认的限制是 10000 条，可以考虑 `search after` 或者 `scroll` API 来解决深度分页问题
+- 乐观锁, version = f(seq_no, primary_term) || external_version
+
+### 聚合查询
+- metric, 如 max, mix, avg, sum 等
+- bucket, 类似于 groupBy
+
+### 关联查询
+类似于 JOIN
+
+- object, user 对应的 name 字段，变为 user.name 字段, 会分别进行索引
+- nested, 支持多个字段在一条记录中的查找
+- children, 需要将父子文档存储在同一个分片上，此时子文档在创建索引的时候，需要加上父文档的 id
+
+### 重建索引
+什么需要重建索引
+
+- 索引相关的 Mapping 变更, 如 分析器，字段类型
+- 主分片数变更
+- 数据迁移等
+
+相关 API
+
+- update by query 在改变所以之前的字段, 也可以被索引到
+- reindex
+
+### 数据建模
+考虑以下的几个维度
+
+- 使用的字段
+- 是否需要全文索引
+- 是否需要进行聚合和排序
+- 存储大小
+
+字段类型
+
+- Text(全文检索) 还是 Keyword(精确匹配, 排序, 聚合)，ES 默认会给 text 类型的字段 设置一个 keyword 字段, 平时考虑可以添加 英文/拼音 的字段，提高用户体验
+- 枚举类型尽量设置为 keyword
+- 不需要检索的字段设置 index 为 false
+
+其他
+
+- 如果确认字段和字段类型，建议索引的 dynamic 设置为 strict
+- 避免正则匹配查询，而是通过字段冗余来解决(空间换时间)
+- Mapping文件放入版本库中进行管理
 
 ## Reference
 - [检索技术核心20讲-极客时间](https://time.geekbang.org/column/intro/298)
 - [Elasticsearch核心技术与实战-极客时间](https://time.geekbang.org/course/detail/100030501-102662)
 - [H2 全文检索](https://zhuanlan.zhihu.com/p/142833556)
 - [MySQL Full-Text Search Functions](https://dev.mysql.com/doc/refman/8.0/en/fulltext-search.html)
-- [Relevance Tuning Guide， Weights and Boosts](https://www.elastic.co/guide/en/app-search/current/relevance-tuning-guide.html#relevance-tuning-guide)
+- [Relevance Tuning Guide，Weights and Boosts](https://www.elastic.co/guide/en/app-search/current/relevance-tuning-guide.html#relevance-tuning-guide)
 - [QueryBuilders](https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high-query-builders.html)
+- [similarity-scoring-elasticsearch](https://www.infoq.com/articles/similarity-scoring-elasticsearch/)
+
+<iframe src="https://es-ras1ax3s.kibana.tencentelasticsearch.com:5601/goto/4d3819896d06eceb4bc40db3621bd6f3" height="600" width="800"></iframe>

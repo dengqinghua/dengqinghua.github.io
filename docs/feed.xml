@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-09-22T09:40:51+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-09-30T16:25:40+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
 </subtitle><author><name>dengqinghua</name></author><entry><title type="html">检索技术探索</title><link href="https://dengqinghua.github.io/all-for-search.html" rel="alternate" type="text/html" title="检索技术探索" /><published>2021-09-01T00:00:00+08:00</published><updated>2021-09-01T00:00:00+08:00</updated><id>https://dengqinghua.github.io/all-for-search</id><content type="html" xml:base="https://dengqinghua.github.io/all-for-search.html">&lt;h2 id=&quot;方案设计&quot;&gt;方案设计&lt;/h2&gt;
 &lt;h3 id=&quot;可选的搜索方案&quot;&gt;可选的搜索方案&lt;/h3&gt;
 
@@ -106,14 +106,14 @@
   &quot;search_fields&quot;: {
     &quot;title&quot;: {
       &quot;weight&quot;: 10
-    }，
+    },
     &quot;description&quot;: {
       &quot;weight&quot;: 1
-    }，
+    },
     &quot;states&quot;: {
       &quot;weight&quot;: 2
     }
-  }，
+  },
   &quot;query&quot;: &quot;mountains&quot;
 }'&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -196,7 +196,7 @@ graph LR
       &lt;li&gt;
         &lt;p&gt;热词中不存在时， 则使用 ES 进行查询&lt;/p&gt;
 
-        &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;QueryBuilders&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;multiMatchQuery&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;搜索词&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;fields&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;词汇1&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;词汇2&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+        &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;QueryBuilders&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;multiMatchQuery&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;搜索词&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;fields&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;词汇1&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;词汇2&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
@@ -232,6 +232,13 @@ graph LR
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;数据全量索引&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;数据统计&lt;/p&gt;
+
+    &lt;p&gt;对于数据而言，常见的是 哪些词被经常搜索？搜索的结果的相关度怎么样？搜索的结果有多少人进行了点击？(CTR 是多少)&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;assets/images/search_result_example.png&quot; alt=&quot;search_result_example&quot; /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;其他的优化&lt;/p&gt;
@@ -415,13 +422,13 @@ GET /_msearch
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET /_analyze
 &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;s2&quot;&gt;&quot;analyzer&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;standard&quot;&lt;/span&gt;，
-  &lt;span class=&quot;s2&quot;&gt;&quot;text&quot;&lt;/span&gt;: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;今天是个好的日志&quot;&lt;/span&gt;， &lt;span class=&quot;s2&quot;&gt;&quot;我吃了一顿烧烤&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;text&quot;&lt;/span&gt;: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;今天是个好的日志&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;我吃了一顿烧烤&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET /es_media/_analyze
 &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;field&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;，
+  &lt;span class=&quot;s2&quot;&gt;&quot;field&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;,
   &lt;span class=&quot;s2&quot;&gt;&quot;text&quot;&lt;/span&gt;: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;nice&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -468,6 +475,14 @@ POST /es_media/_search?q&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span c
 &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;s2&quot;&gt;&quot;explain&quot;&lt;/span&gt;: &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 重建索引，将一个索引导入到另一个索引
+POST _reindex
+{
+  &quot;source&quot;: { &quot;index&quot;: &quot;source_index&quot; },
+  &quot;dest&quot;: { &quot;index&quot;: &quot;new_index&quot; }
+}
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;倒排索引&quot;&gt;倒排索引&lt;/h3&gt;
@@ -567,13 +582,13 @@ graph LR
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET /_analyze
 &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;s2&quot;&gt;&quot;analyzer&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;standard&quot;&lt;/span&gt;，
-  &lt;span class=&quot;s2&quot;&gt;&quot;text&quot;&lt;/span&gt;: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;今天是个好的日子&quot;&lt;/span&gt;， &lt;span class=&quot;s2&quot;&gt;&quot;我吃了一顿烧烤&quot;&lt;/span&gt;， &lt;span class=&quot;s2&quot;&gt;&quot;I feel good&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;text&quot;&lt;/span&gt;: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;今天是个好的日子&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;我吃了一顿烧烤&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;I feel good&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET /es_media/_analyze
 &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;field&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;，
+  &lt;span class=&quot;s2&quot;&gt;&quot;field&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;,
   &lt;span class=&quot;s2&quot;&gt;&quot;text&quot;&lt;/span&gt;: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;nice&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -583,11 +598,11 @@ graph LR
 &lt;ul&gt;
   &lt;li&gt;standard ES 的&lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/reference/current/search-analyzer.html&quot;&gt;默认&lt;/a&gt;的分词器&lt;/li&gt;
   &lt;li&gt;simple&lt;/li&gt;
-  &lt;li&gt;whitespace， 将空格去掉&lt;/li&gt;
-  &lt;li&gt;stop 将 a， the 去掉&lt;/li&gt;
+  &lt;li&gt;whitespace，将空格去掉&lt;/li&gt;
+  &lt;li&gt;stop 将 a，the 去掉&lt;/li&gt;
   &lt;li&gt;keyword 不进行分词， 则使用 keyword&lt;/li&gt;
   &lt;li&gt;pattern 正则分词&lt;/li&gt;
-  &lt;li&gt;language 不同语言的分词 (running 会变成 run， foxes 变成 fox 等)&lt;/li&gt;
+  &lt;li&gt;language 不同语言的分词 (running 会变成 run，foxes 变成 fox 等)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;中文分词&lt;/p&gt;
@@ -638,8 +653,8 @@ graph LR
 
 &lt;h3 id=&quot;aggregation&quot;&gt;Aggregation&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;Bucket， 类似于 MySQL 的 group&lt;/li&gt;
-  &lt;li&gt;Metric， 类似于 MySQL 的 count， min， max 等等&lt;/li&gt;
+  &lt;li&gt;Bucket，类似于 MySQL 的 group&lt;/li&gt;
+  &lt;li&gt;Metric，类似于 MySQL 的 count，min，max 等等&lt;/li&gt;
   &lt;li&gt;Pipeline&lt;/li&gt;
   &lt;li&gt;Matrix&lt;/li&gt;
 &lt;/ul&gt;
@@ -689,7 +704,7 @@ graph LR
 &lt;ul&gt;
   &lt;li&gt;TF term frequency，一个词在全文中所有词中出现的次数&lt;/li&gt;
   &lt;li&gt;StopWord 类似于 ‘的， 我’ 这样的词，计算 TF 是没有意义的&lt;/li&gt;
-  &lt;li&gt;DF document frequency， 出现过该词的文档，在总文档中的次数， 也就是说该值越大，说明改词就越常见， 值越小，就越稀缺和重要。&lt;/li&gt;
+  &lt;li&gt;DF document frequency， 出现过该词的文档，在总文档中的次数， 也就是说该值越大，说明该词就越常见， 值越小，就越稀缺和重要。&lt;/li&gt;
   &lt;li&gt;IDF inverse DF&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -736,7 +751,143 @@ graph LR
   &lt;li&gt;Term Suggestion，比如你搜索 go， 自动补全为 good god 等&lt;/li&gt;
   &lt;li&gt;Phase Suggestion， 比如搜索 I love， 自动建议 I love you， I love dog， I love cat 等等&lt;/li&gt;
   &lt;li&gt;AutoComplete， ES 在内存中建一个 &lt;a href=&quot;https://en.wikipedia.org/wiki/Finite-state_transducer&quot;&gt;fst(finate state transducer)&lt;/a&gt; 进行检索，该结构类似于 tire， 对比可参考这篇&lt;a href=&quot;https://blog.burntsushi.net/transducers/&quot;&gt;文章&lt;/a&gt; 该部分需要提前在索引中做定义&lt;/li&gt;
-  &lt;li&gt;ContextComplete， 根据上下文进行推荐&lt;/li&gt;
+  &lt;li&gt;ContextComplete，根据上下文进行推荐&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;es-分布式&quot;&gt;ES 分布式&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;故障转移
+    &lt;ul&gt;
+      &lt;li&gt;当前 shard 存放的副本，是其他的 shard 的副本&lt;/li&gt;
+      &lt;li&gt;当前 shard 挂掉之后，其他的 shard 会自动同步副本数据&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;&lt;img src=&quot;assets/images/es_shard_example.png&quot; alt=&quot;es_shard_example&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;文档分布存储
+    &lt;ul&gt;
+      &lt;li&gt;路由算法 Hash(_routing) % primary_shards, 这里的 primary_shards 一旦更改，则需要重建索引&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;倒排索引是不可变的
+    &lt;ul&gt;
+      &lt;li&gt;好处: 不需要考虑并发，很好地利用文件系统的缓存，易于压缩&lt;/li&gt;
+      &lt;li&gt;坏处: 重建索引的成本比较高&lt;/li&gt;
+      &lt;li&gt;删除的索引单独存储，搜索的时候，先搜索全部，再过滤掉删除的文档&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Refresh
+    &lt;ul&gt;
+      &lt;li&gt;单个倒排索引为多个 segment (不可变) 多个 segments + .del = 所有的数据集合&lt;/li&gt;
+      &lt;li&gt;index buffer 为 索引的内存空间, 索引的时候会先写入 index buffer&lt;/li&gt;
+      &lt;li&gt;index buffer 写入 segment 的过程为 refresh&lt;/li&gt;
+      &lt;li&gt;默认是 1s 进行一次 refresh，由于只有进入了 segment 才会被搜索，所以 es 是近实时的搜索引擎(延迟&amp;lt;=1s)&lt;/li&gt;
+      &lt;li&gt;index buffer 占用内存过多(JVM的 10%) 也会触发 refresh&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Transaction Log
+    &lt;ul&gt;
+      &lt;li&gt;在写入 index buffer 时候，同步地写入了 transaction log&lt;/li&gt;
+      &lt;li&gt;Transaction Log 在 ES 断电的时候，依然能够进行数据的恢复&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Flush
+    &lt;ul&gt;
+      &lt;li&gt;refresh&lt;/li&gt;
+      &lt;li&gt;将缓存中的 segment 落到磁盘 (fsync)&lt;/li&gt;
+      &lt;li&gt;清空 transaction log&lt;/li&gt;
+      &lt;li&gt;默认 30分钟 调用一次 或者 transaction log 写满(512M)时 调用&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Merge
+    &lt;ul&gt;
+      &lt;li&gt;merge 磁盘的 segment&lt;/li&gt;
+      &lt;li&gt;真正的删除&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Search Type
+    &lt;ul&gt;
+      &lt;li&gt;DFS Query &amp;amp;/then Fetch&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;分片的生命周期&quot;&gt;分片的生命周期&lt;/h3&gt;
+&lt;p&gt;TODO: 增删改查的步骤是什么样的，如何使用 内存，磁盘 等来做到 高性能 和 高可用的？&lt;/p&gt;
+
+&lt;p&gt;分片数目 和 相关性分数的关系&lt;/p&gt;
+
+&lt;h3 id=&quot;深度分页-并发更新&quot;&gt;深度分页, 并发更新&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;深度分页会导致非常大的性能问题，ES 默认的限制是 10000 条，可以考虑 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;search after&lt;/code&gt; 或者 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;scroll&lt;/code&gt; API 来解决深度分页问题&lt;/li&gt;
+  &lt;li&gt;
+    &lt;table&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;乐观锁, version = f(seq_no, primary_term)&lt;/td&gt;
+          &lt;td&gt; &lt;/td&gt;
+          &lt;td&gt;external_version&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;聚合查询&quot;&gt;聚合查询&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;metric, 如 max, mix, avg, sum 等&lt;/li&gt;
+  &lt;li&gt;bucket, 类似于 groupBy&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;关联查询&quot;&gt;关联查询&lt;/h3&gt;
+&lt;p&gt;类似于 JOIN&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;object, user 对应的 name 字段，变为 user.name 字段, 会分别进行索引&lt;/li&gt;
+  &lt;li&gt;nested, 支持多个字段在一条记录中的查找&lt;/li&gt;
+  &lt;li&gt;children, 需要将父子文档存储在同一个分片上，此时子文档在创建索引的时候，需要加上父文档的 id&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;重建索引&quot;&gt;重建索引&lt;/h3&gt;
+&lt;p&gt;什么需要重建索引&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;索引相关的 Mapping 变更, 如 分析器，字段类型&lt;/li&gt;
+  &lt;li&gt;主分片数变更&lt;/li&gt;
+  &lt;li&gt;数据迁移等&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;相关 API&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;update by query 在改变所以之前的字段, 也可以被索引到&lt;/li&gt;
+  &lt;li&gt;reindex&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;数据建模&quot;&gt;数据建模&lt;/h3&gt;
+&lt;p&gt;考虑以下的几个维度&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;使用的字段&lt;/li&gt;
+  &lt;li&gt;是否需要全文索引&lt;/li&gt;
+  &lt;li&gt;是否需要进行聚合和排序&lt;/li&gt;
+  &lt;li&gt;存储大小&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;字段类型&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Text(全文检索) 还是 Keyword(精确匹配, 排序, 聚合)，ES 默认会给 text 类型的字段 设置一个 keyword 字段, 平时考虑可以添加 英文/拼音 的字段，提高用户体验&lt;/li&gt;
+  &lt;li&gt;枚举类型尽量设置为 keyword&lt;/li&gt;
+  &lt;li&gt;不需要检索的字段设置 index 为 false&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;其他&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;如果确认字段和字段类型，建议索引的 dynamic 设置为 strict&lt;/li&gt;
+  &lt;li&gt;避免正则匹配查询，而是通过字段冗余来解决(空间换时间)&lt;/li&gt;
+  &lt;li&gt;Mapping文件放入版本库中进行管理&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
@@ -745,9 +896,12 @@ graph LR
   &lt;li&gt;&lt;a href=&quot;https://time.geekbang.org/course/detail/100030501-102662&quot;&gt;Elasticsearch核心技术与实战-极客时间&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/142833556&quot;&gt;H2 全文检索&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://dev.mysql.com/doc/refman/8.0/en/fulltext-search.html&quot;&gt;MySQL Full-Text Search Functions&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.elastic.co/guide/en/app-search/current/relevance-tuning-guide.html#relevance-tuning-guide&quot;&gt;Relevance Tuning Guide， Weights and Boosts&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.elastic.co/guide/en/app-search/current/relevance-tuning-guide.html#relevance-tuning-guide&quot;&gt;Relevance Tuning Guide，Weights and Boosts&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high-query-builders.html&quot;&gt;QueryBuilders&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">方案设计 可选的搜索方案</summary></entry><entry><title type="html">Folsom Blues</title><link href="https://dengqinghua.github.io/folsom-blues.html" rel="alternate" type="text/html" title="Folsom Blues" /><published>2021-08-29T00:00:00+08:00</published><updated>2021-08-29T00:00:00+08:00</updated><id>https://dengqinghua.github.io/folsom-blues</id><content type="html" xml:base="https://dengqinghua.github.io/folsom-blues.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.infoq.com/articles/similarity-scoring-elasticsearch/&quot;&gt;similarity-scoring-elasticsearch&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;iframe src=&quot;https://es-ras1ax3s.kibana.tencentelasticsearch.com:5601/goto/4d3819896d06eceb4bc40db3621bd6f3&quot; height=&quot;600&quot; width=&quot;800&quot;&gt;&lt;/iframe&gt;</content><author><name>dengqinghua</name></author><summary type="html">方案设计 可选的搜索方案</summary></entry><entry><title type="html">Folsom Blues</title><link href="https://dengqinghua.github.io/folsom-blues.html" rel="alternate" type="text/html" title="Folsom Blues" /><published>2021-08-29T00:00:00+08:00</published><updated>2021-08-29T00:00:00+08:00</updated><id>https://dengqinghua.github.io/folsom-blues</id><content type="html" xml:base="https://dengqinghua.github.io/folsom-blues.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
 
 &lt;ul&gt;
   &lt;li&gt;曲谱: &lt;a href=&quot;https://pan.baidu.com/disk/pdfview?path=%2F42%2F%E9%9F%B3%E4%B9%90%2F%E6%95%99%E6%9D%90%2FProGuitar%2FfolsomPrisonBlues%2Femil-ernebro-folsom-prison-blues.pdf&amp;amp;size=128339&amp;amp;fsid=427847537413829&quot;&gt;PDF&lt;/a&gt;&lt;/li&gt;
