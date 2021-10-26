@@ -706,5 +706,3 @@ TODO: 增删改查的步骤是什么样的，如何使用 内存，磁盘 等来
 - [Relevance Tuning Guide，Weights and Boosts](https://www.elastic.co/guide/en/app-search/current/relevance-tuning-guide.html#relevance-tuning-guide)
 - [QueryBuilders](https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high-query-builders.html)
 - [similarity-scoring-elasticsearch](https://www.infoq.com/articles/similarity-scoring-elasticsearch/)
-
-<iframe src="https://es-ras1ax3s.kibana.tencentelasticsearch.com:5601/goto/4d3819896d06eceb4bc40db3621bd6f3" height="600" width="800"></iframe>
