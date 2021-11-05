@@ -67,16 +67,6 @@ graph TB;
     op1-->op11 & op12 & op13;
     op2-->op20 & op21 & op22 & op23 & op24 & op25;
     op3-->op31 & op32 & op33;
-    click op11 "https://gitlab.easeprime.com/ease/backend_service/-/blob/dev/.gitlab-ci.yml#L17" _blank
-    click op12 "https://gitlab.easeprime.com/ease/nginx-prod-conf/-/blob/master/sites-enabled-erb/java" _blank
-    click op13 "https://gitlab.easeprime.com/ease/backend_service/-/settings/ci_cd" _blank
-    click op1 "https://docs.gitlab.com/ee/ci/introduction/img/gitlab_workflow_example_11_9.png" _blank
-    click op20 "https://es-ras1ax3s.kibana.tencentelasticsearch.com:5601/app/discover#/?_g=(filters:!(),query:(language:kuery,query:''),refreshInterval:(pause:!f,value:900000),time:(from:now-24h,to:now))&_a=(columns:!(message,container.name),filters:!(),index:'16ad3800-cf56-11eb-83c7-d711353ac049',interval:auto,query:(language:kuery,query:''),sort:!())" _blank
-    click op21 "http://bi.easeprime.com/question/9?type=STORY&percent=0.99&day=30&playCount=10&dayCreatedAt=30" _blank
-    click op22 "http://metrics.easeprime.com" _blank
-    click op23 "http://bi.easeprime.com/question/9?type=STORY&percent=0.99&day=30&playCount=10&dayCreatedAt=30" _blank
-    click op24 "http://sba.easeprime.com" _blank
-    style op3 fill:#f96f,stroke-dasharray: 5 5
 </div>
 
 ### Gitlab

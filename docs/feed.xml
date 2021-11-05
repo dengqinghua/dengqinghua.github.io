@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-11-05T09:18:31+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-11-05T09:28:23+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
 </subtitle><author><name>dengqinghua</name></author><entry><title type="html">检索技术探索</title><link href="https://dengqinghua.github.io/all-for-search.html" rel="alternate" type="text/html" title="检索技术探索" /><published>2021-09-01T00:00:00+08:00</published><updated>2021-09-01T00:00:00+08:00</updated><id>https://dengqinghua.github.io/all-for-search</id><content type="html" xml:base="https://dengqinghua.github.io/all-for-search.html">&lt;h2 id=&quot;方案设计&quot;&gt;方案设计&lt;/h2&gt;
 &lt;h3 id=&quot;可选的搜索方案&quot;&gt;可选的搜索方案&lt;/h3&gt;
 
@@ -1614,16 +1614,6 @@ graph TB;
     op1--&amp;gt;op11 &amp;amp; op12 &amp;amp; op13;
     op2--&amp;gt;op20 &amp;amp; op21 &amp;amp; op22 &amp;amp; op23 &amp;amp; op24 &amp;amp; op25;
     op3--&amp;gt;op31 &amp;amp; op32 &amp;amp; op33;
-    click op11 &quot;https://gitlab.easeprime.com/ease/backend_service/-/blob/dev/.gitlab-ci.yml#L17&quot; _blank
-    click op12 &quot;https://gitlab.easeprime.com/ease/nginx-prod-conf/-/blob/master/sites-enabled-erb/java&quot; _blank
-    click op13 &quot;https://gitlab.easeprime.com/ease/backend_service/-/settings/ci_cd&quot; _blank
-    click op1 &quot;https://docs.gitlab.com/ee/ci/introduction/img/gitlab_workflow_example_11_9.png&quot; _blank
-    click op20 &quot;https://es-ras1ax3s.kibana.tencentelasticsearch.com:5601/app/discover#/?_g=(filters:!(),query:(language:kuery,query:''),refreshInterval:(pause:!f,value:900000),time:(from:now-24h,to:now))&amp;amp;_a=(columns:!(message,container.name),filters:!(),index:'16ad3800-cf56-11eb-83c7-d711353ac049',interval:auto,query:(language:kuery,query:''),sort:!())&quot; _blank
-    click op21 &quot;http://bi.easeprime.com/question/9?type=STORY&amp;amp;percent=0.99&amp;amp;day=30&amp;amp;playCount=10&amp;amp;dayCreatedAt=30&quot; _blank
-    click op22 &quot;http://metrics.easeprime.com&quot; _blank
-    click op23 &quot;http://bi.easeprime.com/question/9?type=STORY&amp;amp;percent=0.99&amp;amp;day=30&amp;amp;playCount=10&amp;amp;dayCreatedAt=30&quot; _blank
-    click op24 &quot;http://sba.easeprime.com&quot; _blank
-    style op3 fill:#f96f,stroke-dasharray: 5 5
 &lt;/div&gt;
 
 &lt;h3 id=&quot;gitlab&quot;&gt;Gitlab&lt;/h3&gt;
