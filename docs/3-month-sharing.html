@@ -103,9 +103,9 @@
 </ul>
 </li>
 <li class="toc-entry toc-h2">
-<a href="#%E4%B8%AD%E9%97%B4%E4%BB%B6">中间件</a>
+<a href="#%E4%B8%AD%E9%97%B4%E4%BB%B6%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD">中间件/基础设施</a>
 <ul>
-<li class="toc-entry toc-h3"><a href="#%E9%80%89%E6%8B%A9%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%A0%87%E5%87%86">选择中间件标准</a></li>
+<li class="toc-entry toc-h3"><a href="#%E9%80%89%E6%8B%A9-%E4%B8%AD%E9%97%B4%E4%BB%B6%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD-%E6%A0%87%E5%87%86">选择 中间件/基础设施 标准</a></li>
 <li class="toc-entry toc-h3"><a href="#%E8%B4%AD%E4%B9%B0%E8%BF%98%E6%98%AF%E8%87%AA%E5%BB%BA">购买还是自建</a></li>
 <li class="toc-entry toc-h3"><a href="#%E6%80%9D%E8%80%83-3">思考</a></li>
 </ul>
@@ -125,11 +125,19 @@
 
 <ul>
   <li>Devops 基于 gitlab CI/CD 轻量级 Devops, 可实现完整的自动部署，扩容的操作</li>
-  <li>业务 前后端分离，后端使用 BFF + Microservice 的架构，前端使用 React 技术栈</li>
-  <li>中间件 选择比较稳定的中间件，如 MySQL，Redis 和 ES 等。</li>
+  <li>业务 前后端分离，后端使用 BFF + Service 的单体架构，前端使用 React 技术栈</li>
+  <li>中间件/基础设施  选择比较稳定的中间件/基础设施 ，如 MySQL，Redis 和 ES 等。</li>
 </ul>
 
-<p>从成本问题上考虑，大多数的中间件都是购买的，会根据现有的业务情况选择不同类型的中间件</p>
+<p>从成本问题上考虑，大多数的中间件/基础设施 都是购买的，会根据现有的业务情况选择不同类型的中间件/基础设施</p>
+
+<p>当前阶段，我们主要关注下面的几点</p>
+
+<ul>
+  <li>一个需求从研发到上线需要多长时间？【P0】</li>
+  <li>出现一个问题的时间，如何能够快速地发现并解决？【P1】</li>
+  <li>当前服务调用量是什么的，核心链路是什么？【P2】</li>
+</ul>
 
 <h1 id="架构">
 <a class="anchor" href="#%E6%9E%B6%E6%9E%84" aria-hidden="true"><span class="octicon octicon-link"></span></a>架构</h1>
@@ -144,7 +152,7 @@ graph TB;
     biz([业务]);
     biz1(Java);
     biz2(H5,APP,WEB);
-    sys([中间件]);
+    sys([中间件/基础设施 ]);
     sys0(Nginx);
     sys1(ELK);
     sys2(MySQL);
@@ -674,7 +682,7 @@ ERROR 在1分钟内的检测
 <h4 id="思考-1">
 <a class="anchor" href="#%E6%80%9D%E8%80%83-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>思考</h4>
 <ol>
-  <li>在选择网关时，我们遇到一个问题，是否需要引入比较重的中间件？如 Kong，Gravitee，Tyk 等。大多数的组件都做得非常重，比如 Kong 还需要依赖 PG，本身比较占用资源，使用上必须用 API 才可以操作(Admin 版本需要收费)。</li>
+  <li>在选择网关时，我们遇到一个问题，是否需要引入比较重的中间件/基础设施 ？如 Kong，Gravitee，Tyk 等。大多数的组件都做得非常重，比如 Kong 还需要依赖 PG，本身比较占用资源，使用上必须用 API 才可以操作(Admin 版本需要收费)。</li>
   <li>而对于当前的业务场景，其实基础的 Nginx 已经满足我们的需求了。而且 Nginx 本身的配置文件可以分开配置，非常好维护和管理，对于小业务反而是一种优势。</li>
   <li>安全 和 报警一样，是一样性价比不高的系统（但是很重要）尽量做到业务无感知，而且不能伤害到正常用户，这样才能最大地释放业务服务部分的能力，让业务更专注于业务。</li>
 </ol>
@@ -745,11 +753,11 @@ graph TB;
   <li>多关注业务数据，思考业务数据是怎么产生的，并怎么回归到产品中去。</li>
 </ol>
 
-<h2 id="中间件">
-<a class="anchor" href="#%E4%B8%AD%E9%97%B4%E4%BB%B6" aria-hidden="true"><span class="octicon octicon-link"></span></a>中间件</h2>
+<h2 id="中间件基础设施">
+<a class="anchor" href="#%E4%B8%AD%E9%97%B4%E4%BB%B6%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD" aria-hidden="true"><span class="octicon octicon-link"></span></a>中间件/基础设施</h2>
 <div class="mermaid">
 graph TB;
-    sys([中间件]);
+    sys([中间件/基础设施 ]);
     sys0(Nginx);
     sys00(HTTPS);
     sys01(反向代理);
@@ -767,10 +775,10 @@ graph TB;
     sys1--&gt;sys11 &amp; sys12;
 </div>
 
-<p>中间件支撑着整个业务系统的运转，他们贯穿在整个系统中。</p>
+<p>中间件/基础设施 支撑着整个业务系统的运转，他们贯穿在整个系统中。</p>
 
-<h3 id="选择中间件标准">
-<a class="anchor" href="#%E9%80%89%E6%8B%A9%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%A0%87%E5%87%86" aria-hidden="true"><span class="octicon octicon-link"></span></a>选择中间件标准</h3>
+<h3 id="选择-中间件基础设施-标准">
+<a class="anchor" href="#%E9%80%89%E6%8B%A9-%E4%B8%AD%E9%97%B4%E4%BB%B6%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD-%E6%A0%87%E5%87%86" aria-hidden="true"><span class="octicon octicon-link"></span></a>选择 中间件/基础设施 标准</h3>
 <p>这里的选择标准包括</p>
 
 <ol>
@@ -800,7 +808,7 @@ graph TB;
 <ol>
   <li>无论是引入哪一种组件，购买还是自建，都需要自己先进行一段时间的考察和试用，横纵向进行多维度的对比之后，再做一些考虑。</li>
   <li>维护好重要的数据，并进行备份。</li>
-  <li>内部使用的中间件尽量要和用户使用的系统分开。比如 BI 使用的 MySQL，我们则购买了一个从库，专门给 BI 进行使用。</li>
+  <li>内部使用的中间件/基础设施 尽量要和用户使用的系统分开。比如 BI 使用的 MySQL，我们则购买了一个从库，专门给 BI 进行使用。</li>
 </ol>
 
 </article>

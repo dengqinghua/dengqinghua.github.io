@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-11-05T09:28:23+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-11-15T15:26:45+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
 </subtitle><author><name>dengqinghua</name></author><entry><title type="html">检索技术探索</title><link href="https://dengqinghua.github.io/all-for-search.html" rel="alternate" type="text/html" title="检索技术探索" /><published>2021-09-01T00:00:00+08:00</published><updated>2021-09-01T00:00:00+08:00</updated><id>https://dengqinghua.github.io/all-for-search</id><content type="html" xml:base="https://dengqinghua.github.io/all-for-search.html">&lt;h2 id=&quot;方案设计&quot;&gt;方案设计&lt;/h2&gt;
 &lt;h3 id=&quot;可选的搜索方案&quot;&gt;可选的搜索方案&lt;/h3&gt;
 
@@ -1560,11 +1560,19 @@ graph LR;
 
 &lt;ul&gt;
   &lt;li&gt;Devops 基于 gitlab CI/CD 轻量级 Devops, 可实现完整的自动部署，扩容的操作&lt;/li&gt;
-  &lt;li&gt;业务 前后端分离，后端使用 BFF + Microservice 的架构，前端使用 React 技术栈&lt;/li&gt;
-  &lt;li&gt;中间件 选择比较稳定的中间件，如 MySQL，Redis 和 ES 等。&lt;/li&gt;
+  &lt;li&gt;业务 前后端分离，后端使用 BFF + Service 的单体架构，前端使用 React 技术栈&lt;/li&gt;
+  &lt;li&gt;中间件/基础设施  选择比较稳定的中间件/基础设施 ，如 MySQL，Redis 和 ES 等。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;从成本问题上考虑，大多数的中间件都是购买的，会根据现有的业务情况选择不同类型的中间件&lt;/p&gt;
+&lt;p&gt;从成本问题上考虑，大多数的中间件/基础设施 都是购买的，会根据现有的业务情况选择不同类型的中间件/基础设施&lt;/p&gt;
+
+&lt;p&gt;当前阶段，我们主要关注下面的几点&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;一个需求从研发到上线需要多长时间？【P0】&lt;/li&gt;
+  &lt;li&gt;出现一个问题的时间，如何能够快速地发现并解决？【P1】&lt;/li&gt;
+  &lt;li&gt;当前服务调用量是什么的，核心链路是什么？【P2】&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h1 id=&quot;架构&quot;&gt;架构&lt;/h1&gt;
 &lt;div class=&quot;mermaid&quot;&gt;
@@ -1578,7 +1586,7 @@ graph TB;
     biz([业务]);
     biz1(Java);
     biz2(H5,APP,WEB);
-    sys([中间件]);
+    sys([中间件/基础设施 ]);
     sys0(Nginx);
     sys1(ELK);
     sys2(MySQL);
@@ -2084,7 +2092,7 @@ ERROR 在1分钟内的检测
 
 &lt;h4 id=&quot;思考-1&quot;&gt;思考&lt;/h4&gt;
 &lt;ol&gt;
-  &lt;li&gt;在选择网关时，我们遇到一个问题，是否需要引入比较重的中间件？如 Kong，Gravitee，Tyk 等。大多数的组件都做得非常重，比如 Kong 还需要依赖 PG，本身比较占用资源，使用上必须用 API 才可以操作(Admin 版本需要收费)。&lt;/li&gt;
+  &lt;li&gt;在选择网关时，我们遇到一个问题，是否需要引入比较重的中间件/基础设施 ？如 Kong，Gravitee，Tyk 等。大多数的组件都做得非常重，比如 Kong 还需要依赖 PG，本身比较占用资源，使用上必须用 API 才可以操作(Admin 版本需要收费)。&lt;/li&gt;
   &lt;li&gt;而对于当前的业务场景，其实基础的 Nginx 已经满足我们的需求了。而且 Nginx 本身的配置文件可以分开配置，非常好维护和管理，对于小业务反而是一种优势。&lt;/li&gt;
   &lt;li&gt;安全 和 报警一样，是一样性价比不高的系统（但是很重要）尽量做到业务无感知，而且不能伤害到正常用户，这样才能最大地释放业务服务部分的能力，让业务更专注于业务。&lt;/li&gt;
 &lt;/ol&gt;
@@ -2151,10 +2159,10 @@ graph TB;
   &lt;li&gt;多关注业务数据，思考业务数据是怎么产生的，并怎么回归到产品中去。&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&quot;中间件&quot;&gt;中间件&lt;/h2&gt;
+&lt;h2 id=&quot;中间件基础设施&quot;&gt;中间件/基础设施&lt;/h2&gt;
 &lt;div class=&quot;mermaid&quot;&gt;
 graph TB;
-    sys([中间件]);
+    sys([中间件/基础设施 ]);
     sys0(Nginx);
     sys00(HTTPS);
     sys01(反向代理);
@@ -2172,9 +2180,9 @@ graph TB;
     sys1--&amp;gt;sys11 &amp;amp; sys12;
 &lt;/div&gt;
 
-&lt;p&gt;中间件支撑着整个业务系统的运转，他们贯穿在整个系统中。&lt;/p&gt;
+&lt;p&gt;中间件/基础设施 支撑着整个业务系统的运转，他们贯穿在整个系统中。&lt;/p&gt;
 
-&lt;h3 id=&quot;选择中间件标准&quot;&gt;选择中间件标准&lt;/h3&gt;
+&lt;h3 id=&quot;选择-中间件基础设施-标准&quot;&gt;选择 中间件/基础设施 标准&lt;/h3&gt;
 &lt;p&gt;这里的选择标准包括&lt;/p&gt;
 
 &lt;ol&gt;
@@ -2202,7 +2210,7 @@ graph TB;
 &lt;ol&gt;
   &lt;li&gt;无论是引入哪一种组件，购买还是自建，都需要自己先进行一段时间的考察和试用，横纵向进行多维度的对比之后，再做一些考虑。&lt;/li&gt;
   &lt;li&gt;维护好重要的数据，并进行备份。&lt;/li&gt;
-  &lt;li&gt;内部使用的中间件尽量要和用户使用的系统分开。比如 BI 使用的 MySQL，我们则购买了一个从库，专门给 BI 进行使用。&lt;/li&gt;
+  &lt;li&gt;内部使用的中间件/基础设施 尽量要和用户使用的系统分开。比如 BI 使用的 MySQL，我们则购买了一个从库，专门给 BI 进行使用。&lt;/li&gt;
 &lt;/ol&gt;</content><author><name>dengqinghua</name></author><summary type="html">该部分为后端团队 (2人) 从0 到 1 搭建的一套架构体系。</summary></entry><entry><title type="html">晋升指南笔记</title><link href="https://dengqinghua.github.io/learn-how-to-promote.html" rel="alternate" type="text/html" title="晋升指南笔记" /><published>2021-07-14T00:00:00+08:00</published><updated>2021-07-14T00:00:00+08:00</updated><id>https://dengqinghua.github.io/learn-how-to-promote</id><content type="html" xml:base="https://dengqinghua.github.io/learn-how-to-promote.html">&lt;h2 id=&quot;comd-能力模型&quot;&gt;COMD 能力模型&lt;/h2&gt;
 &lt;p&gt;COMD, aka, Complexity-Oriented Multi-Dimension 多维度 + 复杂度&lt;/p&gt;
 
