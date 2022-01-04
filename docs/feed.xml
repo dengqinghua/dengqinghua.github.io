@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2022-01-04T10:16:05+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
-</subtitle><author><name>dengqinghua</name></author><entry><title type="html">推荐系统 101</title><link href="https://dengqinghua.github.io/recommend-sys-with-es.html" rel="alternate" type="text/html" title="推荐系统 101" /><published>2021-12-31T00:00:00+08:00</published><updated>2021-12-31T00:00:00+08:00</updated><id>https://dengqinghua.github.io/recommend-sys-with-es</id><content type="html" xml:base="https://dengqinghua.github.io/recommend-sys-with-es.html">&lt;p&gt;从&lt;a href=&quot;./recommend-sys.html&quot;&gt;前面&lt;/a&gt;一篇文章，我们可以了解到一些基本的概念，非常重要的几个点为&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-04T10:18:10+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+</subtitle><author><name>dengqinghua</name></author><entry><title type="html">推荐系统 101</title><link href="http://localhost:4000/recommend-sys-with-es.html" rel="alternate" type="text/html" title="推荐系统 101" /><published>2021-12-31T00:00:00+08:00</published><updated>2021-12-31T00:00:00+08:00</updated><id>http://localhost:4000/recommend-sys-with-es</id><content type="html" xml:base="http://localhost:4000/recommend-sys-with-es.html">&lt;p&gt;从&lt;a href=&quot;./recommend-sys.html&quot;&gt;前面&lt;/a&gt;一篇文章，我们可以了解到一些基本的概念，非常重要的几个点为&lt;/p&gt;
 
 &lt;h2 id=&quot;概念回顾&quot;&gt;概念回顾&lt;/h2&gt;
 &lt;h3 id=&quot;推荐过程&quot;&gt;推荐过程&lt;/h3&gt;
@@ -422,7 +422,7 @@ graph LR;
   &lt;li&gt;&lt;a href=&quot;https://opensourceconnections.com/blog/2016/06/06/recommender-systems-101-basket-analysis/&quot;&gt;Recommender Systems 101: Basket Analysis&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://opensourceconnections.com/blog/2016/09/09/better-recsys-elasticsearch/&quot;&gt;Better Recsys Elasticsearch&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://aclanthology.org/J93-1003.pdf&quot;&gt;Accurate Methods for the Statistics of Surprise and Coincidence&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">从前面一篇文章，我们可以了解到一些基本的概念，非常重要的几个点为</summary></entry><entry><title type="html">检索技术探索</title><link href="https://dengqinghua.github.io/all-for-search.html" rel="alternate" type="text/html" title="检索技术探索" /><published>2021-09-01T00:00:00+08:00</published><updated>2021-09-01T00:00:00+08:00</updated><id>https://dengqinghua.github.io/all-for-search</id><content type="html" xml:base="https://dengqinghua.github.io/all-for-search.html">&lt;h2 id=&quot;方案设计&quot;&gt;方案设计&lt;/h2&gt;
+&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">从前面一篇文章，我们可以了解到一些基本的概念，非常重要的几个点为</summary></entry><entry><title type="html">检索技术探索</title><link href="http://localhost:4000/all-for-search.html" rel="alternate" type="text/html" title="检索技术探索" /><published>2021-09-01T00:00:00+08:00</published><updated>2021-09-01T00:00:00+08:00</updated><id>http://localhost:4000/all-for-search</id><content type="html" xml:base="http://localhost:4000/all-for-search.html">&lt;h2 id=&quot;方案设计&quot;&gt;方案设计&lt;/h2&gt;
 &lt;h3 id=&quot;可选的搜索方案&quot;&gt;可选的搜索方案&lt;/h3&gt;
 
 &lt;table&gt;
@@ -1322,7 +1322,7 @@ graph LR
   &lt;li&gt;&lt;a href=&quot;https://www.elastic.co/guide/en/app-search/current/relevance-tuning-guide.html#relevance-tuning-guide&quot;&gt;Relevance Tuning Guide，Weights and Boosts&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high-query-builders.html&quot;&gt;QueryBuilders&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.infoq.com/articles/similarity-scoring-elasticsearch/&quot;&gt;similarity-scoring-elasticsearch&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">方案设计 可选的搜索方案</summary></entry><entry><title type="html">Folsom Blues</title><link href="https://dengqinghua.github.io/folsom-blues.html" rel="alternate" type="text/html" title="Folsom Blues" /><published>2021-08-29T00:00:00+08:00</published><updated>2021-08-29T00:00:00+08:00</updated><id>https://dengqinghua.github.io/folsom-blues</id><content type="html" xml:base="https://dengqinghua.github.io/folsom-blues.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
+&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">方案设计 可选的搜索方案</summary></entry><entry><title type="html">Folsom Blues</title><link href="http://localhost:4000/folsom-blues.html" rel="alternate" type="text/html" title="Folsom Blues" /><published>2021-08-29T00:00:00+08:00</published><updated>2021-08-29T00:00:00+08:00</updated><id>http://localhost:4000/folsom-blues</id><content type="html" xml:base="http://localhost:4000/folsom-blues.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
 
 &lt;ul&gt;
   &lt;li&gt;曲谱: &lt;a href=&quot;https://pan.baidu.com/disk/pdfview?path=%2F42%2F%E9%9F%B3%E4%B9%90%2F%E6%95%99%E6%9D%90%2FProGuitar%2FfolsomPrisonBlues%2Femil-ernebro-folsom-prison-blues.pdf&amp;amp;size=128339&amp;amp;fsid=427847537413829&quot;&gt;PDF&lt;/a&gt;&lt;/li&gt;
@@ -1376,7 +1376,7 @@ graph LR
 &lt;ol&gt;
   &lt;li&gt;其实 emil 的曲子练习多了之后，发现他其实很强调曲子的整体的律动感觉，会让你觉得曲子比较简单，但是在一些细节上处理不好之后，整个曲子就会变了味道&lt;/li&gt;
   &lt;li&gt;对于和弦，乐理，速度，花里胡哨的技巧而言，没有什么比 &lt;strong&gt;稳定的节拍，干净的演奏，合适的律动&lt;/strong&gt; 更重要了，要多注重自己的节拍的稳定性 和 音符的稳定性 上面&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry><entry><title type="html">pulsar 队列实践</title><link href="https://dengqinghua.github.io/queue.html" rel="alternate" type="text/html" title="pulsar 队列实践" /><published>2021-08-16T00:00:00+08:00</published><updated>2021-08-16T00:00:00+08:00</updated><id>https://dengqinghua.github.io/queue</id><content type="html" xml:base="https://dengqinghua.github.io/queue.html">&lt;h2 id=&quot;architecture&quot;&gt;Architecture&lt;/h2&gt;
+&lt;/ol&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry><entry><title type="html">pulsar 队列实践</title><link href="http://localhost:4000/queue.html" rel="alternate" type="text/html" title="pulsar 队列实践" /><published>2021-08-16T00:00:00+08:00</published><updated>2021-08-16T00:00:00+08:00</updated><id>http://localhost:4000/queue</id><content type="html" xml:base="http://localhost:4000/queue.html">&lt;h2 id=&quot;architecture&quot;&gt;Architecture&lt;/h2&gt;
 &lt;h3 id=&quot;架构&quot;&gt;架构&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;assets/images/pul-system-architecture.png&quot; alt=&quot;pul-system-architecture.png&quot; /&gt;&lt;/p&gt;
@@ -1530,7 +1530,7 @@ graph LR;
   &lt;li&gt;&lt;a href=&quot;https://www.confluent.io/blog/kafka-fastest-messaging-system/&quot;&gt;Benchmarking Apache Kafka, Apache Pulsar, and RabbitMQ: Which is the Fastest?&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/182573701&quot;&gt;Pulsar 与 Kafka 全方位对比（上篇）：功能、性能、用例&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/61525447/apache-pulsar-message-delivery-semantics&quot;&gt;Apache Pulsar Message Delivery Semantics&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">Architecture 架构</summary></entry><entry><title type="html">录音相关的思考</title><link href="https://dengqinghua.github.io/r1.html" rel="alternate" type="text/html" title="录音相关的思考" /><published>2021-07-30T00:00:00+08:00</published><updated>2021-07-30T00:00:00+08:00</updated><id>https://dengqinghua.github.io/r1</id><content type="html" xml:base="https://dengqinghua.github.io/r1.html">&lt;blockquote&gt;
+&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">Architecture 架构</summary></entry><entry><title type="html">录音相关的思考</title><link href="http://localhost:4000/r1.html" rel="alternate" type="text/html" title="录音相关的思考" /><published>2021-07-30T00:00:00+08:00</published><updated>2021-07-30T00:00:00+08:00</updated><id>http://localhost:4000/r1</id><content type="html" xml:base="http://localhost:4000/r1.html">&lt;blockquote&gt;
   &lt;p&gt;如何提高录音的效率？多练习基本功，提高专注度，多听，多感受…&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -1571,7 +1571,7 @@ graph LR;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;混音&quot;&gt;混音&lt;/h2&gt;
-&lt;p&gt;LogicPro&lt;/p&gt;</content><author><name>dengqinghua</name></author><summary type="html">如何提高录音的效率？多练习基本功，提高专注度，多听，多感受…</summary></entry><entry><title type="html">推荐系统学习笔记</title><link href="https://dengqinghua.github.io/recommend-sys.html" rel="alternate" type="text/html" title="推荐系统学习笔记" /><published>2021-07-29T00:00:00+08:00</published><updated>2021-07-29T00:00:00+08:00</updated><id>https://dengqinghua.github.io/recommend-sys</id><content type="html" xml:base="https://dengqinghua.github.io/recommend-sys.html">&lt;h2 id=&quot;基本方式&quot;&gt;基本方式&lt;/h2&gt;
+&lt;p&gt;LogicPro&lt;/p&gt;</content><author><name>dengqinghua</name></author><summary type="html">如何提高录音的效率？多练习基本功，提高专注度，多听，多感受…</summary></entry><entry><title type="html">推荐系统学习笔记</title><link href="http://localhost:4000/recommend-sys.html" rel="alternate" type="text/html" title="推荐系统学习笔记" /><published>2021-07-29T00:00:00+08:00</published><updated>2021-07-29T00:00:00+08:00</updated><id>http://localhost:4000/recommend-sys</id><content type="html" xml:base="http://localhost:4000/recommend-sys.html">&lt;h2 id=&quot;基本方式&quot;&gt;基本方式&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
@@ -1911,7 +1911,7 @@ graph TB
   &lt;li&gt;&lt;a href=&quot;https://github.com/fxsjy/jieba&quot;&gt;中文分词&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://ai.tencent.com/ailab/nlp/en/embedding.html&quot;&gt;Tencent Word2Vec&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://spark.apache.org/docs/2.2.3/ml-features.html&quot;&gt;Spark ML features&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">基本方式</summary></entry><entry><title type="html">Apple Pay</title><link href="https://dengqinghua.github.io/apple-pay.html" rel="alternate" type="text/html" title="Apple Pay" /><published>2021-07-28T00:00:00+08:00</published><updated>2021-07-28T00:00:00+08:00</updated><id>https://dengqinghua.github.io/apple-pay</id><content type="html" xml:base="https://dengqinghua.github.io/apple-pay.html">&lt;div class=&quot;mermaid&quot;&gt;
+&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">基本方式</summary></entry><entry><title type="html">Apple Pay</title><link href="http://localhost:4000/apple-pay.html" rel="alternate" type="text/html" title="Apple Pay" /><published>2021-07-28T00:00:00+08:00</published><updated>2021-07-28T00:00:00+08:00</updated><id>http://localhost:4000/apple-pay</id><content type="html" xml:base="http://localhost:4000/apple-pay.html">&lt;div class=&quot;mermaid&quot;&gt;
 sequenceDiagram
     autonumber
     participant sdk as iOS SDK
@@ -1971,7 +1971,7 @@ graph LR;
   &lt;li&gt;&lt;a href=&quot;https://medium.com/@tyy.sh/in-app-purchase-%E6%80%BB%E7%BB%93-e8a88a54d8d9&quot;&gt;IAP&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://ifumei.cc/2019/12/24/iospay/&quot;&gt;springboot接入苹果内购&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://developer.apple.com/documentation/storekit/original_api_for_in-app_purchase/validating_receipts_with_the_app_store&quot;&gt;苹果校验流程&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">sequenceDiagram autonumber participant sdk as iOS SDK participant b as Backend participant as as Apple Service sdk-&amp;gt;&amp;gt;b: 获取商品列表 b--&amp;gt;&amp;gt;sdk: 从后台获取商品id和对应展示的图片文案信息 sdk-&amp;gt;&amp;gt;b: 根据商品id 生成/获取预订单 Note right of sdk: 需要先去查一下这个用户在商品id下之前是不是有未完成的订单 b--&amp;gt;&amp;gt;sdk: 返回 订单sid sdk-&amp;gt;&amp;gt;as: 发起真实的支付 as--&amp;gt;&amp;gt;sdk: 用户支付, 苹果返回票据信息(receipt-data)如果苹果未返回, 则在 App 启动的时候返回 sdk-&amp;gt;&amp;gt;b: 提交票据信息和 订单sid 到服务端 Note right of sdk: 这一步容易丢单, 如何解决? 因为苹果容易丢失掉订单sid 需要取未完成的一条 b-&amp;gt;&amp;gt;as: 验证票据信息 as--&amp;gt;&amp;gt;b: 验证成功/失败 b--&amp;gt;&amp;gt;sdk: 修改订单状态, 并通知SDK支付成功或失败 sdk--&amp;gt;&amp;gt;as: 成功则将订单进行关闭</summary></entry><entry><title type="html">从 0 到 1 搭建 ease 后端服务</title><link href="https://dengqinghua.github.io/ease-from-0-to-1.html" rel="alternate" type="text/html" title="从 0 到 1 搭建 ease 后端服务" /><published>2021-07-26T00:00:00+08:00</published><updated>2021-07-26T00:00:00+08:00</updated><id>https://dengqinghua.github.io/ease_from_0_to_1</id><content type="html" xml:base="https://dengqinghua.github.io/ease-from-0-to-1.html">&lt;p&gt;该部分为后端团队 (2人) 从0 到 1 搭建的一套架构体系。&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">sequenceDiagram autonumber participant sdk as iOS SDK participant b as Backend participant as as Apple Service sdk-&amp;gt;&amp;gt;b: 获取商品列表 b--&amp;gt;&amp;gt;sdk: 从后台获取商品id和对应展示的图片文案信息 sdk-&amp;gt;&amp;gt;b: 根据商品id 生成/获取预订单 Note right of sdk: 需要先去查一下这个用户在商品id下之前是不是有未完成的订单 b--&amp;gt;&amp;gt;sdk: 返回 订单sid sdk-&amp;gt;&amp;gt;as: 发起真实的支付 as--&amp;gt;&amp;gt;sdk: 用户支付, 苹果返回票据信息(receipt-data)如果苹果未返回, 则在 App 启动的时候返回 sdk-&amp;gt;&amp;gt;b: 提交票据信息和 订单sid 到服务端 Note right of sdk: 这一步容易丢单, 如何解决? 因为苹果容易丢失掉订单sid 需要取未完成的一条 b-&amp;gt;&amp;gt;as: 验证票据信息 as--&amp;gt;&amp;gt;b: 验证成功/失败 b--&amp;gt;&amp;gt;sdk: 修改订单状态, 并通知SDK支付成功或失败 sdk--&amp;gt;&amp;gt;as: 成功则将订单进行关闭</summary></entry><entry><title type="html">从 0 到 1 搭建 ease 后端服务</title><link href="http://localhost:4000/ease-from-0-to-1.html" rel="alternate" type="text/html" title="从 0 到 1 搭建 ease 后端服务" /><published>2021-07-26T00:00:00+08:00</published><updated>2021-07-26T00:00:00+08:00</updated><id>http://localhost:4000/ease_from_0_to_1</id><content type="html" xml:base="http://localhost:4000/ease-from-0-to-1.html">&lt;p&gt;该部分为后端团队 (2人) 从0 到 1 搭建的一套架构体系。&lt;/p&gt;
 
 &lt;blockquote&gt;
 
@@ -2634,7 +2634,7 @@ graph TB;
   &lt;li&gt;无论是引入哪一种组件，购买还是自建，都需要自己先进行一段时间的考察和试用，横纵向进行多维度的对比之后，再做一些考虑。&lt;/li&gt;
   &lt;li&gt;维护好重要的数据，并进行备份。&lt;/li&gt;
   &lt;li&gt;内部使用的中间件/基础设施 尽量要和用户使用的系统分开。比如 BI 使用的 MySQL，我们则购买了一个从库，专门给 BI 进行使用。&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>dengqinghua</name></author><summary type="html">该部分为后端团队 (2人) 从0 到 1 搭建的一套架构体系。</summary></entry><entry><title type="html">晋升指南笔记</title><link href="https://dengqinghua.github.io/learn-how-to-promote.html" rel="alternate" type="text/html" title="晋升指南笔记" /><published>2021-07-14T00:00:00+08:00</published><updated>2021-07-14T00:00:00+08:00</updated><id>https://dengqinghua.github.io/learn-how-to-promote</id><content type="html" xml:base="https://dengqinghua.github.io/learn-how-to-promote.html">&lt;h2 id=&quot;comd-能力模型&quot;&gt;COMD 能力模型&lt;/h2&gt;
+&lt;/ol&gt;</content><author><name>dengqinghua</name></author><summary type="html">该部分为后端团队 (2人) 从0 到 1 搭建的一套架构体系。</summary></entry><entry><title type="html">晋升指南笔记</title><link href="http://localhost:4000/learn-how-to-promote.html" rel="alternate" type="text/html" title="晋升指南笔记" /><published>2021-07-14T00:00:00+08:00</published><updated>2021-07-14T00:00:00+08:00</updated><id>http://localhost:4000/learn-how-to-promote</id><content type="html" xml:base="http://localhost:4000/learn-how-to-promote.html">&lt;h2 id=&quot;comd-能力模型&quot;&gt;COMD 能力模型&lt;/h2&gt;
 &lt;p&gt;COMD, aka, Complexity-Oriented Multi-Dimension 多维度 + 复杂度&lt;/p&gt;
 
 &lt;ol&gt;
@@ -3192,7 +3192,7 @@ Me?
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;改进线(可以落地的改进方案很重要)&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">COMD 能力模型 COMD, aka, Complexity-Oriented Multi-Dimension 多维度 + 复杂度</summary></entry><entry><title type="html">fingerstyle blues level 1-3</title><link href="https://dengqinghua.github.io/finger-style-blues-l123.html" rel="alternate" type="text/html" title="fingerstyle blues level 1-3" /><published>2021-06-28T00:00:00+08:00</published><updated>2021-06-28T00:00:00+08:00</updated><id>https://dengqinghua.github.io/finger-style-blues-l123</id><content type="html" xml:base="https://dengqinghua.github.io/finger-style-blues-l123.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
+&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">COMD 能力模型 COMD, aka, Complexity-Oriented Multi-Dimension 多维度 + 复杂度</summary></entry><entry><title type="html">fingerstyle blues level 1-3</title><link href="http://localhost:4000/finger-style-blues-l123.html" rel="alternate" type="text/html" title="fingerstyle blues level 1-3" /><published>2021-06-28T00:00:00+08:00</published><updated>2021-06-28T00:00:00+08:00</updated><id>http://localhost:4000/finger-style-blues-l123</id><content type="html" xml:base="http://localhost:4000/finger-style-blues-l123.html">&lt;hr data-content=&quot; 曲谱 &quot; /&gt;
 
 &lt;ul&gt;
   &lt;li&gt;曲谱: &lt;a href=&quot;https://pan.baidu.com/disk/pdfview?path=%2F42%2F%E9%9F%B3%E4%B9%90%2F%E6%95%99%E6%9D%90%2FProGuitar%2FfingerstyleBlues%2Fproguitar-fingerstyle-blues.pdf&quot;&gt;PDF&lt;/a&gt;&lt;/li&gt;
