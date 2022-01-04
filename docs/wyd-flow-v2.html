@@ -36,6 +36,8 @@
   <script src="assets/js/mermaid_config.js"></script>
   <script src="assets/js/gitalk.min.js"></script>
   <script src="assets/js/gitalk_init.js"></script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="assets/js/mathjax_init.js"></script>
 </head>
 <body a="light">
     <main class="page-content" aria-label="Content">
@@ -64,7 +66,7 @@ graph TB
     end
 </div>
 
-<hr data-content=" 万域达全链路系统V1.0 ">
+<hr data-content=" 全链路系统V1.0 ">
 
 <p>1.0版本的需求主要是在信息收集上面, 主要包括下面几个模块</p>
 
@@ -90,11 +92,11 @@ graph TB
 
 <p>形成订单之后, 将形成一个网站地 服务-订单 链路, 该部分将对各个部分的子订单进行监控</p>
 
-<hr data-content=" 排期时间 ">
+<hr data-content=" 排期时间: 9个月 ">
 
 <ol>
   <li>
-    <p>系统搭建(2天)</p>
+    <p>系统搭建(1个月)</p>
 
     <ul>
       <li>项目初始化, 框架搭建</li>
@@ -102,7 +104,7 @@ graph TB
     </ul>
   </li>
   <li>
-    <p>服务项管理(3天)</p>
+    <p>服务项管理(1个月)</p>
 
     <ul>
       <li>新增服务项</li>
@@ -112,7 +114,7 @@ graph TB
     </ul>
   </li>
   <li>
-    <p>供应商/协议管理 （6天）</p>
+    <p>HR/系统管理 （1个月）</p>
 
     <ul>
       <li>新增供应商 (4天)
@@ -130,7 +132,7 @@ graph TB
     </ul>
   </li>
   <li>
-    <p>客户管理（2天）</p>
+    <p>客户管理（2周）</p>
 
     <ul>
       <li>新增客户</li>
@@ -138,7 +140,7 @@ graph TB
     </ul>
   </li>
   <li>
-    <p>客户接单流程 （10天）</p>
+    <p>客户接单流程 (2个月）</p>
 
     <ul>
       <li>创建父订单和子订单【类似于购物车内的多个商品，每一个商品都是一个子订单，整体的付款是 父订单】(2天)</li>
@@ -149,15 +151,42 @@ graph TB
     </ul>
   </li>
   <li>
-    <p>其他内容 (4天)</p>
+    <p>UI 设计(2个月)</p>
 
     <ul>
-      <li>系统用户，包括登录/登出/账号管理等 (1天)</li>
-      <li>标签体系，支持给 客户/供应商 等 打上对应的标签，支持 自定义标签 （2天）</li>
-      <li>文档/图片等 资源上传 （1天）</li>
+      <li>服务页面设计</li>
+      <li>整体风格调配</li>
+      <li>主题选择</li>
     </ul>
   </li>
+  <li>
+    <p>测试和上线(1个月)</p>
+  </li>
 </ol>
+
+<div class="mermaid">
+gantt
+    title 研发计划
+    dateFormat  YYYY-MM-DD
+    section UI设计
+    A task           :a1, 2014-01-01, 30d
+    Another task     :after a1  , 20d
+    section 前端开发
+    A task           :a1, 2014-01-01, 30d
+    Another task     :after a1  , 20d
+    section 后端开发
+    A task           :a1, 2014-01-01, 30d
+    Another task     :after a1  , 20d
+    section QA测试
+    Task in sec      :2014-01-12  , 12d
+    another task      : 24d
+    section 产品验证
+    Task in sec      :2014-01-12  , 12d
+    another task      : 24d
+    section 稳定性保障
+    Task in sec      :2014-01-12  , 12d
+    another task      : 24d
+</div>
 
 </article>
 

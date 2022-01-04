@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>推荐系统 101</title>
+
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="推荐系统 101" />
+<meta name="author" content="dengqinghua" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="从前面一篇文章，我们可以了解到一些基本的概念，非常重要的几个点为" />
+<meta property="og:description" content="从前面一篇文章，我们可以了解到一些基本的概念，非常重要的几个点为" />
+<link rel="canonical" href="https://dengqinghua.github.io/recommend-sys-with-es.html" />
+<meta property="og:url" content="https://dengqinghua.github.io/recommend-sys-with-es.html" />
+<meta property="og:site_name" content="Dengqinghua.42" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-12-31T00:00:00+08:00" />
+<script type="application/ld+json">
+{"headline":"推荐系统 101","dateModified":"2021-12-31T00:00:00+08:00","datePublished":"2021-12-31T00:00:00+08:00","url":"https://dengqinghua.github.io/recommend-sys-with-es.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://dengqinghua.github.io/recommend-sys-with-es.html"},"author":{"@type":"Person","name":"dengqinghua"},"description":"从前面一篇文章，我们可以了解到一些基本的概念，非常重要的几个点为","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link type="application/atom+xml" rel="alternate" href="https://dengqinghua.github.io/feed.xml" title="Dengqinghua.42" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/logo.png" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/zoom.css" />
+  <link rel="stylesheet" href="/assets/css/gitalk.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  <script src="assets/js/mermaid.min.js"></script>
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/zoom.min.js"></script>
+  <script src="assets/js/zoom_init.js"></script>
+  <script src="assets/js/mermaid_config.js"></script>
+  <script src="assets/js/gitalk.min.js"></script>
+  <script src="assets/js/gitalk_init.js"></script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="assets/js/mathjax_init.js"></script>
+</head>
+<body a="light">
+    <main class="page-content" aria-label="Content">
+      <div class="w">
+        <a href="/">..</a>
+
+<article>
+  <p class="post-meta">
+    <time datetime="2021-12-31 00:00:00 +0800">2021-12-31</time>
+  </p>
+  
+  <h1>推荐系统 101</h1>
+
+  <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2">
+<a href="#%E6%A6%82%E5%BF%B5%E5%9B%9E%E9%A1%BE">概念回顾</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#%E6%8E%A8%E8%8D%90%E8%BF%87%E7%A8%8B">推荐过程</a></li>
+<li class="toc-entry toc-h3"><a href="#%E5%8F%AC%E5%9B%9E%E7%9A%84%E6%96%B9%E5%BC%8F">召回的方式</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2">
+<a href="#%E7%89%88%E6%9C%AC1-%E5%9F%BA%E4%BA%8E%E5%8D%8F%E5%90%8C%E7%AE%97%E6%B3%95%E7%9A%84-member-media-%E7%9B%B8%E4%BC%BC%E5%BA%A6%E8%AE%A1%E7%AE%97">版本1: 基于协同算法的 member-media 相似度计算</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#member-%E5%92%8C-media-%E7%9A%84%E7%9F%A9%E9%98%B5%E8%AE%A1%E7%AE%97">member 和 media 的矩阵计算</a></li>
+<li class="toc-entry toc-h3"><a href="#%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9">协同过滤的优缺点</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2">
+<a href="#%E7%89%88%E6%9C%AC2-%E5%9F%BA%E4%BA%8E-es-%E7%9A%84%E7%AE%97%E6%B3%95%E6%8E%A8%E8%8D%90">版本2: 基于 ES 的算法推荐</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#%E4%B8%80%E4%B8%AA%E8%B4%AD%E7%89%A9%E8%BD%A6%E6%8E%A8%E8%8D%90%E7%9A%84%E4%BE%8B%E5%AD%90">一个购物车推荐的例子</a></li>
+<li class="toc-entry toc-h3"><a href="#jaccard-%E7%9B%B8%E4%BC%BC%E5%BA%A6">Jaccard 相似度</a></li>
+<li class="toc-entry toc-h3"><a href="#significant-terms-aggregation">Significant Terms Aggregation</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#%E8%90%BD%E5%9C%B0%E6%96%B9%E6%A1%88">落地方案</a></li>
+<li class="toc-entry toc-h2"><a href="#reference">Reference</a></li>
+</ul>
+<p>从<a href="./recommend-sys.html">前面</a>一篇文章，我们可以了解到一些基本的概念，非常重要的几个点为</p>
+
+<h2 id="概念回顾">
+<a class="anchor" href="#%E6%A6%82%E5%BF%B5%E5%9B%9E%E9%A1%BE" aria-hidden="true"><span class="octicon octicon-link"></span></a>概念回顾</h2>
+<h3 id="推荐过程">
+<a class="anchor" href="#%E6%8E%A8%E8%8D%90%E8%BF%87%E7%A8%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>推荐过程</h3>
+
+<div class="mermaid">
+graph LR;
+  input([原始数据 <br> 亿/千万])
+  callback(召回 <br>万/千);
+  sort(排序 <br>千/百);
+  filter(调整 <br>百/十);
+  output([结果 <br> 十])
+  input--&gt;callback--&gt;sort--&gt;filter--&gt;output
+</div>
+
+<h3 id="召回的方式">
+<a class="anchor" href="#%E5%8F%AC%E5%9B%9E%E7%9A%84%E6%96%B9%E5%BC%8F" aria-hidden="true"><span class="octicon octicon-link"></span></a>召回的方式</h3>
+
+<p>这里的 i 为 item，可以理解为音频，u 为 user，也就是用户，2 为 to</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">路劲</th>
+      <th style="text-align: center">解释</th>
+      <th style="text-align: center">例子</th>
+      <th style="text-align: center">方法</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">i2i</td>
+      <td style="text-align: center">你看了itemA,推荐给你itemB</td>
+      <td style="text-align: center">头条的相似文章推荐</td>
+      <td style="text-align: center">item相似度, 协同过滤 和 关联规则(比如人工标注)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">u2i</td>
+      <td style="text-align: center">用户的直接行为</td>
+      <td style="text-align: center">点击过的内容但是未购买的商品, 很容易产生购买行为</td>
+      <td style="text-align: center">用户行为数据</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">u2i2i</td>
+      <td style="text-align: center">将 u2i 得到的结果, 推荐给新的用户</td>
+      <td style="text-align: center">N/A</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">u2u2i</td>
+      <td style="text-align: center">用户聚类，获得相似的用户，再根据用户的推荐给当前用户</td>
+      <td style="text-align: center">相同年龄/性别的用户, 相同点击行为的用户推荐相似的内容</td>
+      <td style="text-align: center">用户聚类, 用户行为，来进行 u2u 部分</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">u2tag2i</td>
+      <td style="text-align: center">先算出用户的tag, 在匹配 tag 和 item 的关系</td>
+      <td style="text-align: center">豆瓣, B站的 tag, tag效果比较好, 内容不会扩展</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">u2***2i</td>
+      <td style="text-align: center">基于图的算法</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="版本1-基于协同算法的-member-media-相似度计算">
+<a class="anchor" href="#%E7%89%88%E6%9C%AC1-%E5%9F%BA%E4%BA%8E%E5%8D%8F%E5%90%8C%E7%AE%97%E6%B3%95%E7%9A%84-member-media-%E7%9B%B8%E4%BC%BC%E5%BA%A6%E8%AE%A1%E7%AE%97" aria-hidden="true"><span class="octicon octicon-link"></span></a>版本1: 基于协同算法的 member-media 相似度计算</h2>
+<h3 id="member-和-media-的矩阵计算">
+<a class="anchor" href="#member-%E5%92%8C-media-%E7%9A%84%E7%9F%A9%E9%98%B5%E8%AE%A1%E7%AE%97" aria-hidden="true"><span class="octicon octicon-link"></span></a>member 和 media 的矩阵计算</h3>
+<p>在我们最初的版本, 我们计算的是每一个 member 和 每一个 media 的相似度。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">用户/item的评分</th>
+      <th style="text-align: center">哈利波特</th>
+      <th style="text-align: center">流水白噪声</th>
+      <th style="text-align: center">小提琴音乐</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">用户A</td>
+      <td style="text-align: center">0.8</td>
+      <td style="text-align: center">0.9</td>
+      <td style="text-align: center">0.12</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">用户B</td>
+      <td style="text-align: center">0.1</td>
+      <td style="text-align: center">0.19</td>
+      <td style="text-align: center">0.5</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>具体的计算方式为</p>
+
+<div class="mermaid">
+graph LR;
+  vector1(计算 media 的矢量 v1)
+  vector2(计算 member 的矢量 v2);
+  multiply(计算 v1 和 v2 的余弦相似度);
+  record([记录 member 和 media 的分数])
+  vector1--&gt;vector2--&gt;multiply--&gt;record
+</div>
+
+<div class="mermaid">
+graph LR;
+  mv(media 的矢量 v1)
+  mv1(media标签: 减压/助眠);
+  mv2(老师: 黄华/小花);
+  mv3(类型: 故事/白噪声)
+  mv4(isBetterSleep = 1<br>isRelax = 0 <br> isMasterHH = 1 <br>isStory = 1)
+  mv--&gt;mv1 &amp; mv2 &amp; mv3 --&gt;mv4
+</div>
+
+<p>可以得到 media 的矩阵如下:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+Matrix(media) = \begin{pmatrix} isRelax & isBetterSleep & isMasterHH & isMasterXH & isStory & isNoice \end{pmatrix} %]]></script>
+
+<p>同理，如果某个用户听过某个 media，则 media 的所有的矩阵属性，则会添加到用户的矩阵中</p>
+
+<div class="mermaid">
+graph LR;
+  mv(member 的矢量)
+  mv1("用户试听了【黄华老师】的【故事】");
+  mv2(isMasterHH = 1 <br> isStroy = 1);
+  mv--&gt;mv1 --&gt; mv2
+</div>
+
+<script type="math/tex; mode=display">% <![CDATA[
+Matrix(member) = \begin{pmatrix} isRelax & isBetterSleep & isMasterHH & isMasterXH & isStory & isNoice \end{pmatrix} %]]></script>
+
+<p>我们通过余弦相似度可以计算:</p>
+
+<script type="math/tex; mode=display">CosineSimlarity= \frac{Matrix(member) · Matrix(media)}{\Vert Matrix(member)\Vert \mathrm x \Vert Matrix(media)\Vert}</script>
+
+<p>可以得到一个 (0 到 1) 的一个值</p>
+
+<h3 id="协同过滤的优缺点">
+<a class="anchor" href="#%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9" aria-hidden="true"><span class="octicon octicon-link"></span></a>协同过滤的优缺点</h3>
+<p>优点</p>
+
+<ul>
+  <li>解解释性强, 计算出矩阵，可以解释为什么会给 A用户 推送 B视频</li>
+  <li>本身计算方式简单，效果比较好</li>
+</ul>
+
+<p>缺点</p>
+
+<ul>
+  <li>计算量大，需要全量计算用户和每个音频之间的关系, 而且很多计算是不必要的</li>
+  <li>由于用户的体量 远大于 音频的体量，所以不考虑计算 用户和用户 之间的相似度，来进行用户的协同推荐</li>
+  <li>用户之间的标签无法使用，无法进行群体数据下的推荐</li>
+</ul>
+
+<h2 id="版本2-基于-es-的算法推荐">
+<a class="anchor" href="#%E7%89%88%E6%9C%AC2-%E5%9F%BA%E4%BA%8E-es-%E7%9A%84%E7%AE%97%E6%B3%95%E6%8E%A8%E8%8D%90" aria-hidden="true"><span class="octicon octicon-link"></span></a>版本2: 基于 ES 的算法推荐</h2>
+<h3 id="一个购物车推荐的例子">
+<a class="anchor" href="#%E4%B8%80%E4%B8%AA%E8%B4%AD%E7%89%A9%E8%BD%A6%E6%8E%A8%E8%8D%90%E7%9A%84%E4%BE%8B%E5%AD%90" aria-hidden="true"><span class="octicon octicon-link"></span></a>一个购物车推荐的例子</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">购物车1</th>
+      <th style="text-align: center">购物车2</th>
+      <th style="text-align: center">购物车3</th>
+      <th style="text-align: center">购物车4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">鸡蛋</td>
+      <td style="text-align: center">鸡蛋</td>
+      <td style="text-align: center">鸡蛋</td>
+      <td style="text-align: center">鸡蛋</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">苹果</td>
+      <td style="text-align: center">苹果</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">香蕉</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">牛奶</td>
+      <td style="text-align: center">牛奶</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">牛肉</td>
+      <td style="text-align: center">牛肉</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">鸡胸肉</td>
+      <td style="text-align: center">鸡胸肉</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">菠菜</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>如果说加入用户买了 牛肉，应该推荐什么呢? 我们从购物车可以看到 购物车3 和 购物车4 都包含了牛肉。买了牛肉的人他们也买了
+下面的东西:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">食物</th>
+      <th style="text-align: center">总数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">鸡蛋</td>
+      <td style="text-align: center">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">鸡胸肉</td>
+      <td style="text-align: center">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">牛奶</td>
+      <td style="text-align: center">1</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>所以，我们应该推荐 【鸡蛋】 和 【鸡胸肉】，但是实际上，所有的人都买了【鸡蛋】</p>
+
+<blockquote>
+  <p>上述的方式，只考虑了总数，容易产生一种偏差，即：推荐的东西永远都是热门的，而不是真正的用户最喜欢的</p>
+</blockquote>
+
+<p>用 venn 图来表示</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><img src="assets/images/beef_egg.png" alt="beef_and_egg"></td>
+      <td><img src="assets/images/beef_and_chest.png" alt="beef_and_egg"></td>
+      <td><img src="assets/images/beef_and_milk.png" alt="beef_and_milk"></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="jaccard-相似度">
+<a class="anchor" href="#jaccard-%E7%9B%B8%E4%BC%BC%E5%BA%A6" aria-hidden="true"><span class="octicon octicon-link"></span></a>Jaccard 相似度</h3>
+
+<script type="math/tex; mode=display">Similarity = \frac{A \cap B}{A \cup B}</script>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">食物1</th>
+      <th style="text-align: center">食物2</th>
+      <th style="text-align: center">相似度</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">牛肉</td>
+      <td style="text-align: center">鸡胸肉</td>
+      <td style="text-align: center">(2)/(2+2)=0.5</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">牛肉</td>
+      <td style="text-align: center">鸡蛋</td>
+      <td style="text-align: center">(2)/(2+4)=0.333</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">牛肉</td>
+      <td style="text-align: center">牛奶</td>
+      <td style="text-align: center">(1)/(2+1)=0.333</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><img src="assets/images/long_tail.png" alt="long_tail"></p>
+
+<p>在使用 Jaccard 相似度的时候，会导致一些比较偏门的东西一旦重复买了，则会使得对应的相似度很高。如在这个例子里面, 牛奶,鸡蛋 和 牛肉的相似度是一样的</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">食物1</th>
+      <th style="text-align: center">食物2</th>
+      <th style="text-align: center">相似度</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">牛肉</td>
+      <td style="text-align: center">鸡蛋</td>
+      <td style="text-align: center">(2)/(2+4)=0.333</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">牛肉</td>
+      <td style="text-align: center">牛奶</td>
+      <td style="text-align: center">(1)/(2+1)=0.333</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="significant-terms-aggregation">
+<a class="anchor" href="#significant-terms-aggregation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Significant Terms Aggregation</h3>
+<p>回到我们的音频推荐，其实和购物车的推荐是一样的，在 es 中，我们可以很轻松地得到所有音频的试听的数量</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">GET</span> <span class="sr">/es_device/</span><span class="n">_search</span>
+<span class="p">{</span>
+  <span class="s2">"query"</span><span class="p">:</span> <span class="p">{</span> <span class="s2">"match_all"</span><span class="p">:</span> <span class="p">{}</span> <span class="p">},</span><span class="s2">"size"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s2">"aggs"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"listened"</span><span class="p">:</span> <span class="p">{</span> <span class="s2">"terms"</span><span class="p">:</span> <span class="p">{</span> <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"listenedMediaIds"</span> <span class="p">}</span> <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">##</span>
+<span class="p">{</span>
+  <span class="s2">"key"</span> <span class="p">:</span> <span class="s2">"【冥想】【助眠】25分钟·月夜安睡"</span><span class="p">,</span>
+  <span class="s2">"doc_count"</span> <span class="p">:</span> <span class="mi">1298</span>
+<span class="p">},</span>
+<span class="p">{</span>
+  <span class="s2">"key"</span> <span class="p">:</span> <span class="s2">"【冥想】【助眠】30分钟·深度睡眠"</span><span class="p">,</span>
+  <span class="s2">"doc_count"</span> <span class="p">:</span> <span class="mi">1293</span>
+<span class="p">},</span>
+<span class="p">{</span>
+  <span class="s2">"key"</span> <span class="p">:</span> <span class="s2">"【故事】给圣诞老人的信"</span><span class="p">,</span>
+  <span class="s2">"doc_count"</span> <span class="p">:</span> <span class="mi">1238</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>同样，如果我们只考虑总数，那么只会使得经常命中的是 「热门音频」</p>
+
+<p>在 ES 中，提供了 <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-significantterms-aggregation.html#search-aggregations-bucket-significantterms-aggregation" target="_blank" rel="noopener noreferrer">significant terms</a> 的聚合方式</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">GET</span> <span class="sr">/es_device/</span><span class="n">_search</span>
+<span class="p">{</span>
+  <span class="s2">"query"</span><span class="p">:</span> <span class="p">{</span> <span class="s2">"【冥想】【助眠】25分钟·月夜安睡"</span> <span class="p">},</span><span class="s2">"size"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s2">"aggs"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"listened"</span><span class="p">:</span> <span class="p">{</span> <span class="s2">"significant_terms"</span><span class="p">:</span> <span class="p">{</span> <span class="s2">"field"</span><span class="p">:</span> <span class="s2">"listenedMediaIds"</span> <span class="p">}</span> <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">##</span>
+<span class="s2">"doc_count"</span> <span class="p">:</span> <span class="mi">1298</span><span class="p">,</span> <span class="c1"># 听了月夜安睡的人</span>
+<span class="s2">"bg_count"</span> <span class="p">:</span> <span class="mi">1617</span><span class="p">,</span> <span class="c1"># 所有的音频的试听数</span>
+<span class="p">{</span>
+  <span class="s2">"key"</span> <span class="p">:</span> <span class="s2">"【白噪音】【专注】 春雨"</span><span class="p">,</span>
+  <span class="s2">"doc_count"</span> <span class="p">:</span> <span class="mi">1120</span><span class="p">,</span> <span class="c1"># 听了 月夜安睡 的人中，有 1120 听了春雨</span>
+  <span class="s2">"bg_count"</span> <span class="p">:</span> <span class="mi">1123</span> <span class="c1"># 总共有 1123 个人听了春雨</span>
+<span class="p">},</span>
+<span class="p">{</span>
+  <span class="s2">"key"</span> <span class="p">:</span> <span class="s2">"【故事】摇篮曲"</span><span class="p">,</span>
+  <span class="s2">"doc_count"</span> <span class="p">:</span> <span class="mi">1085</span><span class="p">,</span> <span class="c1"># 听了 月夜安睡 的人中，有 1085 听了摇篮曲</span>
+  <span class="s2">"bg_count"</span> <span class="p">:</span> <span class="mi">1089</span> <span class="c1"># 总共有 1123 个人听了摇篮曲</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">音频1</th>
+      <th style="text-align: center">音频2</th>
+      <th style="text-align: center">音频1 &amp; 音频2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">月夜安睡(1298)</td>
+      <td style="text-align: center">春雨(1123)</td>
+      <td style="text-align: center">同时听了月夜安睡和春雨(1120)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">月夜安睡(1298)</td>
+      <td style="text-align: center">摇篮曲(1089)</td>
+      <td style="text-align: center">同时听了月夜安睡和春雨(1085)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>在 ES 中，他的计算分数的默认算法是 JLH</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">fgPercentage</span> <span class="o">/</span> <span class="n">bgPercentage</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">fgPercentage</span> <span class="o">-</span> <span class="n">bgPercentage</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>其中 fg 代表 foreground, bg 代表 background</p>
+
+<p><img src="assets/images/bg_fg.png" alt="bg_fg"></p>
+
+<p>分数为 (fg / bg) * (fg - bg) = 0.20918870031071285</p>
+
+<h2 id="落地方案">
+<a class="anchor" href="#%E8%90%BD%E5%9C%B0%E6%96%B9%E6%A1%88" aria-hidden="true"><span class="octicon octicon-link"></span></a>落地方案</h2>
+
+<div class="mermaid">
+graph LR;
+  record([统计用户数据])
+  record1([用户标签])
+  record2([用户听过的音频])
+  record3([用户喜欢的音频])
+  record4([用户听过的老师])
+  record--&gt;record1 &amp; record2 &amp; record3 &amp; record4 --&gt;查询和该用户相似行为或者标签的用户数据--&gt;聚合数据并展示
+</div>
+
+<p>如果为空数据用户，则返回 「最热的音频」给用户即可</p>
+
+<h2 id="reference">
+<a class="anchor" href="#reference" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reference</h2>
+<ul>
+  <li><a href="https://github.com/andrely/ipython-notebooks/blob/master/JLH%20score%20characteristics.ipynb" target="_blank" rel="noopener noreferrer">JLH Explained</a></li>
+  <li><a href="https://opensourceconnections.com/blog/2016/06/06/recommender-systems-101-basket-analysis/" target="_blank" rel="noopener noreferrer">Recommender Systems 101: Basket Analysis</a></li>
+  <li><a href="https://opensourceconnections.com/blog/2016/09/09/better-recsys-elasticsearch/" target="_blank" rel="noopener noreferrer">Better Recsys Elasticsearch</a></li>
+  <li><a href="https://aclanthology.org/J93-1003.pdf" target="_blank" rel="noopener noreferrer">Accurate Methods for the Statistics of Surprise and Coincidence</a></li>
+</ul>
+
+
+</article>
+
+<div id="comment"></div>
+<script>
+  gitalk.render('comment');
+</script>
+
+
+
+      </div>
+    </main>
+
+    
+  </body>
+</html>

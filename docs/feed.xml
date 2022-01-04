@@ -1,5 +1,428 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2021-11-15T15:26:45+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
-</subtitle><author><name>dengqinghua</name></author><entry><title type="html">检索技术探索</title><link href="https://dengqinghua.github.io/all-for-search.html" rel="alternate" type="text/html" title="检索技术探索" /><published>2021-09-01T00:00:00+08:00</published><updated>2021-09-01T00:00:00+08:00</updated><id>https://dengqinghua.github.io/all-for-search</id><content type="html" xml:base="https://dengqinghua.github.io/all-for-search.html">&lt;h2 id=&quot;方案设计&quot;&gt;方案设计&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2022-01-04T10:14:02+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+</subtitle><author><name>dengqinghua</name></author><entry><title type="html">推荐系统 101</title><link href="https://dengqinghua.github.io/recommend-sys-with-es.html" rel="alternate" type="text/html" title="推荐系统 101" /><published>2021-12-31T00:00:00+08:00</published><updated>2021-12-31T00:00:00+08:00</updated><id>https://dengqinghua.github.io/recommend-sys-with-es</id><content type="html" xml:base="https://dengqinghua.github.io/recommend-sys-with-es.html">&lt;p&gt;从&lt;a href=&quot;./recommend-sys.html&quot;&gt;前面&lt;/a&gt;一篇文章，我们可以了解到一些基本的概念，非常重要的几个点为&lt;/p&gt;
+
+&lt;h2 id=&quot;概念回顾&quot;&gt;概念回顾&lt;/h2&gt;
+&lt;h3 id=&quot;推荐过程&quot;&gt;推荐过程&lt;/h3&gt;
+
+&lt;div class=&quot;mermaid&quot;&gt;
+graph LR;
+  input([原始数据 &lt;br /&gt; 亿/千万])
+  callback(召回 &lt;br /&gt;万/千);
+  sort(排序 &lt;br /&gt;千/百);
+  filter(调整 &lt;br /&gt;百/十);
+  output([结果 &lt;br /&gt; 十])
+  input--&amp;gt;callback--&amp;gt;sort--&amp;gt;filter--&amp;gt;output
+&lt;/div&gt;
+
+&lt;h3 id=&quot;召回的方式&quot;&gt;召回的方式&lt;/h3&gt;
+
+&lt;p&gt;这里的 i 为 item，可以理解为音频，u 为 user，也就是用户，2 为 to&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;路劲&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;解释&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;例子&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;方法&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;i2i&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;你看了itemA,推荐给你itemB&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;头条的相似文章推荐&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;item相似度, 协同过滤 和 关联规则(比如人工标注)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;u2i&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;用户的直接行为&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;点击过的内容但是未购买的商品, 很容易产生购买行为&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;用户行为数据&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;u2i2i&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;将 u2i 得到的结果, 推荐给新的用户&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;N/A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;u2u2i&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;用户聚类，获得相似的用户，再根据用户的推荐给当前用户&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;相同年龄/性别的用户, 相同点击行为的用户推荐相似的内容&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;用户聚类, 用户行为，来进行 u2u 部分&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;u2tag2i&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;先算出用户的tag, 在匹配 tag 和 item 的关系&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;豆瓣, B站的 tag, tag效果比较好, 内容不会扩展&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;u2***2i&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;基于图的算法&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;版本1-基于协同算法的-member-media-相似度计算&quot;&gt;版本1: 基于协同算法的 member-media 相似度计算&lt;/h2&gt;
+&lt;h3 id=&quot;member-和-media-的矩阵计算&quot;&gt;member 和 media 的矩阵计算&lt;/h3&gt;
+&lt;p&gt;在我们最初的版本, 我们计算的是每一个 member 和 每一个 media 的相似度。&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;用户/item的评分&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;哈利波特&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;流水白噪声&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;小提琴音乐&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;用户A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.12&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;用户B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.19&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.5&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;具体的计算方式为&lt;/p&gt;
+
+&lt;div class=&quot;mermaid&quot;&gt;
+graph LR;
+  vector1(计算 media 的矢量 v1)
+  vector2(计算 member 的矢量 v2);
+  multiply(计算 v1 和 v2 的余弦相似度);
+  record([记录 member 和 media 的分数])
+  vector1--&amp;gt;vector2--&amp;gt;multiply--&amp;gt;record
+&lt;/div&gt;
+
+&lt;div class=&quot;mermaid&quot;&gt;
+graph LR;
+  mv(media 的矢量 v1)
+  mv1(media标签: 减压/助眠);
+  mv2(老师: 黄华/小花);
+  mv3(类型: 故事/白噪声)
+  mv4(isBetterSleep = 1&lt;br /&gt;isRelax = 0 &lt;br /&gt; isMasterHH = 1 &lt;br /&gt;isStory = 1)
+  mv--&amp;gt;mv1 &amp;amp; mv2 &amp;amp; mv3 --&amp;gt;mv4
+&lt;/div&gt;
+
+&lt;p&gt;可以得到 media 的矩阵如下:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+Matrix(media) = \begin{pmatrix} isRelax &amp; isBetterSleep &amp; isMasterHH &amp; isMasterXH &amp; isStory &amp; isNoice \end{pmatrix} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;同理，如果某个用户听过某个 media，则 media 的所有的矩阵属性，则会添加到用户的矩阵中&lt;/p&gt;
+
+&lt;div class=&quot;mermaid&quot;&gt;
+graph LR;
+  mv(member 的矢量)
+  mv1(&quot;用户试听了【黄华老师】的【故事】&quot;);
+  mv2(isMasterHH = 1 &lt;br /&gt; isStroy = 1);
+  mv--&amp;gt;mv1 --&amp;gt; mv2
+&lt;/div&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+Matrix(member) = \begin{pmatrix} isRelax &amp; isBetterSleep &amp; isMasterHH &amp; isMasterXH &amp; isStory &amp; isNoice \end{pmatrix} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;我们通过余弦相似度可以计算:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;CosineSimlarity= \frac{Matrix(member) · Matrix(media)}{\Vert Matrix(member)\Vert \mathrm x \Vert Matrix(media)\Vert}&lt;/script&gt;
+
+&lt;p&gt;可以得到一个 (0 到 1) 的一个值&lt;/p&gt;
+
+&lt;h3 id=&quot;协同过滤的优缺点&quot;&gt;协同过滤的优缺点&lt;/h3&gt;
+&lt;p&gt;优点&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;解解释性强, 计算出矩阵，可以解释为什么会给 A用户 推送 B视频&lt;/li&gt;
+  &lt;li&gt;本身计算方式简单，效果比较好&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;缺点&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;计算量大，需要全量计算用户和每个音频之间的关系, 而且很多计算是不必要的&lt;/li&gt;
+  &lt;li&gt;由于用户的体量 远大于 音频的体量，所以不考虑计算 用户和用户 之间的相似度，来进行用户的协同推荐&lt;/li&gt;
+  &lt;li&gt;用户之间的标签无法使用，无法进行群体数据下的推荐&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;版本2-基于-es-的算法推荐&quot;&gt;版本2: 基于 ES 的算法推荐&lt;/h2&gt;
+&lt;h3 id=&quot;一个购物车推荐的例子&quot;&gt;一个购物车推荐的例子&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;购物车1&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;购物车2&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;购物车3&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;购物车4&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;鸡蛋&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;鸡蛋&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;鸡蛋&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;鸡蛋&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;苹果&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;苹果&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;香蕉&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;牛奶&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;牛奶&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;牛肉&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;牛肉&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;鸡胸肉&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;鸡胸肉&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;菠菜&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;如果说加入用户买了 牛肉，应该推荐什么呢? 我们从购物车可以看到 购物车3 和 购物车4 都包含了牛肉。买了牛肉的人他们也买了
+下面的东西:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;食物&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;总数&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;鸡蛋&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;鸡胸肉&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;牛奶&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;所以，我们应该推荐 【鸡蛋】 和 【鸡胸肉】，但是实际上，所有的人都买了【鸡蛋】&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;上述的方式，只考虑了总数，容易产生一种偏差，即：推荐的东西永远都是热门的，而不是真正的用户最喜欢的&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;用 venn 图来表示&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;img src=&quot;assets/images/beef_egg.png&quot; alt=&quot;beef_and_egg&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;assets/images/beef_and_chest.png&quot; alt=&quot;beef_and_egg&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;assets/images/beef_and_milk.png&quot; alt=&quot;beef_and_milk&quot; /&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;jaccard-相似度&quot;&gt;Jaccard 相似度&lt;/h3&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Similarity = \frac{A \cap B}{A \cup B}&lt;/script&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;食物1&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;食物2&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;相似度&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;牛肉&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;鸡胸肉&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;(2)/(2+2)=0.5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;牛肉&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;鸡蛋&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;(2)/(2+4)=0.333&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;牛肉&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;牛奶&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;(1)/(2+1)=0.333&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/long_tail.png&quot; alt=&quot;long_tail&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在使用 Jaccard 相似度的时候，会导致一些比较偏门的东西一旦重复买了，则会使得对应的相似度很高。如在这个例子里面, 牛奶,鸡蛋 和 牛肉的相似度是一样的&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;食物1&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;食物2&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;相似度&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;牛肉&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;鸡蛋&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;(2)/(2+4)=0.333&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;牛肉&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;牛奶&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;(1)/(2+1)=0.333&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;significant-terms-aggregation&quot;&gt;Significant Terms Aggregation&lt;/h3&gt;
+&lt;p&gt;回到我们的音频推荐，其实和购物车的推荐是一样的，在 es 中，我们可以很轻松地得到所有音频的试听的数量&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;GET&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/es_device/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_search&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;query&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;match_all&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;size&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;aggs&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;listened&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;terms&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;field&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;listenedMediaIds&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;##&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;key&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;【冥想】【助眠】25分钟·月夜安睡&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;doc_count&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1298&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;key&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;【冥想】【助眠】30分钟·深度睡眠&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;doc_count&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1293&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;key&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;【故事】给圣诞老人的信&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;doc_count&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1238&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;同样，如果我们只考虑总数，那么只会使得经常命中的是 「热门音频」&lt;/p&gt;
+
+&lt;p&gt;在 ES 中，提供了 &lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-significantterms-aggregation.html#search-aggregations-bucket-significantterms-aggregation&quot;&gt;significant terms&lt;/a&gt; 的聚合方式&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;GET&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/es_device/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_search&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;query&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;【冥想】【助眠】25分钟·月夜安睡&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;size&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;aggs&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;listened&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;significant_terms&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;field&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;listenedMediaIds&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;##&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;&quot;doc_count&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1298&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 听了月夜安睡的人&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;&quot;bg_count&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1617&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 所有的音频的试听数&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;key&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;【白噪音】【专注】 春雨&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;doc_count&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1120&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 听了 月夜安睡 的人中，有 1120 听了春雨&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;bg_count&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1123&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 总共有 1123 个人听了春雨&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;key&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;【故事】摇篮曲&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;doc_count&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1085&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 听了 月夜安睡 的人中，有 1085 听了摇篮曲&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;bg_count&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1089&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 总共有 1123 个人听了摇篮曲&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;音频1&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;音频2&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;音频1 &amp;amp; 音频2&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;月夜安睡(1298)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;春雨(1123)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;同时听了月夜安睡和春雨(1120)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;月夜安睡(1298)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;摇篮曲(1089)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;同时听了月夜安睡和春雨(1085)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;在 ES 中，他的计算分数的默认算法是 JLH&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fgPercentage&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bgPercentage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fgPercentage&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bgPercentage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;其中 fg 代表 foreground, bg 代表 background&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/bg_fg.png&quot; alt=&quot;bg_fg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;分数为 (fg / bg) * (fg - bg) = 0.20918870031071285&lt;/p&gt;
+
+&lt;h2 id=&quot;落地方案&quot;&gt;落地方案&lt;/h2&gt;
+
+&lt;div class=&quot;mermaid&quot;&gt;
+graph LR;
+  record([统计用户数据])
+  record1([用户标签])
+  record2([用户听过的音频])
+  record3([用户喜欢的音频])
+  record4([用户听过的老师])
+  record--&amp;gt;record1 &amp;amp; record2 &amp;amp; record3 &amp;amp; record4 --&amp;gt;查询和该用户相似行为或者标签的用户数据--&amp;gt;聚合数据并展示
+&lt;/div&gt;
+
+&lt;p&gt;如果为空数据用户，则返回 「最热的音频」给用户即可&lt;/p&gt;
+
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/andrely/ipython-notebooks/blob/master/JLH%20score%20characteristics.ipynb&quot;&gt;JLH Explained&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://opensourceconnections.com/blog/2016/06/06/recommender-systems-101-basket-analysis/&quot;&gt;Recommender Systems 101: Basket Analysis&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://opensourceconnections.com/blog/2016/09/09/better-recsys-elasticsearch/&quot;&gt;Better Recsys Elasticsearch&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://aclanthology.org/J93-1003.pdf&quot;&gt;Accurate Methods for the Statistics of Surprise and Coincidence&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">从前面一篇文章，我们可以了解到一些基本的概念，非常重要的几个点为</summary></entry><entry><title type="html">检索技术探索</title><link href="https://dengqinghua.github.io/all-for-search.html" rel="alternate" type="text/html" title="检索技术探索" /><published>2021-09-01T00:00:00+08:00</published><updated>2021-09-01T00:00:00+08:00</updated><id>https://dengqinghua.github.io/all-for-search</id><content type="html" xml:base="https://dengqinghua.github.io/all-for-search.html">&lt;h2 id=&quot;方案设计&quot;&gt;方案设计&lt;/h2&gt;
 &lt;h3 id=&quot;可选的搜索方案&quot;&gt;可选的搜索方案&lt;/h3&gt;
 
 &lt;table&gt;
@@ -1548,7 +1971,7 @@ graph LR;
   &lt;li&gt;&lt;a href=&quot;https://medium.com/@tyy.sh/in-app-purchase-%E6%80%BB%E7%BB%93-e8a88a54d8d9&quot;&gt;IAP&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://ifumei.cc/2019/12/24/iospay/&quot;&gt;springboot接入苹果内购&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://developer.apple.com/documentation/storekit/original_api_for_in-app_purchase/validating_receipts_with_the_app_store&quot;&gt;苹果校验流程&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">sequenceDiagram autonumber participant sdk as iOS SDK participant b as Backend participant as as Apple Service sdk-&amp;gt;&amp;gt;b: 获取商品列表 b--&amp;gt;&amp;gt;sdk: 从后台获取商品id和对应展示的图片文案信息 sdk-&amp;gt;&amp;gt;b: 根据商品id 生成/获取预订单 Note right of sdk: 需要先去查一下这个用户在商品id下之前是不是有未完成的订单 b--&amp;gt;&amp;gt;sdk: 返回 订单sid sdk-&amp;gt;&amp;gt;as: 发起真实的支付 as--&amp;gt;&amp;gt;sdk: 用户支付, 苹果返回票据信息(receipt-data)如果苹果未返回, 则在 App 启动的时候返回 sdk-&amp;gt;&amp;gt;b: 提交票据信息和 订单sid 到服务端 Note right of sdk: 这一步容易丢单, 如何解决? 因为苹果容易丢失掉订单sid 需要取未完成的一条 b-&amp;gt;&amp;gt;as: 验证票据信息 as--&amp;gt;&amp;gt;b: 验证成功/失败 b--&amp;gt;&amp;gt;sdk: 修改订单状态, 并通知SDK支付成功或失败 sdk--&amp;gt;&amp;gt;as: 成功则将订单进行关闭</summary></entry><entry><title type="html">从 0 到 1 搭建 ease 后端服务</title><link href="https://dengqinghua.github.io/3-month-sharing.html" rel="alternate" type="text/html" title="从 0 到 1 搭建 ease 后端服务" /><published>2021-07-26T00:00:00+08:00</published><updated>2021-07-26T00:00:00+08:00</updated><id>https://dengqinghua.github.io/3-month-sharing</id><content type="html" xml:base="https://dengqinghua.github.io/3-month-sharing.html">&lt;p&gt;该部分为后端团队 (2人) 从0 到 1 搭建的一套架构体系。&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">sequenceDiagram autonumber participant sdk as iOS SDK participant b as Backend participant as as Apple Service sdk-&amp;gt;&amp;gt;b: 获取商品列表 b--&amp;gt;&amp;gt;sdk: 从后台获取商品id和对应展示的图片文案信息 sdk-&amp;gt;&amp;gt;b: 根据商品id 生成/获取预订单 Note right of sdk: 需要先去查一下这个用户在商品id下之前是不是有未完成的订单 b--&amp;gt;&amp;gt;sdk: 返回 订单sid sdk-&amp;gt;&amp;gt;as: 发起真实的支付 as--&amp;gt;&amp;gt;sdk: 用户支付, 苹果返回票据信息(receipt-data)如果苹果未返回, 则在 App 启动的时候返回 sdk-&amp;gt;&amp;gt;b: 提交票据信息和 订单sid 到服务端 Note right of sdk: 这一步容易丢单, 如何解决? 因为苹果容易丢失掉订单sid 需要取未完成的一条 b-&amp;gt;&amp;gt;as: 验证票据信息 as--&amp;gt;&amp;gt;b: 验证成功/失败 b--&amp;gt;&amp;gt;sdk: 修改订单状态, 并通知SDK支付成功或失败 sdk--&amp;gt;&amp;gt;as: 成功则将订单进行关闭</summary></entry><entry><title type="html">从 0 到 1 搭建 ease 后端服务</title><link href="https://dengqinghua.github.io/ease-from-0-to-1.html" rel="alternate" type="text/html" title="从 0 到 1 搭建 ease 后端服务" /><published>2021-07-26T00:00:00+08:00</published><updated>2021-07-26T00:00:00+08:00</updated><id>https://dengqinghua.github.io/ease_from_0_to_1</id><content type="html" xml:base="https://dengqinghua.github.io/ease-from-0-to-1.html">&lt;p&gt;该部分为后端团队 (2人) 从0 到 1 搭建的一套架构体系。&lt;/p&gt;
 
 &lt;blockquote&gt;
 
@@ -1564,7 +1987,7 @@ graph LR;
   &lt;li&gt;中间件/基础设施  选择比较稳定的中间件/基础设施 ，如 MySQL，Redis 和 ES 等。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;从成本问题上考虑，大多数的中间件/基础设施 都是购买的，会根据现有的业务情况选择不同类型的中间件/基础设施&lt;/p&gt;
+&lt;p&gt;从成本问题上考虑，大多数的中间件/基础设施 都是购买的，会根据现有的业务情况选择不同类型的中间件/基础设施。&lt;/p&gt;
 
 &lt;p&gt;当前阶段，我们主要关注下面的几点&lt;/p&gt;
 
@@ -2854,131 +3277,4 @@ practice time.&lt;/p&gt;
   &lt;p&gt;Find a small musical idea.. it could be a simple phrase or “link” from one of you musician heroes. Move it around, change keys, change octave change the
 feel of it. Let the small idea inspire you and play around with it. You never know where it will take you..
                                                                - Emil Ernebro&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry><entry><title type="html">最近在思考什么</title><link href="https://dengqinghua.github.io/nowadays-training-music.html" rel="alternate" type="text/html" title="最近在思考什么" /><published>2021-05-31T00:00:00+08:00</published><updated>2021-05-31T00:00:00+08:00</updated><id>https://dengqinghua.github.io/nowadays-training-music</id><content type="html" xml:base="https://dengqinghua.github.io/nowadays-training-music.html">&lt;h3 id=&quot;录音&quot;&gt;录音&lt;/h3&gt;
-
-&lt;p&gt;很久没有录音了, 一方面是照顾娃, 搬家这些事情, 另一方面是因为自己好像懒惰了。更重要的一点是&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;找不到录音的感觉了&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;每一次录音的时候都会录制很长时间, 原因还是跟以前一样&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;曲子不是那么熟练, 谱子无法背诵下来&lt;/li&gt;
-  &lt;li&gt;一些比较薄弱的点, 没有练好, 导致一直在地方犯错, 比如 烟花易冷 的 横按 下的击勾弦&lt;/li&gt;
-  &lt;li&gt;节奏问题, 节奏的时值控制不好, 往往在录制时间过久之后, 节奏会变得散漫和混乱&lt;/li&gt;
-  &lt;li&gt;整体的感觉问题
-    &lt;ul&gt;
-      &lt;li&gt;延音控制不好, 往往是因为音的时值不够, 导致了在一部分的音断掉&lt;/li&gt;
-      &lt;li&gt;换和弦太快/太慢, 一般是和弦转换得太快了而不是太慢了, 节奏就乱掉了&lt;/li&gt;
-      &lt;li&gt;太紧张, 过于强调某个音或者弱化某个音, 如果某一个技巧不熟练, 这块问题就会变得更严重&lt;/li&gt;
-      &lt;li&gt;手指角度问题, 导致音色听起来不均匀(经常三弦的声音和一弦的声音的感觉不一致)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;翻了几次之前写的录音记录的 【下次我会做的】里面有许多上述问题的解决方式&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;着重练习不熟念的部分, 不要着急录音&lt;/li&gt;
-  &lt;li&gt;小段小段地录制, 聚焦在小段的录音&lt;/li&gt;
-  &lt;li&gt;限制录音时间, 避免无效地录音&lt;/li&gt;
-  &lt;li&gt;尽量放松: 跟着原曲弹/手指放松等等&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;但是发现, 过一段时间之后, 该有的问题还是有, 这让录音这一件事情变得非常折磨。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;录音变成了一个 KPI, 想完成录音, 但是却始终录不好&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;mermaid&quot;&gt;
-graph TD;
-    今晚要录出结果--&amp;gt;录的时候发现有问题;
-    解决问题--&amp;gt;手指疲惫疲倦--&amp;gt;发现其他问题;
-    节奏不稳--&amp;gt;出现了更多问题--&amp;gt;|执着录制|放弃今天的录音,改天再录;
-    出现了更多问题--&amp;gt;|放弃录制|接受一个不算好的录音结果,发B站;
-&lt;/div&gt;
-
-&lt;p&gt;自己属于挺结果论的吧, 有时候希望练习有回报, 无论是弹琴, 健身, 还是学习, 每一项都是有产出的&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;事件&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;产出&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;弹琴&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;B站的视频&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;健身&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;体脂/照片/个人PR视频等&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;工作&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;薪资/职级&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;技术&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;技术文档/工程实践&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;结果论的结果就是有时候会变成怀疑主义, 在做一些事情的时候会一直去质疑事情的本身,
-甚至质疑质疑本身, 往往会让人陷入一种莫名的焦虑中&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;我需要这么做吗? 我做了有什么意义, 为什么这样做了还是没有达到预期的效果?&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;这样的思维方式多了之后, 会有强烈的虚无的感觉(也就是失去欲望的感觉)&lt;/p&gt;
-
-&lt;p&gt;然后也找了老师问了一下, 老师的回复依旧是很中肯吧, 认可这种焦虑, 但是也没有速成的方法&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;这瓶颈期是靠时间来磨的, 谁都有瓶颈期, 我也有, 但是这没办法, 因为他不可能说弹琴两三天
-三五个月就一下子上去了。建议吧, 第一, 不断地弹新曲子, 第二, 坚持练基本功。经常学习新的
-内容, 调节一下, 慢慢的就上去了。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;老师的这个建议其实蛮好的, 但是我已经快没有耐心了, 感觉已经很多年了吧, 有一种【道理我都懂,
-困难去想办法克服啊! 能不能让快点儿拿到结果】的暴力逻辑&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;我会放弃弹琴吗? 兄弟问题【我会放弃健身吗】&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;我觉得不会吧, 或者说我想象不出来还能有啥其他属于自己的东西了&lt;/p&gt;
-
-&lt;p&gt;害, 就弹着呗, 可能并没有自己想的那么差吧, 得有点儿耐心, 多琢磨琢磨自己的不足.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;毕竟, 控制自己可能是最简单的一件事情了吧!
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;学习&quot;&gt;学习&lt;/h3&gt;
-
-&lt;p&gt;最近学习了 ProGuitar 很多的内容, 包括 chord inversion, fingerstyle blues level 1&amp;amp;2, 还有
-一些新的内容, 像 voice leading 等.&lt;/p&gt;
-
-&lt;p&gt;开始听 Jerry Reed 和 Chet Atkins 的曲子, 听乡村会让人心情更加愉悦吧&lt;/p&gt;
-
-&lt;p&gt;吉他的学习跟其他的学习不一样, 看了几十遍也不如弹上几遍.&lt;/p&gt;
-
-&lt;p&gt;平常多花点儿心思在思考上面吧, I suppose.&lt;/p&gt;
-
-&lt;h3 id=&quot;我做什么呢&quot;&gt;我做什么呢&lt;/h3&gt;
-&lt;p&gt;按照惯例, 写一下 flag 或者 TODO 吧.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;着重练容易错的地方而不是自己喜欢的整首曲子 20%&lt;/li&gt;
-  &lt;li&gt;基本功多练练, 思考有什么是自己缺乏的基本功&lt;/li&gt;
-  &lt;li&gt;多弹弹有趣的曲子&lt;/li&gt;
-  &lt;li&gt;多听听不同风格的曲子&lt;/li&gt;
-  &lt;li&gt;经常录一小段, 30s以内, 保持录音的感觉&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html">录音</summary></entry></feed>
+&lt;/blockquote&gt;</content><author><name>dengqinghua</name></author><category term="music" /><summary type="html"></summary></entry></feed>
