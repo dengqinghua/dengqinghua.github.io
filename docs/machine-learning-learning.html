@@ -11,15 +11,15 @@
 <meta property="og:title" content="机器学习" />
 <meta name="author" content="dengqinghua" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="词汇" />
-<meta property="og:description" content="词汇" />
+<meta name="description" content="机器学习的思考故事" />
+<meta property="og:description" content="机器学习的思考故事" />
 <link rel="canonical" href="https://dengqinghua.github.io/machine-learning-learning.html" />
 <meta property="og:url" content="https://dengqinghua.github.io/machine-learning-learning.html" />
 <meta property="og:site_name" content="Dengqinghua.42" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-04-23T00:00:00+08:00" />
+<meta property="article:published_time" content="2022-01-04T00:00:00+08:00" />
 <script type="application/ld+json">
-{"headline":"机器学习","dateModified":"2021-04-23T00:00:00+08:00","datePublished":"2021-04-23T00:00:00+08:00","url":"https://dengqinghua.github.io/machine-learning-learning.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://dengqinghua.github.io/machine-learning-learning.html"},"author":{"@type":"Person","name":"dengqinghua"},"description":"词汇","@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"headline":"机器学习","dateModified":"2022-01-04T00:00:00+08:00","datePublished":"2022-01-04T00:00:00+08:00","url":"https://dengqinghua.github.io/machine-learning-learning.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://dengqinghua.github.io/machine-learning-learning.html"},"author":{"@type":"Person","name":"dengqinghua"},"description":"机器学习的思考故事","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <link type="application/atom+xml" rel="alternate" href="https://dengqinghua.github.io/feed.xml" title="Dengqinghua.42" />
@@ -46,69 +46,72 @@
 
 <article>
   <p class="post-meta">
-    <time datetime="2021-04-23 00:00:00 +0800">2021-04-23</time>
+    <time datetime="2022-01-04 00:00:00 +0800">2022-01-04</time>
   </p>
   
   <h1>机器学习</h1>
 
-  <h2 id="词汇">词汇</h2>
+  <h2 id="机器学习的思考故事">机器学习的思考故事</h2>
+
+<h2 id="吴恩达">吴恩达</h2>
+<h3 id="machine-learning">Machine Learning</h3>
+<h4 id="week1">Week1</h4>
+<blockquote>
+  <ol>
+    <li>学习算法，模拟人类大脑的学习方式</li>
+    <li>Machine Learning defined by Arthur Samuel(1959), ability to learn without explictly programmed</li>
+    <li>E, T, P</li>
+  </ol>
+</blockquote>
 
 <ul>
-  <li>ML, machine learning</li>
-  <li>generic algorithms, 范式算法</li>
-  <li>supervised learning, 监督式学习, 明确知道答案, 去推导答案</li>
-  <li>unsupervised learning, 非监督学习, 不知道答案, 生产一个答案</li>
-  <li>LEARNING, AKA: figuring out an equation to solve a specific problem based on some example data</li>
-  <li>weight, 权重</li>
-  <li>stateless algorithm, 无状态的算法, 比如神经网络的计算, 每次算法之间不存在关联</li>
-  <li>RNN: Recurrent Neural Networks, 可重复使用的神经网络</li>
-  <li>Turing Completeness, 如果一系列操作数据的规则（如指令集、编程语言、细胞自动机）可以用来模拟任何图灵机，那么它是图灵完备的</li>
-  <li>Turinig Machine, 图灵机, 一种将人的计算行为抽象化的数学逻辑机，其更抽象的意义为一种计算模型</li>
-  <li>Feature selection, 特征选择, 为了构建模型而选择相关特征（即属性、指标）子集的过程(简化模型, 缩短训练时间, 降低方差)</li>
-  <li>CNN, convolutional neural networks</li>
-  <li>Downsampling, 缩减像素, 一般来说, 会用 max-pooling 算法来进行操作(非线性形式的降采样)</li>
-  <li>Four Catergories: True Positive, True Negative, False Positive, False Negative</li>
-  <li>ML Metrics: Precison and Recall(Precision: 测试中对的数目/总的测试数目, Recall: 对的数目/总的对的数目)</li>
+  <li>Supervised Learning
+    <ul>
+      <li>给出现有的结果集(Right Answers for each example)，去推导因果关系</li>
+      <li>Regression Problem, 回归问题, 预测的是 连续的数据</li>
+      <li>Classification Problem, 分类问题，预测的是 有限的取值</li>
+      <li>Infinite number of features, 无限的特征和属性</li>
+    </ul>
+  </li>
+  <li>UnSupervised Learning
+    <ul>
+      <li>No labels</li>
+      <li>clusters，聚类</li>
+    </ul>
+  </li>
+  <li>工具: octave</li>
+  <li>鸡尾酒会效应(cocktail-party-effect), 人们可以在嘈杂的环境进行交谈，忽略掉背景噪声而听到对方的谈话。属于 图形-背景现象 的听觉版本</li>
 </ul>
 
-<h2 id="方法">方法</h2>
-<ol>
+<p>线性代数算法</p>
+
+<ul>
+  <li>Training Set</li>
+  <li>m: numbers of training examples</li>
+  <li>x’s = input / features</li>
+  <li>y’s = output / target variable</li>
   <li>
-    <p>线性关系 (linear relationship)</p>
-
-    <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code> f(x, y, z) = ax + by + cz
-</code></pre></div>    </div>
-  </li>
+<script type="math/tex">(x, y)</script> training example</li>
   <li>
-    <p>neuron 神经元</p>
+<script type="math/tex">(x^{(i)}, y^{(i)})</script> case of i, i 为 index</li>
+  <li>h hypothesis, 假设 <script type="math/tex">y = h(x)</script>
+</li>
+  <li>linare regression with one variable <script type="math/tex">h_\theta = \theta_0 + \theta_1 x</script>
+</li>
+  <li>univariate linear regression 单变量线性回归</li>
+  <li>目标, 找到最小值: <script type="math/tex">minimize_{\theta_0\theta_1} {1 \over2m} \sum_{i=0}^m(h_\theta(x^{(i)}) - y^{(i)})^2</script>
+</li>
+  <li>Cost Function 定义为 <script type="math/tex">J(\theta_0, \theta_1) = {1 \over2m} \sum_{i=0}^m(\hat y_i - y^{(i)})^2 = {1 \over2m} \sum_{i=0}^m(h_\theta(x^{(i)}) - y^{(i)})^2</script>
+</li>
+  <li>目标 <script type="math/tex">minimize_{\theta_0\theta_1} J(\theta_0, \theta_1)</script> 为平方差代价函数</li>
+</ul>
 
-    <blockquote>
-      <ol>
-        <li>We made a simple estimation function that takes in a set of inputs and multiplies them by weights to get an output. Call this simple function a <strong>neuron</strong>.</li>
-        <li>By chaining lots of simple neurons together, we can model functions that are too complicated to be modeled by one single neuron.</li>
-      </ol>
-    </blockquote>
-  </li>
-  <li>
-    <p>状态模拟</p>
-  </li>
-</ol>
-
-<div class="mermaid">
-graph LR;
-    Input--&gt;StatefulMode--&gt;Output;
-    StatefulMode-- SaveState --&gt;StatefulMode
-</div>
-
-<ol>
-  <li>CNN</li>
-</ol>
-
-<div class="mermaid">
-graph LR;
-    Input--&gt;Convolution--&gt;Max-Polling--&gt;Full-Connected--&gt;Output;
-</div>
+<h2 id="reference">Reference</h2>
+<ul>
+  <li><a href="https://aistudio.baidu.com/aistudio/education/group/info/1138" target="_blank" rel="noopener noreferrer">机器学习的思考故事</a></li>
+  <li><a href="https://aistudio.baidu.com/aistudio/course/introduce/1297" target="_blank" rel="noopener noreferrer">零基础实践机器学习</a></li>
+  <li><a href="https://www.coursera.org/learn/machine-learning/home/welcome" target="_blank" rel="noopener noreferrer">吴恩达在 coursera 的机器学习课程</a></li>
+</ul>
 
 </article>
 
