@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2022-01-05T17:26:28+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2022-01-14T13:53:21+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
 </subtitle><author><name>dengqinghua</name></author><entry><title type="html">机器学习</title><link href="https://dengqinghua.github.io/machine-learning-learning.html" rel="alternate" type="text/html" title="机器学习" /><published>2022-01-04T00:00:00+08:00</published><updated>2022-01-04T00:00:00+08:00</updated><id>https://dengqinghua.github.io/machine-learning-learning</id><content type="html" xml:base="https://dengqinghua.github.io/machine-learning-learning.html">&lt;h2 id=&quot;机器学习的思考故事&quot;&gt;机器学习的思考故事&lt;/h2&gt;
 
 &lt;h2 id=&quot;吴恩达&quot;&gt;吴恩达&lt;/h2&gt;
@@ -45,8 +45,126 @@
   &lt;li&gt;univariate linear regression 单变量线性回归&lt;/li&gt;
   &lt;li&gt;目标, 找到最小值: &lt;script type=&quot;math/tex&quot;&gt;minimize_{\theta_0\theta_1} {1 \over2m} \sum_{i=0}^m(h_\theta(x^{(i)}) - y^{(i)})^2&lt;/script&gt;&lt;/li&gt;
   &lt;li&gt;Cost Function 定义为 &lt;script type=&quot;math/tex&quot;&gt;J(\theta_0, \theta_1) = {1 \over2m} \sum_{i=0}^m(\hat y_i - y^{(i)})^2 = {1 \over2m} \sum_{i=0}^m(h_\theta(x^{(i)}) - y^{(i)})^2&lt;/script&gt;&lt;/li&gt;
-  &lt;li&gt;目标 &lt;script type=&quot;math/tex&quot;&gt;minimize_{\theta_0\theta_1} J(\theta_0, \theta_1)&lt;/script&gt; 为平方差代价函数&lt;/li&gt;
+  &lt;li&gt;目标: &lt;script type=&quot;math/tex&quot;&gt;minimize_{\theta_0\theta_1} J(\theta_0, \theta_1)&lt;/script&gt; 为平方差代价函数&lt;/li&gt;
+  &lt;li&gt;目标: &lt;script type=&quot;math/tex&quot;&gt;J(\theta_0, \theta_1)&lt;/script&gt; 导数为 0 的那个 &lt;script type=&quot;math/tex&quot;&gt;\theta_1&lt;/script&gt; 的值&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Hypothesis(假设)&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Paramemters(参数)&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;CostFunction&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Goal&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;h_\theta = \theta_0 + \theta_1 x&lt;/script&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\theta_0, \theta_1&lt;/script&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;J(\theta_0, \theta_1) = {1 \over2m} \sum_{i=0}^m(h_\theta(x^{(i)}) - y^{(i)})^2&lt;/script&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;minimize_{\theta_0\theta_1} J(\theta_0, \theta_1)&lt;/script&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;contour plot, 画图的软件, 见 &lt;a href=&quot;https://www.itl.nist.gov/div898/handbook/eda/section3/contour.htm&quot;&gt;这里&lt;/a&gt; 和 &lt;a href=&quot;https://plotly.com/javascript/contour-plots/&quot;&gt;JS 版本&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;梯度下降算法 Gradient Descent&lt;/p&gt;
+
+&lt;p&gt;每次寻找对应的 &lt;script type=&quot;math/tex&quot;&gt;\theta_0, \theta_1&lt;/script&gt;，使得下面的值越来越小&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;J(\theta_0, \theta_1)&lt;/script&gt;
+
+&lt;p&gt;步骤:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\text{repeat untile convergence} \\
+\\ \theta_j := \theta_j - \alpha \frac{\partial}{\partial \theta_j} {J(\theta_0, \theta_1)},\text{ for (j=0 and j=1)}&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; 为 learning rate，越大代表下降越快。&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;需要同时更新 &lt;script type=&quot;math/tex&quot;&gt;\theta_0, \theta_1&lt;/script&gt; 的值&lt;/p&gt;
+
+    &lt;table&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;temp0 := \theta_0 - \alpha \frac{\partial}{\partial \theta_0} {J(\theta_0, \theta_1)}&lt;/script&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;temp1 := \theta_1 - \alpha \frac{\partial}{\partial \theta_1} {J(\theta_0, \theta_1)}&lt;/script&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;\theta_0 := temp0&lt;/script&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;&lt;script type=&quot;math/tex&quot;&gt;\theta_1 := temp1&lt;/script&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/images/gradient-descent.png&quot; alt=&quot;gradient-descent&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;通过斜率的变化，来动态调整参数的值，使得达到收敛(converge)的点, 也就是图中的最低点的位置&lt;/li&gt;
+  &lt;li&gt;偏离 diverge&lt;/li&gt;
+  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; 很小，则找到具体的点会比较慢, 过大，则容易错过最优点&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;根据导数的值的大小，动态地调整 &lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; 的值&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;convex 凸函数(bowl shaped function)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;第一个机器学习的算法&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Hypothesis(假设)&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Paramemters(参数)&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;CostFunction&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Goal&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;h_\theta = \theta_0 + \theta_1 x&lt;/script&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\theta_0, \theta_1&lt;/script&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;J(\theta_0, \theta_1) = {1 \over2m} \sum_{i=0}^m(h_\theta(x^{(i)}) - y^{(i)})^2&lt;/script&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;minimize_{\theta_0\theta_1} J(\theta_0, \theta_1)&lt;/script&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;对 CostFunction 求导数&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+ \frac{\partial}{\partial \theta_j} J(\theta) &amp;= {1 \over m} \sum_{i=0}^m(h_\theta(x^{(i)}) - y^{(i)}) \\
+        &amp;= {1 \over m} \sum_{i=0}^m(h_\theta(x^{(i)}) - y^{(i)}) \\
+        &amp;= {1 \over m} \sum_{i=0}^m((\theta_0 + \theta_1 x) - y^{(i)})
+ \end{align} %]]&gt;&lt;/script&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;将 导数 部分代入到 梯度下降算法中&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+ \text{repeat untile convergence...} &amp;\{ \\
+ temp0 &amp;:= \theta_0 - {\alpha \over m} \sum_{i=0}^m((\theta_0 + \theta_1 x) - y^{(i)}) \\
+ temp1 &amp;:= \theta_1 - {\alpha \over m} \sum_{i=0}^m((\theta_0 + \theta_1 x) - y^{(i)}) \\
+ \theta_0 &amp;:= temp0 \\
+ \theta_1 &amp;:= temp1 \\
+ &amp;\}
+ \end{align} \\ %]]&gt;&lt;/script&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
 &lt;ul&gt;
