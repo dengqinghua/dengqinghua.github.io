@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2022-01-14T16:05:01+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2022-01-24T10:32:49+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
 </subtitle><author><name>dengqinghua</name></author><entry><title type="html">2021 的总结 &amp;amp; 2022 的 flag</title><link href="https://dengqinghua.github.io/2021-backward-and-forward.html" rel="alternate" type="text/html" title="2021 的总结 &amp; 2022 的 flag" /><published>2022-01-14T00:00:00+08:00</published><updated>2022-01-14T00:00:00+08:00</updated><id>https://dengqinghua.github.io/2021-backward-and-forward</id><content type="html" xml:base="https://dengqinghua.github.io/2021-backward-and-forward.html">&lt;hr data-content=&quot; 2021 &quot; /&gt;
 
 &lt;p&gt;work&lt;/p&gt;
@@ -81,8 +81,8 @@
   &lt;li&gt;h hypothesis, 假设 &lt;script type=&quot;math/tex&quot;&gt;y = h(x)&lt;/script&gt;&lt;/li&gt;
   &lt;li&gt;linare regression with one variable &lt;script type=&quot;math/tex&quot;&gt;h_\theta = \theta_0 + \theta_1 x&lt;/script&gt;&lt;/li&gt;
   &lt;li&gt;univariate linear regression 单变量线性回归&lt;/li&gt;
-  &lt;li&gt;目标, 找到最小值: &lt;script type=&quot;math/tex&quot;&gt;minimize_{\theta_0\theta_1} {1 \over2m} \sum_{i=0}^m(h_\theta(x^{(i)}) - y^{(i)})^2&lt;/script&gt;&lt;/li&gt;
-  &lt;li&gt;Cost Function 定义为 &lt;script type=&quot;math/tex&quot;&gt;J(\theta_0, \theta_1) = {1 \over2m} \sum_{i=0}^m(\hat y_i - y^{(i)})^2 = {1 \over2m} \sum_{i=0}^m(h_\theta(x^{(i)}) - y^{(i)})^2&lt;/script&gt;&lt;/li&gt;
+  &lt;li&gt;目标, 找到最小值: &lt;script type=&quot;math/tex&quot;&gt;minimize_{\theta_0\theta_1} {1 \over2m} \sum_{i=1}^m(h_\theta(x^{(i)}) - y^{(i)})^2&lt;/script&gt;&lt;/li&gt;
+  &lt;li&gt;Cost Function 定义为 &lt;script type=&quot;math/tex&quot;&gt;J(\theta_0, \theta_1) = {1 \over2m} \sum_{i=1}^m(\hat y_i - y^{(i)})^2 = {1 \over2m} \sum_{i=1}^m(h_\theta(x^{(i)}) - y^{(i)})^2&lt;/script&gt;&lt;/li&gt;
   &lt;li&gt;目标: &lt;script type=&quot;math/tex&quot;&gt;minimize_{\theta_0\theta_1} J(\theta_0, \theta_1)&lt;/script&gt; 为平方差代价函数&lt;/li&gt;
   &lt;li&gt;目标: &lt;script type=&quot;math/tex&quot;&gt;J(\theta_0, \theta_1)&lt;/script&gt; 导数为 0 的那个 &lt;script type=&quot;math/tex&quot;&gt;\theta_1&lt;/script&gt; 的值&lt;/li&gt;
 &lt;/ul&gt;
@@ -100,7 +100,7 @@
     &lt;tr&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;h_\theta = \theta_0 + \theta_1 x&lt;/script&gt;&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\theta_0, \theta_1&lt;/script&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;J(\theta_0, \theta_1) = {1 \over2m} \sum_{i=0}^m(h_\theta(x^{(i)}) - y^{(i)})^2&lt;/script&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;J(\theta_0, \theta_1) = {1 \over2m} \sum_{i=1}^m(h_\theta(x^{(i)}) - y^{(i)})^2&lt;/script&gt;&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;minimize_{\theta_0\theta_1} J(\theta_0, \theta_1)&lt;/script&gt;&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
@@ -159,6 +159,22 @@
 
 &lt;p&gt;第一个机器学习的算法&lt;/p&gt;
 
+&lt;blockquote&gt;
+
+  &lt;p&gt;在这之前，需要复习几个&lt;a href=&quot;https://baike.baidu.com/item/%E6%B1%82%E5%AF%BC/1063861&quot;&gt;求导法则&lt;/a&gt;。有助于理解下面的公式计算&lt;/p&gt;
+
+  &lt;p&gt;假设 &lt;script type=&quot;math/tex&quot;&gt;u(x),v(x)&lt;/script&gt; 均可导, 则&lt;/p&gt;
+
+  &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+  (u(x) \pm v(x))^{'} &amp;= u^{'}(x) \pm v^{'}(x) \\
+  (u(x)v(x))^{'} &amp;= u^{'}(x)v(x) + u(x)v^{'}(x) \\
+  (u(v(x)))^{'} &amp;= u^{'}(x)v(x) \\
+  ({u(x) \over v(x)})^{'} &amp;= \frac{u^{'}(x)v(x) - u(x)v^{'}(x)}{v^2(x)} \\
+  (cu(x))^{'} &amp;= cu^{'}(x) \text{, c 为常数} \\
+  \end{align} %]]&gt;&lt;/script&gt;
+&lt;/blockquote&gt;
+
 &lt;table&gt;
   &lt;thead&gt;
     &lt;tr&gt;
@@ -172,7 +188,7 @@
     &lt;tr&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;h_\theta = \theta_0 + \theta_1 x&lt;/script&gt;&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\theta_0, \theta_1&lt;/script&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;J(\theta_0, \theta_1) = {1 \over2m} \sum_{i=0}^m(h_\theta(x^{(i)}) - y^{(i)})^2&lt;/script&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;J(\theta_0, \theta_1) = {1 \over2m} \sum_{i=1}^m(h_\theta(x^{(i)}) - y^{(i)})^2&lt;/script&gt;&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;minimize_{\theta_0\theta_1} J(\theta_0, \theta_1)&lt;/script&gt;&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
@@ -184,9 +200,22 @@
 
     &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
 \begin{align}
- \frac{\partial}{\partial \theta_j} J(\theta) &amp;= {1 \over m} \sum_{i=0}^m(h_\theta(x^{(i)}) - y^{(i)}) \\
-        &amp;= {1 \over m} \sum_{i=0}^m(h_\theta(x^{(i)}) - y^{(i)}) \\
-        &amp;= {1 \over m} \sum_{i=0}^m((\theta_0 + \theta_1 x) - y^{(i)})
+ \frac{\partial}{\partial \theta_j} J(\theta) &amp;= {1 \over m} \sum_{i=1}^m((h_\theta(x^{(i)}) - y^{(i)})^{'}(h_\theta(x^{(i)}) - y^{(i)})) \\
+        &amp;= {1 \over m} \sum_{i=1}^m(h^{'}_\theta(x^{(i)})(h_\theta(x^{(i)}) - y^{(i)})) \\
+        &amp;= {1 \over m} \sum_{i=1}^m(\theta_0 + \theta_1 x^{(i)})^{'}(h_\theta(x^{(i)}) - y^{(i)})) \\
+ \end{align} %]]&gt;&lt;/script&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+ \frac{\partial}{\partial \theta_0} J(\theta) &amp;= {1 \over m} \sum_{i=1}^m(\theta_0 + \theta_1 x^{(i)})^{'}(h_\theta(x^{(i)}) - y^{(i)})) \\
+        &amp;= {1 \over m} \sum_{i=1}^m(h_\theta(x^{(i)}) - y^{(i)})) \\
+        &amp;= {1 \over m} \sum_{i=1}^m(\theta_0 + \theta_1 x^{(i)} - y^{(i)}))
+ \end{align} %]]&gt;&lt;/script&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+ \frac{\partial}{\partial \theta_1} J(\theta) &amp;= {1 \over m} \sum_{i=1}^m(\theta_0 + \theta_1 x^{(i)})^{'}(h_\theta(x^{(i)}) - y^{(i)})) \\
+        &amp;= {1 \over m} \sum_{i=1}^m(x^{(i)})(\theta_0 + \theta_1 x^{(i)} - y^{(i)}))
  \end{align} %]]&gt;&lt;/script&gt;
   &lt;/li&gt;
   &lt;li&gt;
@@ -195,14 +224,155 @@
     &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
 \begin{align}
  \text{repeat untile convergence...} &amp;\{ \\
- temp0 &amp;:= \theta_0 - {\alpha \over m} \sum_{i=0}^m((\theta_0 + \theta_1 x) - y^{(i)}) \\
- temp1 &amp;:= \theta_1 - {\alpha \over m} \sum_{i=0}^m((\theta_0 + \theta_1 x) - y^{(i)}) \\
+ temp0 &amp;:= \theta_0 - {\alpha \over m} \sum_{i=1}^m(\theta_0 + \theta_1 x^{(i)} - y^{(i)})) \\
+ temp1 &amp;:= \theta_1 - {\alpha \over m} \sum_{i=1}^m(x^{(i)})(\theta_0 + \theta_1 x^{(i)} - y^{(i)})) \\
  \theta_0 &amp;:= temp0 \\
  \theta_1 &amp;:= temp1 \\
  &amp;\}
  \end{align} \\ %]]&gt;&lt;/script&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
+
+&lt;p&gt;metrics 和 vectors&lt;/p&gt;
+
+&lt;p&gt;下面为一个 2 x 3 的矩阵&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+A = \begin{bmatrix}
+1 &amp; 2 &amp; 3 \\
+1 &amp; 3 &amp; 5 \\
+\end{bmatrix} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;A_{ij}&lt;/script&gt; 为 第 i 行，第 j 列的值，注意 i，j 都是从 1 开始的&lt;/p&gt;
+
+&lt;p&gt;vector: n x 1 的矩阵, 如下为 3维 vector&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;A = \begin{bmatrix}
+1 \\
+2 \\
+3 \\
+\end{bmatrix}&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;矩阵的乘法: &lt;script type=&quot;math/tex&quot;&gt;A_{m,n} \times x_{n,1} = y_{m,1}\\
+A_{m,n} \times B_{n,o} = C_{m,o}&lt;/script&gt;&lt;/li&gt;
+  &lt;li&gt;1-indexed vs 0-indexed vector&lt;/li&gt;
+  &lt;li&gt;大写字母表示矩阵，小写字母表示向量&lt;/li&gt;
+  &lt;li&gt;矩阵运算见&lt;a href=&quot;https://baike.baidu.hk/item/%E7%9F%A9%E9%99%A3/18069&quot;&gt;这里&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;scalar 标量，raw number&lt;/li&gt;
+  &lt;li&gt;使用 矩阵运算，而不是 for 运算，能够更加简洁，高效地计算。
+  &lt;img src=&quot;assets/images/for-matrix-example.png&quot; alt=&quot;for-matrix-example&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;不满足交换律: &lt;script type=&quot;math/tex&quot;&gt;A \times B \neq B \times A&lt;/script&gt; (not commutative)&lt;/li&gt;
+  &lt;li&gt;满足结合律: &lt;script type=&quot;math/tex&quot;&gt;(A \times B) \times C  = A \times (B \times C)&lt;/script&gt; (associative)&lt;/li&gt;
+  &lt;li&gt;单位矩阵，Diagonal or Identity Matrix：&lt;script type=&quot;math/tex&quot;&gt;I_{n \times n}&lt;/script&gt;&lt;/li&gt;
+  &lt;li&gt;单位矩阵满足：&lt;script type=&quot;math/tex&quot;&gt;A_{m,n} \times I_{n,n} = I_{m,m} \times A_{m,n} = A_{m,n}&lt;/script&gt;&lt;/li&gt;
+  &lt;li&gt;逆矩阵 matrix inverse。&lt;script type=&quot;math/tex&quot;&gt;AA^{-1} = A^{-1}A = I&lt;/script&gt; 则 &lt;script type=&quot;math/tex&quot;&gt;A^{-1}&lt;/script&gt; 为 A 的 逆矩阵 (A为 mxm 矩阵，也就是 square matrix, 方阵)&lt;/li&gt;
+  &lt;li&gt;奇异矩阵 sigular matrix，没有逆矩阵的矩阵&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;转置矩阵 transpose matrix&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+A = \begin{bmatrix}
+1 &amp; 2 &amp; 3 \\
+1 &amp; 3 &amp; 5 \\
+\end{bmatrix},
+
+A^T = \begin{bmatrix}
+1 &amp; 1 \\
+2 &amp; 3 \\
+3 &amp; 5 \\
+\end{bmatrix} %]]&gt;&lt;/script&gt;
+  &lt;/li&gt;
+  &lt;li&gt;octave 中矩阵的操作可参考&lt;a href=&quot;http://www.philender.com/courses/multivariate/notes/matoctave.html&quot;&gt;这里&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;使用 vector 和 matrix 来表示 multi feature hypothesis，多维度的假设函数&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}h(\theta) &amp;= \theta_0 + \theta_1 x_1 + \theta_2 x_2 + \cdots + \theta_n x_n \\
+&amp;= \theta_0 x_0 + \theta_1 x_1 + \theta_2 x_2 + \cdots + \theta_n x_n \text{ for } x_0 = 1 \\
+&amp;= \begin{bmatrix}
+\theta_0 &amp; \theta_1 &amp; \cdots &amp; \theta_n
+\end{bmatrix}
+\times \begin{bmatrix}
+x_0 \\
+x_1 \\
+\vdots \\
+x_n
+\end{bmatrix} \\
+&amp;= \theta^T \times x
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;其中 &lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt; 和 &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt; 均为 vector&lt;/p&gt;
+
+&lt;p&gt;使用矢量/矩阵来实现多特征梯度下降 (multi feature gradient descent)&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Hypothesis(假设)&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Paramemters(参数)&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;CostFunction&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Goal&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;y^{(i)} = h_\theta = \theta_0 x_0 + \theta_1 x_1 + \cdots + \theta_n x_n = x^T \times \theta&lt;/script&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\theta = \begin{bmatrix} \theta_0 \\ \theta_1 \\ \cdots \\ \theta_n \end{bmatrix}&lt;/script&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;J(\theta) = {1 \over2m} \sum_{i=1}^m(h_\theta(x^{(i)}) - y^{(i)})^2&lt;/script&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;minimize_{\theta} J(\theta_0, \theta_1, \cdots, \theta_n)&lt;/script&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Gradient Descent&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+\text{repeat } &amp;\{ \\
+\theta_j &amp;:= \theta_j - \alpha \frac{\partial}{\partial \theta_j} {J(\theta)},\text{ for } j=0, 1, \cdots, n \\
+         &amp;:= \theta_j - \alpha \sum_{i=1}^m(x^{(i)}_{j})(h_\theta - y^{(i)})) \\
+\}
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;feature scaling, 将特征值进行缩放，使得图形能够更快地收敛&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;assets/images/feature-scale.png&quot; alt=&quot;feature-scale&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;使得所有的特征的值接近 &lt;script type=&quot;math/tex&quot;&gt;-1 \leq x \leq 1&lt;/script&gt; 的区间，建议是差别不超过三倍&lt;/li&gt;
+  &lt;li&gt;Mean Normalization, 归一化 &lt;script type=&quot;math/tex&quot;&gt;x = \frac{ x - \mu }{s}&lt;/script&gt;, 其中 &lt;script type=&quot;math/tex&quot;&gt;\mu&lt;/script&gt; 为特征 x 的均值, s 为(最大值-最小值) 或者是标准差&lt;/li&gt;
+  &lt;li&gt;特征缩放不需要非常准备&lt;/li&gt;
+  &lt;li&gt;选择 &lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; (Learning rate) 的技巧。变小的幅度小于 &lt;script type=&quot;math/tex&quot;&gt;10^{-3}&lt;/script&gt; 便可停止了&lt;/li&gt;
+  &lt;li&gt;Polynomial Regression 多项式回归, 如 &lt;script type=&quot;math/tex&quot;&gt;h_\theta = \theta_0 x_0 + \theta_1 x_1^2 + \cdots + \theta_n x_n^n&lt;/script&gt;&lt;/li&gt;
+  &lt;li&gt;Polynomial Regression 的参数的 scaling 很重要，因为数值会随着 &lt;script type=&quot;math/tex&quot;&gt;x^n&lt;/script&gt; 的 n 指数型增长&lt;/li&gt;
+  &lt;li&gt;模型变量的选择：可以是原始变量的组合。&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Normal Equation, 一次性求解出所有的 &lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt;，类似于解矩阵方程的思路，下面是结果。参考 &lt;a href=&quot;https://blog.csdn.net/artprog/article/details/51172025&quot;&gt;机器学习笔记03：Normal equation与梯度下降的比较&lt;/a&gt;&lt;/p&gt;
+
+    &lt;table&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th style=&quot;text-align: center&quot;&gt;Hypothesis(假设)&lt;/th&gt;
+          &lt;th style=&quot;text-align: center&quot;&gt;features &lt;script type=&quot;math/tex&quot;&gt;X_{(m, n+1)}&lt;/script&gt;&lt;/th&gt;
+          &lt;th style=&quot;text-align: center&quot;&gt;Paramemters &lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt;&lt;/th&gt;
+          &lt;th style=&quot;text-align: center&quot;&gt;Normal Equation Answer&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+\begin{align}y^{(i)} &amp;= \theta_0 x_0^{(i)} + \theta_1 x_1^{(i)} + \cdots + \theta_n x_n^{(i)} \\ &amp;= (x^{(i)})^{T} \times \theta \\ Y &amp;= X \times \theta \end{align} %]]&gt;&lt;/script&gt;&lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;X = \begin{bmatrix} (x^{(1)})^{T} \\ (x^{(2)})^{T} \\ \cdots \\  (x^{(m)})^{T} \\ \end{bmatrix}&lt;/script&gt;&lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\theta = \begin{bmatrix} \theta_0 \\ \theta_1 \\ \cdots \\ \theta_n \end{bmatrix}&lt;/script&gt;&lt;/td&gt;
+          &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\theta = (X^TX)^{(-1)}X^TY&lt;/script&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
 &lt;ul&gt;

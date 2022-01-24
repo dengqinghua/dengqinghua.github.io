@@ -35,14 +35,14 @@ title: 机器学习
 - h hypothesis, 假设 $$y = h(x)$$
 - linare regression with one variable $$h_\theta = \theta_0 + \theta_1 x$$
 - univariate linear regression 单变量线性回归
-- 目标, 找到最小值: $$minimize_{\theta_0\theta_1} {1 \over2m} \sum_{i=0}^m(h_\theta(x^{(i)}) - y^{(i)})^2 $$
-- Cost Function 定义为 $$J(\theta_0, \theta_1) = {1 \over2m} \sum_{i=0}^m(\hat y_i - y^{(i)})^2 = {1 \over2m} \sum_{i=0}^m(h_\theta(x^{(i)}) - y^{(i)})^2$$
+- 目标, 找到最小值: $$minimize_{\theta_0\theta_1} {1 \over2m} \sum_{i=1}^m(h_\theta(x^{(i)}) - y^{(i)})^2 $$
+- Cost Function 定义为 $$J(\theta_0, \theta_1) = {1 \over2m} \sum_{i=1}^m(\hat y_i - y^{(i)})^2 = {1 \over2m} \sum_{i=1}^m(h_\theta(x^{(i)}) - y^{(i)})^2$$
 - 目标: $$minimize_{\theta_0\theta_1} J(\theta_0, \theta_1)$$ 为平方差代价函数
 - 目标: $$J(\theta_0, \theta_1)$$ 导数为 0 的那个 $$\theta_1$$ 的值
 
 | Hypothesis(假设) | Paramemters(参数) | CostFunction | Goal |
 | :-------------: | :-------------: | :-------------: | :-------------: |
-| $$h_\theta = \theta_0 + \theta_1 x$$ | $$\theta_0, \theta_1$$  | $$J(\theta_0, \theta_1) = {1 \over2m} \sum_{i=0}^m(h_\theta(x^{(i)}) - y^{(i)})^2$$  | $$minimize_{\theta_0\theta_1} J(\theta_0, \theta_1)$$ |
+| $$h_\theta = \theta_0 + \theta_1 x$$ | $$\theta_0, \theta_1$$  | $$J(\theta_0, \theta_1) = {1 \over2m} \sum_{i=1}^m(h_\theta(x^{(i)}) - y^{(i)})^2$$  | $$minimize_{\theta_0\theta_1} J(\theta_0, \theta_1)$$ |
 
 - contour plot, 画图的软件, 见 [这里](https://www.itl.nist.gov/div898/handbook/eda/section3/contour.htm) 和 [JS 版本](https://plotly.com/javascript/contour-plots/)
 
@@ -76,17 +76,47 @@ $$\text{repeat untile convergence} \\
 
 第一个机器学习的算法
 
+>
+在这之前，需要复习几个[求导法则](https://baike.baidu.com/item/%E6%B1%82%E5%AF%BC/1063861)。有助于理解下面的公式计算
+>
+假设 $$u(x),v(x)$$ 均可导, 则
+>
+  $$
+  \begin{align}
+  (u(x) \pm v(x))^{'} &= u^{'}(x) \pm v^{'}(x) \\
+  (u(x)v(x))^{'} &= u^{'}(x)v(x) + u(x)v^{'}(x) \\
+  (u(v(x)))^{'} &= u^{'}(x)v(x) \\
+  ({u(x) \over v(x)})^{'} &= \frac{u^{'}(x)v(x) - u(x)v^{'}(x)}{v^2(x)} \\
+  (cu(x))^{'} &= cu^{'}(x) \text{, c 为常数} \\
+  \end{align}
+  $$
+
 | Hypothesis(假设) | Paramemters(参数) | CostFunction | Goal |
 | :-------------: | :-------------: | :-------------: | :-------------: |
-| $$h_\theta = \theta_0 + \theta_1 x$$ | $$\theta_0, \theta_1$$  | $$J(\theta_0, \theta_1) = {1 \over2m} \sum_{i=0}^m(h_\theta(x^{(i)}) - y^{(i)})^2$$  | $$minimize_{\theta_0\theta_1} J(\theta_0, \theta_1)$$ |
+| $$h_\theta = \theta_0 + \theta_1 x$$ | $$\theta_0, \theta_1$$  | $$J(\theta_0, \theta_1) = {1 \over2m} \sum_{i=1}^m(h_\theta(x^{(i)}) - y^{(i)})^2$$  | $$minimize_{\theta_0\theta_1} J(\theta_0, \theta_1) $$ |
 
 1. 对 CostFunction 求导数
 
     $$
     \begin{align}
-    \frac{\partial}{\partial \theta_j} J(\theta) &= {1 \over m} \sum_{i=0}^m(h_\theta(x^{(i)}) - y^{(i)}) \\
-           &= {1 \over m} \sum_{i=0}^m(h_\theta(x^{(i)}) - y^{(i)}) \\
-           &= {1 \over m} \sum_{i=0}^m((\theta_0 + \theta_1 x) - y^{(i)})
+    \frac{\partial}{\partial \theta_j} J(\theta) &= {1 \over m} \sum_{i=1}^m((h_\theta(x^{(i)}) - y^{(i)})^{'}(h_\theta(x^{(i)}) - y^{(i)})) \\
+           &= {1 \over m} \sum_{i=1}^m(h^{'}_\theta(x^{(i)})(h_\theta(x^{(i)}) - y^{(i)})) \\
+           &= {1 \over m} \sum_{i=1}^m(\theta_0 + \theta_1 x^{(i)})^{'}(h_\theta(x^{(i)}) - y^{(i)})) \\
+    \end{align}
+    $$
+
+    $$
+    \begin{align}
+    \frac{\partial}{\partial \theta_0} J(\theta) &= {1 \over m} \sum_{i=1}^m(\theta_0 + \theta_1 x^{(i)})^{'}(h_\theta(x^{(i)}) - y^{(i)})) \\
+           &= {1 \over m} \sum_{i=1}^m(h_\theta(x^{(i)}) - y^{(i)})) \\
+           &= {1 \over m} \sum_{i=1}^m(\theta_0 + \theta_1 x^{(i)} - y^{(i)}))
+    \end{align}
+    $$
+
+    $$
+    \begin{align}
+    \frac{\partial}{\partial \theta_1} J(\theta) &= {1 \over m} \sum_{i=1}^m(\theta_0 + \theta_1 x^{(i)})^{'}(h_\theta(x^{(i)}) - y^{(i)})) \\
+           &= {1 \over m} \sum_{i=1}^m(x^{(i)})(\theta_0 + \theta_1 x^{(i)} - y^{(i)}))
     \end{align}
     $$
 
@@ -95,13 +125,121 @@ $$\text{repeat untile convergence} \\
     $$
     \begin{align}
     \text{repeat untile convergence...} &\{ \\
-    temp0 &:= \theta_0 - {\alpha \over m} \sum_{i=0}^m((\theta_0 + \theta_1 x) - y^{(i)}) \\
-    temp1 &:= \theta_1 - {\alpha \over m} \sum_{i=0}^m((\theta_0 + \theta_1 x) - y^{(i)}) \\
+    temp0 &:= \theta_0 - {\alpha \over m} \sum_{i=1}^m(\theta_0 + \theta_1 x^{(i)} - y^{(i)})) \\
+    temp1 &:= \theta_1 - {\alpha \over m} \sum_{i=1}^m(x^{(i)})(\theta_0 + \theta_1 x^{(i)} - y^{(i)})) \\
     \theta_0 &:= temp0 \\
     \theta_1 &:= temp1 \\
     &\}
     \end{align} \\
     $$
+
+metrics 和 vectors
+
+下面为一个 2 x 3 的矩阵
+
+$$
+A = \begin{bmatrix}
+1 & 2 & 3 \\
+1 & 3 & 5 \\
+\end{bmatrix}
+$$
+
+$$ A_{ij}$$ 为 第 i 行，第 j 列的值，注意 i，j 都是从 1 开始的
+
+vector: n x 1 的矩阵, 如下为 3维 vector
+
+$$
+A = \begin{bmatrix}
+1 \\
+2 \\
+3 \\
+\end{bmatrix}
+$$
+
+
+- 矩阵的乘法: $$A_{m,n} \times x_{n,1} = y_{m,1}\\
+A_{m,n} \times B_{n,o} = C_{m,o} $$
+- 1-indexed vs 0-indexed vector
+- 大写字母表示矩阵，小写字母表示向量
+- 矩阵运算见[这里](https://baike.baidu.hk/item/%E7%9F%A9%E9%99%A3/18069)
+- scalar 标量，raw number
+- 使用 矩阵运算，而不是 for 运算，能够更加简洁，高效地计算。
+    ![for-matrix-example](assets/images/for-matrix-example.png)
+- 不满足交换律: $$A \times B \neq B \times A$$ (not commutative)
+- 满足结合律: $$(A \times B) \times C  = A \times (B \times C)$$ (associative)
+- 单位矩阵，Diagonal or Identity Matrix：$$I_{n \times n}$$
+- 单位矩阵满足：$$ A_{m,n} \times I_{n,n} = I_{m,m} \times A_{m,n} = A_{m,n} $$
+- 逆矩阵 matrix inverse。$$AA^{-1} = A^{-1}A = I$$ 则 $$A^{-1}$$ 为 A 的 逆矩阵 (A为 mxm 矩阵，也就是 square matrix, 方阵)
+- 奇异矩阵 sigular matrix，没有逆矩阵的矩阵
+- 转置矩阵 transpose matrix
+
+  $$
+  A = \begin{bmatrix}
+  1 & 2 & 3 \\
+  1 & 3 & 5 \\
+  \end{bmatrix},
+
+  A^T = \begin{bmatrix}
+  1 & 1 \\
+  2 & 3 \\
+  3 & 5 \\
+  \end{bmatrix}
+  $$
+- octave 中矩阵的操作可参考[这里](http://www.philender.com/courses/multivariate/notes/matoctave.html)
+
+使用 vector 和 matrix 来表示 multi feature hypothesis，多维度的假设函数
+
+$$
+\begin{align}h(\theta) &= \theta_0 + \theta_1 x_1 + \theta_2 x_2 + \cdots + \theta_n x_n \\
+&= \theta_0 x_0 + \theta_1 x_1 + \theta_2 x_2 + \cdots + \theta_n x_n \text{ for } x_0 = 1 \\
+&= \begin{bmatrix}
+\theta_0 & \theta_1 & \cdots & \theta_n
+\end{bmatrix}
+\times \begin{bmatrix}
+x_0 \\
+x_1 \\
+\vdots \\
+x_n
+\end{bmatrix} \\
+&= \theta^T \times x
+\end{align}
+$$
+
+其中 $$\theta$$ 和 $$x$$ 均为 vector
+
+使用矢量/矩阵来实现多特征梯度下降 (multi feature gradient descent)
+
+| Hypothesis(假设) | Paramemters(参数) | CostFunction | Goal |
+| :-------------: | :-------------: | :-------------: | :-------------: |
+| $$y^{(i)} = h_\theta = \theta_0 x_0 + \theta_1 x_1 + \cdots + \theta_n x_n = x^T \times \theta $$ |$$\theta = \begin{bmatrix} \theta_0 \\ \theta_1 \\ \cdots \\ \theta_n \end{bmatrix}$$ | $$J(\theta) = {1 \over2m} \sum_{i=1}^m(h_\theta(x^{(i)}) - y^{(i)})^2$$  | $$minimize_{\theta} J(\theta_0, \theta_1, \cdots, \theta_n) $$ |
+
+Gradient Descent
+
+$$\begin{align}
+\text{repeat } &\{ \\
+\theta_j &:= \theta_j - \alpha \frac{\partial}{\partial \theta_j} {J(\theta)},\text{ for } j=0, 1, \cdots, n \\
+         &:= \theta_j - \alpha \sum_{i=1}^m(x^{(i)}_{j})(h_\theta - y^{(i)})) \\
+\}
+\end{align}
+$$
+
+- feature scaling, 将特征值进行缩放，使得图形能够更快地收敛
+
+    ![feature-scale](assets/images/feature-scale.png)
+
+- 使得所有的特征的值接近 $$-1 \leq x \leq 1$$ 的区间，建议是差别不超过三倍
+- Mean Normalization, 归一化 $$ x = \frac{ x - \mu }{s} $$, 其中 $$\mu$$ 为特征 x 的均值, s 为(最大值-最小值) 或者是标准差
+- 特征缩放不需要非常准备
+- 选择 $$\alpha$$ (Learning rate) 的技巧。变小的幅度小于 $$10^{-3}$$ 便可停止了
+- Polynomial Regression 多项式回归, 如 $$h_\theta = \theta_0 x_0 + \theta_1 x_1^2 + \cdots + \theta_n x_n^n$$
+- Polynomial Regression 的参数的 scaling 很重要，因为数值会随着 $$x^n$$ 的 n 指数型增长
+- 模型变量的选择：可以是原始变量的组合。
+- Normal Equation, 一次性求解出所有的 $$\theta$$，类似于解矩阵方程的思路，下面是结果。参考 [机器学习笔记03：Normal equation与梯度下降的比较](https://blog.csdn.net/artprog/article/details/51172025)
+
+    | Hypothesis(假设) | features $$X_{(m, n+1)}$$ | Paramemters $$\theta$$ | Normal Equation Answer |
+    | :-------------: | :-------------: | :-------------: | :-------------: |
+    | $$\begin{align}y^{(i)} &= \theta_0 x_0^{(i)} + \theta_1 x_1^{(i)} + \cdots + \theta_n x_n^{(i)} \\ &= (x^{(i)})^{T} \times \theta \\ Y &= X \times \theta \end{align}$$ | $$X = \begin{bmatrix} (x^{(1)})^{T} \\ (x^{(2)})^{T} \\ \cdots \\  (x^{(m)})^{T} \\ \end{bmatrix}$$ |  $$\theta = \begin{bmatrix} \theta_0 \\ \theta_1 \\ \cdots \\ \theta_n \end{bmatrix}$$ | $$\theta = (X^TX)^{(-1)}X^TY$$ |
+
 
 
 ## Reference
