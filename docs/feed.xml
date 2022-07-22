@@ -1,5 +1,60 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2022-01-24T10:32:49+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
-</subtitle><author><name>dengqinghua</name></author><entry><title type="html">2021 的总结 &amp;amp; 2022 的 flag</title><link href="https://dengqinghua.github.io/2021-backward-and-forward.html" rel="alternate" type="text/html" title="2021 的总结 &amp; 2022 的 flag" /><published>2022-01-14T00:00:00+08:00</published><updated>2022-01-14T00:00:00+08:00</updated><id>https://dengqinghua.github.io/2021-backward-and-forward</id><content type="html" xml:base="https://dengqinghua.github.io/2021-backward-and-forward.html">&lt;hr data-content=&quot; 2021 &quot; /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://dengqinghua.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://dengqinghua.github.io/" rel="alternate" type="text/html" /><updated>2022-07-22T14:53:58+08:00</updated><id>https://dengqinghua.github.io/feed.xml</id><title type="html">Dengqinghua.42</title><subtitle>Everything I think
+</subtitle><author><name>dengqinghua</name></author><entry><title type="html">MySQL 子查询笔记</title><link href="https://dengqinghua.github.io/mysql-subquery.html" rel="alternate" type="text/html" title="MySQL 子查询笔记" /><published>2022-03-03T00:00:00+08:00</published><updated>2022-03-03T00:00:00+08:00</updated><id>https://dengqinghua.github.io/mysql-subquery</id><content type="html" xml:base="https://dengqinghua.github.io/mysql-subquery.html">&lt;h3 id=&quot;outer-query--subquery&quot;&gt;Outer Query &amp;amp; Subquery&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT * FROM a WHERE c1 = (SELECT c1 FROM b)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;Outer Query: &lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT * FROM a&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;subQuery: &lt;code class=&quot;highlighter-rouge&quot;&gt;(SELECT c1 FROM b)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;scalar-column-row-and-table-subqueries&quot;&gt;scalar, column, row, and table subqueries&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;scalar 单个值&lt;/li&gt;
+  &lt;li&gt;column 返回一个列&lt;/li&gt;
+  &lt;li&gt;row 返回一行&lt;/li&gt;
+  &lt;li&gt;table 返回一个表(多行数据)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;这里只能返回单个值 &lt;code class=&quot;highlighter-rouge&quot;&gt;count(*)&lt;/code&gt; 这里只返回一个值&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT (SELECT count(*) FROM advertisement) # OK
+SELECT (SELECT code FROM advertisement LIMIT 1) # OK
+SELECT (SELECT code FROM advertisement) # NOT OK 包含多行
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;比较&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT * FROM advertisement WHERE code = (SELECT code FROM tag LIMIT 1) # 必须单行
+SELECT * FROM advertisement WHERE code IN (SELECT code FROM tag) # 可以多行
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;any-in-some-all&quot;&gt;ANY, IN, SOME, ALL&lt;/h3&gt;
+&lt;p&gt;ANY, IN, SOME 都是存在的意思&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT * FROM advertisement WHERE code = ANY (select code from tag) # 这个的 = ANY 跟 IN 是一样的
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;ALL 全部满足条件&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT s1 FROM t1 WHERE s1 &amp;gt; ALL (SELECT s1 FROM t2);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;exists&quot;&gt;EXISTS&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT * FROM t1 WHERE EXISTS (SELECT * FROM t2)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;如果 &lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT * FROM t2&lt;/code&gt; 有值，则为 true&lt;/p&gt;
+
+&lt;h3 id=&quot;derived-table&quot;&gt;Derived Table&lt;/h3&gt;
+&lt;p&gt;从几张表中拿出数据，组成一个新表&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;INSERT INTO t1 VALUES (1,'1',1.0);
+INSERT INTO t1 VALUES (2,'2',2.0);
+SELECT sb1,sb2,sb3
+  FROM (SELECT s1 AS sb1, s2 AS sb2, s3*2 AS sb3 FROM t1) AS sb
+  WHERE sb1 &amp;gt; 1;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>dengqinghua</name></author><summary type="html">Outer Query &amp;amp; Subquery</summary></entry><entry><title type="html">2021 的总结 &amp;amp; 2022 的 flag</title><link href="https://dengqinghua.github.io/2021-backward-and-forward.html" rel="alternate" type="text/html" title="2021 的总结 &amp; 2022 的 flag" /><published>2022-01-14T00:00:00+08:00</published><updated>2022-01-14T00:00:00+08:00</updated><id>https://dengqinghua.github.io/2021-backward-and-forward</id><content type="html" xml:base="https://dengqinghua.github.io/2021-backward-and-forward.html">&lt;hr data-content=&quot; 2021 &quot; /&gt;
 
 &lt;p&gt;work&lt;/p&gt;
 
@@ -286,6 +341,7 @@ A^T = \begin{bmatrix}
   &lt;li&gt;octave 中矩阵的操作可参考&lt;a href=&quot;http://www.philender.com/courses/multivariate/notes/matoctave.html&quot;&gt;这里&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;h4 id=&quot;week2&quot;&gt;Week2&lt;/h4&gt;
 &lt;p&gt;使用 vector 和 matrix 来表示 multi feature hypothesis，多维度的假设函数&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
@@ -318,7 +374,8 @@ x_n
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;y^{(i)} = h_\theta = \theta_0 x_0 + \theta_1 x_1 + \cdots + \theta_n x_n = x^T \times \theta&lt;/script&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+\begin{align}y^{(i)} &amp;= \theta_0 x_0^{(i)} + \theta_1 x_1^{(i)} + \cdots + \theta_n x_n^{(i)} \\ &amp;= (x^{(i)})^{T} \times \theta \\ Y &amp;= X \times \theta \end{align} %]]&gt;&lt;/script&gt;&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\theta = \begin{bmatrix} \theta_0 \\ \theta_1 \\ \cdots \\ \theta_n \end{bmatrix}&lt;/script&gt;&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;J(\theta) = {1 \over2m} \sum_{i=1}^m(h_\theta(x^{(i)}) - y^{(i)})^2&lt;/script&gt;&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;minimize_{\theta} J(\theta_0, \theta_1, \cdots, \theta_n)&lt;/script&gt;&lt;/td&gt;
@@ -350,7 +407,7 @@ x_n
   &lt;li&gt;Polynomial Regression 的参数的 scaling 很重要，因为数值会随着 &lt;script type=&quot;math/tex&quot;&gt;x^n&lt;/script&gt; 的 n 指数型增长&lt;/li&gt;
   &lt;li&gt;模型变量的选择：可以是原始变量的组合。&lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Normal Equation, 一次性求解出所有的 &lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt;，类似于解矩阵方程的思路，下面是结果。参考 &lt;a href=&quot;https://blog.csdn.net/artprog/article/details/51172025&quot;&gt;机器学习笔记03：Normal equation与梯度下降的比较&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;Normal Equation, 一次性求解出所有的 &lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt;，类似于解矩阵方程的思路，下面是结果。参考 &lt;a href=&quot;https://blog.csdn.net/artprog/article/details/51172025&quot;&gt;机器学习笔记03：Normal equation与梯度下降的比较&lt;/a&gt; 其中 m 为样本数，n 为特征数 和 &lt;a href=&quot;https://stanford.edu/~rezab/classes/cme323/S15/notes/lec11.pdf&quot;&gt;复杂度分析&lt;/a&gt;&lt;/p&gt;
 
     &lt;table&gt;
       &lt;thead&gt;
@@ -372,7 +429,58 @@ x_n
       &lt;/tbody&gt;
     &lt;/table&gt;
   &lt;/li&gt;
+  &lt;li&gt;Normal Equation 不需要做 feature scaling，但是在 n 比较大(&amp;gt;10000)的时候比较慢，计算 &lt;script type=&quot;math/tex&quot;&gt;(X^TX)^{(-1)}&lt;/script&gt; 的复杂度为 &lt;script type=&quot;math/tex&quot;&gt;O(n^3)&lt;/script&gt;&lt;/li&gt;
+  &lt;li&gt;什么时候矩阵是奇异矩阵，见&lt;a href=&quot;https://byjus.com/maths/singular-matrix/#:~:text=What%20is%20Singular%20Matrix%3F,if%20its%20determinant%20is%200.&quot;&gt;这里&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h3 id=&quot;octave-tutorial&quot;&gt;octave tutorial&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;a = 1:0.1:2 % 从 1 到 2 以 0.1 为步长
+zeros(2, 3) % 2行3列的全是0的矩阵
+ones(2, 3) % 2行3列的全是1的矩阵
+rand(2, 3) % 2行3列的【0到1之间的】随机数的矩阵
+randn(1, 3) % 平均值为0，方差为1的高斯分布的随机矩阵
+w = -6 + sqrt(10) * (randn(1, 10000)); hist(w) % 画出直方图(histogram)
+eye(10) % 单位矩阵，eye 代表的是 I 的意思
+pwd % 当前的路劲 类似还可以用 cd, ls 等
+who % 查看当前的作用域 whos
+save % 保存矩阵到对应的文件 save new.dat v
+C = [3 4;2 2] % 可以省去逗号
+1./C % =[1/3 1/4; 1/2 1/2]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;plot&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;% 还可以设置坐标名称，线名称，颜色等等
+t = [0:0.01:0.98]
+y1 = sin(2 * pi * t)
+plot(t, y1)
+hold on % 画第二个图
+y2 = cos(2 * pi * t)
+plot(t, y2)
+xlabel(&quot;横坐标&quot;)
+ylabel(&quot;纵坐标&quot;)
+legend(&quot;线的定义&quot;)
+title(&quot;图片标题&quot;)
+print -dpng % 保存文件
+close % 关闭
+
+% 定义图一和图二
+figure(1); plot(t, y1)
+figure(2); plot(t, y2)
+
+% 将图分隔展示
+subplot(1,2,1);plot(t, y1)
+subplot(1,2,2);plot(t, y2)
+
+% 修改中轴线
+axis
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;vectorization&lt;/p&gt;
+
+&lt;p&gt;将数值运算，变成矩阵运算&lt;/p&gt;
+
+&lt;h4 id=&quot;week3&quot;&gt;Week3&lt;/h4&gt;
+&lt;p&gt;分类 classification&lt;/p&gt;
 
 &lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
 &lt;ul&gt;
@@ -848,7 +956,7 @@ graph LR;
 &lt;h4 id=&quot;mysql&quot;&gt;MySQL&lt;/h4&gt;
 &lt;p&gt;给 media 表的 content 字段 添加全文索引， 这里使用了 &lt;a href=&quot;https://dev.mysql.com/doc/refman/5.7/en/fulltext-search-ngram.html&quot;&gt;ngram&lt;/a&gt; 作为分词器&lt;/p&gt;
 
-&lt;p&gt;分词的字数由 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ngram_token_size&lt;/code&gt; 参数进行控制&lt;/p&gt;
+&lt;p&gt;分词的字数由 &lt;code class=&quot;highlighter-rouge&quot;&gt;ngram_token_size&lt;/code&gt; 参数进行控制&lt;/p&gt;
 
 &lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;ALTER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;`media`&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ADD&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FULLTEXT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;`content`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;WITH&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PARSER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ngram&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -857,11 +965,11 @@ graph LR;
 
 &lt;span class=&quot;o&quot;&gt;***************************&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;row&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;***************************&lt;/span&gt;
      &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;230&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&quot;【为什么失眠】&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n\n\n&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;【专注练习】&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; 为了避免大脑走神，&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&quot;【为什么失眠】&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n\n\n&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;【专注练习】&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; 为了避免大脑走神，&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
 &lt;span class=&quot;o&quot;&gt;***************************&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;row&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;***************************&lt;/span&gt;
      &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;231&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&quot;描述文案&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&quot;播放器标题&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&quot;描述文案&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&quot;播放器标题&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;查看匹配的分数， 这里拿了两个 id 作为例子&lt;/p&gt;
@@ -1016,7 +1124,7 @@ graph LR
   &lt;li&gt;
     &lt;p&gt;搜索词数据统计&lt;/p&gt;
 
-    &lt;p&gt;logstash 收集搜索相关的词， 下面的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;searchQ&lt;/code&gt; 为搜索的词汇&lt;/p&gt;
+    &lt;p&gt;logstash 收集搜索相关的词， 下面的 &lt;code class=&quot;highlighter-rouge&quot;&gt;searchQ&lt;/code&gt; 为搜索的词汇&lt;/p&gt;
 
     &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;grok&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -1280,7 +1388,7 @@ POST /es_media/_search?q&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span c
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 重建索引，将一个索引导入到另一个索引
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 重建索引，将一个索引导入到另一个索引
 POST _reindex
 {
   &quot;source&quot;: { &quot;index&quot;: &quot;source_index&quot; },
@@ -1468,7 +1576,7 @@ graph LR
 &lt;ol&gt;
   &lt;li&gt;term 不会做分词处理，类似于 client 中的 keyword
     &lt;ul&gt;
-      &lt;li&gt;注意，一些 analyzer 会做大小写转换，所以如果你的输入值为 iPHONE， 索引类型为 term， 存储到 ES 中 的 是 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;iphone&lt;/code&gt;， 此时拿 iPHONE 是无法查询到数据的&lt;/li&gt;
+      &lt;li&gt;注意，一些 analyzer 会做大小写转换，所以如果你的输入值为 iPHONE， 索引类型为 term， 存储到 ES 中 的 是 &lt;code class=&quot;highlighter-rouge&quot;&gt;iphone&lt;/code&gt;， 此时拿 iPHONE 是无法查询到数据的&lt;/li&gt;
       &lt;li&gt;可以使用 constant score 将查询转化，避免计算 score，提升性能&lt;/li&gt;
       &lt;li&gt;可以用 es 的多字段属性，添加一个 &lt;a href=&quot;https://stackoverflow.com/questions/48869795/difference-between-a-field-and-the-field-keyword&quot;&gt;keyword&lt;/a&gt; 字段&lt;/li&gt;
     &lt;/ul&gt;
@@ -1622,7 +1730,7 @@ graph LR
 
 &lt;h3 id=&quot;深度分页-并发更新&quot;&gt;深度分页, 并发更新&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;深度分页会导致非常大的性能问题，ES 默认的限制是 10000 条，可以考虑 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;search after&lt;/code&gt; 或者 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;scroll&lt;/code&gt; API 来解决深度分页问题&lt;/li&gt;
+  &lt;li&gt;深度分页会导致非常大的性能问题，ES 默认的限制是 10000 条，可以考虑 &lt;code class=&quot;highlighter-rouge&quot;&gt;search after&lt;/code&gt; 或者 &lt;code class=&quot;highlighter-rouge&quot;&gt;scroll&lt;/code&gt; API 来解决深度分页问题&lt;/li&gt;
   &lt;li&gt;
     &lt;table&gt;
       &lt;tbody&gt;
@@ -1854,7 +1962,7 @@ graph LR;
   &lt;li&gt;
     &lt;p&gt;消费次数和消息丢失的问题&lt;/p&gt;
 
-    &lt;p&gt;pulsar 理论上是 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;at-least-once semantics&lt;/code&gt;, 一些重要的业务需要自己能保证是可重复执行的&lt;/p&gt;
+    &lt;p&gt;pulsar 理论上是 &lt;code class=&quot;highlighter-rouge&quot;&gt;at-least-once semantics&lt;/code&gt;, 一些重要的业务需要自己能保证是可重复执行的&lt;/p&gt;
 
     &lt;p&gt;更多内容见 &lt;a href=&quot;https://pulsar.apache.org/docs/en/2.7.1/concepts-messaging/&quot;&gt;concepts-messaging&lt;/a&gt;&lt;/p&gt;
   &lt;/li&gt;
@@ -2351,667 +2459,5 @@ graph LR;
   &lt;li&gt;&lt;a href=&quot;https://medium.com/@tyy.sh/in-app-purchase-%E6%80%BB%E7%BB%93-e8a88a54d8d9&quot;&gt;IAP&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://ifumei.cc/2019/12/24/iospay/&quot;&gt;springboot接入苹果内购&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://developer.apple.com/documentation/storekit/original_api_for_in-app_purchase/validating_receipts_with_the_app_store&quot;&gt;苹果校验流程&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">sequenceDiagram autonumber participant sdk as iOS SDK participant b as Backend participant as as Apple Service sdk-&amp;gt;&amp;gt;b: 获取商品列表 b--&amp;gt;&amp;gt;sdk: 从后台获取商品id和对应展示的图片文案信息 sdk-&amp;gt;&amp;gt;b: 根据商品id 生成/获取预订单 Note right of sdk: 需要先去查一下这个用户在商品id下之前是不是有未完成的订单 b--&amp;gt;&amp;gt;sdk: 返回 订单sid sdk-&amp;gt;&amp;gt;as: 发起真实的支付 as--&amp;gt;&amp;gt;sdk: 用户支付, 苹果返回票据信息(receipt-data)如果苹果未返回, 则在 App 启动的时候返回 sdk-&amp;gt;&amp;gt;b: 提交票据信息和 订单sid 到服务端 Note right of sdk: 这一步容易丢单, 如何解决? 因为苹果容易丢失掉订单sid 需要取未完成的一条 b-&amp;gt;&amp;gt;as: 验证票据信息 as--&amp;gt;&amp;gt;b: 验证成功/失败 b--&amp;gt;&amp;gt;sdk: 修改订单状态, 并通知SDK支付成功或失败 sdk--&amp;gt;&amp;gt;as: 成功则将订单进行关闭</summary></entry><entry><title type="html">从 0 到 1 搭建 ease 后端服务</title><link href="https://dengqinghua.github.io/ease-from-0-to-1.html" rel="alternate" type="text/html" title="从 0 到 1 搭建 ease 后端服务" /><published>2021-07-26T00:00:00+08:00</published><updated>2021-07-26T00:00:00+08:00</updated><id>https://dengqinghua.github.io/ease_from_0_to_1</id><content type="html" xml:base="https://dengqinghua.github.io/ease-from-0-to-1.html">&lt;p&gt;该部分为后端团队 (2人) 从0 到 1 搭建的一套架构体系。&lt;/p&gt;
-
-&lt;blockquote&gt;
-
-  &lt;p&gt;由于公司和团队的整体规模不大，从业务的发展和业务的复杂度来说，
-应选择 &lt;strong&gt;快速部署，成本(机器/运维和部署)低，依赖少，稳定性高&lt;/strong&gt; 的架构。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;这里的架构主要由三部分构成&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Devops 基于 gitlab CI/CD 轻量级 Devops, 可实现完整的自动部署，扩容的操作&lt;/li&gt;
-  &lt;li&gt;业务 前后端分离，后端使用 BFF + Service 的单体架构，前端使用 React 技术栈&lt;/li&gt;
-  &lt;li&gt;中间件/基础设施  选择比较稳定的中间件/基础设施 ，如 MySQL，Redis 和 ES 等。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;从成本问题上考虑，大多数的中间件/基础设施 都是购买的，会根据现有的业务情况选择不同类型的中间件/基础设施。&lt;/p&gt;
-
-&lt;p&gt;当前阶段，我们主要关注下面的几点&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;一个需求从研发到上线需要多长时间？【P0】&lt;/li&gt;
-  &lt;li&gt;出现一个问题的时间，如何能够快速地发现并解决？【P1】&lt;/li&gt;
-  &lt;li&gt;当前服务调用量是什么的，核心链路是什么？【P2】&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;架构&quot;&gt;架构&lt;/h1&gt;
-&lt;div class=&quot;mermaid&quot;&gt;
-graph TB;
-    arch([Ease]);
-    op([Devops]);
-    op1(gitlab CI/CD)
-    op2(数据采集&lt;br /&gt; BizLog MetricLog SystemLog)
-    op3(网关)
-    op4(报警)
-    biz([业务]);
-    biz1(Java);
-    biz2(H5,APP,WEB);
-    sys([中间件/基础设施 ]);
-    sys0(Nginx);
-    sys1(ELK);
-    sys2(MySQL);
-    sys3(Redis);
-    sys4(Pulsa队列);
-    sys5(BI);
-    arch--&amp;gt;op &amp;amp; biz &amp;amp; sys;
-    op--&amp;gt;op1 &amp;amp; op2 &amp;amp; op3 &amp;amp; op4;
-    biz--&amp;gt;biz1 &amp;amp; biz2;
-    sys--&amp;gt;sys0 &amp;amp; sys1 &amp;amp; sys2 &amp;amp; sys3 &amp;amp; sys4 &amp;amp; sys5;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;devops&quot;&gt;Devops&lt;/h2&gt;
-&lt;div class=&quot;mermaid&quot;&gt;
-graph TB;
-    op([Devops]);
-    op1(gitlab CI/CD)
-    op11(自动部署)
-    op12(快速扩容)
-    op13(权限控制)
-    op2(数据采集)
-    op20(日志数据 &lt;br /&gt; ELK)
-    op21(SLO/SLI &lt;br /&gt; Kibana看板)
-    op22(系统数据 &lt;br /&gt; Netdata)
-    op23(业务数据 &lt;br /&gt; BI看板)
-    op24(SBA &lt;br /&gt; Spring Metrics)
-    op25(服务质量 &lt;br /&gt; TPS)
-    op3(报警)
-    op31(业务数据)
-    op32(错误率)
-    op33(服务器指标)
-    op--&amp;gt;op1 &amp;amp; op2 &amp;amp; op3;
-    op1--&amp;gt;op11 &amp;amp; op12 &amp;amp; op13;
-    op2--&amp;gt;op20 &amp;amp; op21 &amp;amp; op22 &amp;amp; op23 &amp;amp; op24 &amp;amp; op25;
-    op3--&amp;gt;op31 &amp;amp; op32 &amp;amp; op33;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;gitlab&quot;&gt;Gitlab&lt;/h3&gt;
-&lt;p&gt;Gitlab 作为我们内部代码托管的工具，在权限控制，CodeReview, CI/CD 上都有非常完善的流程。&lt;/p&gt;
-
-&lt;p&gt;但 Gitlab 在部署上，对机器的性能有&lt;a href=&quot;https://docs.gitlab.com/ee/install/requirements.html&quot;&gt;相对较高的要求&lt;/a&gt;, 建议的配置为 4C/4G&lt;/p&gt;
-
-&lt;h4 id=&quot;部署经验&quot;&gt;部署经验&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;使用 &lt;a href=&quot;https://github.com/sameersbn/docker-gitlab&quot;&gt;docker-compose&lt;/a&gt; 进行配置, 并将配置文件使用 git 管理&lt;/li&gt;
-  &lt;li&gt;部署在 4C8G 的机器配置&lt;/li&gt;
-  &lt;li&gt;配置定时重启 或者 &lt;a href=&quot;https://docs.gitlab.com/ee/administration/operations/puma.html&quot;&gt;PumaWorkerKiller&lt;/a&gt;，防止内存泄漏&lt;/li&gt;
-  &lt;li&gt;开启定时备份&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;分支管理&quot;&gt;分支管理&lt;/h4&gt;
-&lt;p&gt;分支的协作方式，我们参考的是 &lt;a href=&quot;https://docs.gitlab.com/ee/topics/gitlab_flow.html&quot;&gt;Gitlab-Flow&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;类似于 Gitlab-Flow 的模式，我们维护的分支只有四种&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;分支&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;存活时间&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;dev，主分支&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;永久&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;feature&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&amp;lt;3天，需要尽快 review，并合并到 dev 分支中&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;release_xxx&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;只保留最新版本，作为线上的发布分支&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;fix_xxx&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;bug-fix分支 &amp;lt;1天，需要尽快 review，并合并到 release 和 dev 分支中&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;一个开发人员的完整开发故事线如下:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;小明接到了一个需求 (feature)&lt;br /&gt;&lt;br /&gt;
-他先设计好了表结构 (feat_1: design schema)，经过 codeReview 之后, 代码被 merge 到了 dev 分支上之后，他开始了实现基本的逻辑开发 (feat_2: implement services)，codeReview 之后，代码又被 merge 到 dev 分支了。&lt;br /&gt;&lt;br /&gt;
-由于每次 merge 到 dev 都会触发部署操作，此时前端的APP开发同学就可以进行接口调试了。等整个功能都完善了，他们整理了要上线的功能，统一的 cherry-pick 到了一个 release_xxx 分支，这个分支一旦被 push 之后，就会自动进行 qa 环境的部署，并通知 qa 进行测试。&lt;br /&gt;&lt;br /&gt;
-之后 qa 测试出了 bug，他直接基于 release 分支，修复了bug (fix_bug_1), 并将代码 merge 到 release 分支，同时 cherry-pick 到 dev 的分支。&lt;br /&gt;&lt;br /&gt;
-qa 测试完成之后，就可以直接上线 这个分支了。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;mermaid&quot;&gt;
-sequenceDiagram
-    autonumber
-    participant feat as feature
-    participant dev as dev
-    participant release as release
-    participant fix as fix
-
-    par 开发feat_1
-    dev-&amp;gt;&amp;gt;feat: checkout feat_1
-    feat--&amp;gt;&amp;gt;dev: merge feat_1
-    end
-    par 开发feat_2
-    dev-&amp;gt;&amp;gt;feat: checkout feat_2
-    feat--&amp;gt;&amp;gt;dev: merge feat_2
-    end
-    par 测试
-    dev-&amp;gt;&amp;gt;release: cherry-pick feat_1, feat_2
-    end
-    par 解决 bug
-    release-&amp;gt;&amp;gt;fix: checkout fix_bug_1
-    fix--&amp;gt;&amp;gt;release: merge fix_bug_1
-    fix--&amp;gt;&amp;gt;dev: cherry-pick fix_bug_1
-    end
-&lt;/div&gt;
-
-&lt;h4 id=&quot;基于-cicd-的环境部署dev-qa-和-prod&quot;&gt;基于 CI/CD 的环境部署(dev, qa 和 prod)&lt;/h4&gt;
-&lt;p&gt;为了简化整个研发流程，节省机器资源，最快地进行上线，我们只设置了三个环境&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;环境&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;分支&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;部署时机&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;自动/手动&lt;/th&gt;
-      &lt;th&gt;例子&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;开发环境&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;dev&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;分支合并至 dev 时&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;自动&lt;/td&gt;
-      &lt;td&gt;&lt;img src=&quot;assets/images/ci-dev.png&quot; alt=&quot;ci-dev&quot; /&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;测试环境&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;release_xxx&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;开头为 release  的分支 push 时&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;自动&lt;/td&gt;
-      &lt;td&gt;&lt;img src=&quot;assets/images/ci-qa.png&quot; alt=&quot;ci-qa&quot; /&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;生产环境&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;release_xxx&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;手动点击部署操作&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;手动&lt;/td&gt;
-      &lt;td&gt;&lt;img src=&quot;assets/images/ci-prod.png&quot; alt=&quot;ci-prod&quot; /&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h4 id=&quot;核心配置数据维护至-gitlab-中&quot;&gt;核心配置数据维护至 gitlab 中&lt;/h4&gt;
-&lt;p&gt;一些比较敏感的数据，如 token，密码等，可以统一放在 gitlab 中进行维护和管理，并在 CI 脚本中使用该变量。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;assets/images/important-msgs.png&quot; alt=&quot;importtant-msgs&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;经验总结&quot;&gt;经验总结&lt;/h4&gt;
-&lt;ol&gt;
-  &lt;li&gt;feature 分支的生命周期，越短越好，所有的开发功能需要尽快合并到 dev 分支上，大的功能需要拆成不同的小的 commit 分步骤去合并。&lt;/li&gt;
-  &lt;li&gt;每一个 commit 做的事情，尽量独立且简单，这样能够避免掉非常多的冲突。&lt;/li&gt;
-  &lt;li&gt;关注开发环境/测试环境 的一些错误，他能让你提前思考生成环境可能出现的 历史数据处理，脏数据问题，NPE 问题等。提前做好预备和思考。&lt;/li&gt;
-  &lt;li&gt;不需要提前关注性能（除非是有很明显的 N+1 查询这样的问题），尽量写简单的，可维护的代码。&lt;/li&gt;
-  &lt;li&gt;不需要过于执着开发/测试环境和生产一致，因为 生产环境 的流量，访问路劲，数据量都可能是不一样的，与其花很大精力保持一致性，还不如聚焦在业务本身。&lt;/li&gt;
-  &lt;li&gt;永远不要去自己上服务器进行修改配置，部署服务等，而是要交给 CI 进行处理。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;数据采集&quot;&gt;数据采集&lt;/h3&gt;
-&lt;p&gt;我们的数据来源非常多，可以采集的数据也很多。这里我们将数据分成了三类&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;BizLog 业务日志，所有接口请求的日志数据&lt;/li&gt;
-  &lt;li&gt;SysLog 系统日志，包括服务器的各种指标监控&lt;/li&gt;
-  &lt;li&gt;AppLog 服务日志，包括服务的 heartbeat，JVM 数据等日志监控&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;对于上述的日志，都可以采用 ELK 的技术栈进行收集。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;assets/images/es-stack.png&quot; alt=&quot;es-stack&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;但是实际上 系统日志 和 服务日志，对我们的价值是比较有限的（出现问题的概率相对较小），而且当前的服务都是 Java 的，所以在 系统日志 和 服务日志中我们选择了其他的方式，业务日志使用 ELK 进行收集。&lt;/p&gt;
-
-&lt;h4 id=&quot;bizlog-业务日志&quot;&gt;BizLog 业务日志&lt;/h4&gt;
-&lt;p&gt;业务日志为用户访问接口的日志，使用用户接口日志进行分析，相比于直接引入 SDK 到服务的方式，会更加灵活，而且配合着强大的 Logstash 和 Kibana 的报表功能，可以很快地做出非常多的统计数据。&lt;/p&gt;
-
-&lt;details&gt;
-  &lt;summary&gt;
-Source
-&lt;/summary&gt;
-  &lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;mermaid&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;markdown=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-stateDiagram-v2
-    s1: BizLog to File
-    s2: Filebeat to Logstash
-    s3: format Log then to ES
-    s4: Kibana Dashborad, Watchers and Alerts
-    note left of s1
-        2021-10-29 10:45:03.388&lt;span class=&quot;nt&quot;&gt;&amp;lt;br&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;  INFO : api log, url = /api/adv/detail,&lt;span class=&quot;nt&quot;&gt;&amp;lt;br&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; params = [{&quot;code&quot;:&quot;forYou&quot;}],&lt;span class=&quot;nt&quot;&gt;&amp;lt;br&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; result = {&quot;body&quot;:{&quot;id&quot;:1,&quot;img&quot;:&quot;aaa&quot;},&quot;code&quot;:&quot;200&quot;,&quot;status&quot;:200},&lt;span class=&quot;nt&quot;&gt;&amp;lt;br&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; time cost = 0 ms
-    end note
-    s1 --&amp;gt; s2
-    note left of s2
-        message: &quot;2021-10-29 10:45:03.388  INFO : .. result = {...}, time cost = 0 ms&quot;
-        host: 172.21.16.1
-        metadata: ...
-    end note
-    s2 --&amp;gt; s3
-    note left of s3
-        source: ...
-        requestTime: &quot;2021-10-29 10:45:03.388&quot;,
-        requestUri: &quot;/api/adv/detail&quot;,
-        timeCost: 0,
-        logLevel: INFO,
-        host: 172.21.16.1
-    end note
-    s3 --&amp;gt; s4
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-&lt;/details&gt;
-&lt;p&gt;&lt;img src=&quot;assets/images/logExample.png&quot; alt=&quot;logExample&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;通过 Kibana，我们主要建立了四种维度的数据视图&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;数据维度&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;目的&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;示例&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;日志源数据&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;日常查询问题&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;assets/images/logQuery.png&quot; alt=&quot;logQuery&quot; /&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;接口统计&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;建立 SLI/SLO&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;assets/images/SLI-SLO.png&quot; alt=&quot;SLI-SLO&quot; /&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;报警数据&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;ERROR/LATENCY/QPS 的报警&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;assets/images/watcher_example.png&quot; alt=&quot;SLI-SLO&quot; /&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;业务数据&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;某类业务数据监控(如搜索统计等)&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;assets/images/search_example.png&quot; alt=&quot;search_example&quot; /&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h4 id=&quot;syslog-系统日志&quot;&gt;SysLog 系统日志&lt;/h4&gt;
-&lt;p&gt;系统日志收集我们使用的是 &lt;a href=&quot;https://github.com/netdata/netdata&quot;&gt;netdata&lt;/a&gt;，如下所示(图片来自官网)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;assets/images/netdata-example.gif&quot; alt=&quot;netdata-example&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;netdata 不仅包括对基本的 CPU，内存 等数据的图形化展示，更包括了 Applications 的资源占用数据统计。&lt;/p&gt;
-
-&lt;h4 id=&quot;applog-服务日志&quot;&gt;AppLog 服务日志&lt;/h4&gt;
-&lt;p&gt;考虑到我们的核心服务都是 Java 服务， 服务日志收集我们使用的是 &lt;a href=&quot;https://github.com/codecentric/spring-boot-admin&quot;&gt;Spring Boot Admin&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;assets/images/sba-example.png&quot; alt=&quot;sba-example&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;这里可以对最基本的 JVM 数据进行统计，并整合了 Spring 原生的很多特性，并可以支持 dump 线程数据等，对于日常的错误排查已经足够了。&lt;/p&gt;
-
-&lt;h4 id=&quot;经验总结-1&quot;&gt;经验总结&lt;/h4&gt;
-&lt;ol&gt;
-  &lt;li&gt;大多数日志是无用的。正如你的代码大多数时候是看起来没有 Bug 的。&lt;/li&gt;
-  &lt;li&gt;关注系统数据，比如系统的 QPS，平均时延，调用链路等。这些数据往往来代表你的业务的健康程度，以及系统是否需要进行改造的判断。&lt;/li&gt;
-  &lt;li&gt;谨慎地引入第三方统计组件。统计本身并不复杂，应该将注意力放在核心数据上。&lt;/li&gt;
-  &lt;li&gt;日志的处理可能比日志本身更重要。一些核心的字段应该考虑通过 logstash 抽离出来，作为统计需要的核心字段。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;报警&quot;&gt;报警&lt;/h3&gt;
-&lt;h4 id=&quot;业务报警errorlatencyqps&quot;&gt;业务报警(ERROR/LATENCY/QPS)&lt;/h4&gt;
-&lt;p&gt;在对基础的数据进行了统计之后，结合 ES 的 watcher 功能，可以非常方便地实现报警功能，LATENCY 的例子如下&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;assets/images/alert-example.png&quot; alt=&quot;alert-example&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;除了上面的基本配置之后，ES 还可以支持非常丰富的查询检索。ERROR 和 QPS 的报警，是通过自定义 input, transform, 并结合 painless 脚本进行报警的。&lt;/p&gt;
-
-&lt;details&gt;
-  &lt;summary&gt;
-QPS 在1分钟的阈值检测
-&lt;/summary&gt;
-  &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;trigger&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;schedule&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;s2&quot;&gt;&quot;interval&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;1m&quot;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;input&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;search&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;s2&quot;&gt;&quot;request&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;s2&quot;&gt;&quot;search_type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;query_then_fetch&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s2&quot;&gt;&quot;indices&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-          &lt;span class=&quot;s2&quot;&gt;&quot;logstash&quot;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-        &lt;span class=&quot;s2&quot;&gt;&quot;rest_total_hits_as_int&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s2&quot;&gt;&quot;body&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-          &lt;span class=&quot;s2&quot;&gt;&quot;aggs&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;s2&quot;&gt;&quot;urlCount&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-              &lt;span class=&quot;s2&quot;&gt;&quot;terms&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;s2&quot;&gt;&quot;field&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;reqUri&quot;&lt;/span&gt;
-              &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-          &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-          &lt;span class=&quot;s2&quot;&gt;&quot;size&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-          &lt;span class=&quot;s2&quot;&gt;&quot;track_total_hits&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-          &lt;span class=&quot;s2&quot;&gt;&quot;query&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;s2&quot;&gt;&quot;bool&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-              &lt;span class=&quot;s2&quot;&gt;&quot;filter&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-              &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;s2&quot;&gt;&quot;range&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                  &lt;span class=&quot;s2&quot;&gt;&quot;reqTime&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                    &lt;span class=&quot;s2&quot;&gt;&quot;gte&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;||-1m&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                    &lt;span class=&quot;s2&quot;&gt;&quot;lte&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                    &lt;span class=&quot;s2&quot;&gt;&quot;format&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;strict_date_optional_time||epoch_millis&quot;&lt;/span&gt;
-                  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-              &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-              &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;s2&quot;&gt;&quot;exists&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                  &lt;span class=&quot;s2&quot;&gt;&quot;field&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;reqUri&quot;&lt;/span&gt;
-                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-              &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-              &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-          &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;condition&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;script&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;s2&quot;&gt;&quot;source&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;if (ctx.payload.hits.total &amp;gt;= params.threshold) { return true; } return false;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;s2&quot;&gt;&quot;lang&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;painless&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;s2&quot;&gt;&quot;params&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;s2&quot;&gt;&quot;threshold&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3000&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;actions&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;webhook_1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;s2&quot;&gt;&quot;webhook&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;s2&quot;&gt;&quot;scheme&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;http&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s2&quot;&gt;&quot;host&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;172.21.16.10&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s2&quot;&gt;&quot;port&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s2&quot;&gt;&quot;method&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;post&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s2&quot;&gt;&quot;path&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;email/sender&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s2&quot;&gt;&quot;params&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt;
-        &lt;span class=&quot;s2&quot;&gt;&quot;headers&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-          &lt;span class=&quot;s2&quot;&gt;&quot;Accept&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;application/json&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-          &lt;span class=&quot;s2&quot;&gt;&quot;Content-Type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;application/json&quot;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-        &lt;span class=&quot;s2&quot;&gt;&quot;body&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ctx.payload&quot;&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;transform&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;script&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;s2&quot;&gt;&quot;source&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&quot;return
-        ['subject': 'Ease QPS 异常统计',
-      'cc': [],
-      'to': ['qinghua.deng@email.com'],
-      'msg_list': ctx.payload.aggregations.urlCount.buckets.stream().map(t -&amp;gt; t.key + ': ' + t.doc_count + '次').collect(Collectors.toList()),
-      'msg_intro': '1分钟内的接口调用次数: ' + ctx.payload.hits.total + ', 高于阈值: 3000'
-        ]&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s2&quot;&gt;&quot;lang&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;painless&quot;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-&lt;/details&gt;
-
-&lt;details&gt;
-  &lt;summary&gt;
-ERROR 在1分钟内的检测
-&lt;/summary&gt;
-  &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;trigger&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;schedule&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;s2&quot;&gt;&quot;interval&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;1m&quot;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;input&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;search&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;s2&quot;&gt;&quot;request&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;s2&quot;&gt;&quot;search_type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;query_then_fetch&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s2&quot;&gt;&quot;indices&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-          &lt;span class=&quot;s2&quot;&gt;&quot;logstash&quot;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-        &lt;span class=&quot;s2&quot;&gt;&quot;rest_total_hits_as_int&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s2&quot;&gt;&quot;body&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-          &lt;span class=&quot;s2&quot;&gt;&quot;size&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-          &lt;span class=&quot;s2&quot;&gt;&quot;query&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;s2&quot;&gt;&quot;bool&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-              &lt;span class=&quot;s2&quot;&gt;&quot;filter&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-              &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;s2&quot;&gt;&quot;range&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                  &lt;span class=&quot;s2&quot;&gt;&quot;timestamp&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                    &lt;span class=&quot;s2&quot;&gt;&quot;gte&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;||-1m&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                    &lt;span class=&quot;s2&quot;&gt;&quot;lte&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                    &lt;span class=&quot;s2&quot;&gt;&quot;format&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;strict_date_optional_time||epoch_millis&quot;&lt;/span&gt;
-                  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-              &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-              &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;s2&quot;&gt;&quot;term&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                  &lt;span class=&quot;s2&quot;&gt;&quot;logLevel&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                    &lt;span class=&quot;s2&quot;&gt;&quot;value&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ERROR&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                    &lt;span class=&quot;s2&quot;&gt;&quot;boost&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-                  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-              &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-              &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-          &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;condition&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;script&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;s2&quot;&gt;&quot;source&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;if (ctx.payload.hits.total &amp;gt;= params.threshold) { return true; } return false;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;s2&quot;&gt;&quot;lang&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;painless&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;s2&quot;&gt;&quot;params&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;s2&quot;&gt;&quot;threshold&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;actions&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;webhook_1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;s2&quot;&gt;&quot;webhook&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;s2&quot;&gt;&quot;scheme&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;http&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s2&quot;&gt;&quot;host&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;172.21.16.10&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s2&quot;&gt;&quot;port&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s2&quot;&gt;&quot;method&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;post&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s2&quot;&gt;&quot;path&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;email/sender&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s2&quot;&gt;&quot;params&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt;
-        &lt;span class=&quot;s2&quot;&gt;&quot;headers&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-          &lt;span class=&quot;s2&quot;&gt;&quot;Accept&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;application/json&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-          &lt;span class=&quot;s2&quot;&gt;&quot;Content-Type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;application/json&quot;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-        &lt;span class=&quot;s2&quot;&gt;&quot;body&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ctx.payload&quot;&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;transform&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;script&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;s2&quot;&gt;&quot;source&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&quot;return ['subject': 'Ease ERROR 报警', 'cc': [], 'to': ['qinghua.deng@email.com'], 'msg_intro': '错误信息: ' + ctx.payload.hits.hits.0._source.message ]&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;s2&quot;&gt;&quot;lang&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;painless&quot;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
-&lt;/details&gt;
-
-&lt;h4 id=&quot;系统报警&quot;&gt;系统报警&lt;/h4&gt;
-&lt;p&gt;这里未做系统报警，我们购买的云服务器，所以该部分的报警依赖于 云服务商(腾讯云) 的报警服务。&lt;/p&gt;
-
-&lt;h4 id=&quot;服务报警&quot;&gt;服务报警&lt;/h4&gt;
-&lt;p&gt;服务的报警是通过 SpringbootAdmin 来做的。SpringbootAdmin 会和 Spring 的应用进行心跳连接，在检测到服务 UP/DOWN 的时候会发出对应的事件。这里配置了简单的邮件报警。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;assets/images/sba-event.png&quot; alt=&quot;sba-event.png&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;思考&quot;&gt;思考&lt;/h4&gt;
-&lt;ol&gt;
-  &lt;li&gt;报警本身没有业务本身重要，个人理解不需要花太多的时间在上面。&lt;/li&gt;
-  &lt;li&gt;及时处理报错信息，不需要处理的报错信息，就应该让他不要报错，报错信息过多会掩盖掉真正的问题。&lt;/li&gt;
-  &lt;li&gt;报错维度不在多，而应该是信息简单，仅给出必要的详细信息。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;网关&quot;&gt;网关&lt;/h3&gt;
-&lt;h4 id=&quot;核心功能&quot;&gt;核心功能&lt;/h4&gt;
-&lt;p&gt;作为整个服务顶层的网关，他承载着流量的入口左右，在这一层，我们使用了 Nginx 作为系统的网关。&lt;/p&gt;
-
-&lt;p&gt;通过网关，我们实现了下面的功能&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;反向代理&lt;/li&gt;
-  &lt;li&gt;负载均衡&lt;/li&gt;
-  &lt;li&gt;基础鉴权&lt;/li&gt;
-  &lt;li&gt;HTTPS&lt;/li&gt;
-  &lt;li&gt;压缩/解压&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;安全&quot;&gt;安全&lt;/h4&gt;
-&lt;p&gt;当我们的业务量上升之后，先后遇到了 DDOS，短信接口攻击，挖矿脚本注入等。系统本身的安全变得非常重要，除了购买基础的 云安全服务 之外，我们使用 Nginx 作为网关维度的安全组件。主要包括下面的内容&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;黑白IP名单控制&lt;/li&gt;
-  &lt;li&gt;流量控制&lt;/li&gt;
-  &lt;li&gt;连接数控制&lt;/li&gt;
-  &lt;li&gt;接口调用频次控制&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;思考-1&quot;&gt;思考&lt;/h4&gt;
-&lt;ol&gt;
-  &lt;li&gt;在选择网关时，我们遇到一个问题，是否需要引入比较重的中间件/基础设施 ？如 Kong，Gravitee，Tyk 等。大多数的组件都做得非常重，比如 Kong 还需要依赖 PG，本身比较占用资源，使用上必须用 API 才可以操作(Admin 版本需要收费)。&lt;/li&gt;
-  &lt;li&gt;而对于当前的业务场景，其实基础的 Nginx 已经满足我们的需求了。而且 Nginx 本身的配置文件可以分开配置，非常好维护和管理，对于小业务反而是一种优势。&lt;/li&gt;
-  &lt;li&gt;安全 和 报警一样，是一样性价比不高的系统（但是很重要）尽量做到业务无感知，而且不能伤害到正常用户，这样才能最大地释放业务服务部分的能力，让业务更专注于业务。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;业务&quot;&gt;业务&lt;/h2&gt;
-&lt;p&gt;在业务架构层设计上，我们使用 BFF + Microservice 的方式，BFF 作为业务端的流量承接入口，Microservice 作为模块化的服务(并不是指业界的大而全微服务体系)&lt;/p&gt;
-
-&lt;div class=&quot;mermaid&quot;&gt;
-graph TB;
-    biz1(业务);
-    biz11(BFF-App);
-    biz12(BFF-Admin);
-    biz-m1(microservice&lt;br /&gt; 内容&lt;br /&gt;单曲 合集 Q&amp;amp;E 老师等)
-    biz-m3(microservice&lt;br /&gt; 支付&lt;br /&gt; 微信 支付宝 华为支付 苹果支付)
-    biz-m4(microservice&lt;br /&gt; 用户&lt;br /&gt;登录/注册 反馈 VIP信息)
-    biz-m5(microservice&lt;br /&gt; 运营活动&lt;br /&gt; 广告 Banner 优惠活动)
-    biz-m6(microservice&lt;br /&gt; 用户日志&lt;br /&gt;音频播放日志)
-    biz-m7(microservice&lt;br /&gt; RBAC&lt;br /&gt;权限 角色)
-    biz1--&amp;gt;biz11 &amp;amp; biz12;
-    biz11 --&amp;gt; biz-m3 &amp;amp; biz-m4 &amp;amp; biz-m6
-    biz11 &amp;amp; biz12 --&amp;gt; biz-m1 &amp;amp; biz-m5 &amp;amp; biz-m7
-&lt;/div&gt;
-
-&lt;h3 id=&quot;bffbackend-for-frontend&quot;&gt;BFF，Backend for Frontend&lt;/h3&gt;
-&lt;p&gt;BFF 层为流量入口, 主要处理 鉴权，参数校验，拼装 microservice 接口中需要的参数，并聚合各个 microservice 的返回结果，我们的缓存也会放在 BFF 层&lt;/p&gt;
-
-&lt;div class=&quot;mermaid&quot;&gt;
-graph LR;
-    biz1(首页为你接口 &lt;br /&gt;/tag/media/group/v2/forYou);
-    check(校验参数 获取用户id);
-    biz11(内容&lt;br /&gt;单曲 合集 Q&amp;amp;E 老师等);
-    biz12(用户&lt;br /&gt; VIP信息);
-    biz13(运营活动&lt;br /&gt; 广告 Banner 优惠活动);
-    biz14(用户日志&lt;br /&gt;音频播放日志);
-    final(聚合数据)
-    biz1--&amp;gt;check--&amp;gt;biz11 &amp;amp; biz12 &amp;amp; biz13 &amp;amp; biz14--&amp;gt;final;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;microservice&quot;&gt;Microservice&lt;/h3&gt;
-&lt;ol&gt;
-  &lt;li&gt;这里的微服务并不是业务的微服务，而是模块化的微服务。当前的组织架构，并不需要一个微服务去承接整个系统。此外，团队在微服务的经验和知识储备是不够的。&lt;/li&gt;
-  &lt;li&gt;所以这里的微服务只是模块化的微服务，按照 DDD 的思路进行了模块拆分，控制好领域内模型的调用链路，为之后的服务拆分做准备。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;mermaid&quot;&gt;
-graph TB;
-    m(Microservices);
-    m1(内容&lt;br /&gt;单曲 合集 Q&amp;amp;E 老师等)
-    m2(支付&lt;br /&gt; 微信 支付宝 华为支付 苹果支付)
-    m3(用户&lt;br /&gt;登录/注册 反馈 VIP信息)
-    m4(运营活动&lt;br /&gt; 广告 Banner 优惠活动)
-    m5(用户日志&lt;br /&gt;音频播放日志)
-    m6(RBAC&lt;br /&gt;权限 角色)
-    m7(EventReach&lt;br /&gt;Push 短信 微信消息)
-    m8(搜索)
-    m--&amp;gt;m1 &amp;amp; m2 &amp;amp; m3 &amp;amp; m4 &amp;amp; m5 &amp;amp; m6 &amp;amp; m7 &amp;amp; m8
-&lt;/div&gt;
-
-&lt;h3 id=&quot;思考-2&quot;&gt;思考&lt;/h3&gt;
-&lt;ol&gt;
-  &lt;li&gt;大多数产品可能不需要所谓的微服务的架构。&lt;/li&gt;
-  &lt;li&gt;但是微服务的一些概念和思考方式，很值得借鉴。&lt;/li&gt;
-  &lt;li&gt;理论上让业务层越简单越好，让业务专注于业务，而不是过多地关注安全，流量，连接等。&lt;/li&gt;
-  &lt;li&gt;多关注业务数据，思考业务数据是怎么产生的，并怎么回归到产品中去。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;中间件基础设施&quot;&gt;中间件/基础设施&lt;/h2&gt;
-&lt;div class=&quot;mermaid&quot;&gt;
-graph TB;
-    sys([中间件/基础设施 ]);
-    sys0(Nginx);
-    sys00(HTTPS);
-    sys01(反向代理);
-    sys02(负载均衡);
-    sys03(HTTP Auth);
-    sys1(ELK);
-    sys11(日志收集);
-    sys12(报表输出);
-    sys2(BI/大数据);
-    sys3(MySQL);
-    sys4(Redis);
-    sys5(Pulsa队列);
-    sys--&amp;gt;sys0 &amp;amp; sys1 &amp;amp; sys2 &amp;amp; sys3 &amp;amp; sys4 &amp;amp; sys5;
-    sys0--&amp;gt;sys00 &amp;amp; sys01 &amp;amp; sys02 &amp;amp; sys03;
-    sys1--&amp;gt;sys11 &amp;amp; sys12;
-&lt;/div&gt;
-
-&lt;p&gt;中间件/基础设施 支撑着整个业务系统的运转，他们贯穿在整个系统中。&lt;/p&gt;
-
-&lt;h3 id=&quot;选择-中间件基础设施-标准&quot;&gt;选择 中间件/基础设施 标准&lt;/h3&gt;
-&lt;p&gt;这里的选择标准包括&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;稳定性高。&lt;/li&gt;
-  &lt;li&gt;符合团队的技术栈。&lt;/li&gt;
-  &lt;li&gt;运维成本小。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;比如我们会选择 Nginx，则不是 Kong，选择 MySQL 而不是其他的数据库。&lt;/p&gt;
-
-&lt;h3 id=&quot;购买还是自建&quot;&gt;购买还是自建&lt;/h3&gt;
-&lt;p&gt;我们经常遇到一个问题，MySQL 自建还是购买？ES 可以直接一个命令搭建起来，要不要使用自建的服务？Redis 的部署很简单，要不要自己搭建？&lt;/p&gt;
-
-&lt;p&gt;经过思考和讨论之后，有下面几个维度的考虑&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;内部人员使用的系统，不对外开放的，考虑自建，如 BI 系统。&lt;/li&gt;
-  &lt;li&gt;面向用户的，涉及到用户数据的，购买。如 MySQL，Redis 等&lt;/li&gt;
-  &lt;li&gt;部署和运维成本很高的，购买。如比较吃资源的 ES，部署组件非常多的 Pulsa 队列，我们都进行了购买，直接使用了云服务。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;当然，上面也考虑到了灵活性，比如 Nginx，团队内部比较有配置和部署的经验，所以也是使用的自建的 Nginx。&lt;/p&gt;
-
-&lt;h3 id=&quot;思考-3&quot;&gt;思考&lt;/h3&gt;
-&lt;ol&gt;
-  &lt;li&gt;无论是引入哪一种组件，购买还是自建，都需要自己先进行一段时间的考察和试用，横纵向进行多维度的对比之后，再做一些考虑。&lt;/li&gt;
-  &lt;li&gt;维护好重要的数据，并进行备份。&lt;/li&gt;
-  &lt;li&gt;内部使用的中间件/基础设施 尽量要和用户使用的系统分开。比如 BI 使用的 MySQL，我们则购买了一个从库，专门给 BI 进行使用。&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>dengqinghua</name></author><summary type="html">该部分为后端团队 (2人) 从0 到 1 搭建的一套架构体系。</summary></entry></feed>
+  &lt;li&gt;&lt;a href=&quot;https://developer.apple.com/videos/play/tech-talks/10887/&quot;&gt;苹果服务端通知&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>dengqinghua</name></author><summary type="html">sequenceDiagram autonumber participant sdk as iOS SDK participant b as Backend participant as as Apple Service sdk-&amp;gt;&amp;gt;b: 获取商品列表 b--&amp;gt;&amp;gt;sdk: 从后台获取商品id和对应展示的图片文案信息 sdk-&amp;gt;&amp;gt;b: 根据商品id 生成/获取预订单 Note right of sdk: 需要先去查一下这个用户在商品id下之前是不是有未完成的订单 b--&amp;gt;&amp;gt;sdk: 返回 订单sid sdk-&amp;gt;&amp;gt;as: 发起真实的支付 as--&amp;gt;&amp;gt;sdk: 用户支付, 苹果返回票据信息(receipt-data)如果苹果未返回, 则在 App 启动的时候返回 sdk-&amp;gt;&amp;gt;b: 提交票据信息和 订单sid 到服务端 Note right of sdk: 这一步容易丢单, 如何解决? 因为苹果容易丢失掉订单sid 需要取未完成的一条 b-&amp;gt;&amp;gt;as: 验证票据信息 as--&amp;gt;&amp;gt;b: 验证成功/失败 b--&amp;gt;&amp;gt;sdk: 修改订单状态, 并通知SDK支付成功或失败 sdk--&amp;gt;&amp;gt;as: 成功则将订单进行关闭</summary></entry></feed>

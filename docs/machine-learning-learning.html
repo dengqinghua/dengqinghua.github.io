@@ -19,7 +19,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2022-01-04T00:00:00+08:00" />
 <script type="application/ld+json">
-{"headline":"机器学习","dateModified":"2022-01-04T00:00:00+08:00","datePublished":"2022-01-04T00:00:00+08:00","url":"https://dengqinghua.github.io/machine-learning-learning.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://dengqinghua.github.io/machine-learning-learning.html"},"author":{"@type":"Person","name":"dengqinghua"},"description":"机器学习的思考故事","@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"dateModified":"2022-01-04T00:00:00+08:00","datePublished":"2022-01-04T00:00:00+08:00","url":"https://dengqinghua.github.io/machine-learning-learning.html","author":{"@type":"Person","name":"dengqinghua"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://dengqinghua.github.io/machine-learning-learning.html"},"@type":"BlogPosting","description":"机器学习的思考故事","headline":"机器学习","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <link type="application/atom+xml" rel="alternate" href="https://dengqinghua.github.io/feed.xml" title="Dengqinghua.42" />
@@ -315,6 +315,7 @@ A^T = \begin{bmatrix}
 </li>
 </ul>
 
+<h4 id="week2">Week2</h4>
 <p>使用 vector 和 matrix 来表示 multi feature hypothesis，多维度的假设函数</p>
 
 <script type="math/tex; mode=display">% <![CDATA[
@@ -347,7 +348,8 @@ x_n
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: center"><script type="math/tex">y^{(i)} = h_\theta = \theta_0 x_0 + \theta_1 x_1 + \cdots + \theta_n x_n = x^T \times \theta</script></td>
+      <td style="text-align: center"><script type="math/tex">% <![CDATA[
+\begin{align}y^{(i)} &= \theta_0 x_0^{(i)} + \theta_1 x_1^{(i)} + \cdots + \theta_n x_n^{(i)} \\ &= (x^{(i)})^{T} \times \theta \\ Y &= X \times \theta \end{align} %]]></script></td>
       <td style="text-align: center"><script type="math/tex">\theta = \begin{bmatrix} \theta_0 \\ \theta_1 \\ \cdots \\ \theta_n \end{bmatrix}</script></td>
       <td style="text-align: center"><script type="math/tex">J(\theta) = {1 \over2m} \sum_{i=1}^m(h_\theta(x^{(i)}) - y^{(i)})^2</script></td>
       <td style="text-align: center"><script type="math/tex">minimize_{\theta} J(\theta_0, \theta_1, \cdots, \theta_n)</script></td>
@@ -380,7 +382,7 @@ x_n
   <li>Polynomial Regression 的参数的 scaling 很重要，因为数值会随着 <script type="math/tex">x^n</script> 的 n 指数型增长</li>
   <li>模型变量的选择：可以是原始变量的组合。</li>
   <li>
-    <p>Normal Equation, 一次性求解出所有的 <script type="math/tex">\theta</script>，类似于解矩阵方程的思路，下面是结果。参考 <a href="https://blog.csdn.net/artprog/article/details/51172025" target="_blank" rel="noopener noreferrer">机器学习笔记03：Normal equation与梯度下降的比较</a></p>
+    <p>Normal Equation, 一次性求解出所有的 <script type="math/tex">\theta</script>，类似于解矩阵方程的思路，下面是结果。参考 <a href="https://blog.csdn.net/artprog/article/details/51172025" target="_blank" rel="noopener noreferrer">机器学习笔记03：Normal equation与梯度下降的比较</a> 其中 m 为样本数，n 为特征数 和 <a href="https://stanford.edu/~rezab/classes/cme323/S15/notes/lec11.pdf" target="_blank" rel="noopener noreferrer">复杂度分析</a></p>
 
     <table>
       <thead>
@@ -404,7 +406,60 @@ x_n
       </tbody>
     </table>
   </li>
+  <li>Normal Equation 不需要做 feature scaling，但是在 n 比较大(&gt;10000)的时候比较慢，计算 <script type="math/tex">(X^TX)^{(-1)}</script> 的复杂度为 <script type="math/tex">O(n^3)</script>
+</li>
+  <li>什么时候矩阵是奇异矩阵，见<a href="https://byjus.com/maths/singular-matrix/#:~:text=What%20is%20Singular%20Matrix%3F,if%20its%20determinant%20is%200." target="_blank" rel="noopener noreferrer">这里</a>
+</li>
 </ul>
+
+<h3 id="octave-tutorial">octave tutorial</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = 1:0.1:2 % 从 1 到 2 以 0.1 为步长
+zeros(2, 3) % 2行3列的全是0的矩阵
+ones(2, 3) % 2行3列的全是1的矩阵
+rand(2, 3) % 2行3列的【0到1之间的】随机数的矩阵
+randn(1, 3) % 平均值为0，方差为1的高斯分布的随机矩阵
+w = -6 + sqrt(10) * (randn(1, 10000)); hist(w) % 画出直方图(histogram)
+eye(10) % 单位矩阵，eye 代表的是 I 的意思
+pwd % 当前的路劲 类似还可以用 cd, ls 等
+who % 查看当前的作用域 whos
+save % 保存矩阵到对应的文件 save new.dat v
+C = [3 4;2 2] % 可以省去逗号
+1./C % =[1/3 1/4; 1/2 1/2]
+</code></pre></div></div>
+
+<p>plot</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>% 还可以设置坐标名称，线名称，颜色等等
+t = [0:0.01:0.98]
+y1 = sin(2 * pi * t)
+plot(t, y1)
+hold on % 画第二个图
+y2 = cos(2 * pi * t)
+plot(t, y2)
+xlabel("横坐标")
+ylabel("纵坐标")
+legend("线的定义")
+title("图片标题")
+print -dpng % 保存文件
+close % 关闭
+
+% 定义图一和图二
+figure(1); plot(t, y1)
+figure(2); plot(t, y2)
+
+% 将图分隔展示
+subplot(1,2,1);plot(t, y1)
+subplot(1,2,2);plot(t, y2)
+
+% 修改中轴线
+axis
+</code></pre></div></div>
+
+<p>vectorization</p>
+
+<p>将数值运算，变成矩阵运算</p>
+
+<h4 id="week3">Week3</h4>
+<p>分类 classification</p>
 
 <h2 id="reference">Reference</h2>
 <ul>

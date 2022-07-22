@@ -187,6 +187,7 @@ A_{m,n} \times B_{n,o} = C_{m,o} $$
   $$
 - octave 中矩阵的操作可参考[这里](http://www.philender.com/courses/multivariate/notes/matoctave.html)
 
+#### Week2
 使用 vector 和 matrix 来表示 multi feature hypothesis，多维度的假设函数
 
 $$
@@ -211,7 +212,7 @@ $$
 
 | Hypothesis(假设) | Paramemters(参数) | CostFunction | Goal |
 | :-------------: | :-------------: | :-------------: | :-------------: |
-| $$y^{(i)} = h_\theta = \theta_0 x_0 + \theta_1 x_1 + \cdots + \theta_n x_n = x^T \times \theta $$ |$$\theta = \begin{bmatrix} \theta_0 \\ \theta_1 \\ \cdots \\ \theta_n \end{bmatrix}$$ | $$J(\theta) = {1 \over2m} \sum_{i=1}^m(h_\theta(x^{(i)}) - y^{(i)})^2$$  | $$minimize_{\theta} J(\theta_0, \theta_1, \cdots, \theta_n) $$ |
+| $$\begin{align}y^{(i)} &= \theta_0 x_0^{(i)} + \theta_1 x_1^{(i)} + \cdots + \theta_n x_n^{(i)} \\ &= (x^{(i)})^{T} \times \theta \\ Y &= X \times \theta \end{align}$$ |$$\theta = \begin{bmatrix} \theta_0 \\ \theta_1 \\ \cdots \\ \theta_n \end{bmatrix}$$ | $$J(\theta) = {1 \over2m} \sum_{i=1}^m(h_\theta(x^{(i)}) - y^{(i)})^2$$  | $$minimize_{\theta} J(\theta_0, \theta_1, \cdots, \theta_n) $$ |
 
 Gradient Descent
 
@@ -234,13 +235,65 @@ $$
 - Polynomial Regression 多项式回归, 如 $$h_\theta = \theta_0 x_0 + \theta_1 x_1^2 + \cdots + \theta_n x_n^n$$
 - Polynomial Regression 的参数的 scaling 很重要，因为数值会随着 $$x^n$$ 的 n 指数型增长
 - 模型变量的选择：可以是原始变量的组合。
-- Normal Equation, 一次性求解出所有的 $$\theta$$，类似于解矩阵方程的思路，下面是结果。参考 [机器学习笔记03：Normal equation与梯度下降的比较](https://blog.csdn.net/artprog/article/details/51172025)
+- Normal Equation, 一次性求解出所有的 $$\theta$$，类似于解矩阵方程的思路，下面是结果。参考 [机器学习笔记03：Normal equation与梯度下降的比较](https://blog.csdn.net/artprog/article/details/51172025) 其中 m 为样本数，n 为特征数 和 [复杂度分析](https://stanford.edu/~rezab/classes/cme323/S15/notes/lec11.pdf)
 
     | Hypothesis(假设) | features $$X_{(m, n+1)}$$ | Paramemters $$\theta$$ | Normal Equation Answer |
     | :-------------: | :-------------: | :-------------: | :-------------: |
     | $$\begin{align}y^{(i)} &= \theta_0 x_0^{(i)} + \theta_1 x_1^{(i)} + \cdots + \theta_n x_n^{(i)} \\ &= (x^{(i)})^{T} \times \theta \\ Y &= X \times \theta \end{align}$$ | $$X = \begin{bmatrix} (x^{(1)})^{T} \\ (x^{(2)})^{T} \\ \cdots \\  (x^{(m)})^{T} \\ \end{bmatrix}$$ |  $$\theta = \begin{bmatrix} \theta_0 \\ \theta_1 \\ \cdots \\ \theta_n \end{bmatrix}$$ | $$\theta = (X^TX)^{(-1)}X^TY$$ |
 
+- Normal Equation 不需要做 feature scaling，但是在 n 比较大(>10000)的时候比较慢，计算 $$(X^TX)^{(-1)}$$ 的复杂度为 $$O(n^3)$$
+- 什么时候矩阵是奇异矩阵，见[这里](https://byjus.com/maths/singular-matrix/#:~:text=What%20is%20Singular%20Matrix%3F,if%20its%20determinant%20is%200.)
 
+### octave tutorial
+```
+a = 1:0.1:2 % 从 1 到 2 以 0.1 为步长
+zeros(2, 3) % 2行3列的全是0的矩阵
+ones(2, 3) % 2行3列的全是1的矩阵
+rand(2, 3) % 2行3列的【0到1之间的】随机数的矩阵
+randn(1, 3) % 平均值为0，方差为1的高斯分布的随机矩阵
+w = -6 + sqrt(10) * (randn(1, 10000)); hist(w) % 画出直方图(histogram)
+eye(10) % 单位矩阵，eye 代表的是 I 的意思
+pwd % 当前的路劲 类似还可以用 cd, ls 等
+who % 查看当前的作用域 whos
+save % 保存矩阵到对应的文件 save new.dat v
+C = [3 4;2 2] % 可以省去逗号
+1./C % =[1/3 1/4; 1/2 1/2]
+```
+
+plot
+```
+% 还可以设置坐标名称，线名称，颜色等等
+t = [0:0.01:0.98]
+y1 = sin(2 * pi * t)
+plot(t, y1)
+hold on % 画第二个图
+y2 = cos(2 * pi * t)
+plot(t, y2)
+xlabel("横坐标")
+ylabel("纵坐标")
+legend("线的定义")
+title("图片标题")
+print -dpng % 保存文件
+close % 关闭
+
+% 定义图一和图二
+figure(1); plot(t, y1)
+figure(2); plot(t, y2)
+
+% 将图分隔展示
+subplot(1,2,1);plot(t, y1)
+subplot(1,2,2);plot(t, y2)
+
+% 修改中轴线
+axis
+```
+
+vectorization
+
+将数值运算，变成矩阵运算
+
+#### Week3
+分类 classification
 
 ## Reference
 - [机器学习的思考故事](https://aistudio.baidu.com/aistudio/education/group/info/1138)
